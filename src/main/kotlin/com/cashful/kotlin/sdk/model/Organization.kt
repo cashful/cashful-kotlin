@@ -23,18 +23,34 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
+ * @param id 
  * @param name 
  * @param slug 
+ * @param createdAt 
+ * @param logo 
+ * @param metadata 
  */
 @Serializable
 
 data class Organization (
 
+    @SerialName(value = "id")
+    val id: kotlin.String,
+
     @SerialName(value = "name")
     val name: kotlin.String,
 
     @SerialName(value = "slug")
-    val slug: kotlin.String
+    val slug: kotlin.String,
+
+    @Contextual @SerialName(value = "createdAt")
+    val createdAt: java.time.OffsetDateTime,
+
+    @SerialName(value = "logo")
+    val logo: kotlin.String? = null,
+
+    @Contextual @SerialName(value = "metadata")
+    val metadata: kotlin.Any? = null
 
 ) {
 

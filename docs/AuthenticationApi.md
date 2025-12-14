@@ -1098,7 +1098,7 @@ Configure bearer:
 
 <a id="listOrganizations"></a>
 # **listOrganizations**
-> ListOrganizationsResponseDto listOrganizations(include)
+> kotlin.collections.List&lt;OrganizationDto&gt; listOrganizations(include)
 
 List Organizations
 
@@ -1113,7 +1113,7 @@ List all organizations for the current user
 val apiInstance = AuthenticationApi()
 val include : kotlin.Boolean = true // kotlin.Boolean | Include additional organization data
 try {
-    val result : ListOrganizationsResponseDto = apiInstance.listOrganizations(include)
+    val result : kotlin.collections.List<OrganizationDto> = apiInstance.listOrganizations(include)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling AuthenticationApi#listOrganizations")
@@ -1131,7 +1131,7 @@ try {
 
 ### Return type
 
-[**ListOrganizationsResponseDto**](ListOrganizationsResponseDto.md)
+[**kotlin.collections.List&lt;OrganizationDto&gt;**](OrganizationDto.md)
 
 ### Authorization
 

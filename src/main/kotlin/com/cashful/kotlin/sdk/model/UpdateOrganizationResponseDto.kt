@@ -15,7 +15,7 @@
 
 package com.cashful.kotlin.sdk.model
 
-import com.cashful.kotlin.sdk.model.Organization
+import com.cashful.kotlin.sdk.model.OrganizationDto
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerialName
@@ -32,7 +32,7 @@ data class UpdateOrganizationResponseDto (
 
     /* Organization updated successfully */
     @SerialName(value = "organization")
-    val organization: Organization
+    val organization: OrganizationDto
 
 ) {
 

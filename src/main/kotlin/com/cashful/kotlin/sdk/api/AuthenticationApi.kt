@@ -56,9 +56,9 @@ import com.cashful.kotlin.sdk.model.LeaveOrganizationResponseDto
 import com.cashful.kotlin.sdk.model.ListApiKeysResponseDto
 import com.cashful.kotlin.sdk.model.ListInvitationsResponseDto
 import com.cashful.kotlin.sdk.model.ListMembersResponseDto
-import com.cashful.kotlin.sdk.model.ListOrganizationsResponseDto
 import com.cashful.kotlin.sdk.model.ListSessionsResponseDto
 import com.cashful.kotlin.sdk.model.ListUserInvitationsResponseDto
+import com.cashful.kotlin.sdk.model.OrganizationDto
 import com.cashful.kotlin.sdk.model.RejectInvitationDto
 import com.cashful.kotlin.sdk.model.RejectInvitationResponseDto
 import com.cashful.kotlin.sdk.model.RemoveMemberDto
@@ -1765,7 +1765,7 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * List Organizations
      * List all organizations for the current user
      * @param include Include additional organization data (optional)
-     * @return ListOrganizationsResponseDto
+     * @return kotlin.collections.List<OrganizationDto>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -1774,11 +1774,11 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listOrganizations(include: kotlin.Boolean? = null) : ListOrganizationsResponseDto = withContext(Dispatchers.IO) {
+    suspend fun listOrganizations(include: kotlin.Boolean? = null) : kotlin.collections.List<OrganizationDto> = withContext(Dispatchers.IO) {
         val localVarResponse = listOrganizationsWithHttpInfo(include = include)
 
         return@withContext when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as ListOrganizationsResponseDto
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<OrganizationDto>
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -1797,16 +1797,16 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * List Organizations
      * List all organizations for the current user
      * @param include Include additional organization data (optional)
-     * @return ApiResponse<ListOrganizationsResponseDto?>
+     * @return ApiResponse<kotlin.collections.List<OrganizationDto>?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listOrganizationsWithHttpInfo(include: kotlin.Boolean?) : ApiResponse<ListOrganizationsResponseDto?> = withContext(Dispatchers.IO) {
+    suspend fun listOrganizationsWithHttpInfo(include: kotlin.Boolean?) : ApiResponse<kotlin.collections.List<OrganizationDto>?> = withContext(Dispatchers.IO) {
         val localVariableConfig = listOrganizationsRequestConfig(include = include)
 
-        return@withContext request<Unit, ListOrganizationsResponseDto>(
+        return@withContext request<Unit, kotlin.collections.List<OrganizationDto>>(
             localVariableConfig
         )
     }

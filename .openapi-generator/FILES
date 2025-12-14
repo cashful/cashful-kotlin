@@ -71,7 +71,6 @@ docs/ListCustomersResponseDto.md
 docs/ListEventsResponseDto.md
 docs/ListInvitationsResponseDto.md
 docs/ListMembersResponseDto.md
-docs/ListOrganizationsResponseDto.md
 docs/ListPaymentLinksResponseDto.md
 docs/ListPayoutsResponseDto.md
 docs/ListProductsResponseDto.md
@@ -81,7 +80,6 @@ docs/ListUsersResponseDto.md
 docs/ListWebhookEndpointsResponseDto.md
 docs/MemberDto.md
 docs/MerchantBalanceResponseDto.md
-docs/Organization.md
 docs/OrganizationDto.md
 docs/PaginationResponseDto.md
 docs/PaymentIntentResponseDto.md
@@ -249,7 +247,6 @@ src/main/kotlin/com/cashful/kotlin/sdk/model/ListCustomersResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListEventsResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListInvitationsResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListMembersResponseDto.kt
-src/main/kotlin/com/cashful/kotlin/sdk/model/ListOrganizationsResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListPaymentLinksResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListPayoutsResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListProductsResponseDto.kt
@@ -259,7 +256,6 @@ src/main/kotlin/com/cashful/kotlin/sdk/model/ListUsersResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListWebhookEndpointsResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/MemberDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/MerchantBalanceResponseDto.kt
-src/main/kotlin/com/cashful/kotlin/sdk/model/Organization.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/OrganizationDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/PaginationResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/PaymentIntentResponseDto.kt

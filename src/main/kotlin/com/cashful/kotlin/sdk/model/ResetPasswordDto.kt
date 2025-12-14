@@ -23,20 +23,20 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
- * @param password The new password
- * @param token The token received in the email
+ * @param newPassword The new password to set
+ * @param token The token to reset password
  */
 @Serializable
 
 data class ResetPasswordDto (
 
-    /* The new password */
-    @SerialName(value = "password")
-    val password: kotlin.String,
+    /* The new password to set */
+    @SerialName(value = "newPassword")
+    val newPassword: kotlin.String,
 
-    /* The token received in the email */
+    /* The token to reset password */
     @SerialName(value = "token")
-    val token: kotlin.String
+    val token: kotlin.String? = null
 
 ) {
 

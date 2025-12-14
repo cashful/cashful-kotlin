@@ -4,8 +4,8 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **password** | **kotlin.String** | The new password |  |
-| **token** | **kotlin.String** | The token received in the email |  |
+| **newPassword** | **kotlin.String** | The new password to set |  |
+| **token** | **kotlin.String** | The token to reset password |  [optional] |
 
 
 

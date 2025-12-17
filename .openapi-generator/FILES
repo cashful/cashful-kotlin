@@ -325,9 +325,3 @@ src/main/kotlin/com/cashful/kotlin/sdk/model/VerifyApiKeyDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/VerifyApiKeyResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/VerifyEmailResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/WebhookEndpointResponseDto.kt
-src/test/kotlin/com/cashful/kotlin/sdk/api/AnalyticsApiTest.kt
-src/test/kotlin/com/cashful/kotlin/sdk/model/AnalyticsResponseDtoTest.kt
-src/test/kotlin/com/cashful/kotlin/sdk/model/CustomerStatsDtoTest.kt
-src/test/kotlin/com/cashful/kotlin/sdk/model/DailyBreakdownDtoTest.kt
-src/test/kotlin/com/cashful/kotlin/sdk/model/MetricStatsDtoTest.kt
-src/test/kotlin/com/cashful/kotlin/sdk/model/TimeframeMetricsDtoTest.kt

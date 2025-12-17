@@ -9,7 +9,7 @@ All URIs are relative to *http://localhost:3000*
 
 <a id="getAnalytics"></a>
 # **getAnalytics**
-> AnalyticsResponseDto getAnalytics()
+> AnalyticsResponseDto getAnalytics(merchantId)
 
 Get Analytics
 
@@ -22,8 +22,9 @@ Retrieves transaction volume and customer growth metrics for the merchant.
 //import com.cashful.kotlin.sdk.model.*
 
 val apiInstance = AnalyticsApi()
+val merchantId : kotlin.String = merchant_123 // kotlin.String | The unique identifier of the merchant
 try {
-    val result : AnalyticsResponseDto = apiInstance.getAnalytics()
+    val result : AnalyticsResponseDto = apiInstance.getAnalytics(merchantId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling AnalyticsApi#getAnalytics")
@@ -35,7 +36,9 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchantId** | **kotlin.String**| The unique identifier of the merchant | |
 
 ### Return type
 

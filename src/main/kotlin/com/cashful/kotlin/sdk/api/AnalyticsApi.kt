@@ -53,6 +53,7 @@ class AnalyticsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * GET /api/canary/analytics
      * Get Analytics
      * Retrieves transaction volume and customer growth metrics for the merchant.
+     * @param merchantId The unique identifier of the merchant
      * @return AnalyticsResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -62,8 +63,8 @@ class AnalyticsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun getAnalytics() : AnalyticsResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = getAnalyticsWithHttpInfo()
+    suspend fun getAnalytics(merchantId: kotlin.String) : AnalyticsResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = getAnalyticsWithHttpInfo(merchantId = merchantId)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as AnalyticsResponseDto
@@ -84,14 +85,15 @@ class AnalyticsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * GET /api/canary/analytics
      * Get Analytics
      * Retrieves transaction volume and customer growth metrics for the merchant.
+     * @param merchantId The unique identifier of the merchant
      * @return ApiResponse<AnalyticsResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun getAnalyticsWithHttpInfo() : ApiResponse<AnalyticsResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = getAnalyticsRequestConfig()
+    suspend fun getAnalyticsWithHttpInfo(merchantId: kotlin.String) : ApiResponse<AnalyticsResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = getAnalyticsRequestConfig(merchantId = merchantId)
 
         return@withContext request<Unit, AnalyticsResponseDto>(
             localVariableConfig
@@ -101,11 +103,15 @@ class AnalyticsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * To obtain the request config of the operation getAnalytics
      *
+     * @param merchantId The unique identifier of the merchant
      * @return RequestConfig
      */
-    fun getAnalyticsRequestConfig() : RequestConfig<Unit> {
+    fun getAnalyticsRequestConfig(merchantId: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                put("merchantId", listOf(merchantId.toString()))
+            }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Accept"] = "application/json"
 

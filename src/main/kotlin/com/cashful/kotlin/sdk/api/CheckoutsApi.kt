@@ -22,6 +22,7 @@ import okhttp3.HttpUrl
 import com.cashful.kotlin.sdk.model.CheckoutSessionResponseDto
 import com.cashful.kotlin.sdk.model.CreateCheckoutSessionDto
 import com.cashful.kotlin.sdk.model.ErrorResponseDto
+import com.cashful.kotlin.sdk.model.ListCheckoutSessionsResponseDto
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -131,7 +132,7 @@ class CheckoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * @param merchantId The ID of the merchant. This parameter is required.
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
-     * @return kotlin.collections.List<CheckoutSessionResponseDto>
+     * @return ListCheckoutSessionsResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -140,11 +141,11 @@ class CheckoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listCheckoutSessions(merchantId: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null) : kotlin.collections.List<CheckoutSessionResponseDto> = withContext(Dispatchers.IO) {
+    suspend fun listCheckoutSessions(merchantId: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null) : ListCheckoutSessionsResponseDto = withContext(Dispatchers.IO) {
         val localVarResponse = listCheckoutSessionsWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset)
 
         return@withContext when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<CheckoutSessionResponseDto>
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ListCheckoutSessionsResponseDto
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -165,16 +166,16 @@ class CheckoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * @param merchantId The ID of the merchant. This parameter is required.
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
-     * @return ApiResponse<kotlin.collections.List<CheckoutSessionResponseDto>?>
+     * @return ApiResponse<ListCheckoutSessionsResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listCheckoutSessionsWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : ApiResponse<kotlin.collections.List<CheckoutSessionResponseDto>?> = withContext(Dispatchers.IO) {
+    suspend fun listCheckoutSessionsWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : ApiResponse<ListCheckoutSessionsResponseDto?> = withContext(Dispatchers.IO) {
         val localVariableConfig = listCheckoutSessionsRequestConfig(merchantId = merchantId, limit = limit, offset = offset)
 
-        return@withContext request<Unit, kotlin.collections.List<CheckoutSessionResponseDto>>(
+        return@withContext request<Unit, ListCheckoutSessionsResponseDto>(
             localVariableConfig
         )
     }

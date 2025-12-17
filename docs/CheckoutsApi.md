@@ -59,7 +59,7 @@ Configure bearer:
 
 <a id="listCheckoutSessions"></a>
 # **listCheckoutSessions**
-> kotlin.collections.List&lt;CheckoutSessionResponseDto&gt; listCheckoutSessions(merchantId, limit, offset)
+> ListCheckoutSessionsResponseDto listCheckoutSessions(merchantId, limit, offset)
 
 List Checkout Sessions
 
@@ -76,7 +76,7 @@ val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of
 val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
 val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
 try {
-    val result : kotlin.collections.List<CheckoutSessionResponseDto> = apiInstance.listCheckoutSessions(merchantId, limit, offset)
+    val result : ListCheckoutSessionsResponseDto = apiInstance.listCheckoutSessions(merchantId, limit, offset)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling CheckoutsApi#listCheckoutSessions")
@@ -96,7 +96,7 @@ try {
 
 ### Return type
 
-[**kotlin.collections.List&lt;CheckoutSessionResponseDto&gt;**](CheckoutSessionResponseDto.md)
+[**ListCheckoutSessionsResponseDto**](ListCheckoutSessionsResponseDto.md)
 
 ### Authorization
 

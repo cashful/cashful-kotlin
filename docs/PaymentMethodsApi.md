@@ -59,7 +59,7 @@ Configure bearer:
 
 <a id="listPaymentMethods"></a>
 # **listPaymentMethods**
-> kotlin.collections.List&lt;PaymentMethodResponseDto&gt; listPaymentMethods(merchantId, customerId, limit, offset)
+> ListPaymentMethodsResponseDto listPaymentMethods(merchantId, customerId, limit, offset)
 
 List Payment Methods
 
@@ -77,7 +77,7 @@ val customerId : kotlin.String = customerId_example // kotlin.String | The uniqu
 val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
 val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
 try {
-    val result : kotlin.collections.List<PaymentMethodResponseDto> = apiInstance.listPaymentMethods(merchantId, customerId, limit, offset)
+    val result : ListPaymentMethodsResponseDto = apiInstance.listPaymentMethods(merchantId, customerId, limit, offset)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PaymentMethodsApi#listPaymentMethods")
@@ -98,7 +98,7 @@ try {
 
 ### Return type
 
-[**kotlin.collections.List&lt;PaymentMethodResponseDto&gt;**](PaymentMethodResponseDto.md)
+[**ListPaymentMethodsResponseDto**](ListPaymentMethodsResponseDto.md)
 
 ### Authorization
 

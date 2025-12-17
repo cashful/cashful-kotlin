@@ -66,12 +66,14 @@ docs/LeaveOrganizationDto.md
 docs/LeaveOrganizationResponseDto.md
 docs/LineItemDto.md
 docs/ListApiKeysResponseDto.md
+docs/ListCheckoutSessionsResponseDto.md
 docs/ListCustomerTransactionsResponseDto.md
 docs/ListCustomersResponseDto.md
 docs/ListEventsResponseDto.md
 docs/ListInvitationsResponseDto.md
 docs/ListMembersResponseDto.md
 docs/ListPaymentLinksResponseDto.md
+docs/ListPaymentMethodsResponseDto.md
 docs/ListPayoutsResponseDto.md
 docs/ListProductsResponseDto.md
 docs/ListSessionsResponseDto.md
@@ -242,12 +244,14 @@ src/main/kotlin/com/cashful/kotlin/sdk/model/LeaveOrganizationDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/LeaveOrganizationResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/LineItemDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListApiKeysResponseDto.kt
+src/main/kotlin/com/cashful/kotlin/sdk/model/ListCheckoutSessionsResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListCustomerTransactionsResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListCustomersResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListEventsResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListInvitationsResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListMembersResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListPaymentLinksResponseDto.kt
+src/main/kotlin/com/cashful/kotlin/sdk/model/ListPaymentMethodsResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListPayoutsResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListProductsResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListSessionsResponseDto.kt
@@ -309,3 +313,5 @@ src/main/kotlin/com/cashful/kotlin/sdk/model/VerifyApiKeyDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/VerifyApiKeyResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/VerifyEmailResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/WebhookEndpointResponseDto.kt
+src/test/kotlin/com/cashful/kotlin/sdk/model/ListCheckoutSessionsResponseDtoTest.kt
+src/test/kotlin/com/cashful/kotlin/sdk/model/ListPaymentMethodsResponseDtoTest.kt

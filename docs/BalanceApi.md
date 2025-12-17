@@ -68,7 +68,7 @@ Configure bearer:
 
 <a id="getMerchantBalance"></a>
 # **getMerchantBalance**
-> MerchantBalanceResponseDto getMerchantBalance()
+> MerchantBalanceResponseDto getMerchantBalance(merchantId)
 
 Get Merchant Balance
 
@@ -81,8 +81,9 @@ Retrieves the merchant&#39;s own master balance (their earnings) available for p
 //import com.cashful.kotlin.sdk.model.*
 
 val apiInstance = BalanceApi()
+val merchantId : kotlin.Any = merchant_123 // kotlin.Any | The unique identifier of the merchant
 try {
-    val result : MerchantBalanceResponseDto = apiInstance.getMerchantBalance()
+    val result : MerchantBalanceResponseDto = apiInstance.getMerchantBalance(merchantId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling BalanceApi#getMerchantBalance")
@@ -94,7 +95,9 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchantId** | [**kotlin.Any**](.md)| The unique identifier of the merchant | |
 
 ### Return type
 

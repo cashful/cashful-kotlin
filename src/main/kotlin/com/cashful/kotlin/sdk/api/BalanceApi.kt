@@ -160,6 +160,7 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * GET /api/canary/balance
      * Get Merchant Balance
      * Retrieves the merchant&#39;s own master balance (their earnings) available for payouts.
+     * @param merchantId The unique identifier of the merchant
      * @return MerchantBalanceResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -169,8 +170,8 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun getMerchantBalance() : MerchantBalanceResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = getMerchantBalanceWithHttpInfo()
+    suspend fun getMerchantBalance(merchantId: kotlin.Any) : MerchantBalanceResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = getMerchantBalanceWithHttpInfo(merchantId = merchantId)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as MerchantBalanceResponseDto
@@ -191,14 +192,15 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * GET /api/canary/balance
      * Get Merchant Balance
      * Retrieves the merchant&#39;s own master balance (their earnings) available for payouts.
+     * @param merchantId The unique identifier of the merchant
      * @return ApiResponse<MerchantBalanceResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun getMerchantBalanceWithHttpInfo() : ApiResponse<MerchantBalanceResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = getMerchantBalanceRequestConfig()
+    suspend fun getMerchantBalanceWithHttpInfo(merchantId: kotlin.Any) : ApiResponse<MerchantBalanceResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = getMerchantBalanceRequestConfig(merchantId = merchantId)
 
         return@withContext request<Unit, MerchantBalanceResponseDto>(
             localVariableConfig
@@ -208,11 +210,15 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * To obtain the request config of the operation getMerchantBalance
      *
+     * @param merchantId The unique identifier of the merchant
      * @return RequestConfig
      */
-    fun getMerchantBalanceRequestConfig() : RequestConfig<Unit> {
+    fun getMerchantBalanceRequestConfig(merchantId: kotlin.Any) : RequestConfig<Unit> {
         val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                put("merchantId", listOf(merchantId.toString()))
+            }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Accept"] = "application/json"
 

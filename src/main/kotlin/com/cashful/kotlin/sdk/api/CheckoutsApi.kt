@@ -124,6 +124,167 @@ class CheckoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
         )
     }
 
+    /**
+     * GET /api/canary/checkout/sessions
+     * List All Checkout Sessions
+     * Lists all checkout sessions across all merchants (internal use only)
+     * @param merchantId The ID of the merchant. This parameter is required.
+     * @param limit Maximum number of records to return (optional)
+     * @param offset Number of records to skip (optional)
+     * @return kotlin.collections.List<CheckoutSessionResponseDto>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun listAllCheckoutSessionsInternal(merchantId: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null) : kotlin.collections.List<CheckoutSessionResponseDto> = withContext(Dispatchers.IO) {
+        val localVarResponse = listAllCheckoutSessionsInternalWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<CheckoutSessionResponseDto>
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /api/canary/checkout/sessions
+     * List All Checkout Sessions
+     * Lists all checkout sessions across all merchants (internal use only)
+     * @param merchantId The ID of the merchant. This parameter is required.
+     * @param limit Maximum number of records to return (optional)
+     * @param offset Number of records to skip (optional)
+     * @return ApiResponse<kotlin.collections.List<CheckoutSessionResponseDto>?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun listAllCheckoutSessionsInternalWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : ApiResponse<kotlin.collections.List<CheckoutSessionResponseDto>?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listAllCheckoutSessionsInternalRequestConfig(merchantId = merchantId, limit = limit, offset = offset)
+
+        return@withContext request<Unit, kotlin.collections.List<CheckoutSessionResponseDto>>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation listAllCheckoutSessionsInternal
+     *
+     * @param merchantId The ID of the merchant. This parameter is required.
+     * @param limit Maximum number of records to return (optional)
+     * @param offset Number of records to skip (optional)
+     * @return RequestConfig
+     */
+    fun listAllCheckoutSessionsInternalRequestConfig(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                put("merchantId", listOf(merchantId.toString()))
+                if (limit != null) {
+                    put("limit", listOf(limit.toString()))
+                }
+                if (offset != null) {
+                    put("offset", listOf(offset.toString()))
+                }
+            }
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/api/canary/checkout/sessions",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * GET /api/canary/checkout/sessions/{id}
+     * Retrieve Checkout Session
+     * Retrieves details of a specific checkout session
+     * @param id The unique identifier of the checkout session
+     * @return CheckoutSessionResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun retrieveCheckoutSessionInternal(id: kotlin.String) : CheckoutSessionResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = retrieveCheckoutSessionInternalWithHttpInfo(id = id)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as CheckoutSessionResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /api/canary/checkout/sessions/{id}
+     * Retrieve Checkout Session
+     * Retrieves details of a specific checkout session
+     * @param id The unique identifier of the checkout session
+     * @return ApiResponse<CheckoutSessionResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun retrieveCheckoutSessionInternalWithHttpInfo(id: kotlin.String) : ApiResponse<CheckoutSessionResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = retrieveCheckoutSessionInternalRequestConfig(id = id)
+
+        return@withContext request<Unit, CheckoutSessionResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation retrieveCheckoutSessionInternal
+     *
+     * @param id The unique identifier of the checkout session
+     * @return RequestConfig
+     */
+    fun retrieveCheckoutSessionInternalRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/api/canary/checkout/sessions/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
 
     private fun encodeURIComponent(uriComponent: kotlin.String): kotlin.String =
         HttpUrl.Builder().scheme("http").host("localhost").addPathSegment(uriComponent).build().encodedPathSegments[0]

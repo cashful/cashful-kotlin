@@ -2,6 +2,8 @@ README.md
 build.gradle
 docs/AcceptInvitationDto.md
 docs/AcceptInvitationResponseDto.md
+docs/AnalyticsApi.md
+docs/AnalyticsResponseDto.md
 docs/ApiKey.md
 docs/AuthenticationApi.md
 docs/BalanceApi.md
@@ -36,8 +38,10 @@ docs/CreatePurchaseDto.md
 docs/CreateTransferDto.md
 docs/CreateWebhookEndpointDto.md
 docs/CustomerResponseDto.md
+docs/CustomerStatsDto.md
 docs/CustomerTransactionDto.md
 docs/CustomersApi.md
+docs/DailyBreakdownDto.md
 docs/DeleteApiKeyDto.md
 docs/DeleteApiKeyResponseDto.md
 docs/DeleteOrganizationDto.md
@@ -82,6 +86,7 @@ docs/ListUsersResponseDto.md
 docs/ListWebhookEndpointsResponseDto.md
 docs/MemberDto.md
 docs/MerchantBalanceResponseDto.md
+docs/MetricStatsDto.md
 docs/OrganizationDto.md
 docs/PaginationResponseDto.md
 docs/PaymentIntentResponseDto.md
@@ -121,6 +126,7 @@ docs/SignOutResponseDto.md
 docs/SignUpDto.md
 docs/SignUpResponseDto.md
 docs/StopImpersonatingResponseDto.md
+docs/TimeframeMetricsDto.md
 docs/TransferResponseDto.md
 docs/TransfersApi.md
 docs/UnbanUserDto.md
@@ -149,6 +155,7 @@ gradlew
 gradlew.bat
 proguard-rules.pro
 settings.gradle
+src/main/kotlin/com/cashful/kotlin/sdk/api/AnalyticsApi.kt
 src/main/kotlin/com/cashful/kotlin/sdk/api/AuthenticationApi.kt
 src/main/kotlin/com/cashful/kotlin/sdk/api/BalanceApi.kt
 src/main/kotlin/com/cashful/kotlin/sdk/api/CheckoutsApi.kt
@@ -186,6 +193,7 @@ src/main/kotlin/com/cashful/kotlin/sdk/infrastructure/URLAdapter.kt
 src/main/kotlin/com/cashful/kotlin/sdk/infrastructure/UUIDAdapter.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/AcceptInvitationDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/AcceptInvitationResponseDto.kt
+src/main/kotlin/com/cashful/kotlin/sdk/model/AnalyticsResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ApiKey.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/BalanceHistoryResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/BalanceTransactionDto.kt
@@ -217,7 +225,9 @@ src/main/kotlin/com/cashful/kotlin/sdk/model/CreatePurchaseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/CreateTransferDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/CreateWebhookEndpointDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/CustomerResponseDto.kt
+src/main/kotlin/com/cashful/kotlin/sdk/model/CustomerStatsDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/CustomerTransactionDto.kt
+src/main/kotlin/com/cashful/kotlin/sdk/model/DailyBreakdownDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/DeleteApiKeyDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/DeleteApiKeyResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/DeleteOrganizationDto.kt
@@ -260,6 +270,7 @@ src/main/kotlin/com/cashful/kotlin/sdk/model/ListUsersResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListWebhookEndpointsResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/MemberDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/MerchantBalanceResponseDto.kt
+src/main/kotlin/com/cashful/kotlin/sdk/model/MetricStatsDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/OrganizationDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/PaginationResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/PaymentIntentResponseDto.kt
@@ -293,6 +304,7 @@ src/main/kotlin/com/cashful/kotlin/sdk/model/SignOutResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/SignUpDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/SignUpResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/StopImpersonatingResponseDto.kt
+src/main/kotlin/com/cashful/kotlin/sdk/model/TimeframeMetricsDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/TransferResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/UnbanUserDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/UnbanUserResponseDto.kt
@@ -313,5 +325,9 @@ src/main/kotlin/com/cashful/kotlin/sdk/model/VerifyApiKeyDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/VerifyApiKeyResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/VerifyEmailResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/WebhookEndpointResponseDto.kt
-src/test/kotlin/com/cashful/kotlin/sdk/model/ListCheckoutSessionsResponseDtoTest.kt
-src/test/kotlin/com/cashful/kotlin/sdk/model/ListPaymentMethodsResponseDtoTest.kt
+src/test/kotlin/com/cashful/kotlin/sdk/api/AnalyticsApiTest.kt
+src/test/kotlin/com/cashful/kotlin/sdk/model/AnalyticsResponseDtoTest.kt
+src/test/kotlin/com/cashful/kotlin/sdk/model/CustomerStatsDtoTest.kt
+src/test/kotlin/com/cashful/kotlin/sdk/model/DailyBreakdownDtoTest.kt
+src/test/kotlin/com/cashful/kotlin/sdk/model/MetricStatsDtoTest.kt
+src/test/kotlin/com/cashful/kotlin/sdk/model/TimeframeMetricsDtoTest.kt

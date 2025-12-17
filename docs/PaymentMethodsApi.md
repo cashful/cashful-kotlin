@@ -59,7 +59,7 @@ Configure bearer:
 
 <a id="listPaymentMethods"></a>
 # **listPaymentMethods**
-> kotlin.collections.List&lt;PaymentMethodResponseDto&gt; listPaymentMethods()
+> kotlin.collections.List&lt;PaymentMethodResponseDto&gt; listPaymentMethods(merchantId, customerId, limit, offset)
 
 List Payment Methods
 
@@ -72,8 +72,12 @@ Lists saved payment methods for a specific customer.
 //import com.cashful.kotlin.sdk.model.*
 
 val apiInstance = PaymentMethodsApi()
+val merchantId : kotlin.String = merchantId_example // kotlin.String | The unique identifier of the merchant
+val customerId : kotlin.String = customerId_example // kotlin.String | The unique identifier of the customer
+val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
+val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
 try {
-    val result : kotlin.collections.List<PaymentMethodResponseDto> = apiInstance.listPaymentMethods()
+    val result : kotlin.collections.List<PaymentMethodResponseDto> = apiInstance.listPaymentMethods(merchantId, customerId, limit, offset)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PaymentMethodsApi#listPaymentMethods")
@@ -85,7 +89,12 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+| **merchantId** | **kotlin.String**| The unique identifier of the merchant | |
+| **customerId** | **kotlin.String**| The unique identifier of the customer | [optional] |
+| **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
 
 ### Return type
 

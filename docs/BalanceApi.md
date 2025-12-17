@@ -81,7 +81,7 @@ Retrieves the merchant&#39;s own master balance (their earnings) available for p
 //import com.cashful.kotlin.sdk.model.*
 
 val apiInstance = BalanceApi()
-val merchantId : kotlin.Any = merchant_123 // kotlin.Any | The unique identifier of the merchant
+val merchantId : kotlin.String = merchant_123 // kotlin.String | The unique identifier of the merchant
 try {
     val result : MerchantBalanceResponseDto = apiInstance.getMerchantBalance(merchantId)
     println(result)
@@ -97,7 +97,7 @@ try {
 ### Parameters
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **merchantId** | [**kotlin.Any**](.md)| The unique identifier of the merchant | |
+| **merchantId** | **kotlin.String**| The unique identifier of the merchant | |
 
 ### Return type
 

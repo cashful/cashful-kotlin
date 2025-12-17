@@ -170,7 +170,7 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun getMerchantBalance(merchantId: kotlin.Any) : MerchantBalanceResponseDto = withContext(Dispatchers.IO) {
+    suspend fun getMerchantBalance(merchantId: kotlin.String) : MerchantBalanceResponseDto = withContext(Dispatchers.IO) {
         val localVarResponse = getMerchantBalanceWithHttpInfo(merchantId = merchantId)
 
         return@withContext when (localVarResponse.responseType) {
@@ -199,7 +199,7 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun getMerchantBalanceWithHttpInfo(merchantId: kotlin.Any) : ApiResponse<MerchantBalanceResponseDto?> = withContext(Dispatchers.IO) {
+    suspend fun getMerchantBalanceWithHttpInfo(merchantId: kotlin.String) : ApiResponse<MerchantBalanceResponseDto?> = withContext(Dispatchers.IO) {
         val localVariableConfig = getMerchantBalanceRequestConfig(merchantId = merchantId)
 
         return@withContext request<Unit, MerchantBalanceResponseDto>(
@@ -213,7 +213,7 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * @param merchantId The unique identifier of the merchant
      * @return RequestConfig
      */
-    fun getMerchantBalanceRequestConfig(merchantId: kotlin.Any) : RequestConfig<Unit> {
+    fun getMerchantBalanceRequestConfig(merchantId: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {

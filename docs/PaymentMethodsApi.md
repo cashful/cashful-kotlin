@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost:3000*
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**deletePaymentMethod**](PaymentMethodsApi.md#deletePaymentMethod) | **DELETE** /api/canary/payment-methods/{id} | Delete Payment Method |
+| [**listPaymentMethods**](PaymentMethodsApi.md#listPaymentMethods) | **GET** /api/canary/payment-methods | List Payment Methods |
 | [**retrievePaymentMethod**](PaymentMethodsApi.md#retrievePaymentMethod) | **GET** /api/canary/payment-methods/{id} | Retrieve Payment Method |
 
 
@@ -44,6 +45,51 @@ try {
 ### Return type
 
 [**kotlin.Any**](kotlin.Any.md)
+
+### Authorization
+
+
+Configure bearer:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a id="listPaymentMethods"></a>
+# **listPaymentMethods**
+> kotlin.collections.List&lt;PaymentMethodResponseDto&gt; listPaymentMethods()
+
+List Payment Methods
+
+Lists saved payment methods for a specific customer.
+
+### Example
+```kotlin
+// Import classes:
+//import com.cashful.kotlin.sdk.infrastructure.*
+//import com.cashful.kotlin.sdk.model.*
+
+val apiInstance = PaymentMethodsApi()
+try {
+    val result : kotlin.collections.List<PaymentMethodResponseDto> = apiInstance.listPaymentMethods()
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling PaymentMethodsApi#listPaymentMethods")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling PaymentMethodsApi#listPaymentMethods")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**kotlin.collections.List&lt;PaymentMethodResponseDto&gt;**](PaymentMethodResponseDto.md)
 
 ### Authorization
 

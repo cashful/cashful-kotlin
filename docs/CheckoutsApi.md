@@ -5,8 +5,8 @@ All URIs are relative to *http://localhost:3000*
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**createCheckoutSession**](CheckoutsApi.md#createCheckoutSession) | **POST** /api/canary/checkout/sessions | Create Hosted Checkout |
-| [**listAllCheckoutSessionsInternal**](CheckoutsApi.md#listAllCheckoutSessionsInternal) | **GET** /api/canary/checkout/sessions | List All Checkout Sessions |
-| [**retrieveCheckoutSessionInternal**](CheckoutsApi.md#retrieveCheckoutSessionInternal) | **GET** /api/canary/checkout/sessions/{id} | Retrieve Checkout Session |
+| [**listCheckoutSessions**](CheckoutsApi.md#listCheckoutSessions) | **GET** /api/canary/checkout/sessions | List Checkout Sessions |
+| [**retrieveCheckoutSession**](CheckoutsApi.md#retrieveCheckoutSession) | **GET** /api/canary/checkout/sessions/{id} | Retrieve Checkout Session |
 
 
 <a id="createCheckoutSession"></a>
@@ -57,13 +57,13 @@ Configure bearer:
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a id="listAllCheckoutSessionsInternal"></a>
-# **listAllCheckoutSessionsInternal**
-> kotlin.collections.List&lt;CheckoutSessionResponseDto&gt; listAllCheckoutSessionsInternal(merchantId, limit, offset)
+<a id="listCheckoutSessions"></a>
+# **listCheckoutSessions**
+> kotlin.collections.List&lt;CheckoutSessionResponseDto&gt; listCheckoutSessions(merchantId, limit, offset)
 
-List All Checkout Sessions
+List Checkout Sessions
 
-Lists all checkout sessions across all merchants (internal use only)
+Lists checkout sessions
 
 ### Example
 ```kotlin
@@ -76,13 +76,13 @@ val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of
 val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
 val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
 try {
-    val result : kotlin.collections.List<CheckoutSessionResponseDto> = apiInstance.listAllCheckoutSessionsInternal(merchantId, limit, offset)
+    val result : kotlin.collections.List<CheckoutSessionResponseDto> = apiInstance.listCheckoutSessions(merchantId, limit, offset)
     println(result)
 } catch (e: ClientException) {
-    println("4xx response calling CheckoutsApi#listAllCheckoutSessionsInternal")
+    println("4xx response calling CheckoutsApi#listCheckoutSessions")
     e.printStackTrace()
 } catch (e: ServerException) {
-    println("5xx response calling CheckoutsApi#listAllCheckoutSessionsInternal")
+    println("5xx response calling CheckoutsApi#listCheckoutSessions")
     e.printStackTrace()
 }
 ```
@@ -109,9 +109,9 @@ Configure bearer:
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a id="retrieveCheckoutSessionInternal"></a>
-# **retrieveCheckoutSessionInternal**
-> CheckoutSessionResponseDto retrieveCheckoutSessionInternal(id)
+<a id="retrieveCheckoutSession"></a>
+# **retrieveCheckoutSession**
+> CheckoutSessionResponseDto retrieveCheckoutSession(id)
 
 Retrieve Checkout Session
 
@@ -126,13 +126,13 @@ Retrieves details of a specific checkout session
 val apiInstance = CheckoutsApi()
 val id : kotlin.String = id_example // kotlin.String | The unique identifier of the checkout session
 try {
-    val result : CheckoutSessionResponseDto = apiInstance.retrieveCheckoutSessionInternal(id)
+    val result : CheckoutSessionResponseDto = apiInstance.retrieveCheckoutSession(id)
     println(result)
 } catch (e: ClientException) {
-    println("4xx response calling CheckoutsApi#retrieveCheckoutSessionInternal")
+    println("4xx response calling CheckoutsApi#retrieveCheckoutSession")
     e.printStackTrace()
 } catch (e: ServerException) {
-    println("5xx response calling CheckoutsApi#retrieveCheckoutSessionInternal")
+    println("5xx response calling CheckoutsApi#retrieveCheckoutSession")
     e.printStackTrace()
 }
 ```

@@ -126,8 +126,8 @@ class CheckoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
 
     /**
      * GET /api/canary/checkout/sessions
-     * List All Checkout Sessions
-     * Lists all checkout sessions across all merchants (internal use only)
+     * List Checkout Sessions
+     * Lists checkout sessions
      * @param merchantId The ID of the merchant. This parameter is required.
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
@@ -140,8 +140,8 @@ class CheckoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listAllCheckoutSessionsInternal(merchantId: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null) : kotlin.collections.List<CheckoutSessionResponseDto> = withContext(Dispatchers.IO) {
-        val localVarResponse = listAllCheckoutSessionsInternalWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset)
+    suspend fun listCheckoutSessions(merchantId: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null) : kotlin.collections.List<CheckoutSessionResponseDto> = withContext(Dispatchers.IO) {
+        val localVarResponse = listCheckoutSessionsWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<CheckoutSessionResponseDto>
@@ -160,8 +160,8 @@ class CheckoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
 
     /**
      * GET /api/canary/checkout/sessions
-     * List All Checkout Sessions
-     * Lists all checkout sessions across all merchants (internal use only)
+     * List Checkout Sessions
+     * Lists checkout sessions
      * @param merchantId The ID of the merchant. This parameter is required.
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
@@ -171,8 +171,8 @@ class CheckoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listAllCheckoutSessionsInternalWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : ApiResponse<kotlin.collections.List<CheckoutSessionResponseDto>?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = listAllCheckoutSessionsInternalRequestConfig(merchantId = merchantId, limit = limit, offset = offset)
+    suspend fun listCheckoutSessionsWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : ApiResponse<kotlin.collections.List<CheckoutSessionResponseDto>?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listCheckoutSessionsRequestConfig(merchantId = merchantId, limit = limit, offset = offset)
 
         return@withContext request<Unit, kotlin.collections.List<CheckoutSessionResponseDto>>(
             localVariableConfig
@@ -180,14 +180,14 @@ class CheckoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
-     * To obtain the request config of the operation listAllCheckoutSessionsInternal
+     * To obtain the request config of the operation listCheckoutSessions
      *
      * @param merchantId The ID of the merchant. This parameter is required.
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
      * @return RequestConfig
      */
-    fun listAllCheckoutSessionsInternalRequestConfig(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : RequestConfig<Unit> {
+    fun listCheckoutSessionsRequestConfig(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -226,8 +226,8 @@ class CheckoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun retrieveCheckoutSessionInternal(id: kotlin.String) : CheckoutSessionResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = retrieveCheckoutSessionInternalWithHttpInfo(id = id)
+    suspend fun retrieveCheckoutSession(id: kotlin.String) : CheckoutSessionResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = retrieveCheckoutSessionWithHttpInfo(id = id)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as CheckoutSessionResponseDto
@@ -255,8 +255,8 @@ class CheckoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun retrieveCheckoutSessionInternalWithHttpInfo(id: kotlin.String) : ApiResponse<CheckoutSessionResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = retrieveCheckoutSessionInternalRequestConfig(id = id)
+    suspend fun retrieveCheckoutSessionWithHttpInfo(id: kotlin.String) : ApiResponse<CheckoutSessionResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = retrieveCheckoutSessionRequestConfig(id = id)
 
         return@withContext request<Unit, CheckoutSessionResponseDto>(
             localVariableConfig
@@ -264,12 +264,12 @@ class CheckoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
-     * To obtain the request config of the operation retrieveCheckoutSessionInternal
+     * To obtain the request config of the operation retrieveCheckoutSession
      *
      * @param id The unique identifier of the checkout session
      * @return RequestConfig
      */
-    fun retrieveCheckoutSessionInternalRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+    fun retrieveCheckoutSessionRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()

@@ -58,7 +58,7 @@ Configure bearer:
 
 <a id="listPayouts"></a>
 # **listPayouts**
-> ListPayoutsResponseDto listPayouts(merchantId, status, limit, offset)
+> ListPayoutsResponseDto listPayouts(merchantId, limit, offset, status)
 
 List Payouts
 
@@ -72,11 +72,11 @@ Retrieves a list of all historical and pending payouts for the merchant.
 
 val apiInstance = PayoutsApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
-val status : kotlin.Any =  // kotlin.Any | Filter by status
 val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
 val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
+val status : kotlin.String = status_example // kotlin.String | Filter by status
 try {
-    val result : ListPayoutsResponseDto = apiInstance.listPayouts(merchantId, status, limit, offset)
+    val result : ListPayoutsResponseDto = apiInstance.listPayouts(merchantId, limit, offset, status)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PayoutsApi#listPayouts")
@@ -89,11 +89,11 @@ try {
 
 ### Parameters
 | **merchantId** | **kotlin.String**| The ID of the merchant. This parameter is required. | |
-| **status** | [**kotlin.Any**](.md)| Filter by status | [optional] |
 | **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] |
+| **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
+| **status** | **kotlin.String**| Filter by status | [optional] |
 
 ### Return type
 

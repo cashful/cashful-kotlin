@@ -9,7 +9,7 @@ All URIs are relative to *http://localhost:3000*
 
 <a id="listEvents"></a>
 # **listEvents**
-> ListEventsResponseDto listEvents(merchantId, endDate, startDate, type, limit, offset)
+> ListEventsResponseDto listEvents(merchantId, limit, offset, type, startDate, endDate)
 
 List Events
 
@@ -23,13 +23,13 @@ Retrieves a log of all API events for debugging and logging.
 
 val apiInstance = EventsApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
-val endDate : kotlin.Any =  // kotlin.Any | Filter by end date
-val startDate : kotlin.Any =  // kotlin.Any | Filter by start date
-val type : kotlin.Any =  // kotlin.Any | Filter by event type
 val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
 val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
+val type : kotlin.String = type_example // kotlin.String | Filter by event type
+val startDate : kotlin.String = startDate_example // kotlin.String | Filter by start date
+val endDate : kotlin.String = endDate_example // kotlin.String | Filter by end date
 try {
-    val result : ListEventsResponseDto = apiInstance.listEvents(merchantId, endDate, startDate, type, limit, offset)
+    val result : ListEventsResponseDto = apiInstance.listEvents(merchantId, limit, offset, type, startDate, endDate)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling EventsApi#listEvents")
@@ -42,13 +42,13 @@ try {
 
 ### Parameters
 | **merchantId** | **kotlin.String**| The ID of the merchant. This parameter is required. | |
-| **endDate** | [**kotlin.Any**](.md)| Filter by end date | [optional] |
-| **startDate** | [**kotlin.Any**](.md)| Filter by start date | [optional] |
-| **type** | [**kotlin.Any**](.md)| Filter by event type | [optional] |
 | **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] |
+| **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
+| **type** | **kotlin.String**| Filter by event type | [optional] |
+| **startDate** | **kotlin.String**| Filter by start date | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
+| **endDate** | **kotlin.String**| Filter by end date | [optional] |
 
 ### Return type
 

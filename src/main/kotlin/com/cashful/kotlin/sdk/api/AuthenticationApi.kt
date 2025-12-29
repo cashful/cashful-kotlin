@@ -42,8 +42,11 @@ import com.cashful.kotlin.sdk.model.DeleteUserResponseDto
 import com.cashful.kotlin.sdk.model.ErrorResponseDto
 import com.cashful.kotlin.sdk.model.ForgotPasswordDto
 import com.cashful.kotlin.sdk.model.ForgotPasswordResponseDto
+import com.cashful.kotlin.sdk.model.GetAccessTokenDto
+import com.cashful.kotlin.sdk.model.GetAccessTokenResponseDto
 import com.cashful.kotlin.sdk.model.GetActiveMemberResponseDto
 import com.cashful.kotlin.sdk.model.GetActiveMemberRoleResponseDto
+import com.cashful.kotlin.sdk.model.GetApiKeyResponseDto
 import com.cashful.kotlin.sdk.model.GetFullOrganizationResponseDto
 import com.cashful.kotlin.sdk.model.GetInvitationResponseDto
 import com.cashful.kotlin.sdk.model.GetSessionResponseDto
@@ -51,34 +54,51 @@ import com.cashful.kotlin.sdk.model.HasPermissionDto
 import com.cashful.kotlin.sdk.model.HasPermissionResponseDto
 import com.cashful.kotlin.sdk.model.InviteMemberDto
 import com.cashful.kotlin.sdk.model.InviteMemberResponseDto
+import com.cashful.kotlin.sdk.model.IsUsernameAvailableDto
+import com.cashful.kotlin.sdk.model.IsUsernameAvailableResponseDto
 import com.cashful.kotlin.sdk.model.LeaveOrganizationDto
 import com.cashful.kotlin.sdk.model.LeaveOrganizationResponseDto
+import com.cashful.kotlin.sdk.model.LinkSocialDto
+import com.cashful.kotlin.sdk.model.LinkSocialResponseDto
+import com.cashful.kotlin.sdk.model.ListAccountsResponseDto
 import com.cashful.kotlin.sdk.model.ListApiKeysResponseDto
 import com.cashful.kotlin.sdk.model.ListInvitationsResponseDto
 import com.cashful.kotlin.sdk.model.ListMembersResponseDto
 import com.cashful.kotlin.sdk.model.ListSessionsResponseDto
 import com.cashful.kotlin.sdk.model.ListUserInvitationsResponseDto
 import com.cashful.kotlin.sdk.model.OrganizationDto
+import com.cashful.kotlin.sdk.model.RefreshTokenDto
+import com.cashful.kotlin.sdk.model.RefreshTokenResponseDto
 import com.cashful.kotlin.sdk.model.RejectInvitationDto
 import com.cashful.kotlin.sdk.model.RejectInvitationResponseDto
 import com.cashful.kotlin.sdk.model.RemoveMemberDto
 import com.cashful.kotlin.sdk.model.RemoveMemberResponseDto
 import com.cashful.kotlin.sdk.model.RequestPasswordResetDto
 import com.cashful.kotlin.sdk.model.RequestPasswordResetResponseDto
+import com.cashful.kotlin.sdk.model.RequestPhonePasswordResetDto
+import com.cashful.kotlin.sdk.model.RequestPhonePasswordResetResponseDto
 import com.cashful.kotlin.sdk.model.ResetPasswordCallbackResponseDto
 import com.cashful.kotlin.sdk.model.ResetPasswordDto
 import com.cashful.kotlin.sdk.model.ResetPasswordResponseDto
+import com.cashful.kotlin.sdk.model.ResetPhonePasswordDto
+import com.cashful.kotlin.sdk.model.ResetPhonePasswordResponseDto
 import com.cashful.kotlin.sdk.model.RevokeSessionDto
 import com.cashful.kotlin.sdk.model.RevokeSessionResponseDto
+import com.cashful.kotlin.sdk.model.SendPhoneOTPDto
+import com.cashful.kotlin.sdk.model.SendPhoneOTPResponseDto
 import com.cashful.kotlin.sdk.model.SendVerificationEmailDto
 import com.cashful.kotlin.sdk.model.SendVerificationEmailResponseDto
 import com.cashful.kotlin.sdk.model.SetActiveOrganizationDto
 import com.cashful.kotlin.sdk.model.SetActiveOrganizationResponseDto
 import com.cashful.kotlin.sdk.model.SignInDto
+import com.cashful.kotlin.sdk.model.SignInPhoneNumberDto
 import com.cashful.kotlin.sdk.model.SignInResponseDto
 import com.cashful.kotlin.sdk.model.SignOutResponseDto
 import com.cashful.kotlin.sdk.model.SignUpDto
 import com.cashful.kotlin.sdk.model.SignUpResponseDto
+import com.cashful.kotlin.sdk.model.SocialSignInDto
+import com.cashful.kotlin.sdk.model.UnlinkAccountDto
+import com.cashful.kotlin.sdk.model.UnlinkAccountResponseDto
 import com.cashful.kotlin.sdk.model.UpdateApiKeyDto
 import com.cashful.kotlin.sdk.model.UpdateApiKeyResponseDto
 import com.cashful.kotlin.sdk.model.UpdateMemberRoleDto
@@ -90,6 +110,8 @@ import com.cashful.kotlin.sdk.model.UpdateUserResponseDto
 import com.cashful.kotlin.sdk.model.VerifyApiKeyDto
 import com.cashful.kotlin.sdk.model.VerifyApiKeyResponseDto
 import com.cashful.kotlin.sdk.model.VerifyEmailResponseDto
+import com.cashful.kotlin.sdk.model.VerifyPhoneNumberDto
+import com.cashful.kotlin.sdk.model.VerifyPhoneNumberResponseDto
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -933,6 +955,80 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * POST /api/canary/authentication/get-access-token
+     * Get Access Token
+     * Get current access token
+     * @param getAccessTokenDto 
+     * @return GetAccessTokenResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun getAccessToken(getAccessTokenDto: GetAccessTokenDto) : GetAccessTokenResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = getAccessTokenWithHttpInfo(getAccessTokenDto = getAccessTokenDto)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as GetAccessTokenResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /api/canary/authentication/get-access-token
+     * Get Access Token
+     * Get current access token
+     * @param getAccessTokenDto 
+     * @return ApiResponse<GetAccessTokenResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun getAccessTokenWithHttpInfo(getAccessTokenDto: GetAccessTokenDto) : ApiResponse<GetAccessTokenResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = getAccessTokenRequestConfig(getAccessTokenDto = getAccessTokenDto)
+
+        return@withContext request<GetAccessTokenDto, GetAccessTokenResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation getAccessToken
+     *
+     * @param getAccessTokenDto 
+     * @return RequestConfig
+     */
+    fun getAccessTokenRequestConfig(getAccessTokenDto: GetAccessTokenDto) : RequestConfig<GetAccessTokenDto> {
+        val localVariableBody = getAccessTokenDto
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/api/canary/authentication/get-access-token",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
      * GET /api/canary/authentication/organization/get-active-member
      * Get Active Member
      * Get the member details of the active organization
@@ -1081,6 +1177,82 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
         return RequestConfig(
             method = RequestMethod.GET,
             path = "/api/canary/authentication/organization/get-active-member-role",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * GET /api/canary/authentication/api-key/get
+     * Get API Key
+     * Retrieve a specific API key by ID
+     * @param id The ID of API key to retrieve
+     * @return GetApiKeyResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun getApiKey(id: kotlin.String) : GetApiKeyResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = getApiKeyWithHttpInfo(id = id)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as GetApiKeyResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /api/canary/authentication/api-key/get
+     * Get API Key
+     * Retrieve a specific API key by ID
+     * @param id The ID of API key to retrieve
+     * @return ApiResponse<GetApiKeyResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun getApiKeyWithHttpInfo(id: kotlin.String) : ApiResponse<GetApiKeyResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = getApiKeyRequestConfig(id = id)
+
+        return@withContext request<Unit, GetApiKeyResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation getApiKey
+     *
+     * @param id The ID of API key to retrieve
+     * @return RequestConfig
+     */
+    fun getApiKeyRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                put("id", listOf(id.toString()))
+            }
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/api/canary/authentication/api-key/get",
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -1461,6 +1633,80 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * POST /api/canary/authentication/is-username-available
+     * Check Username Availability
+     * Check if username is available for signup
+     * @param isUsernameAvailableDto 
+     * @return IsUsernameAvailableResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun isUsernameAvailable(isUsernameAvailableDto: IsUsernameAvailableDto) : IsUsernameAvailableResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = isUsernameAvailableWithHttpInfo(isUsernameAvailableDto = isUsernameAvailableDto)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as IsUsernameAvailableResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /api/canary/authentication/is-username-available
+     * Check Username Availability
+     * Check if username is available for signup
+     * @param isUsernameAvailableDto 
+     * @return ApiResponse<IsUsernameAvailableResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun isUsernameAvailableWithHttpInfo(isUsernameAvailableDto: IsUsernameAvailableDto) : ApiResponse<IsUsernameAvailableResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = isUsernameAvailableRequestConfig(isUsernameAvailableDto = isUsernameAvailableDto)
+
+        return@withContext request<IsUsernameAvailableDto, IsUsernameAvailableResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation isUsernameAvailable
+     *
+     * @param isUsernameAvailableDto 
+     * @return RequestConfig
+     */
+    fun isUsernameAvailableRequestConfig(isUsernameAvailableDto: IsUsernameAvailableDto) : RequestConfig<IsUsernameAvailableDto> {
+        val localVariableBody = isUsernameAvailableDto
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/api/canary/authentication/is-username-available",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = false,
+            body = localVariableBody
+        )
+    }
+
+    /**
      * POST /api/canary/authentication/organization/leave
      * Leave Organization
      * Leave an organization
@@ -1527,6 +1773,150 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
         return RequestConfig(
             method = RequestMethod.POST,
             path = "/api/canary/authentication/organization/leave",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * POST /api/canary/authentication/link-social
+     * Link Social Account
+     * Link a social account to existing user
+     * @param linkSocialDto 
+     * @return LinkSocialResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun linkSocial(linkSocialDto: LinkSocialDto) : LinkSocialResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = linkSocialWithHttpInfo(linkSocialDto = linkSocialDto)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as LinkSocialResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /api/canary/authentication/link-social
+     * Link Social Account
+     * Link a social account to existing user
+     * @param linkSocialDto 
+     * @return ApiResponse<LinkSocialResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun linkSocialWithHttpInfo(linkSocialDto: LinkSocialDto) : ApiResponse<LinkSocialResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = linkSocialRequestConfig(linkSocialDto = linkSocialDto)
+
+        return@withContext request<LinkSocialDto, LinkSocialResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation linkSocial
+     *
+     * @param linkSocialDto 
+     * @return RequestConfig
+     */
+    fun linkSocialRequestConfig(linkSocialDto: LinkSocialDto) : RequestConfig<LinkSocialDto> {
+        val localVariableBody = linkSocialDto
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/api/canary/authentication/link-social",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * GET /api/canary/authentication/list-accounts
+     * List Linked Accounts
+     * List all linked social accounts
+     * @return ListAccountsResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun listAccounts() : ListAccountsResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = listAccountsWithHttpInfo()
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ListAccountsResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /api/canary/authentication/list-accounts
+     * List Linked Accounts
+     * List all linked social accounts
+     * @return ApiResponse<ListAccountsResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun listAccountsWithHttpInfo() : ApiResponse<ListAccountsResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listAccountsRequestConfig()
+
+        return@withContext request<Unit, ListAccountsResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation listAccounts
+     *
+     * @return RequestConfig
+     */
+    fun listAccountsRequestConfig() : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/api/canary/authentication/list-accounts",
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -1987,6 +2377,150 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * GET /api/canary/authentication/ok
+     * Health Check
+     * Check if the authentication API is working
+     * @return kotlin.String
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun ok() : kotlin.String = withContext(Dispatchers.IO) {
+        val localVarResponse = okWithHttpInfo()
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.String
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /api/canary/authentication/ok
+     * Health Check
+     * Check if the authentication API is working
+     * @return ApiResponse<kotlin.String?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun okWithHttpInfo() : ApiResponse<kotlin.String?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = okRequestConfig()
+
+        return@withContext request<Unit, kotlin.String>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation ok
+     *
+     * @return RequestConfig
+     */
+    fun okRequestConfig() : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/api/canary/authentication/ok",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = false,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * POST /api/canary/authentication/refresh-token
+     * Refresh Token
+     * Refresh authentication token
+     * @param refreshTokenDto 
+     * @return RefreshTokenResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun refreshToken(refreshTokenDto: RefreshTokenDto) : RefreshTokenResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = refreshTokenWithHttpInfo(refreshTokenDto = refreshTokenDto)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as RefreshTokenResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /api/canary/authentication/refresh-token
+     * Refresh Token
+     * Refresh authentication token
+     * @param refreshTokenDto 
+     * @return ApiResponse<RefreshTokenResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun refreshTokenWithHttpInfo(refreshTokenDto: RefreshTokenDto) : ApiResponse<RefreshTokenResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = refreshTokenRequestConfig(refreshTokenDto = refreshTokenDto)
+
+        return@withContext request<RefreshTokenDto, RefreshTokenResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation refreshToken
+     *
+     * @param refreshTokenDto 
+     * @return RequestConfig
+     */
+    fun refreshTokenRequestConfig(refreshTokenDto: RefreshTokenDto) : RequestConfig<RefreshTokenDto> {
+        val localVariableBody = refreshTokenDto
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/api/canary/authentication/refresh-token",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
      * POST /api/canary/authentication/organization/reject-invitation
      * Reject Invitation
      * Reject an invitation to an organization
@@ -2209,6 +2743,80 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * POST /api/canary/authentication/phone-number/request-password-reset
+     * Request Password Reset via Phone
+     * Request password reset via phone number
+     * @param requestPhonePasswordResetDto 
+     * @return RequestPhonePasswordResetResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun requestPhonePasswordReset(requestPhonePasswordResetDto: RequestPhonePasswordResetDto) : RequestPhonePasswordResetResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = requestPhonePasswordResetWithHttpInfo(requestPhonePasswordResetDto = requestPhonePasswordResetDto)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as RequestPhonePasswordResetResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /api/canary/authentication/phone-number/request-password-reset
+     * Request Password Reset via Phone
+     * Request password reset via phone number
+     * @param requestPhonePasswordResetDto 
+     * @return ApiResponse<RequestPhonePasswordResetResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun requestPhonePasswordResetWithHttpInfo(requestPhonePasswordResetDto: RequestPhonePasswordResetDto) : ApiResponse<RequestPhonePasswordResetResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = requestPhonePasswordResetRequestConfig(requestPhonePasswordResetDto = requestPhonePasswordResetDto)
+
+        return@withContext request<RequestPhonePasswordResetDto, RequestPhonePasswordResetResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation requestPhonePasswordReset
+     *
+     * @param requestPhonePasswordResetDto 
+     * @return RequestConfig
+     */
+    fun requestPhonePasswordResetRequestConfig(requestPhonePasswordResetDto: RequestPhonePasswordResetDto) : RequestConfig<RequestPhonePasswordResetDto> {
+        val localVariableBody = requestPhonePasswordResetDto
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/api/canary/authentication/phone-number/request-password-reset",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = false,
+            body = localVariableBody
+        )
+    }
+
+    /**
      * POST /api/canary/authentication/reset-password
      * Reset Password
      * Reset the user&#39;s password using a token
@@ -2287,7 +2895,7 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * Reset Password Callback
      * Redirects user to callback URL with token
      * @param token 
-     * @param callbackURL 
+     * @param callbackURL The URL to redirect user to reset their password
      * @return ResetPasswordCallbackResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -2320,7 +2928,7 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * Reset Password Callback
      * Redirects user to callback URL with token
      * @param token 
-     * @param callbackURL 
+     * @param callbackURL The URL to redirect user to reset their password
      * @return ApiResponse<ResetPasswordCallbackResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -2339,7 +2947,7 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * To obtain the request config of the operation resetPasswordCallback
      *
      * @param token 
-     * @param callbackURL 
+     * @param callbackURL The URL to redirect user to reset their password
      * @return RequestConfig
      */
     fun resetPasswordCallbackRequestConfig(token: kotlin.String, callbackURL: kotlin.String) : RequestConfig<Unit> {
@@ -2357,6 +2965,150 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = false,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * POST /api/canary/authentication/phone-number/reset-password
+     * Reset Password with Phone
+     * Reset password using phone verification
+     * @param resetPhonePasswordDto 
+     * @return ResetPhonePasswordResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun resetPhonePassword(resetPhonePasswordDto: ResetPhonePasswordDto) : ResetPhonePasswordResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = resetPhonePasswordWithHttpInfo(resetPhonePasswordDto = resetPhonePasswordDto)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ResetPhonePasswordResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /api/canary/authentication/phone-number/reset-password
+     * Reset Password with Phone
+     * Reset password using phone verification
+     * @param resetPhonePasswordDto 
+     * @return ApiResponse<ResetPhonePasswordResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun resetPhonePasswordWithHttpInfo(resetPhonePasswordDto: ResetPhonePasswordDto) : ApiResponse<ResetPhonePasswordResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = resetPhonePasswordRequestConfig(resetPhonePasswordDto = resetPhonePasswordDto)
+
+        return@withContext request<ResetPhonePasswordDto, ResetPhonePasswordResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation resetPhonePassword
+     *
+     * @param resetPhonePasswordDto 
+     * @return RequestConfig
+     */
+    fun resetPhonePasswordRequestConfig(resetPhonePasswordDto: ResetPhonePasswordDto) : RequestConfig<ResetPhonePasswordDto> {
+        val localVariableBody = resetPhonePasswordDto
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/api/canary/authentication/phone-number/reset-password",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = false,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * POST /api/canary/authentication/revoke-other-sessions
+     * Revoke Other Sessions
+     * Revoke all sessions except the current one
+     * @return RevokeSessionResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun revokeOtherSessions() : RevokeSessionResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = revokeOtherSessionsWithHttpInfo()
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as RevokeSessionResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /api/canary/authentication/revoke-other-sessions
+     * Revoke Other Sessions
+     * Revoke all sessions except the current one
+     * @return ApiResponse<RevokeSessionResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun revokeOtherSessionsWithHttpInfo() : ApiResponse<RevokeSessionResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = revokeOtherSessionsRequestConfig()
+
+        return@withContext request<Unit, RevokeSessionResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation revokeOtherSessions
+     *
+     * @return RequestConfig
+     */
+    fun revokeOtherSessionsRequestConfig() : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/api/canary/authentication/revoke-other-sessions",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
             body = localVariableBody
         )
     }
@@ -2431,6 +3183,150 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * POST /api/canary/authentication/revoke-sessions
+     * Revoke All Sessions
+     * Revoke all sessions for the current user
+     * @return RevokeSessionResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun revokeSessions() : RevokeSessionResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = revokeSessionsWithHttpInfo()
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as RevokeSessionResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /api/canary/authentication/revoke-sessions
+     * Revoke All Sessions
+     * Revoke all sessions for the current user
+     * @return ApiResponse<RevokeSessionResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun revokeSessionsWithHttpInfo() : ApiResponse<RevokeSessionResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = revokeSessionsRequestConfig()
+
+        return@withContext request<Unit, RevokeSessionResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation revokeSessions
+     *
+     * @return RequestConfig
+     */
+    fun revokeSessionsRequestConfig() : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/api/canary/authentication/revoke-sessions",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * POST /api/canary/authentication/phone-number/send-otp
+     * Send OTP to Phone
+     * Send one-time password to phone number
+     * @param sendPhoneOTPDto 
+     * @return SendPhoneOTPResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun sendPhoneOTP(sendPhoneOTPDto: SendPhoneOTPDto) : SendPhoneOTPResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = sendPhoneOTPWithHttpInfo(sendPhoneOTPDto = sendPhoneOTPDto)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SendPhoneOTPResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /api/canary/authentication/phone-number/send-otp
+     * Send OTP to Phone
+     * Send one-time password to phone number
+     * @param sendPhoneOTPDto 
+     * @return ApiResponse<SendPhoneOTPResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun sendPhoneOTPWithHttpInfo(sendPhoneOTPDto: SendPhoneOTPDto) : ApiResponse<SendPhoneOTPResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = sendPhoneOTPRequestConfig(sendPhoneOTPDto = sendPhoneOTPDto)
+
+        return@withContext request<SendPhoneOTPDto, SendPhoneOTPResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation sendPhoneOTP
+     *
+     * @param sendPhoneOTPDto 
+     * @return RequestConfig
+     */
+    fun sendPhoneOTPRequestConfig(sendPhoneOTPDto: SendPhoneOTPDto) : RequestConfig<SendPhoneOTPDto> {
+        val localVariableBody = sendPhoneOTPDto
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/api/canary/authentication/phone-number/send-otp",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = false,
             body = localVariableBody
         )
     }
@@ -2658,9 +3554,84 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * POST /api/canary/authentication/sign-in/phone-number
+     * Sign in with Phone Number
+     * Sign in using phone number and password
+     * @param signInPhoneNumberDto 
+     * @return SignInResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun signInPhoneNumber(signInPhoneNumberDto: SignInPhoneNumberDto) : SignInResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = signInPhoneNumberWithHttpInfo(signInPhoneNumberDto = signInPhoneNumberDto)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SignInResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /api/canary/authentication/sign-in/phone-number
+     * Sign in with Phone Number
+     * Sign in using phone number and password
+     * @param signInPhoneNumberDto 
+     * @return ApiResponse<SignInResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun signInPhoneNumberWithHttpInfo(signInPhoneNumberDto: SignInPhoneNumberDto) : ApiResponse<SignInResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = signInPhoneNumberRequestConfig(signInPhoneNumberDto = signInPhoneNumberDto)
+
+        return@withContext request<SignInPhoneNumberDto, SignInResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation signInPhoneNumber
+     *
+     * @param signInPhoneNumberDto 
+     * @return RequestConfig
+     */
+    fun signInPhoneNumberRequestConfig(signInPhoneNumberDto: SignInPhoneNumberDto) : RequestConfig<SignInPhoneNumberDto> {
+        val localVariableBody = signInPhoneNumberDto
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/api/canary/authentication/sign-in/phone-number",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = false,
+            body = localVariableBody
+        )
+    }
+
+    /**
      * POST /api/canary/authentication/sign-out
      * Sign out
      * Sign out the current user and invalidate the session
+     * @param body 
      * @return SignOutResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -2670,8 +3641,8 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun signOut() : SignOutResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = signOutWithHttpInfo()
+    suspend fun signOut(body: kotlin.Any) : SignOutResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = signOutWithHttpInfo(body = body)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as SignOutResponseDto
@@ -2692,16 +3663,17 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * POST /api/canary/authentication/sign-out
      * Sign out
      * Sign out the current user and invalidate the session
+     * @param body 
      * @return ApiResponse<SignOutResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun signOutWithHttpInfo() : ApiResponse<SignOutResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = signOutRequestConfig()
+    suspend fun signOutWithHttpInfo(body: kotlin.Any) : ApiResponse<SignOutResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = signOutRequestConfig(body = body)
 
-        return@withContext request<Unit, SignOutResponseDto>(
+        return@withContext request<kotlin.Any, SignOutResponseDto>(
             localVariableConfig
         )
     }
@@ -2709,12 +3681,14 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * To obtain the request config of the operation signOut
      *
+     * @param body 
      * @return RequestConfig
      */
-    fun signOutRequestConfig() : RequestConfig<Unit> {
-        val localVariableBody = null
+    fun signOutRequestConfig(body: kotlin.Any) : RequestConfig<kotlin.Any> {
+        val localVariableBody = body
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
         localVariableHeaders["Accept"] = "application/json"
 
         return RequestConfig(
@@ -2797,6 +3771,154 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = false,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * POST /api/canary/authentication/sign-in/social
+     * Sign in with social provider
+     * Sign in with a social provider (OAuth, etc.)
+     * @param socialSignInDto 
+     * @return SignInResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun socialSignIn(socialSignInDto: SocialSignInDto) : SignInResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = socialSignInWithHttpInfo(socialSignInDto = socialSignInDto)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SignInResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /api/canary/authentication/sign-in/social
+     * Sign in with social provider
+     * Sign in with a social provider (OAuth, etc.)
+     * @param socialSignInDto 
+     * @return ApiResponse<SignInResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun socialSignInWithHttpInfo(socialSignInDto: SocialSignInDto) : ApiResponse<SignInResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = socialSignInRequestConfig(socialSignInDto = socialSignInDto)
+
+        return@withContext request<SocialSignInDto, SignInResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation socialSignIn
+     *
+     * @param socialSignInDto 
+     * @return RequestConfig
+     */
+    fun socialSignInRequestConfig(socialSignInDto: SocialSignInDto) : RequestConfig<SocialSignInDto> {
+        val localVariableBody = socialSignInDto
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/api/canary/authentication/sign-in/social",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = false,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * POST /api/canary/authentication/unlink-account
+     * Unlink Social Account
+     * Unlink a social account from user
+     * @param unlinkAccountDto 
+     * @return UnlinkAccountResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun unlinkAccount(unlinkAccountDto: UnlinkAccountDto) : UnlinkAccountResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = unlinkAccountWithHttpInfo(unlinkAccountDto = unlinkAccountDto)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as UnlinkAccountResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /api/canary/authentication/unlink-account
+     * Unlink Social Account
+     * Unlink a social account from user
+     * @param unlinkAccountDto 
+     * @return ApiResponse<UnlinkAccountResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun unlinkAccountWithHttpInfo(unlinkAccountDto: UnlinkAccountDto) : ApiResponse<UnlinkAccountResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = unlinkAccountRequestConfig(unlinkAccountDto = unlinkAccountDto)
+
+        return@withContext request<UnlinkAccountDto, UnlinkAccountResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation unlinkAccount
+     *
+     * @param unlinkAccountDto 
+     * @return RequestConfig
+     */
+    fun unlinkAccountRequestConfig(unlinkAccountDto: UnlinkAccountDto) : RequestConfig<UnlinkAccountDto> {
+        val localVariableBody = unlinkAccountDto
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/api/canary/authentication/unlink-account",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
             body = localVariableBody
         )
     }
@@ -3175,8 +4297,8 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * GET /api/canary/authentication/verify-email
      * Verify Email
      * Verify the email of a user
-     * @param token 
-     * @param callbackURL  (optional)
+     * @param token The token to verify email
+     * @param callbackURL The URL to redirect to after email verification (optional)
      * @return VerifyEmailResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -3208,8 +4330,8 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * GET /api/canary/authentication/verify-email
      * Verify Email
      * Verify the email of a user
-     * @param token 
-     * @param callbackURL  (optional)
+     * @param token The token to verify email
+     * @param callbackURL The URL to redirect to after email verification (optional)
      * @return ApiResponse<VerifyEmailResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -3227,18 +4349,18 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * To obtain the request config of the operation verifyEmail
      *
-     * @param token 
-     * @param callbackURL  (optional)
+     * @param token The token to verify email
+     * @param callbackURL The URL to redirect to after email verification (optional)
      * @return RequestConfig
      */
     fun verifyEmailRequestConfig(token: kotlin.String, callbackURL: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
+                put("token", listOf(token.toString()))
                 if (callbackURL != null) {
                     put("callbackURL", listOf(callbackURL.toString()))
                 }
-                put("token", listOf(token.toString()))
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Accept"] = "application/json"
@@ -3246,6 +4368,80 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
         return RequestConfig(
             method = RequestMethod.GET,
             path = "/api/canary/authentication/verify-email",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = false,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * POST /api/canary/authentication/phone-number/verify
+     * Verify Phone Number
+     * Verify phone number with OTP code
+     * @param verifyPhoneNumberDto 
+     * @return VerifyPhoneNumberResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun verifyPhoneNumber(verifyPhoneNumberDto: VerifyPhoneNumberDto) : VerifyPhoneNumberResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = verifyPhoneNumberWithHttpInfo(verifyPhoneNumberDto = verifyPhoneNumberDto)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as VerifyPhoneNumberResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /api/canary/authentication/phone-number/verify
+     * Verify Phone Number
+     * Verify phone number with OTP code
+     * @param verifyPhoneNumberDto 
+     * @return ApiResponse<VerifyPhoneNumberResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun verifyPhoneNumberWithHttpInfo(verifyPhoneNumberDto: VerifyPhoneNumberDto) : ApiResponse<VerifyPhoneNumberResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = verifyPhoneNumberRequestConfig(verifyPhoneNumberDto = verifyPhoneNumberDto)
+
+        return@withContext request<VerifyPhoneNumberDto, VerifyPhoneNumberResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation verifyPhoneNumber
+     *
+     * @param verifyPhoneNumberDto 
+     * @return RequestConfig
+     */
+    fun verifyPhoneNumberRequestConfig(verifyPhoneNumberDto: VerifyPhoneNumberDto) : RequestConfig<VerifyPhoneNumberDto> {
+        val localVariableBody = verifyPhoneNumberDto
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/api/canary/authentication/phone-number/verify",
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = false,

@@ -54,11 +54,11 @@ class EventsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
      * List Events
      * Retrieves a log of all API events for debugging and logging.
      * @param merchantId The ID of the merchant. This parameter is required.
-     * @param endDate Filter by end date (optional)
-     * @param startDate Filter by start date (optional)
-     * @param type Filter by event type (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param type Filter by event type (optional)
+     * @param startDate Filter by start date (optional)
+     * @param endDate Filter by end date (optional)
      * @return ListEventsResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -68,8 +68,8 @@ class EventsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listEvents(merchantId: kotlin.String, endDate: kotlin.Any? = null, startDate: kotlin.Any? = null, type: kotlin.Any? = null, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null) : ListEventsResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = listEventsWithHttpInfo(merchantId = merchantId, endDate = endDate, startDate = startDate, type = type, limit = limit, offset = offset)
+    suspend fun listEvents(merchantId: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, type: kotlin.String? = null, startDate: kotlin.String? = null, endDate: kotlin.String? = null) : ListEventsResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = listEventsWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, type = type, startDate = startDate, endDate = endDate)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as ListEventsResponseDto
@@ -91,19 +91,19 @@ class EventsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
      * List Events
      * Retrieves a log of all API events for debugging and logging.
      * @param merchantId The ID of the merchant. This parameter is required.
-     * @param endDate Filter by end date (optional)
-     * @param startDate Filter by start date (optional)
-     * @param type Filter by event type (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param type Filter by event type (optional)
+     * @param startDate Filter by start date (optional)
+     * @param endDate Filter by end date (optional)
      * @return ApiResponse<ListEventsResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listEventsWithHttpInfo(merchantId: kotlin.String, endDate: kotlin.Any?, startDate: kotlin.Any?, type: kotlin.Any?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : ApiResponse<ListEventsResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = listEventsRequestConfig(merchantId = merchantId, endDate = endDate, startDate = startDate, type = type, limit = limit, offset = offset)
+    suspend fun listEventsWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, type: kotlin.String?, startDate: kotlin.String?, endDate: kotlin.String?) : ApiResponse<ListEventsResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listEventsRequestConfig(merchantId = merchantId, limit = limit, offset = offset, type = type, startDate = startDate, endDate = endDate)
 
         return@withContext request<Unit, ListEventsResponseDto>(
             localVariableConfig
@@ -114,32 +114,32 @@ class EventsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
      * To obtain the request config of the operation listEvents
      *
      * @param merchantId The ID of the merchant. This parameter is required.
-     * @param endDate Filter by end date (optional)
-     * @param startDate Filter by start date (optional)
-     * @param type Filter by event type (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param type Filter by event type (optional)
+     * @param startDate Filter by start date (optional)
+     * @param endDate Filter by end date (optional)
      * @return RequestConfig
      */
-    fun listEventsRequestConfig(merchantId: kotlin.String, endDate: kotlin.Any?, startDate: kotlin.Any?, type: kotlin.Any?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : RequestConfig<Unit> {
+    fun listEventsRequestConfig(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, type: kotlin.String?, startDate: kotlin.String?, endDate: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                if (endDate != null) {
-                    put("endDate", listOf(endDate.toString()))
-                }
-                if (startDate != null) {
-                    put("startDate", listOf(startDate.toString()))
-                }
-                if (type != null) {
-                    put("type", listOf(type.toString()))
-                }
                 put("merchantId", listOf(merchantId.toString()))
                 if (limit != null) {
                     put("limit", listOf(limit.toString()))
                 }
                 if (offset != null) {
                     put("offset", listOf(offset.toString()))
+                }
+                if (type != null) {
+                    put("type", listOf(type.toString()))
+                }
+                if (startDate != null) {
+                    put("startDate", listOf(startDate.toString()))
+                }
+                if (endDate != null) {
+                    put("endDate", listOf(endDate.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()

@@ -59,7 +59,7 @@ Configure bearer:
 
 <a id="listCheckoutSessions"></a>
 # **listCheckoutSessions**
-> ListCheckoutSessionsResponseDto listCheckoutSessions(merchantId, limit, offset)
+> ListCheckoutSessionsResponseDto listCheckoutSessions(total, hasMore, merchantId, limit, offset, status)
 
 List Checkout Sessions
 
@@ -72,11 +72,14 @@ Lists checkout sessions
 //import com.cashful.kotlin.sdk.model.*
 
 val apiInstance = CheckoutsApi()
+val total : java.math.BigDecimal = 150 // java.math.BigDecimal | Total number of items available
+val hasMore : kotlin.Boolean = true // kotlin.Boolean | Whether there are more items available beyond this response
 val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
-val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
-val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
+val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of records to return
+val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of records to skip
+val status : kotlin.String = status_example // kotlin.String | The status to filter checkout sessions
 try {
-    val result : ListCheckoutSessionsResponseDto = apiInstance.listCheckoutSessions(merchantId, limit, offset)
+    val result : ListCheckoutSessionsResponseDto = apiInstance.listCheckoutSessions(total, hasMore, merchantId, limit, offset, status)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling CheckoutsApi#listCheckoutSessions")
@@ -88,11 +91,14 @@ try {
 ```
 
 ### Parameters
+| **total** | **java.math.BigDecimal**| Total number of items available | |
+| **hasMore** | **kotlin.Boolean**| Whether there are more items available beyond this response | |
 | **merchantId** | **kotlin.String**| The ID of the merchant. This parameter is required. | |
 | **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] |
+| **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
+| **status** | **kotlin.String**| The status to filter checkout sessions | [optional] |
 
 ### Return type
 

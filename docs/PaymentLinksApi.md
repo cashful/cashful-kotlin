@@ -59,7 +59,7 @@ Configure bearer:
 
 <a id="listPaymentLinks"></a>
 # **listPaymentLinks**
-> ListPaymentLinksResponseDto listPaymentLinks(merchantId, active, limit, offset)
+> ListPaymentLinksResponseDto listPaymentLinks(merchantId, limit, offset, active)
 
 List Payment Links
 
@@ -73,11 +73,11 @@ Retrieves all payment links created by the merchant.
 
 val apiInstance = PaymentLinksApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
-val active : kotlin.Boolean = true // kotlin.Boolean | Filter by active status
 val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
 val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
+val active : kotlin.Boolean = true // kotlin.Boolean | Filter by active status
 try {
-    val result : ListPaymentLinksResponseDto = apiInstance.listPaymentLinks(merchantId, active, limit, offset)
+    val result : ListPaymentLinksResponseDto = apiInstance.listPaymentLinks(merchantId, limit, offset, active)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PaymentLinksApi#listPaymentLinks")
@@ -90,11 +90,11 @@ try {
 
 ### Parameters
 | **merchantId** | **kotlin.String**| The ID of the merchant. This parameter is required. | |
-| **active** | **kotlin.Boolean**| Filter by active status | [optional] |
 | **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] |
+| **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
+| **active** | **kotlin.Boolean**| Filter by active status | [optional] |
 
 ### Return type
 

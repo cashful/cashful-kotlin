@@ -131,9 +131,9 @@ class PaymentLinksApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * List Payment Links
      * Retrieves all payment links created by the merchant.
      * @param merchantId The ID of the merchant. This parameter is required.
-     * @param active Filter by active status (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param active Filter by active status (optional)
      * @return ListPaymentLinksResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -143,8 +143,8 @@ class PaymentLinksApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listPaymentLinks(merchantId: kotlin.String, active: kotlin.Boolean? = null, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null) : ListPaymentLinksResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = listPaymentLinksWithHttpInfo(merchantId = merchantId, active = active, limit = limit, offset = offset)
+    suspend fun listPaymentLinks(merchantId: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, active: kotlin.Boolean? = null) : ListPaymentLinksResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = listPaymentLinksWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, active = active)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as ListPaymentLinksResponseDto
@@ -166,17 +166,17 @@ class PaymentLinksApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * List Payment Links
      * Retrieves all payment links created by the merchant.
      * @param merchantId The ID of the merchant. This parameter is required.
-     * @param active Filter by active status (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param active Filter by active status (optional)
      * @return ApiResponse<ListPaymentLinksResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listPaymentLinksWithHttpInfo(merchantId: kotlin.String, active: kotlin.Boolean?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : ApiResponse<ListPaymentLinksResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = listPaymentLinksRequestConfig(merchantId = merchantId, active = active, limit = limit, offset = offset)
+    suspend fun listPaymentLinksWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, active: kotlin.Boolean?) : ApiResponse<ListPaymentLinksResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listPaymentLinksRequestConfig(merchantId = merchantId, limit = limit, offset = offset, active = active)
 
         return@withContext request<Unit, ListPaymentLinksResponseDto>(
             localVariableConfig
@@ -187,24 +187,24 @@ class PaymentLinksApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * To obtain the request config of the operation listPaymentLinks
      *
      * @param merchantId The ID of the merchant. This parameter is required.
-     * @param active Filter by active status (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param active Filter by active status (optional)
      * @return RequestConfig
      */
-    fun listPaymentLinksRequestConfig(merchantId: kotlin.String, active: kotlin.Boolean?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : RequestConfig<Unit> {
+    fun listPaymentLinksRequestConfig(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, active: kotlin.Boolean?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                if (active != null) {
-                    put("active", listOf(active.toString()))
-                }
                 put("merchantId", listOf(merchantId.toString()))
                 if (limit != null) {
                     put("limit", listOf(limit.toString()))
                 }
                 if (offset != null) {
                     put("offset", listOf(offset.toString()))
+                }
+                if (active != null) {
+                    put("active", listOf(active.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()

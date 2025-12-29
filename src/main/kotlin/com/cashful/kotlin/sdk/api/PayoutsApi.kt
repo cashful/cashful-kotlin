@@ -130,9 +130,9 @@ class PayoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * List Payouts
      * Retrieves a list of all historical and pending payouts for the merchant.
      * @param merchantId The ID of the merchant. This parameter is required.
-     * @param status Filter by status (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param status Filter by status (optional)
      * @return ListPayoutsResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -142,8 +142,8 @@ class PayoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listPayouts(merchantId: kotlin.String, status: kotlin.Any? = null, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null) : ListPayoutsResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = listPayoutsWithHttpInfo(merchantId = merchantId, status = status, limit = limit, offset = offset)
+    suspend fun listPayouts(merchantId: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, status: kotlin.String? = null) : ListPayoutsResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = listPayoutsWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, status = status)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as ListPayoutsResponseDto
@@ -165,17 +165,17 @@ class PayoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * List Payouts
      * Retrieves a list of all historical and pending payouts for the merchant.
      * @param merchantId The ID of the merchant. This parameter is required.
-     * @param status Filter by status (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param status Filter by status (optional)
      * @return ApiResponse<ListPayoutsResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listPayoutsWithHttpInfo(merchantId: kotlin.String, status: kotlin.Any?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : ApiResponse<ListPayoutsResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = listPayoutsRequestConfig(merchantId = merchantId, status = status, limit = limit, offset = offset)
+    suspend fun listPayoutsWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, status: kotlin.String?) : ApiResponse<ListPayoutsResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listPayoutsRequestConfig(merchantId = merchantId, limit = limit, offset = offset, status = status)
 
         return@withContext request<Unit, ListPayoutsResponseDto>(
             localVariableConfig
@@ -186,24 +186,24 @@ class PayoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * To obtain the request config of the operation listPayouts
      *
      * @param merchantId The ID of the merchant. This parameter is required.
-     * @param status Filter by status (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param status Filter by status (optional)
      * @return RequestConfig
      */
-    fun listPayoutsRequestConfig(merchantId: kotlin.String, status: kotlin.Any?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : RequestConfig<Unit> {
+    fun listPayoutsRequestConfig(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, status: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                if (status != null) {
-                    put("status", listOf(status.toString()))
-                }
                 put("merchantId", listOf(merchantId.toString()))
                 if (limit != null) {
                     put("limit", listOf(limit.toString()))
                 }
                 if (offset != null) {
                     put("offset", listOf(offset.toString()))
+                }
+                if (status != null) {
+                    put("status", listOf(status.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()

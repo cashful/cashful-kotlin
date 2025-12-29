@@ -55,11 +55,11 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * List Merchant Balance History
      * A full ledger of all transactions, fees, and payouts for the merchant&#39;s master account.
      * @param merchantId The ID of the merchant. This parameter is required.
-     * @param transactionType Filter by transaction type (e.g., \&quot;credit\&quot;, \&quot;debit\&quot;, \&quot;fee\&quot;, \&quot;payout\&quot;) (optional)
-     * @param endDate Filter transactions until this date (ISO 8601 format) (optional)
-     * @param startDate Filter transactions from this date (ISO 8601 format) (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param startDate Filter transactions from this date (ISO 8601 format) (optional)
+     * @param endDate Filter transactions until this date (ISO 8601 format) (optional)
+     * @param transactionType Filter by transaction type (e.g., \&quot;credit\&quot;, \&quot;debit\&quot;, \&quot;fee\&quot;, \&quot;payout\&quot;) (optional)
      * @return BalanceHistoryResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -69,8 +69,8 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun getBalanceHistory(merchantId: kotlin.String, transactionType: kotlin.Any? = null, endDate: kotlin.Any? = null, startDate: kotlin.Any? = null, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null) : BalanceHistoryResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = getBalanceHistoryWithHttpInfo(merchantId = merchantId, transactionType = transactionType, endDate = endDate, startDate = startDate, limit = limit, offset = offset)
+    suspend fun getBalanceHistory(merchantId: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, startDate: kotlin.String? = null, endDate: kotlin.String? = null, transactionType: kotlin.String? = null) : BalanceHistoryResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = getBalanceHistoryWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, startDate = startDate, endDate = endDate, transactionType = transactionType)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as BalanceHistoryResponseDto
@@ -92,19 +92,19 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * List Merchant Balance History
      * A full ledger of all transactions, fees, and payouts for the merchant&#39;s master account.
      * @param merchantId The ID of the merchant. This parameter is required.
-     * @param transactionType Filter by transaction type (e.g., \&quot;credit\&quot;, \&quot;debit\&quot;, \&quot;fee\&quot;, \&quot;payout\&quot;) (optional)
-     * @param endDate Filter transactions until this date (ISO 8601 format) (optional)
-     * @param startDate Filter transactions from this date (ISO 8601 format) (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param startDate Filter transactions from this date (ISO 8601 format) (optional)
+     * @param endDate Filter transactions until this date (ISO 8601 format) (optional)
+     * @param transactionType Filter by transaction type (e.g., \&quot;credit\&quot;, \&quot;debit\&quot;, \&quot;fee\&quot;, \&quot;payout\&quot;) (optional)
      * @return ApiResponse<BalanceHistoryResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun getBalanceHistoryWithHttpInfo(merchantId: kotlin.String, transactionType: kotlin.Any?, endDate: kotlin.Any?, startDate: kotlin.Any?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : ApiResponse<BalanceHistoryResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = getBalanceHistoryRequestConfig(merchantId = merchantId, transactionType = transactionType, endDate = endDate, startDate = startDate, limit = limit, offset = offset)
+    suspend fun getBalanceHistoryWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, startDate: kotlin.String?, endDate: kotlin.String?, transactionType: kotlin.String?) : ApiResponse<BalanceHistoryResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = getBalanceHistoryRequestConfig(merchantId = merchantId, limit = limit, offset = offset, startDate = startDate, endDate = endDate, transactionType = transactionType)
 
         return@withContext request<Unit, BalanceHistoryResponseDto>(
             localVariableConfig
@@ -115,32 +115,32 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * To obtain the request config of the operation getBalanceHistory
      *
      * @param merchantId The ID of the merchant. This parameter is required.
-     * @param transactionType Filter by transaction type (e.g., \&quot;credit\&quot;, \&quot;debit\&quot;, \&quot;fee\&quot;, \&quot;payout\&quot;) (optional)
-     * @param endDate Filter transactions until this date (ISO 8601 format) (optional)
-     * @param startDate Filter transactions from this date (ISO 8601 format) (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param startDate Filter transactions from this date (ISO 8601 format) (optional)
+     * @param endDate Filter transactions until this date (ISO 8601 format) (optional)
+     * @param transactionType Filter by transaction type (e.g., \&quot;credit\&quot;, \&quot;debit\&quot;, \&quot;fee\&quot;, \&quot;payout\&quot;) (optional)
      * @return RequestConfig
      */
-    fun getBalanceHistoryRequestConfig(merchantId: kotlin.String, transactionType: kotlin.Any?, endDate: kotlin.Any?, startDate: kotlin.Any?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : RequestConfig<Unit> {
+    fun getBalanceHistoryRequestConfig(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, startDate: kotlin.String?, endDate: kotlin.String?, transactionType: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                if (transactionType != null) {
-                    put("transactionType", listOf(transactionType.toString()))
-                }
-                if (endDate != null) {
-                    put("endDate", listOf(endDate.toString()))
-                }
-                if (startDate != null) {
-                    put("startDate", listOf(startDate.toString()))
-                }
                 put("merchantId", listOf(merchantId.toString()))
                 if (limit != null) {
                     put("limit", listOf(limit.toString()))
                 }
                 if (offset != null) {
                     put("offset", listOf(offset.toString()))
+                }
+                if (startDate != null) {
+                    put("startDate", listOf(startDate.toString()))
+                }
+                if (endDate != null) {
+                    put("endDate", listOf(endDate.toString()))
+                }
+                if (transactionType != null) {
+                    put("transactionType", listOf(transactionType.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()

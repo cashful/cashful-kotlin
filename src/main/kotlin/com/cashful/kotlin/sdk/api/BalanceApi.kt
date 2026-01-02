@@ -46,7 +46,7 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "http://localhost:3000")
+            System.getProperties().getProperty(ApiClient.baseUrlKey, "http://localhost:9000")
         }
     }
 
@@ -160,7 +160,7 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * GET /api/canary/balance
      * Get Merchant Balance
      * Retrieves the merchant&#39;s own master balance (their earnings) available for payouts.
-     * @param merchantId The unique identifier of the merchant
+     * @param merchantId The ID of the merchant whose balance is being requested.
      * @return MerchantBalanceResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -192,7 +192,7 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * GET /api/canary/balance
      * Get Merchant Balance
      * Retrieves the merchant&#39;s own master balance (their earnings) available for payouts.
-     * @param merchantId The unique identifier of the merchant
+     * @param merchantId The ID of the merchant whose balance is being requested.
      * @return ApiResponse<MerchantBalanceResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -210,7 +210,7 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * To obtain the request config of the operation getMerchantBalance
      *
-     * @param merchantId The unique identifier of the merchant
+     * @param merchantId The ID of the merchant whose balance is being requested.
      * @return RequestConfig
      */
     fun getMerchantBalanceRequestConfig(merchantId: kotlin.String) : RequestConfig<Unit> {

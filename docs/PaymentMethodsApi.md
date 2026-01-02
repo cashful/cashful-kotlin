@@ -1,6 +1,6 @@
 # PaymentMethodsApi
 
-All URIs are relative to *http://localhost:3000*
+All URIs are relative to *http://localhost:9000*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
@@ -59,7 +59,7 @@ Configure bearer:
 
 <a id="listPaymentMethods"></a>
 # **listPaymentMethods**
-> ListPaymentMethodsResponseDto listPaymentMethods(total, hasMore, merchantId, limit, offset, customerId)
+> ListPaymentMethodsResponseDto listPaymentMethods(merchantId, limit, offset, customerId)
 
 List Payment Methods
 
@@ -72,14 +72,12 @@ Lists saved payment methods for a specific customer.
 //import com.cashful.kotlin.sdk.model.*
 
 val apiInstance = PaymentMethodsApi()
-val total : java.math.BigDecimal = 150 // java.math.BigDecimal | Total number of items available
-val hasMore : kotlin.Boolean = true // kotlin.Boolean | Whether there are more items available beyond this response
 val merchantId : kotlin.String = merchantId_example // kotlin.String | The unique identifier of the merchant
 val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of records to return
 val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of records to skip
 val customerId : kotlin.String = customerId_example // kotlin.String | The unique identifier of the customer
 try {
-    val result : ListPaymentMethodsResponseDto = apiInstance.listPaymentMethods(total, hasMore, merchantId, limit, offset, customerId)
+    val result : ListPaymentMethodsResponseDto = apiInstance.listPaymentMethods(merchantId, limit, offset, customerId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PaymentMethodsApi#listPaymentMethods")
@@ -91,8 +89,6 @@ try {
 ```
 
 ### Parameters
-| **total** | **java.math.BigDecimal**| Total number of items available | |
-| **hasMore** | **kotlin.Boolean**| Whether there are more items available beyond this response | |
 | **merchantId** | **kotlin.String**| The unique identifier of the merchant | |
 | **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] |
 | **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |

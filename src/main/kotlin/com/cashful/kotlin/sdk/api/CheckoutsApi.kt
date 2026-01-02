@@ -47,7 +47,7 @@ class CheckoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "http://localhost:3000")
+            System.getProperties().getProperty(ApiClient.baseUrlKey, "http://localhost:9000")
         }
     }
 
@@ -129,8 +129,6 @@ class CheckoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * GET /api/canary/checkout/sessions
      * List Checkout Sessions
      * Lists checkout sessions
-     * @param total Total number of items available
-     * @param hasMore Whether there are more items available beyond this response
      * @param merchantId The ID of the merchant. This parameter is required.
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
@@ -144,8 +142,8 @@ class CheckoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listCheckoutSessions(total: java.math.BigDecimal, hasMore: kotlin.Boolean, merchantId: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, status: kotlin.String? = null) : ListCheckoutSessionsResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = listCheckoutSessionsWithHttpInfo(total = total, hasMore = hasMore, merchantId = merchantId, limit = limit, offset = offset, status = status)
+    suspend fun listCheckoutSessions(merchantId: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, status: kotlin.String? = null) : ListCheckoutSessionsResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = listCheckoutSessionsWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, status = status)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as ListCheckoutSessionsResponseDto
@@ -166,8 +164,6 @@ class CheckoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * GET /api/canary/checkout/sessions
      * List Checkout Sessions
      * Lists checkout sessions
-     * @param total Total number of items available
-     * @param hasMore Whether there are more items available beyond this response
      * @param merchantId The ID of the merchant. This parameter is required.
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
@@ -178,8 +174,8 @@ class CheckoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listCheckoutSessionsWithHttpInfo(total: java.math.BigDecimal, hasMore: kotlin.Boolean, merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, status: kotlin.String?) : ApiResponse<ListCheckoutSessionsResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = listCheckoutSessionsRequestConfig(total = total, hasMore = hasMore, merchantId = merchantId, limit = limit, offset = offset, status = status)
+    suspend fun listCheckoutSessionsWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, status: kotlin.String?) : ApiResponse<ListCheckoutSessionsResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listCheckoutSessionsRequestConfig(merchantId = merchantId, limit = limit, offset = offset, status = status)
 
         return@withContext request<Unit, ListCheckoutSessionsResponseDto>(
             localVariableConfig
@@ -189,15 +185,13 @@ class CheckoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * To obtain the request config of the operation listCheckoutSessions
      *
-     * @param total Total number of items available
-     * @param hasMore Whether there are more items available beyond this response
      * @param merchantId The ID of the merchant. This parameter is required.
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
      * @param status The status to filter checkout sessions (optional)
      * @return RequestConfig
      */
-    fun listCheckoutSessionsRequestConfig(total: java.math.BigDecimal, hasMore: kotlin.Boolean, merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, status: kotlin.String?) : RequestConfig<Unit> {
+    fun listCheckoutSessionsRequestConfig(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, status: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -207,8 +201,6 @@ class CheckoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
                 if (offset != null) {
                     put("offset", listOf(offset.toString()))
                 }
-                put("total", listOf(total.toString()))
-                put("hasMore", listOf(hasMore.toString()))
                 put("merchantId", listOf(merchantId.toString()))
                 if (status != null) {
                     put("status", listOf(status.toString()))

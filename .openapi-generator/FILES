@@ -120,6 +120,8 @@ docs/ListWebhookEndpointsResponseDto.md
 docs/MemberDto.md
 docs/MerchantBalanceResponseDto.md
 docs/MetricStatsDto.md
+docs/NotificationDto.md
+docs/NotificationsApi.md
 docs/OrganizationDto.md
 docs/OrganizationKycResponseDto.md
 docs/PaginationResponseDto.md
@@ -152,8 +154,13 @@ docs/ResetPhonePasswordDto.md
 docs/ResetPhonePasswordResponseDto.md
 docs/RevokeSessionDto.md
 docs/RevokeSessionResponseDto.md
+docs/SendEmail200Response.md
+docs/SendEmailDto.md
+docs/SendMultiChannelNotification200Response.md
 docs/SendPhoneOTPDto.md
 docs/SendPhoneOTPResponseDto.md
+docs/SendSms200Response.md
+docs/SendSmsDto.md
 docs/SendVerificationEmailDto.md
 docs/SendVerificationEmailResponseDto.md
 docs/SessionDto.md
@@ -213,6 +220,7 @@ src/main/kotlin/com/cashful/kotlin/sdk/api/CustomersApi.kt
 src/main/kotlin/com/cashful/kotlin/sdk/api/EventsApi.kt
 src/main/kotlin/com/cashful/kotlin/sdk/api/HealthApi.kt
 src/main/kotlin/com/cashful/kotlin/sdk/api/KYCApi.kt
+src/main/kotlin/com/cashful/kotlin/sdk/api/NotificationsApi.kt
 src/main/kotlin/com/cashful/kotlin/sdk/api/PaymentIntentsApi.kt
 src/main/kotlin/com/cashful/kotlin/sdk/api/PaymentLinksApi.kt
 src/main/kotlin/com/cashful/kotlin/sdk/api/PaymentMethodsApi.kt
@@ -354,6 +362,7 @@ src/main/kotlin/com/cashful/kotlin/sdk/model/ListWebhookEndpointsResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/MemberDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/MerchantBalanceResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/MetricStatsDto.kt
+src/main/kotlin/com/cashful/kotlin/sdk/model/NotificationDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/OrganizationDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/OrganizationKycResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/PaginationResponseDto.kt
@@ -380,8 +389,13 @@ src/main/kotlin/com/cashful/kotlin/sdk/model/ResetPhonePasswordDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ResetPhonePasswordResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/RevokeSessionDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/RevokeSessionResponseDto.kt
+src/main/kotlin/com/cashful/kotlin/sdk/model/SendEmail200Response.kt
+src/main/kotlin/com/cashful/kotlin/sdk/model/SendEmailDto.kt
+src/main/kotlin/com/cashful/kotlin/sdk/model/SendMultiChannelNotification200Response.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/SendPhoneOTPDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/SendPhoneOTPResponseDto.kt
+src/main/kotlin/com/cashful/kotlin/sdk/model/SendSms200Response.kt
+src/main/kotlin/com/cashful/kotlin/sdk/model/SendSmsDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/SendVerificationEmailDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/SendVerificationEmailResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/SessionDto.kt
@@ -425,3 +439,10 @@ src/main/kotlin/com/cashful/kotlin/sdk/model/VerifyEmailResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/VerifyPhoneNumberDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/VerifyPhoneNumberResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/WebhookEndpointResponseDto.kt
+src/test/kotlin/com/cashful/kotlin/sdk/api/NotificationsApiTest.kt
+src/test/kotlin/com/cashful/kotlin/sdk/model/NotificationDtoTest.kt
+src/test/kotlin/com/cashful/kotlin/sdk/model/SendEmail200ResponseTest.kt
+src/test/kotlin/com/cashful/kotlin/sdk/model/SendEmailDtoTest.kt
+src/test/kotlin/com/cashful/kotlin/sdk/model/SendMultiChannelNotification200ResponseTest.kt
+src/test/kotlin/com/cashful/kotlin/sdk/model/SendSms200ResponseTest.kt
+src/test/kotlin/com/cashful/kotlin/sdk/model/SendSmsDtoTest.kt

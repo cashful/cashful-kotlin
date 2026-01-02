@@ -19,9 +19,12 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import com.cashful.kotlin.sdk.model.ErrorResponseDto
-import com.cashful.kotlin.sdk.model.ListPaymentMethodsResponseDto
-import com.cashful.kotlin.sdk.model.PaymentMethodResponseDto
+import com.cashful.kotlin.sdk.model.NotificationDto
+import com.cashful.kotlin.sdk.model.SendEmail200Response
+import com.cashful.kotlin.sdk.model.SendEmailDto
+import com.cashful.kotlin.sdk.model.SendMultiChannelNotification200Response
+import com.cashful.kotlin.sdk.model.SendSms200Response
+import com.cashful.kotlin.sdk.model.SendSmsDto
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -42,7 +45,7 @@ import com.cashful.kotlin.sdk.infrastructure.ResponseType
 import com.cashful.kotlin.sdk.infrastructure.Success
 import com.cashful.kotlin.sdk.infrastructure.toMultiValue
 
-class PaymentMethodsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
+class NotificationsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
@@ -51,11 +54,11 @@ class PaymentMethodsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
-     * DELETE /api/canary/payment-methods/{id}
-     * Delete Payment Method
-     * Detaches and deletes a saved payment method from a customer.
-     * @param id The unique identifier of the payment method
-     * @return kotlin.Any
+     * POST /api/canary/notifications/email
+     * Send an email notification
+     * 
+     * @param sendEmailDto 
+     * @return SendEmail200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -64,11 +67,11 @@ class PaymentMethodsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun deletePaymentMethod(id: kotlin.String) : kotlin.Any = withContext(Dispatchers.IO) {
-        val localVarResponse = deletePaymentMethodWithHttpInfo(id = id)
+    suspend fun sendEmail(sendEmailDto: SendEmailDto) : SendEmail200Response = withContext(Dispatchers.IO) {
+        val localVarResponse = sendEmailWithHttpInfo(sendEmailDto = sendEmailDto)
 
         return@withContext when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SendEmail200Response
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -83,68 +86,135 @@ class PaymentMethodsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
-     * DELETE /api/canary/payment-methods/{id}
-     * Delete Payment Method
-     * Detaches and deletes a saved payment method from a customer.
-     * @param id The unique identifier of the payment method
-     * @return ApiResponse<kotlin.Any?>
+     * POST /api/canary/notifications/email
+     * Send an email notification
+     * 
+     * @param sendEmailDto 
+     * @return ApiResponse<SendEmail200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun deletePaymentMethodWithHttpInfo(id: kotlin.String) : ApiResponse<kotlin.Any?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = deletePaymentMethodRequestConfig(id = id)
+    suspend fun sendEmailWithHttpInfo(sendEmailDto: SendEmailDto) : ApiResponse<SendEmail200Response?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = sendEmailRequestConfig(sendEmailDto = sendEmailDto)
 
-        return@withContext request<Unit, kotlin.Any>(
+        return@withContext request<SendEmailDto, SendEmail200Response>(
             localVariableConfig
         )
     }
 
     /**
-     * To obtain the request config of the operation deletePaymentMethod
+     * To obtain the request config of the operation sendEmail
      *
-     * @param id The unique identifier of the payment method
+     * @param sendEmailDto 
      * @return RequestConfig
      */
-    fun deletePaymentMethodRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+    fun sendEmailRequestConfig(sendEmailDto: SendEmailDto) : RequestConfig<SendEmailDto> {
+        val localVariableBody = sendEmailDto
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/api/canary/notifications/email",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = false,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * POST /api/canary/notifications/multi-channel
+     * Send notifications via multiple channels
+     * 
+     * @return SendMultiChannelNotification200Response
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun sendMultiChannelNotification() : SendMultiChannelNotification200Response = withContext(Dispatchers.IO) {
+        val localVarResponse = sendMultiChannelNotificationWithHttpInfo()
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SendMultiChannelNotification200Response
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /api/canary/notifications/multi-channel
+     * Send notifications via multiple channels
+     * 
+     * @return ApiResponse<SendMultiChannelNotification200Response?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun sendMultiChannelNotificationWithHttpInfo() : ApiResponse<SendMultiChannelNotification200Response?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = sendMultiChannelNotificationRequestConfig()
+
+        return@withContext request<Unit, SendMultiChannelNotification200Response>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation sendMultiChannelNotification
+     *
+     * @return RequestConfig
+     */
+    fun sendMultiChannelNotificationRequestConfig() : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Accept"] = "application/json"
 
         return RequestConfig(
-            method = RequestMethod.DELETE,
-            path = "/api/canary/payment-methods/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            method = RequestMethod.POST,
+            path = "/api/canary/notifications/multi-channel",
             query = localVariableQuery,
             headers = localVariableHeaders,
-            requiresAuthentication = true,
+            requiresAuthentication = false,
             body = localVariableBody
         )
     }
 
     /**
-     * GET /api/canary/payment-methods
-     * List Payment Methods
-     * Lists saved payment methods for a specific customer.
-     * @param merchantId The unique identifier of the merchant
-     * @param limit Maximum number of records to return (optional)
-     * @param offset Number of records to skip (optional)
-     * @param customerId The unique identifier of the customer (optional)
-     * @return ListPaymentMethodsResponseDto
+     * POST /api/canary/notifications/send
+     * Send a notification via specified channel
+     * 
+     * @param notificationDto 
+     * @return void
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
-    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listPaymentMethods(merchantId: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, customerId: kotlin.String? = null) : ListPaymentMethodsResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = listPaymentMethodsWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, customerId = customerId)
+    suspend fun sendNotification(notificationDto: NotificationDto) : Unit = withContext(Dispatchers.IO) {
+        val localVarResponse = sendNotificationWithHttpInfo(notificationDto = notificationDto)
 
         return@withContext when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as ListPaymentMethodsResponseDto
+            ResponseType.Success -> Unit
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -159,133 +229,115 @@ class PaymentMethodsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
-     * GET /api/canary/payment-methods
-     * List Payment Methods
-     * Lists saved payment methods for a specific customer.
-     * @param merchantId The unique identifier of the merchant
-     * @param limit Maximum number of records to return (optional)
-     * @param offset Number of records to skip (optional)
-     * @param customerId The unique identifier of the customer (optional)
-     * @return ApiResponse<ListPaymentMethodsResponseDto?>
+     * POST /api/canary/notifications/send
+     * Send a notification via specified channel
+     * 
+     * @param notificationDto 
+     * @return ApiResponse<Unit?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
-    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listPaymentMethodsWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, customerId: kotlin.String?) : ApiResponse<ListPaymentMethodsResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = listPaymentMethodsRequestConfig(merchantId = merchantId, limit = limit, offset = offset, customerId = customerId)
+    suspend fun sendNotificationWithHttpInfo(notificationDto: NotificationDto) : ApiResponse<Unit?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = sendNotificationRequestConfig(notificationDto = notificationDto)
 
-        return@withContext request<Unit, ListPaymentMethodsResponseDto>(
+        return@withContext request<NotificationDto, Unit>(
             localVariableConfig
         )
     }
 
     /**
-     * To obtain the request config of the operation listPaymentMethods
+     * To obtain the request config of the operation sendNotification
      *
-     * @param merchantId The unique identifier of the merchant
-     * @param limit Maximum number of records to return (optional)
-     * @param offset Number of records to skip (optional)
-     * @param customerId The unique identifier of the customer (optional)
+     * @param notificationDto 
      * @return RequestConfig
      */
-    fun listPaymentMethodsRequestConfig(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, customerId: kotlin.String?) : RequestConfig<Unit> {
-        val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
-            .apply {
-                if (limit != null) {
-                    put("limit", listOf(limit.toString()))
-                }
-                if (offset != null) {
-                    put("offset", listOf(offset.toString()))
-                }
-                put("merchantId", listOf(merchantId.toString()))
-                if (customerId != null) {
-                    put("customerId", listOf(customerId.toString()))
-                }
-            }
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders["Accept"] = "application/json"
-
-        return RequestConfig(
-            method = RequestMethod.GET,
-            path = "/api/canary/payment-methods",
-            query = localVariableQuery,
-            headers = localVariableHeaders,
-            requiresAuthentication = true,
-            body = localVariableBody
-        )
-    }
-
-    /**
-     * GET /api/canary/payment-methods/{id}
-     * Retrieve Payment Method
-     * Gets the non-sensitive details of a saved card (e.g., brand, last 4).
-     * @param id The unique identifier of the payment method
-     * @return PaymentMethodResponseDto
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     * @throws UnsupportedOperationException If the API returns an informational or redirection response
-     * @throws ClientException If the API returns a client error response
-     * @throws ServerException If the API returns a server error response
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun retrievePaymentMethod(id: kotlin.String) : PaymentMethodResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = retrievePaymentMethodWithHttpInfo(id = id)
-
-        return@withContext when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as PaymentMethodResponseDto
-            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
-            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
-            ResponseType.ClientError -> {
-                val localVarError = localVarResponse as ClientError<*>
-                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
-            }
-            ResponseType.ServerError -> {
-                val localVarError = localVarResponse as ServerError<*>
-                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
-            }
-        }
-    }
-
-    /**
-     * GET /api/canary/payment-methods/{id}
-     * Retrieve Payment Method
-     * Gets the non-sensitive details of a saved card (e.g., brand, last 4).
-     * @param id The unique identifier of the payment method
-     * @return ApiResponse<PaymentMethodResponseDto?>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class)
-    suspend fun retrievePaymentMethodWithHttpInfo(id: kotlin.String) : ApiResponse<PaymentMethodResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = retrievePaymentMethodRequestConfig(id = id)
-
-        return@withContext request<Unit, PaymentMethodResponseDto>(
-            localVariableConfig
-        )
-    }
-
-    /**
-     * To obtain the request config of the operation retrievePaymentMethod
-     *
-     * @param id The unique identifier of the payment method
-     * @return RequestConfig
-     */
-    fun retrievePaymentMethodRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
-        val localVariableBody = null
+    fun sendNotificationRequestConfig(notificationDto: NotificationDto) : RequestConfig<NotificationDto> {
+        val localVariableBody = notificationDto
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/api/canary/notifications/send",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = false,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * POST /api/canary/notifications/sms
+     * Send an SMS notification
+     * 
+     * @param sendSmsDto 
+     * @return SendSms200Response
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun sendSms(sendSmsDto: SendSmsDto) : SendSms200Response = withContext(Dispatchers.IO) {
+        val localVarResponse = sendSmsWithHttpInfo(sendSmsDto = sendSmsDto)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SendSms200Response
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /api/canary/notifications/sms
+     * Send an SMS notification
+     * 
+     * @param sendSmsDto 
+     * @return ApiResponse<SendSms200Response?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun sendSmsWithHttpInfo(sendSmsDto: SendSmsDto) : ApiResponse<SendSms200Response?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = sendSmsRequestConfig(sendSmsDto = sendSmsDto)
+
+        return@withContext request<SendSmsDto, SendSms200Response>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation sendSms
+     *
+     * @param sendSmsDto 
+     * @return RequestConfig
+     */
+    fun sendSmsRequestConfig(sendSmsDto: SendSmsDto) : RequestConfig<SendSmsDto> {
+        val localVariableBody = sendSmsDto
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
         localVariableHeaders["Accept"] = "application/json"
 
         return RequestConfig(
-            method = RequestMethod.GET,
-            path = "/api/canary/payment-methods/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            method = RequestMethod.POST,
+            path = "/api/canary/notifications/sms",
             query = localVariableQuery,
             headers = localVariableHeaders,
-            requiresAuthentication = true,
+            requiresAuthentication = false,
             body = localVariableBody
         )
     }

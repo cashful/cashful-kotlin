@@ -25,6 +25,8 @@ import kotlinx.serialization.Contextual
  *
  * @param email The email address of the user
  * @param password The password for the user account
+ * @param callbackURL The URL to use for email verification callback
+ * @param rememberMe If this is false, the session will not be remembered. Default is `true`.
  */
 @Serializable
 
@@ -36,7 +38,15 @@ data class SignInDto (
 
     /* The password for the user account */
     @SerialName(value = "password")
-    val password: kotlin.String
+    val password: kotlin.String,
+
+    /* The URL to use for email verification callback */
+    @SerialName(value = "callbackURL")
+    val callbackURL: kotlin.String? = null,
+
+    /* If this is false, the session will not be remembered. Default is `true`. */
+    @SerialName(value = "rememberMe")
+    val rememberMe: kotlin.Boolean? = null
 
 ) {
 

@@ -1,6 +1,6 @@
 # BalanceApi
 
-All URIs are relative to *http://localhost:3000*
+All URIs are relative to *http://localhost:9000*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
@@ -81,7 +81,7 @@ Retrieves the merchant&#39;s own master balance (their earnings) available for p
 //import com.cashful.kotlin.sdk.model.*
 
 val apiInstance = BalanceApi()
-val merchantId : kotlin.String = merchant_123 // kotlin.String | The unique identifier of the merchant
+val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose balance is being requested.
 try {
     val result : MerchantBalanceResponseDto = apiInstance.getMerchantBalance(merchantId)
     println(result)
@@ -97,7 +97,7 @@ try {
 ### Parameters
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **merchantId** | **kotlin.String**| The unique identifier of the merchant | |
+| **merchantId** | **kotlin.String**| The ID of the merchant whose balance is being requested. | |
 
 ### Return type
 

@@ -45,7 +45,7 @@ class EventsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "http://localhost:3000")
+            System.getProperties().getProperty(ApiClient.baseUrlKey, "http://localhost:9000")
         }
     }
 

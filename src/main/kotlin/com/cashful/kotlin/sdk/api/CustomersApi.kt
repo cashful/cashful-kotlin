@@ -49,7 +49,7 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "http://localhost:3000")
+            System.getProperties().getProperty(ApiClient.baseUrlKey, "http://localhost:9000")
         }
     }
 
@@ -205,6 +205,8 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * List Customer&#39;s Payment Methods
      * Shows all saved payment methods (cards, etc.) for a single customer.
      * @param id The unique identifier of the customer
+     * @param limit Maximum number of records to return (optional)
+     * @param offset Number of records to skip (optional)
      * @return kotlin.Any
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -214,8 +216,8 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listCustomerPaymentMethods(id: kotlin.String) : kotlin.Any = withContext(Dispatchers.IO) {
-        val localVarResponse = listCustomerPaymentMethodsWithHttpInfo(id = id)
+    suspend fun listCustomerPaymentMethods(id: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null) : kotlin.Any = withContext(Dispatchers.IO) {
+        val localVarResponse = listCustomerPaymentMethodsWithHttpInfo(id = id, limit = limit, offset = offset)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
@@ -237,14 +239,16 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * List Customer&#39;s Payment Methods
      * Shows all saved payment methods (cards, etc.) for a single customer.
      * @param id The unique identifier of the customer
+     * @param limit Maximum number of records to return (optional)
+     * @param offset Number of records to skip (optional)
      * @return ApiResponse<kotlin.Any?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listCustomerPaymentMethodsWithHttpInfo(id: kotlin.String) : ApiResponse<kotlin.Any?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = listCustomerPaymentMethodsRequestConfig(id = id)
+    suspend fun listCustomerPaymentMethodsWithHttpInfo(id: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : ApiResponse<kotlin.Any?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listCustomerPaymentMethodsRequestConfig(id = id, limit = limit, offset = offset)
 
         return@withContext request<Unit, kotlin.Any>(
             localVariableConfig
@@ -255,11 +259,21 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * To obtain the request config of the operation listCustomerPaymentMethods
      *
      * @param id The unique identifier of the customer
+     * @param limit Maximum number of records to return (optional)
+     * @param offset Number of records to skip (optional)
      * @return RequestConfig
      */
-    fun listCustomerPaymentMethodsRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+    fun listCustomerPaymentMethodsRequestConfig(id: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : RequestConfig<Unit> {
         val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                if (limit != null) {
+                    put("limit", listOf(limit.toString()))
+                }
+                if (offset != null) {
+                    put("offset", listOf(offset.toString()))
+                }
+            }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Accept"] = "application/json"
 
@@ -278,6 +292,8 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * List Customer&#39;s Cash Transactions
      * Provides the full transaction history for a single customer&#39;s \&quot;cash balance\&quot; (Pay-Ins, Purchases, Transfers).
      * @param id The unique identifier of the customer
+     * @param limit Maximum number of records to return (optional)
+     * @param offset Number of records to skip (optional)
      * @return ListCustomerTransactionsResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -287,8 +303,8 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listCustomerTransactions(id: kotlin.String) : ListCustomerTransactionsResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = listCustomerTransactionsWithHttpInfo(id = id)
+    suspend fun listCustomerTransactions(id: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null) : ListCustomerTransactionsResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = listCustomerTransactionsWithHttpInfo(id = id, limit = limit, offset = offset)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as ListCustomerTransactionsResponseDto
@@ -310,14 +326,16 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * List Customer&#39;s Cash Transactions
      * Provides the full transaction history for a single customer&#39;s \&quot;cash balance\&quot; (Pay-Ins, Purchases, Transfers).
      * @param id The unique identifier of the customer
+     * @param limit Maximum number of records to return (optional)
+     * @param offset Number of records to skip (optional)
      * @return ApiResponse<ListCustomerTransactionsResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listCustomerTransactionsWithHttpInfo(id: kotlin.String) : ApiResponse<ListCustomerTransactionsResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = listCustomerTransactionsRequestConfig(id = id)
+    suspend fun listCustomerTransactionsWithHttpInfo(id: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : ApiResponse<ListCustomerTransactionsResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listCustomerTransactionsRequestConfig(id = id, limit = limit, offset = offset)
 
         return@withContext request<Unit, ListCustomerTransactionsResponseDto>(
             localVariableConfig
@@ -328,11 +346,21 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * To obtain the request config of the operation listCustomerTransactions
      *
      * @param id The unique identifier of the customer
+     * @param limit Maximum number of records to return (optional)
+     * @param offset Number of records to skip (optional)
      * @return RequestConfig
      */
-    fun listCustomerTransactionsRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+    fun listCustomerTransactionsRequestConfig(id: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : RequestConfig<Unit> {
         val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                if (limit != null) {
+                    put("limit", listOf(limit.toString()))
+                }
+                if (offset != null) {
+                    put("offset", listOf(offset.toString()))
+                }
+            }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Accept"] = "application/json"
 
@@ -351,10 +379,10 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * List Customers
      * Retrieves a paginated list of all customers for the merchant.
      * @param merchantId The ID of the merchant. This parameter is required.
-     * @param search Search across customer fields (optional)
-     * @param email Filter by email address (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param email Filter by email address (optional)
+     * @param search Search across customer fields (optional)
      * @return ListCustomersResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -364,8 +392,8 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listCustomers(merchantId: kotlin.String, search: kotlin.Any? = null, email: kotlin.Any? = null, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null) : ListCustomersResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = listCustomersWithHttpInfo(merchantId = merchantId, search = search, email = email, limit = limit, offset = offset)
+    suspend fun listCustomers(merchantId: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, email: kotlin.String? = null, search: kotlin.String? = null) : ListCustomersResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = listCustomersWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, email = email, search = search)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as ListCustomersResponseDto
@@ -387,18 +415,18 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * List Customers
      * Retrieves a paginated list of all customers for the merchant.
      * @param merchantId The ID of the merchant. This parameter is required.
-     * @param search Search across customer fields (optional)
-     * @param email Filter by email address (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param email Filter by email address (optional)
+     * @param search Search across customer fields (optional)
      * @return ApiResponse<ListCustomersResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listCustomersWithHttpInfo(merchantId: kotlin.String, search: kotlin.Any?, email: kotlin.Any?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : ApiResponse<ListCustomersResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = listCustomersRequestConfig(merchantId = merchantId, search = search, email = email, limit = limit, offset = offset)
+    suspend fun listCustomersWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, email: kotlin.String?, search: kotlin.String?) : ApiResponse<ListCustomersResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listCustomersRequestConfig(merchantId = merchantId, limit = limit, offset = offset, email = email, search = search)
 
         return@withContext request<Unit, ListCustomersResponseDto>(
             localVariableConfig
@@ -409,28 +437,28 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * To obtain the request config of the operation listCustomers
      *
      * @param merchantId The ID of the merchant. This parameter is required.
-     * @param search Search across customer fields (optional)
-     * @param email Filter by email address (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param email Filter by email address (optional)
+     * @param search Search across customer fields (optional)
      * @return RequestConfig
      */
-    fun listCustomersRequestConfig(merchantId: kotlin.String, search: kotlin.Any?, email: kotlin.Any?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : RequestConfig<Unit> {
+    fun listCustomersRequestConfig(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, email: kotlin.String?, search: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                if (search != null) {
-                    put("search", listOf(search.toString()))
-                }
-                if (email != null) {
-                    put("email", listOf(email.toString()))
-                }
                 put("merchantId", listOf(merchantId.toString()))
                 if (limit != null) {
                     put("limit", listOf(limit.toString()))
                 }
                 if (offset != null) {
                     put("offset", listOf(offset.toString()))
+                }
+                if (email != null) {
+                    put("email", listOf(email.toString()))
+                }
+                if (search != null) {
+                    put("search", listOf(search.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()

@@ -48,7 +48,7 @@ class ProductsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "http://localhost:3000")
+            System.getProperties().getProperty(ApiClient.baseUrlKey, "http://localhost:9000")
         }
     }
 
@@ -131,9 +131,9 @@ class ProductsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      * List Products
      * Retrieves all products in the merchant&#39;s catalog.
      * @param merchantId The ID of the merchant. This parameter is required.
-     * @param active Filter by active status (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param active Filter by active status (optional)
      * @return ListProductsResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -143,8 +143,8 @@ class ProductsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listProducts(merchantId: kotlin.String, active: kotlin.Boolean? = null, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null) : ListProductsResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = listProductsWithHttpInfo(merchantId = merchantId, active = active, limit = limit, offset = offset)
+    suspend fun listProducts(merchantId: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, active: kotlin.Boolean? = null) : ListProductsResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = listProductsWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, active = active)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as ListProductsResponseDto
@@ -166,17 +166,17 @@ class ProductsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      * List Products
      * Retrieves all products in the merchant&#39;s catalog.
      * @param merchantId The ID of the merchant. This parameter is required.
-     * @param active Filter by active status (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param active Filter by active status (optional)
      * @return ApiResponse<ListProductsResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listProductsWithHttpInfo(merchantId: kotlin.String, active: kotlin.Boolean?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : ApiResponse<ListProductsResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = listProductsRequestConfig(merchantId = merchantId, active = active, limit = limit, offset = offset)
+    suspend fun listProductsWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, active: kotlin.Boolean?) : ApiResponse<ListProductsResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listProductsRequestConfig(merchantId = merchantId, limit = limit, offset = offset, active = active)
 
         return@withContext request<Unit, ListProductsResponseDto>(
             localVariableConfig
@@ -187,24 +187,24 @@ class ProductsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      * To obtain the request config of the operation listProducts
      *
      * @param merchantId The ID of the merchant. This parameter is required.
-     * @param active Filter by active status (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param active Filter by active status (optional)
      * @return RequestConfig
      */
-    fun listProductsRequestConfig(merchantId: kotlin.String, active: kotlin.Boolean?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : RequestConfig<Unit> {
+    fun listProductsRequestConfig(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, active: kotlin.Boolean?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                if (active != null) {
-                    put("active", listOf(active.toString()))
-                }
-                put("merchantId", listOf(merchantId.toString()))
                 if (limit != null) {
                     put("limit", listOf(limit.toString()))
                 }
                 if (offset != null) {
                     put("offset", listOf(offset.toString()))
+                }
+                put("merchantId", listOf(merchantId.toString()))
+                if (active != null) {
+                    put("active", listOf(active.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()

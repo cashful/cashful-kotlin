@@ -1,6 +1,6 @@
 # ProductsApi
 
-All URIs are relative to *http://localhost:3000*
+All URIs are relative to *http://localhost:9000*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
@@ -59,7 +59,7 @@ Configure bearer:
 
 <a id="listProducts"></a>
 # **listProducts**
-> ListProductsResponseDto listProducts(merchantId, active, limit, offset)
+> ListProductsResponseDto listProducts(merchantId, limit, offset, active)
 
 List Products
 
@@ -73,11 +73,11 @@ Retrieves all products in the merchant&#39;s catalog.
 
 val apiInstance = ProductsApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
+val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of records to return
+val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of records to skip
 val active : kotlin.Boolean = true // kotlin.Boolean | Filter by active status
-val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
-val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
 try {
-    val result : ListProductsResponseDto = apiInstance.listProducts(merchantId, active, limit, offset)
+    val result : ListProductsResponseDto = apiInstance.listProducts(merchantId, limit, offset, active)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling ProductsApi#listProducts")
@@ -90,11 +90,11 @@ try {
 
 ### Parameters
 | **merchantId** | **kotlin.String**| The ID of the merchant. This parameter is required. | |
-| **active** | **kotlin.Boolean**| Filter by active status | [optional] |
 | **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] |
+| **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
+| **active** | **kotlin.Boolean**| Filter by active status | [optional] |
 
 ### Return type
 

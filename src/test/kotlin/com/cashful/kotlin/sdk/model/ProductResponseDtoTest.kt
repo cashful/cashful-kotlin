@@ -55,12 +55,6 @@ class ProductResponseDtoTest : ShouldSpec() {
             //modelInstance.name shouldBe ("TODO")
         }
 
-        // to test the property `amount`
-        should("test amount") {
-            // uncomment below to test the property
-            //modelInstance.amount shouldBe ("TODO")
-        }
-
         // to test the property `currency`
         should("test currency") {
             // uncomment below to test the property
@@ -89,6 +83,12 @@ class ProductResponseDtoTest : ShouldSpec() {
         should("test description") {
             // uncomment below to test the property
             //modelInstance.description shouldBe ("TODO")
+        }
+
+        // to test the property `amount`
+        should("test amount") {
+            // uncomment below to test the property
+            //modelInstance.amount shouldBe ("TODO")
         }
 
     }

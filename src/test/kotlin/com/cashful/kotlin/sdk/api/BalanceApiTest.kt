@@ -32,19 +32,20 @@ class BalanceApiTest : ShouldSpec() {
         should("test getBalanceHistory") {
             // uncomment below to test getBalanceHistory
             //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
-            //val transactionType : kotlin.Any =  // kotlin.Any | Filter by transaction type (e.g., \"credit\", \"debit\", \"fee\", \"payout\")
-            //val endDate : kotlin.Any =  // kotlin.Any | Filter transactions until this date (ISO 8601 format)
-            //val startDate : kotlin.Any =  // kotlin.Any | Filter transactions from this date (ISO 8601 format)
             //val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
             //val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
-            //val result : BalanceHistoryResponseDto = apiInstance.getBalanceHistory(merchantId, transactionType, endDate, startDate, limit, offset)
+            //val startDate : kotlin.String = startDate_example // kotlin.String | Filter transactions from this date (ISO 8601 format)
+            //val endDate : kotlin.String = endDate_example // kotlin.String | Filter transactions until this date (ISO 8601 format)
+            //val transactionType : kotlin.String = transactionType_example // kotlin.String | Filter by transaction type (e.g., \"credit\", \"debit\", \"fee\", \"payout\")
+            //val result : BalanceHistoryResponseDto = apiInstance.getBalanceHistory(merchantId, limit, offset, startDate, endDate, transactionType)
             //result shouldBe ("TODO")
         }
 
         // to test getMerchantBalance
         should("test getMerchantBalance") {
             // uncomment below to test getMerchantBalance
-            //val result : MerchantBalanceResponseDto = apiInstance.getMerchantBalance()
+            //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose balance is being requested.
+            //val result : MerchantBalanceResponseDto = apiInstance.getMerchantBalance(merchantId)
             //result shouldBe ("TODO")
         }
 

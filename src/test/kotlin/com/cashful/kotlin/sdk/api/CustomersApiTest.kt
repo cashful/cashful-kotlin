@@ -51,7 +51,9 @@ class CustomersApiTest : ShouldSpec() {
         should("test listCustomerPaymentMethods") {
             // uncomment below to test listCustomerPaymentMethods
             //val id : kotlin.String = id_example // kotlin.String | The unique identifier of the customer
-            //val result : kotlin.Any = apiInstance.listCustomerPaymentMethods(id)
+            //val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
+            //val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
+            //val result : kotlin.Any = apiInstance.listCustomerPaymentMethods(id, limit, offset)
             //result shouldBe ("TODO")
         }
 
@@ -59,7 +61,9 @@ class CustomersApiTest : ShouldSpec() {
         should("test listCustomerTransactions") {
             // uncomment below to test listCustomerTransactions
             //val id : kotlin.String = id_example // kotlin.String | The unique identifier of the customer
-            //val result : ListCustomerTransactionsResponseDto = apiInstance.listCustomerTransactions(id)
+            //val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
+            //val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
+            //val result : ListCustomerTransactionsResponseDto = apiInstance.listCustomerTransactions(id, limit, offset)
             //result shouldBe ("TODO")
         }
 
@@ -67,11 +71,11 @@ class CustomersApiTest : ShouldSpec() {
         should("test listCustomers") {
             // uncomment below to test listCustomers
             //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
-            //val search : kotlin.Any =  // kotlin.Any | Search across customer fields
-            //val email : kotlin.Any =  // kotlin.Any | Filter by email address
             //val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
             //val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
-            //val result : ListCustomersResponseDto = apiInstance.listCustomers(merchantId, search, email, limit, offset)
+            //val email : kotlin.String = email_example // kotlin.String | Filter by email address
+            //val search : kotlin.String = search_example // kotlin.String | Search across customer fields
+            //val result : ListCustomersResponseDto = apiInstance.listCustomers(merchantId, limit, offset, email, search)
             //result shouldBe ("TODO")
         }
 

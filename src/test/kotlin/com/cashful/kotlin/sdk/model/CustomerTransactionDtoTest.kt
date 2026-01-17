@@ -43,12 +43,6 @@ class CustomerTransactionDtoTest : ShouldSpec() {
             //modelInstance.updatedAt shouldBe ("TODO")
         }
 
-        // to test the property `customerId`
-        should("test customerId") {
-            // uncomment below to test the property
-            //modelInstance.customerId shouldBe ("TODO")
-        }
-
         // to test the property `type`
         should("test type") {
             // uncomment below to test the property
@@ -67,28 +61,28 @@ class CustomerTransactionDtoTest : ShouldSpec() {
             //modelInstance.currency shouldBe ("TODO")
         }
 
-        // to test the property `description`
-        should("test description") {
-            // uncomment below to test the property
-            //modelInstance.description shouldBe ("TODO")
-        }
-
-        // to test the property `balanceAfter`
-        should("test balanceAfter") {
-            // uncomment below to test the property
-            //modelInstance.balanceAfter shouldBe ("TODO")
-        }
-
         // to test the property `deletedAt`
         should("test deletedAt") {
             // uncomment below to test the property
             //modelInstance.deletedAt shouldBe ("TODO")
         }
 
+        // to test the property `customerId`
+        should("test customerId") {
+            // uncomment below to test the property
+            //modelInstance.customerId shouldBe ("TODO")
+        }
+
         // to test the property `merchantId`
         should("test merchantId") {
             // uncomment below to test the property
             //modelInstance.merchantId shouldBe ("TODO")
+        }
+
+        // to test the property `description`
+        should("test description") {
+            // uncomment below to test the property
+            //modelInstance.description shouldBe ("TODO")
         }
 
         // to test the property `relatedEntityId`
@@ -101,6 +95,12 @@ class CustomerTransactionDtoTest : ShouldSpec() {
         should("test relatedEntityType") {
             // uncomment below to test the property
             //modelInstance.relatedEntityType shouldBe ("TODO")
+        }
+
+        // to test the property `balanceAfter`
+        should("test balanceAfter") {
+            // uncomment below to test the property
+            //modelInstance.balanceAfter shouldBe ("TODO")
         }
 
     }

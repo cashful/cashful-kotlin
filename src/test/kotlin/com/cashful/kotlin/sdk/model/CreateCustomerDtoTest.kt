@@ -25,10 +25,10 @@ class CreateCustomerDtoTest : ShouldSpec() {
         // uncomment below to create an instance of CreateCustomerDto
         //val modelInstance = CreateCustomerDto()
 
-        // to test the property `email` - The email address of the customer
-        should("test email") {
+        // to test the property `phoneNumber` - The phone number of the customer
+        should("test phoneNumber") {
             // uncomment below to test the property
-            //modelInstance.email shouldBe ("TODO")
+            //modelInstance.phoneNumber shouldBe ("TODO")
         }
 
         // to test the property `metadata` - Optional custom metadata
@@ -41,6 +41,12 @@ class CreateCustomerDtoTest : ShouldSpec() {
         should("test merchantId") {
             // uncomment below to test the property
             //modelInstance.merchantId shouldBe ("TODO")
+        }
+
+        // to test the property `email` - The email address of the customer
+        should("test email") {
+            // uncomment below to test the property
+            //modelInstance.email shouldBe ("TODO")
         }
 
         // to test the property `name` - The full name of the customer

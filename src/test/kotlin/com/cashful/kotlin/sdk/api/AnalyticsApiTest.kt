@@ -20,6 +20,7 @@ import io.kotlintest.specs.ShouldSpec
 
 import com.cashful.kotlin.sdk.api.AnalyticsApi
 import com.cashful.kotlin.sdk.model.AnalyticsResponseDto
+import com.cashful.kotlin.sdk.model.AnalyticsSummaryDto
 import com.cashful.kotlin.sdk.model.ErrorResponseDto
 
 class AnalyticsApiTest : ShouldSpec() {
@@ -30,7 +31,16 @@ class AnalyticsApiTest : ShouldSpec() {
         // to test getAnalytics
         should("test getAnalytics") {
             // uncomment below to test getAnalytics
-            //val result : AnalyticsResponseDto = apiInstance.getAnalytics()
+            //val merchantId : kotlin.String = merchant_123 // kotlin.String | The unique identifier of the merchant
+            //val result : AnalyticsResponseDto = apiInstance.getAnalytics(merchantId)
+            //result shouldBe ("TODO")
+        }
+
+        // to test getAnalyticsSummary
+        should("test getAnalyticsSummary") {
+            // uncomment below to test getAnalyticsSummary
+            //val merchantId : kotlin.String = merchant_123 // kotlin.String | The unique identifier of the merchant
+            //val result : AnalyticsSummaryDto = apiInstance.getAnalyticsSummary(merchantId)
             //result shouldBe ("TODO")
         }
 

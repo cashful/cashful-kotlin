@@ -28,6 +28,22 @@ class PaymentIntentsApiTest : ShouldSpec() {
         // uncomment below to create an instance of PaymentIntentsApi
         //val apiInstance = PaymentIntentsApi()
 
+        // to test cancelPaymentIntent
+        should("test cancelPaymentIntent") {
+            // uncomment below to test cancelPaymentIntent
+            //val id : kotlin.String = id_example // kotlin.String | The unique identifier of the payment intent
+            //val result : PaymentIntentResponseDto = apiInstance.cancelPaymentIntent(id)
+            //result shouldBe ("TODO")
+        }
+
+        // to test confirmPaymentIntent
+        should("test confirmPaymentIntent") {
+            // uncomment below to test confirmPaymentIntent
+            //val id : kotlin.String = id_example // kotlin.String | The unique identifier of the payment intent
+            //val result : PaymentIntentResponseDto = apiInstance.confirmPaymentIntent(id)
+            //result shouldBe ("TODO")
+        }
+
         // to test createPaymentIntent
         should("test createPaymentIntent") {
             // uncomment below to test createPaymentIntent
@@ -36,11 +52,21 @@ class PaymentIntentsApiTest : ShouldSpec() {
             //result shouldBe ("TODO")
         }
 
+        // to test listPaymentIntents
+        should("test listPaymentIntents") {
+            // uncomment below to test listPaymentIntents
+            //val merchantId : kotlin.String = merchantId_example // kotlin.String | Filter by merchant ID
+            //val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
+            //val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
+            //val status : kotlin.String = status_example // kotlin.String | Filter by status
+            //apiInstance.listPaymentIntents(merchantId, limit, offset, status)
+        }
+
         // to test retrievePaymentIntent
         should("test retrievePaymentIntent") {
             // uncomment below to test retrievePaymentIntent
             //val id : kotlin.String = id_example // kotlin.String | The unique identifier of the payment intent
-            //val result : kotlin.Any = apiInstance.retrievePaymentIntent(id)
+            //val result : PaymentIntentResponseDto = apiInstance.retrievePaymentIntent(id)
             //result shouldBe ("TODO")
         }
 

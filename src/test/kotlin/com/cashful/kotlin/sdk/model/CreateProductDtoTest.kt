@@ -31,12 +31,6 @@ class CreateProductDtoTest : ShouldSpec() {
             //modelInstance.name shouldBe ("TODO")
         }
 
-        // to test the property `amount` - The price of the product in the smallest currency unit
-        should("test amount") {
-            // uncomment below to test the property
-            //modelInstance.amount shouldBe ("TODO")
-        }
-
         // to test the property `currency` - The three-letter ISO 4217 currency code
         should("test currency") {
             // uncomment below to test the property
@@ -59,6 +53,12 @@ class CreateProductDtoTest : ShouldSpec() {
         should("test description") {
             // uncomment below to test the property
             //modelInstance.description shouldBe ("TODO")
+        }
+
+        // to test the property `amount` - The price of the product in the smallest currency unit
+        should("test amount") {
+            // uncomment below to test the property
+            //modelInstance.amount shouldBe ("TODO")
         }
 
         // to test the property `active` - Whether the product is active

@@ -25,52 +25,58 @@ class WebhookEndpointResponseDtoTest : ShouldSpec() {
         // uncomment below to create an instance of WebhookEndpointResponseDto
         //val modelInstance = WebhookEndpointResponseDto()
 
-        // to test the property `id`
+        // to test the property `id` - Unique identifier for the webhook endpoint
         should("test id") {
             // uncomment below to test the property
             //modelInstance.id shouldBe ("TODO")
         }
 
-        // to test the property `merchantId`
+        // to test the property `merchantId` - The merchant ID this webhook belongs to
         should("test merchantId") {
             // uncomment below to test the property
             //modelInstance.merchantId shouldBe ("TODO")
         }
 
-        // to test the property `url`
+        // to test the property `url` - The URL where webhook events are sent
         should("test url") {
             // uncomment below to test the property
             //modelInstance.url shouldBe ("TODO")
         }
 
-        // to test the property `events`
+        // to test the property `events` - Array of event types subscribed to
         should("test events") {
             // uncomment below to test the property
             //modelInstance.events shouldBe ("TODO")
         }
 
-        // to test the property `active`
+        // to test the property `active` - Whether the webhook endpoint is active
         should("test active") {
             // uncomment below to test the property
             //modelInstance.active shouldBe ("TODO")
         }
 
-        // to test the property `metadata`
-        should("test metadata") {
-            // uncomment below to test the property
-            //modelInstance.metadata shouldBe ("TODO")
-        }
-
-        // to test the property `createdAt`
+        // to test the property `createdAt` - When the webhook endpoint was created
         should("test createdAt") {
             // uncomment below to test the property
             //modelInstance.createdAt shouldBe ("TODO")
         }
 
-        // to test the property `updatedAt`
+        // to test the property `updatedAt` - When the webhook endpoint was last updated
         should("test updatedAt") {
             // uncomment below to test the property
             //modelInstance.updatedAt shouldBe ("TODO")
+        }
+
+        // to test the property `metadata` - Custom metadata attached to the webhook endpoint
+        should("test metadata") {
+            // uncomment below to test the property
+            //modelInstance.metadata shouldBe ("TODO")
+        }
+
+        // to test the property `deletedAt` - When the webhook endpoint was deleted (soft delete)
+        should("test deletedAt") {
+            // uncomment below to test the property
+            //modelInstance.deletedAt shouldBe ("TODO")
         }
 
     }

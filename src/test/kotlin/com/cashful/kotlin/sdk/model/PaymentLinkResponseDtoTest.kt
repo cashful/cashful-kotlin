@@ -109,5 +109,11 @@ class PaymentLinkResponseDtoTest : ShouldSpec() {
             //modelInstance.amount shouldBe ("TODO")
         }
 
+        // to test the property `deletedAt`
+        should("test deletedAt") {
+            // uncomment below to test the property
+            //modelInstance.deletedAt shouldBe ("TODO")
+        }
+
     }
 }

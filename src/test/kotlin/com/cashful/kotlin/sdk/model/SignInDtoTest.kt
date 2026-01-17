@@ -37,5 +37,17 @@ class SignInDtoTest : ShouldSpec() {
             //modelInstance.password shouldBe ("TODO")
         }
 
+        // to test the property `callbackURL` - The URL to use for email verification callback
+        should("test callbackURL") {
+            // uncomment below to test the property
+            //modelInstance.callbackURL shouldBe ("TODO")
+        }
+
+        // to test the property `rememberMe` - If this is false, the session will not be remembered. Default is `true`.
+        should("test rememberMe") {
+            // uncomment below to test the property
+            //modelInstance.rememberMe shouldBe ("TODO")
+        }
+
     }
 }

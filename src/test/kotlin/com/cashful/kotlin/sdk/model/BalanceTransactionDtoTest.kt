@@ -43,12 +43,6 @@ class BalanceTransactionDtoTest : ShouldSpec() {
             //modelInstance.updatedAt shouldBe ("TODO")
         }
 
-        // to test the property `merchantId`
-        should("test merchantId") {
-            // uncomment below to test the property
-            //modelInstance.merchantId shouldBe ("TODO")
-        }
-
         // to test the property `type`
         should("test type") {
             // uncomment below to test the property
@@ -73,16 +67,16 @@ class BalanceTransactionDtoTest : ShouldSpec() {
             //modelInstance.description shouldBe ("TODO")
         }
 
-        // to test the property `balanceAfter`
-        should("test balanceAfter") {
-            // uncomment below to test the property
-            //modelInstance.balanceAfter shouldBe ("TODO")
-        }
-
         // to test the property `deletedAt`
         should("test deletedAt") {
             // uncomment below to test the property
             //modelInstance.deletedAt shouldBe ("TODO")
+        }
+
+        // to test the property `merchantId`
+        should("test merchantId") {
+            // uncomment below to test the property
+            //modelInstance.merchantId shouldBe ("TODO")
         }
 
         // to test the property `relatedEntityId`
@@ -95,6 +89,12 @@ class BalanceTransactionDtoTest : ShouldSpec() {
         should("test relatedEntityType") {
             // uncomment below to test the property
             //modelInstance.relatedEntityType shouldBe ("TODO")
+        }
+
+        // to test the property `balanceAfter`
+        should("test balanceAfter") {
+            // uncomment below to test the property
+            //modelInstance.balanceAfter shouldBe ("TODO")
         }
 
     }

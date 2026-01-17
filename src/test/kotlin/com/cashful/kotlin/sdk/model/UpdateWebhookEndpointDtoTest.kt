@@ -25,12 +25,6 @@ class UpdateWebhookEndpointDtoTest : ShouldSpec() {
         // uncomment below to create an instance of UpdateWebhookEndpointDto
         //val modelInstance = UpdateWebhookEndpointDto()
 
-        // to test the property `metadata` - Optional custom metadata
-        should("test metadata") {
-            // uncomment below to test the property
-            //modelInstance.metadata shouldBe ("TODO")
-        }
-
         // to test the property `url` - The URL where webhook events will be sent
         should("test url") {
             // uncomment below to test the property
@@ -47,6 +41,12 @@ class UpdateWebhookEndpointDtoTest : ShouldSpec() {
         should("test active") {
             // uncomment below to test the property
             //modelInstance.active shouldBe ("TODO")
+        }
+
+        // to test the property `metadata` - Optional custom metadata
+        should("test metadata") {
+            // uncomment below to test the property
+            //modelInstance.metadata shouldBe ("TODO")
         }
 
     }

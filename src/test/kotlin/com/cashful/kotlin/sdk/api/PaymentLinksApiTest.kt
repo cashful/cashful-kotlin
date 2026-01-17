@@ -42,10 +42,18 @@ class PaymentLinksApiTest : ShouldSpec() {
         should("test listPaymentLinks") {
             // uncomment below to test listPaymentLinks
             //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
-            //val active : kotlin.Boolean = true // kotlin.Boolean | Filter by active status
             //val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
             //val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
-            //val result : ListPaymentLinksResponseDto = apiInstance.listPaymentLinks(merchantId, active, limit, offset)
+            //val active : kotlin.Boolean = true // kotlin.Boolean | Filter by active status
+            //val result : ListPaymentLinksResponseDto = apiInstance.listPaymentLinks(merchantId, limit, offset, active)
+            //result shouldBe ("TODO")
+        }
+
+        // to test retrievePaymentLink
+        should("test retrievePaymentLink") {
+            // uncomment below to test retrievePaymentLink
+            //val id : kotlin.String = id_example // kotlin.String | The unique identifier of the payment link
+            //val result : PaymentLinkResponseDto = apiInstance.retrievePaymentLink(id)
             //result shouldBe ("TODO")
         }
 

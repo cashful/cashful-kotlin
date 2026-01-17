@@ -19,7 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import com.cashful.kotlin.sdk.model.UpdateOrganizationResponseDto
-import com.cashful.kotlin.sdk.model.Organization
+import com.cashful.kotlin.sdk.model.OrganizationDto
 
 class UpdateOrganizationResponseDtoTest : ShouldSpec() {
     init {

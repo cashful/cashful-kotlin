@@ -31,12 +31,13 @@ class EventsApiTest : ShouldSpec() {
         should("test listEvents") {
             // uncomment below to test listEvents
             //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
-            //val endDate : kotlin.Any =  // kotlin.Any | Filter by end date
-            //val startDate : kotlin.Any =  // kotlin.Any | Filter by start date
-            //val type : kotlin.Any =  // kotlin.Any | Filter by event type
             //val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
             //val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
-            //val result : ListEventsResponseDto = apiInstance.listEvents(merchantId, endDate, startDate, type, limit, offset)
+            //val type : kotlin.String = type_example // kotlin.String | Filter by event type
+            //val status : kotlin.String = status_example // kotlin.String | Filter by event status
+            //val startDate : kotlin.String = startDate_example // kotlin.String | Filter by start date
+            //val endDate : kotlin.String = endDate_example // kotlin.String | Filter by end date
+            //val result : ListEventsResponseDto = apiInstance.listEvents(merchantId, limit, offset, type, status, startDate, endDate)
             //result shouldBe ("TODO")
         }
 

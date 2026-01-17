@@ -25,13 +25,13 @@ class ResetPasswordDtoTest : ShouldSpec() {
         // uncomment below to create an instance of ResetPasswordDto
         //val modelInstance = ResetPasswordDto()
 
-        // to test the property `password` - The new password
-        should("test password") {
+        // to test the property `newPassword` - The new password to set
+        should("test newPassword") {
             // uncomment below to test the property
-            //modelInstance.password shouldBe ("TODO")
+            //modelInstance.newPassword shouldBe ("TODO")
         }
 
-        // to test the property `token` - The token received in the email
+        // to test the property `token` - The token to reset password
         should("test token") {
             // uncomment below to test the property
             //modelInstance.token shouldBe ("TODO")

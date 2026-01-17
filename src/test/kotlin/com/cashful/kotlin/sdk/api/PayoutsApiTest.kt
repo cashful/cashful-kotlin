@@ -41,10 +41,10 @@ class PayoutsApiTest : ShouldSpec() {
         should("test listPayouts") {
             // uncomment below to test listPayouts
             //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
-            //val status : kotlin.Any =  // kotlin.Any | Filter by status
             //val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
             //val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
-            //val result : ListPayoutsResponseDto = apiInstance.listPayouts(merchantId, status, limit, offset)
+            //val status : kotlin.String = status_example // kotlin.String | Filter by status
+            //val result : ListPayoutsResponseDto = apiInstance.listPayouts(merchantId, limit, offset, status)
             //result shouldBe ("TODO")
         }
 

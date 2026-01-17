@@ -37,16 +37,16 @@ class CreateWebhookEndpointDtoTest : ShouldSpec() {
             //modelInstance.events shouldBe ("TODO")
         }
 
-        // to test the property `metadata` - Optional custom metadata
-        should("test metadata") {
-            // uncomment below to test the property
-            //modelInstance.metadata shouldBe ("TODO")
-        }
-
         // to test the property `merchantId` - The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant.
         should("test merchantId") {
             // uncomment below to test the property
             //modelInstance.merchantId shouldBe ("TODO")
+        }
+
+        // to test the property `metadata` - Optional custom metadata
+        should("test metadata") {
+            // uncomment below to test the property
+            //modelInstance.metadata shouldBe ("TODO")
         }
 
     }

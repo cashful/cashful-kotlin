@@ -22,6 +22,7 @@ import com.cashful.kotlin.sdk.api.CheckoutsApi
 import com.cashful.kotlin.sdk.model.CheckoutSessionResponseDto
 import com.cashful.kotlin.sdk.model.CreateCheckoutSessionDto
 import com.cashful.kotlin.sdk.model.ErrorResponseDto
+import com.cashful.kotlin.sdk.model.ListCheckoutSessionsResponseDto
 
 class CheckoutsApiTest : ShouldSpec() {
     init {
@@ -33,6 +34,25 @@ class CheckoutsApiTest : ShouldSpec() {
             // uncomment below to test createCheckoutSession
             //val createCheckoutSessionDto : CreateCheckoutSessionDto =  // CreateCheckoutSessionDto | Checkout session details
             //val result : CheckoutSessionResponseDto = apiInstance.createCheckoutSession(createCheckoutSessionDto)
+            //result shouldBe ("TODO")
+        }
+
+        // to test listCheckoutSessions
+        should("test listCheckoutSessions") {
+            // uncomment below to test listCheckoutSessions
+            //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
+            //val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of records to return
+            //val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of records to skip
+            //val status : kotlin.String = status_example // kotlin.String | The status to filter checkout sessions
+            //val result : ListCheckoutSessionsResponseDto = apiInstance.listCheckoutSessions(merchantId, limit, offset, status)
+            //result shouldBe ("TODO")
+        }
+
+        // to test retrieveCheckoutSession
+        should("test retrieveCheckoutSession") {
+            // uncomment below to test retrieveCheckoutSession
+            //val id : kotlin.String = id_example // kotlin.String | The unique identifier of the checkout session
+            //val result : CheckoutSessionResponseDto = apiInstance.retrieveCheckoutSession(id)
             //result shouldBe ("TODO")
         }
 

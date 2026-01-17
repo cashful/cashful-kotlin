@@ -49,10 +49,10 @@ class CustomerResponseDtoTest : ShouldSpec() {
             //modelInstance.merchantId shouldBe ("TODO")
         }
 
-        // to test the property `email`
-        should("test email") {
+        // to test the property `phoneNumber` - The phone number of the customer
+        should("test phoneNumber") {
             // uncomment below to test the property
-            //modelInstance.email shouldBe ("TODO")
+            //modelInstance.phoneNumber shouldBe ("TODO")
         }
 
         // to test the property `metadata`
@@ -65,6 +65,12 @@ class CustomerResponseDtoTest : ShouldSpec() {
         should("test deletedAt") {
             // uncomment below to test the property
             //modelInstance.deletedAt shouldBe ("TODO")
+        }
+
+        // to test the property `email`
+        should("test email") {
+            // uncomment below to test the property
+            //modelInstance.email shouldBe ("TODO")
         }
 
         // to test the property `name`

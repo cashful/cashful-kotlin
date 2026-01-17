@@ -162,7 +162,7 @@ Configure bearer:
 
 <a id="updateProduct"></a>
 # **updateProduct**
-> kotlin.Any updateProduct(id, updateProductDto)
+> ProductResponseDto updateProduct(id, updateProductDto)
 
 Update Product
 
@@ -178,7 +178,7 @@ val apiInstance = ProductsApi()
 val id : kotlin.String = id_example // kotlin.String | The unique identifier of the product
 val updateProductDto : UpdateProductDto =  // UpdateProductDto | Product update details
 try {
-    val result : kotlin.Any = apiInstance.updateProduct(id, updateProductDto)
+    val result : ProductResponseDto = apiInstance.updateProduct(id, updateProductDto)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling ProductsApi#updateProduct")
@@ -197,7 +197,7 @@ try {
 
 ### Return type
 
-[**kotlin.Any**](kotlin.Any.md)
+[**ProductResponseDto**](ProductResponseDto.md)
 
 ### Authorization
 

@@ -20,8 +20,10 @@ import io.kotlintest.specs.ShouldSpec
 
 import com.cashful.kotlin.sdk.api.CustomersApi
 import com.cashful.kotlin.sdk.model.CreateCustomerDto
+import com.cashful.kotlin.sdk.model.CustomerBalanceDto
 import com.cashful.kotlin.sdk.model.CustomerResponseDto
 import com.cashful.kotlin.sdk.model.ErrorResponseDto
+import com.cashful.kotlin.sdk.model.ListCustomerPaymentMethodsResponseDto
 import com.cashful.kotlin.sdk.model.ListCustomerTransactionsResponseDto
 import com.cashful.kotlin.sdk.model.ListCustomersResponseDto
 import com.cashful.kotlin.sdk.model.UpdateCustomerDto
@@ -43,7 +45,7 @@ class CustomersApiTest : ShouldSpec() {
         should("test getCustomerBalance") {
             // uncomment below to test getCustomerBalance
             //val id : kotlin.String = id_example // kotlin.String | The unique identifier of the customer
-            //val result : kotlin.Any = apiInstance.getCustomerBalance(id)
+            //val result : CustomerBalanceDto = apiInstance.getCustomerBalance(id)
             //result shouldBe ("TODO")
         }
 
@@ -53,7 +55,7 @@ class CustomersApiTest : ShouldSpec() {
             //val id : kotlin.String = id_example // kotlin.String | The unique identifier of the customer
             //val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
             //val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
-            //val result : kotlin.Any = apiInstance.listCustomerPaymentMethods(id, limit, offset)
+            //val result : ListCustomerPaymentMethodsResponseDto = apiInstance.listCustomerPaymentMethods(id, limit, offset)
             //result shouldBe ("TODO")
         }
 
@@ -83,7 +85,7 @@ class CustomersApiTest : ShouldSpec() {
         should("test retrieveCustomer") {
             // uncomment below to test retrieveCustomer
             //val id : kotlin.String = id_example // kotlin.String | The unique identifier of the customer
-            //val result : kotlin.Any = apiInstance.retrieveCustomer(id)
+            //val result : CustomerResponseDto = apiInstance.retrieveCustomer(id)
             //result shouldBe ("TODO")
         }
 
@@ -92,7 +94,7 @@ class CustomersApiTest : ShouldSpec() {
             // uncomment below to test updateCustomer
             //val id : kotlin.String = id_example // kotlin.String | The unique identifier of the customer
             //val updateCustomerDto : UpdateCustomerDto =  // UpdateCustomerDto | Customer update details
-            //val result : kotlin.Any = apiInstance.updateCustomer(id, updateCustomerDto)
+            //val result : CustomerResponseDto = apiInstance.updateCustomer(id, updateCustomerDto)
             //result shouldBe ("TODO")
         }
 

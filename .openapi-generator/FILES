@@ -58,6 +58,8 @@ docs/CreateProductDto.md
 docs/CreatePurchaseDto.md
 docs/CreateTransferDto.md
 docs/CreateWebhookEndpointDto.md
+docs/CustomerBalanceDto.md
+docs/CustomerPaymentMethodDto.md
 docs/CustomerResponseDto.md
 docs/CustomerStatsDto.md
 docs/CustomerTransactionDto.md
@@ -107,6 +109,7 @@ docs/LinkSocialResponseDto.md
 docs/ListAccountsResponseDto.md
 docs/ListApiKeysResponseDto.md
 docs/ListCheckoutSessionsResponseDto.md
+docs/ListCustomerPaymentMethodsResponseDto.md
 docs/ListCustomerTransactionsResponseDto.md
 docs/ListCustomersResponseDto.md
 docs/ListEventsResponseDto.md
@@ -312,6 +315,8 @@ src/main/kotlin/com/cashful/kotlin/sdk/model/CreateProductDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/CreatePurchaseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/CreateTransferDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/CreateWebhookEndpointDto.kt
+src/main/kotlin/com/cashful/kotlin/sdk/model/CustomerBalanceDto.kt
+src/main/kotlin/com/cashful/kotlin/sdk/model/CustomerPaymentMethodDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/CustomerResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/CustomerStatsDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/CustomerTransactionDto.kt
@@ -358,6 +363,7 @@ src/main/kotlin/com/cashful/kotlin/sdk/model/LinkSocialResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListAccountsResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListApiKeysResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListCheckoutSessionsResponseDto.kt
+src/main/kotlin/com/cashful/kotlin/sdk/model/ListCustomerPaymentMethodsResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListCustomerTransactionsResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListCustomersResponseDto.kt
 src/main/kotlin/com/cashful/kotlin/sdk/model/ListEventsResponseDto.kt
@@ -526,6 +532,8 @@ src/test/kotlin/com/cashful/kotlin/sdk/model/CreateProductDtoTest.kt
 src/test/kotlin/com/cashful/kotlin/sdk/model/CreatePurchaseDtoTest.kt
 src/test/kotlin/com/cashful/kotlin/sdk/model/CreateTransferDtoTest.kt
 src/test/kotlin/com/cashful/kotlin/sdk/model/CreateWebhookEndpointDtoTest.kt
+src/test/kotlin/com/cashful/kotlin/sdk/model/CustomerBalanceDtoTest.kt
+src/test/kotlin/com/cashful/kotlin/sdk/model/CustomerPaymentMethodDtoTest.kt
 src/test/kotlin/com/cashful/kotlin/sdk/model/CustomerResponseDtoTest.kt
 src/test/kotlin/com/cashful/kotlin/sdk/model/CustomerStatsDtoTest.kt
 src/test/kotlin/com/cashful/kotlin/sdk/model/CustomerTransactionDtoTest.kt
@@ -572,6 +580,7 @@ src/test/kotlin/com/cashful/kotlin/sdk/model/LinkSocialResponseDtoTest.kt
 src/test/kotlin/com/cashful/kotlin/sdk/model/ListAccountsResponseDtoTest.kt
 src/test/kotlin/com/cashful/kotlin/sdk/model/ListApiKeysResponseDtoTest.kt
 src/test/kotlin/com/cashful/kotlin/sdk/model/ListCheckoutSessionsResponseDtoTest.kt
+src/test/kotlin/com/cashful/kotlin/sdk/model/ListCustomerPaymentMethodsResponseDtoTest.kt
 src/test/kotlin/com/cashful/kotlin/sdk/model/ListCustomerTransactionsResponseDtoTest.kt
 src/test/kotlin/com/cashful/kotlin/sdk/model/ListCustomersResponseDtoTest.kt
 src/test/kotlin/com/cashful/kotlin/sdk/model/ListEventsResponseDtoTest.kt

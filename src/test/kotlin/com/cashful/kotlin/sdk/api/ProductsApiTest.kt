@@ -62,7 +62,7 @@ class ProductsApiTest : ShouldSpec() {
             // uncomment below to test updateProduct
             //val id : kotlin.String = id_example // kotlin.String | The unique identifier of the product
             //val updateProductDto : UpdateProductDto =  // UpdateProductDto | Product update details
-            //val result : kotlin.Any = apiInstance.updateProduct(id, updateProductDto)
+            //val result : ProductResponseDto = apiInstance.updateProduct(id, updateProductDto)
             //result shouldBe ("TODO")
         }
 

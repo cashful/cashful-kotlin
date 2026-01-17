@@ -299,7 +299,7 @@ class ProductsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      * Updates a product&#39;s name, description, or metadata.
      * @param id The unique identifier of the product
      * @param updateProductDto Product update details
-     * @return kotlin.Any
+     * @return ProductResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -308,11 +308,11 @@ class ProductsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun updateProduct(id: kotlin.String, updateProductDto: UpdateProductDto) : kotlin.Any = withContext(Dispatchers.IO) {
+    suspend fun updateProduct(id: kotlin.String, updateProductDto: UpdateProductDto) : ProductResponseDto = withContext(Dispatchers.IO) {
         val localVarResponse = updateProductWithHttpInfo(id = id, updateProductDto = updateProductDto)
 
         return@withContext when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ProductResponseDto
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -332,16 +332,16 @@ class ProductsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      * Updates a product&#39;s name, description, or metadata.
      * @param id The unique identifier of the product
      * @param updateProductDto Product update details
-     * @return ApiResponse<kotlin.Any?>
+     * @return ApiResponse<ProductResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun updateProductWithHttpInfo(id: kotlin.String, updateProductDto: UpdateProductDto) : ApiResponse<kotlin.Any?> = withContext(Dispatchers.IO) {
+    suspend fun updateProductWithHttpInfo(id: kotlin.String, updateProductDto: UpdateProductDto) : ApiResponse<ProductResponseDto?> = withContext(Dispatchers.IO) {
         val localVariableConfig = updateProductRequestConfig(id = id, updateProductDto = updateProductDto)
 
-        return@withContext request<UpdateProductDto, kotlin.Any>(
+        return@withContext request<UpdateProductDto, ProductResponseDto>(
             localVariableConfig
         )
     }

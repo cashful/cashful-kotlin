@@ -20,8 +20,10 @@ import okhttp3.Call
 import okhttp3.HttpUrl
 
 import com.cashful.kotlin.sdk.model.CreateCustomerDto
+import com.cashful.kotlin.sdk.model.CustomerBalanceDto
 import com.cashful.kotlin.sdk.model.CustomerResponseDto
 import com.cashful.kotlin.sdk.model.ErrorResponseDto
+import com.cashful.kotlin.sdk.model.ListCustomerPaymentMethodsResponseDto
 import com.cashful.kotlin.sdk.model.ListCustomerTransactionsResponseDto
 import com.cashful.kotlin.sdk.model.ListCustomersResponseDto
 import com.cashful.kotlin.sdk.model.UpdateCustomerDto
@@ -132,7 +134,7 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * Get Customer&#39;s Cash Balance
      * Retrieves the real-time balance for a single customer&#39;s \&quot;cash balance\&quot; (the \&quot;wallet-enabling\&quot; feature).
      * @param id The unique identifier of the customer
-     * @return kotlin.Any
+     * @return CustomerBalanceDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -141,11 +143,11 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun getCustomerBalance(id: kotlin.String) : kotlin.Any = withContext(Dispatchers.IO) {
+    suspend fun getCustomerBalance(id: kotlin.String) : CustomerBalanceDto = withContext(Dispatchers.IO) {
         val localVarResponse = getCustomerBalanceWithHttpInfo(id = id)
 
         return@withContext when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
+            ResponseType.Success -> (localVarResponse as Success<*>).data as CustomerBalanceDto
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -164,16 +166,16 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * Get Customer&#39;s Cash Balance
      * Retrieves the real-time balance for a single customer&#39;s \&quot;cash balance\&quot; (the \&quot;wallet-enabling\&quot; feature).
      * @param id The unique identifier of the customer
-     * @return ApiResponse<kotlin.Any?>
+     * @return ApiResponse<CustomerBalanceDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun getCustomerBalanceWithHttpInfo(id: kotlin.String) : ApiResponse<kotlin.Any?> = withContext(Dispatchers.IO) {
+    suspend fun getCustomerBalanceWithHttpInfo(id: kotlin.String) : ApiResponse<CustomerBalanceDto?> = withContext(Dispatchers.IO) {
         val localVariableConfig = getCustomerBalanceRequestConfig(id = id)
 
-        return@withContext request<Unit, kotlin.Any>(
+        return@withContext request<Unit, CustomerBalanceDto>(
             localVariableConfig
         )
     }
@@ -207,7 +209,7 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * @param id The unique identifier of the customer
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
-     * @return kotlin.Any
+     * @return ListCustomerPaymentMethodsResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -216,11 +218,11 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listCustomerPaymentMethods(id: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null) : kotlin.Any = withContext(Dispatchers.IO) {
+    suspend fun listCustomerPaymentMethods(id: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null) : ListCustomerPaymentMethodsResponseDto = withContext(Dispatchers.IO) {
         val localVarResponse = listCustomerPaymentMethodsWithHttpInfo(id = id, limit = limit, offset = offset)
 
         return@withContext when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ListCustomerPaymentMethodsResponseDto
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -241,16 +243,16 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * @param id The unique identifier of the customer
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
-     * @return ApiResponse<kotlin.Any?>
+     * @return ApiResponse<ListCustomerPaymentMethodsResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listCustomerPaymentMethodsWithHttpInfo(id: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : ApiResponse<kotlin.Any?> = withContext(Dispatchers.IO) {
+    suspend fun listCustomerPaymentMethodsWithHttpInfo(id: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : ApiResponse<ListCustomerPaymentMethodsResponseDto?> = withContext(Dispatchers.IO) {
         val localVariableConfig = listCustomerPaymentMethodsRequestConfig(id = id, limit = limit, offset = offset)
 
-        return@withContext request<Unit, kotlin.Any>(
+        return@withContext request<Unit, ListCustomerPaymentMethodsResponseDto>(
             localVariableConfig
         )
     }
@@ -479,7 +481,7 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * Retrieve Customer
      * Gets the details for a single customer.
      * @param id The unique identifier of the customer
-     * @return kotlin.Any
+     * @return CustomerResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -488,11 +490,11 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun retrieveCustomer(id: kotlin.String) : kotlin.Any = withContext(Dispatchers.IO) {
+    suspend fun retrieveCustomer(id: kotlin.String) : CustomerResponseDto = withContext(Dispatchers.IO) {
         val localVarResponse = retrieveCustomerWithHttpInfo(id = id)
 
         return@withContext when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
+            ResponseType.Success -> (localVarResponse as Success<*>).data as CustomerResponseDto
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -511,16 +513,16 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * Retrieve Customer
      * Gets the details for a single customer.
      * @param id The unique identifier of the customer
-     * @return ApiResponse<kotlin.Any?>
+     * @return ApiResponse<CustomerResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun retrieveCustomerWithHttpInfo(id: kotlin.String) : ApiResponse<kotlin.Any?> = withContext(Dispatchers.IO) {
+    suspend fun retrieveCustomerWithHttpInfo(id: kotlin.String) : ApiResponse<CustomerResponseDto?> = withContext(Dispatchers.IO) {
         val localVariableConfig = retrieveCustomerRequestConfig(id = id)
 
-        return@withContext request<Unit, kotlin.Any>(
+        return@withContext request<Unit, CustomerResponseDto>(
             localVariableConfig
         )
     }
@@ -553,7 +555,7 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * Updates a customer&#39;s details (e.g., email, metadata).
      * @param id The unique identifier of the customer
      * @param updateCustomerDto Customer update details
-     * @return kotlin.Any
+     * @return CustomerResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -562,11 +564,11 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun updateCustomer(id: kotlin.String, updateCustomerDto: UpdateCustomerDto) : kotlin.Any = withContext(Dispatchers.IO) {
+    suspend fun updateCustomer(id: kotlin.String, updateCustomerDto: UpdateCustomerDto) : CustomerResponseDto = withContext(Dispatchers.IO) {
         val localVarResponse = updateCustomerWithHttpInfo(id = id, updateCustomerDto = updateCustomerDto)
 
         return@withContext when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
+            ResponseType.Success -> (localVarResponse as Success<*>).data as CustomerResponseDto
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -586,16 +588,16 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * Updates a customer&#39;s details (e.g., email, metadata).
      * @param id The unique identifier of the customer
      * @param updateCustomerDto Customer update details
-     * @return ApiResponse<kotlin.Any?>
+     * @return ApiResponse<CustomerResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun updateCustomerWithHttpInfo(id: kotlin.String, updateCustomerDto: UpdateCustomerDto) : ApiResponse<kotlin.Any?> = withContext(Dispatchers.IO) {
+    suspend fun updateCustomerWithHttpInfo(id: kotlin.String, updateCustomerDto: UpdateCustomerDto) : ApiResponse<CustomerResponseDto?> = withContext(Dispatchers.IO) {
         val localVariableConfig = updateCustomerRequestConfig(id = id, updateCustomerDto = updateCustomerDto)
 
-        return@withContext request<UpdateCustomerDto, kotlin.Any>(
+        return@withContext request<UpdateCustomerDto, CustomerResponseDto>(
             localVariableConfig
         )
     }

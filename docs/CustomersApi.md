@@ -63,7 +63,7 @@ Configure bearer:
 
 <a id="getCustomerBalance"></a>
 # **getCustomerBalance**
-> kotlin.Any getCustomerBalance(id)
+> CustomerBalanceDto getCustomerBalance(id)
 
 Get Customer&#39;s Cash Balance
 
@@ -78,7 +78,7 @@ Retrieves the real-time balance for a single customer&#39;s \&quot;cash balance\
 val apiInstance = CustomersApi()
 val id : kotlin.String = id_example // kotlin.String | The unique identifier of the customer
 try {
-    val result : kotlin.Any = apiInstance.getCustomerBalance(id)
+    val result : CustomerBalanceDto = apiInstance.getCustomerBalance(id)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling CustomersApi#getCustomerBalance")
@@ -96,7 +96,7 @@ try {
 
 ### Return type
 
-[**kotlin.Any**](kotlin.Any.md)
+[**CustomerBalanceDto**](CustomerBalanceDto.md)
 
 ### Authorization
 
@@ -111,7 +111,7 @@ Configure bearer:
 
 <a id="listCustomerPaymentMethods"></a>
 # **listCustomerPaymentMethods**
-> kotlin.Any listCustomerPaymentMethods(id, limit, offset)
+> ListCustomerPaymentMethodsResponseDto listCustomerPaymentMethods(id, limit, offset)
 
 List Customer&#39;s Payment Methods
 
@@ -128,7 +128,7 @@ val id : kotlin.String = id_example // kotlin.String | The unique identifier of 
 val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
 val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
 try {
-    val result : kotlin.Any = apiInstance.listCustomerPaymentMethods(id, limit, offset)
+    val result : ListCustomerPaymentMethodsResponseDto = apiInstance.listCustomerPaymentMethods(id, limit, offset)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling CustomersApi#listCustomerPaymentMethods")
@@ -148,7 +148,7 @@ try {
 
 ### Return type
 
-[**kotlin.Any**](kotlin.Any.md)
+[**ListCustomerPaymentMethodsResponseDto**](ListCustomerPaymentMethodsResponseDto.md)
 
 ### Authorization
 
@@ -271,7 +271,7 @@ Configure bearer:
 
 <a id="retrieveCustomer"></a>
 # **retrieveCustomer**
-> kotlin.Any retrieveCustomer(id)
+> CustomerResponseDto retrieveCustomer(id)
 
 Retrieve Customer
 
@@ -286,7 +286,7 @@ Gets the details for a single customer.
 val apiInstance = CustomersApi()
 val id : kotlin.String = id_example // kotlin.String | The unique identifier of the customer
 try {
-    val result : kotlin.Any = apiInstance.retrieveCustomer(id)
+    val result : CustomerResponseDto = apiInstance.retrieveCustomer(id)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling CustomersApi#retrieveCustomer")
@@ -304,7 +304,7 @@ try {
 
 ### Return type
 
-[**kotlin.Any**](kotlin.Any.md)
+[**CustomerResponseDto**](CustomerResponseDto.md)
 
 ### Authorization
 
@@ -319,7 +319,7 @@ Configure bearer:
 
 <a id="updateCustomer"></a>
 # **updateCustomer**
-> kotlin.Any updateCustomer(id, updateCustomerDto)
+> CustomerResponseDto updateCustomer(id, updateCustomerDto)
 
 Update Customer
 
@@ -335,7 +335,7 @@ val apiInstance = CustomersApi()
 val id : kotlin.String = id_example // kotlin.String | The unique identifier of the customer
 val updateCustomerDto : UpdateCustomerDto =  // UpdateCustomerDto | Customer update details
 try {
-    val result : kotlin.Any = apiInstance.updateCustomer(id, updateCustomerDto)
+    val result : CustomerResponseDto = apiInstance.updateCustomer(id, updateCustomerDto)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling CustomersApi#updateCustomer")
@@ -354,7 +354,7 @@ try {
 
 ### Return type
 
-[**kotlin.Any**](kotlin.Any.md)
+[**CustomerResponseDto**](CustomerResponseDto.md)
 
 ### Authorization
 

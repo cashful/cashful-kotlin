@@ -23,42 +23,55 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
- * @param id 
- * @param merchantId 
- * @param url 
- * @param events 
- * @param active 
- * @param metadata 
- * @param createdAt 
- * @param updatedAt 
+ * @param id Unique identifier for the webhook endpoint
+ * @param merchantId The merchant ID this webhook belongs to
+ * @param url The URL where webhook events are sent
+ * @param events Array of event types subscribed to
+ * @param active Whether the webhook endpoint is active
+ * @param createdAt When the webhook endpoint was created
+ * @param updatedAt When the webhook endpoint was last updated
+ * @param metadata Custom metadata attached to the webhook endpoint
+ * @param deletedAt When the webhook endpoint was deleted (soft delete)
  */
 @Serializable
 
 data class WebhookEndpointResponseDto (
 
+    /* Unique identifier for the webhook endpoint */
     @SerialName(value = "id")
     val id: kotlin.String,
 
+    /* The merchant ID this webhook belongs to */
     @SerialName(value = "merchantId")
     val merchantId: kotlin.String,
 
+    /* The URL where webhook events are sent */
     @SerialName(value = "url")
     val url: kotlin.String,
 
+    /* Array of event types subscribed to */
     @SerialName(value = "events")
     val events: kotlin.collections.List<kotlin.String>,
 
+    /* Whether the webhook endpoint is active */
     @SerialName(value = "active")
     val active: kotlin.Boolean,
 
-    @Contextual @SerialName(value = "metadata")
-    val metadata: kotlin.collections.Map<kotlin.String, kotlin.Any>,
-
+    /* When the webhook endpoint was created */
     @Contextual @SerialName(value = "createdAt")
     val createdAt: java.time.OffsetDateTime,
 
+    /* When the webhook endpoint was last updated */
     @Contextual @SerialName(value = "updatedAt")
-    val updatedAt: java.time.OffsetDateTime
+    val updatedAt: java.time.OffsetDateTime,
+
+    /* Custom metadata attached to the webhook endpoint */
+    @Contextual @SerialName(value = "metadata")
+    val metadata: kotlin.collections.Map<kotlin.String, kotlin.Any>? = null,
+
+    /* When the webhook endpoint was deleted (soft delete) */
+    @Contextual @SerialName(value = "deletedAt")
+    val deletedAt: java.time.OffsetDateTime? = null
 
 ) {
 

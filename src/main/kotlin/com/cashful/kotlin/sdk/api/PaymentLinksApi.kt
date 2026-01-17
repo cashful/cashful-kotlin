@@ -221,6 +221,79 @@ class PaymentLinksApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * GET /api/canary/payment-links/{id}
+     * Retrieve Payment Link
+     * Retrieves a single payment link by ID.
+     * @param id The unique identifier of the payment link
+     * @return PaymentLinkResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun retrievePaymentLink(id: kotlin.String) : PaymentLinkResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = retrievePaymentLinkWithHttpInfo(id = id)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as PaymentLinkResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /api/canary/payment-links/{id}
+     * Retrieve Payment Link
+     * Retrieves a single payment link by ID.
+     * @param id The unique identifier of the payment link
+     * @return ApiResponse<PaymentLinkResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun retrievePaymentLinkWithHttpInfo(id: kotlin.String) : ApiResponse<PaymentLinkResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = retrievePaymentLinkRequestConfig(id = id)
+
+        return@withContext request<Unit, PaymentLinkResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation retrievePaymentLink
+     *
+     * @param id The unique identifier of the payment link
+     * @return RequestConfig
+     */
+    fun retrievePaymentLinkRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/api/canary/payment-links/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
      * PATCH /api/canary/payment-links/{id}
      * Update Payment Link
      * Updates a link&#39;s details, most commonly to set active: false.

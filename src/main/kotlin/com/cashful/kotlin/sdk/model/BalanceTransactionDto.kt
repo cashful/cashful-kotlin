@@ -26,15 +26,15 @@ import kotlinx.serialization.Contextual
  * @param id Unique identifier
  * @param createdAt 
  * @param updatedAt 
- * @param merchantId 
  * @param type 
  * @param amount 
  * @param currency 
  * @param description 
- * @param balanceAfter 
  * @param deletedAt 
+ * @param merchantId 
  * @param relatedEntityId 
  * @param relatedEntityType 
+ * @param balanceAfter 
  */
 @Serializable
 
@@ -50,9 +50,6 @@ data class BalanceTransactionDto (
     @Contextual @SerialName(value = "updatedAt")
     val updatedAt: java.time.OffsetDateTime,
 
-    @SerialName(value = "merchantId")
-    val merchantId: kotlin.String,
-
     @SerialName(value = "type")
     val type: kotlin.String,
 
@@ -65,17 +62,20 @@ data class BalanceTransactionDto (
     @SerialName(value = "description")
     val description: kotlin.String,
 
-    @Contextual @SerialName(value = "balanceAfter")
-    val balanceAfter: java.math.BigDecimal,
-
     @Contextual @SerialName(value = "deletedAt")
     val deletedAt: java.time.OffsetDateTime? = null,
+
+    @SerialName(value = "merchantId")
+    val merchantId: kotlin.String? = null,
 
     @SerialName(value = "relatedEntityId")
     val relatedEntityId: kotlin.String? = null,
 
     @SerialName(value = "relatedEntityType")
-    val relatedEntityType: kotlin.String? = null
+    val relatedEntityType: kotlin.String? = null,
+
+    @Contextual @SerialName(value = "balanceAfter")
+    val balanceAfter: java.math.BigDecimal? = null
 
 ) {
 

@@ -37,6 +37,7 @@ import kotlinx.serialization.Contextual
  * @param productId 
  * @param customerId 
  * @param amount 
+ * @param deletedAt 
  */
 @Serializable
 
@@ -55,7 +56,7 @@ data class PaymentLinkResponseDto (
     val currency: kotlin.String,
 
     @SerialName(value = "mode")
-    val mode: kotlin.String,
+    val mode: PaymentLinkResponseDto.Mode,
 
     @SerialName(value = "active")
     val active: kotlin.Boolean,
@@ -82,10 +83,24 @@ data class PaymentLinkResponseDto (
     val customerId: kotlin.String? = null,
 
     @Contextual @SerialName(value = "amount")
-    val amount: java.math.BigDecimal? = null
+    val amount: java.math.BigDecimal? = null,
+
+    @Contextual @SerialName(value = "deletedAt")
+    val deletedAt: java.time.OffsetDateTime? = null
 
 ) {
 
+    /**
+     * 
+     *
+     * Values: payment,setup,subscription
+     */
+    @Serializable
+    enum class Mode(val value: kotlin.String) {
+        @SerialName(value = "payment") payment("payment"),
+        @SerialName(value = "setup") setup("setup"),
+        @SerialName(value = "subscription") subscription("subscription");
+    }
 
 }
 

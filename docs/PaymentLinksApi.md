@@ -6,6 +6,7 @@ All URIs are relative to *http://localhost:9000*
 | ------------- | ------------- | ------------- |
 | [**createPaymentLink**](PaymentLinksApi.md#createPaymentLink) | **POST** /api/canary/payment-links | Create Payment Link |
 | [**listPaymentLinks**](PaymentLinksApi.md#listPaymentLinks) | **GET** /api/canary/payment-links | List Payment Links |
+| [**retrievePaymentLink**](PaymentLinksApi.md#retrievePaymentLink) | **GET** /api/canary/payment-links/{id} | Retrieve Payment Link |
 | [**updatePaymentLink**](PaymentLinksApi.md#updatePaymentLink) | **PATCH** /api/canary/payment-links/{id} | Update Payment Link |
 
 
@@ -99,6 +100,54 @@ try {
 ### Return type
 
 [**ListPaymentLinksResponseDto**](ListPaymentLinksResponseDto.md)
+
+### Authorization
+
+
+Configure bearer:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a id="retrievePaymentLink"></a>
+# **retrievePaymentLink**
+> PaymentLinkResponseDto retrievePaymentLink(id)
+
+Retrieve Payment Link
+
+Retrieves a single payment link by ID.
+
+### Example
+```kotlin
+// Import classes:
+//import com.cashful.kotlin.sdk.infrastructure.*
+//import com.cashful.kotlin.sdk.model.*
+
+val apiInstance = PaymentLinksApi()
+val id : kotlin.String = id_example // kotlin.String | The unique identifier of the payment link
+try {
+    val result : PaymentLinkResponseDto = apiInstance.retrievePaymentLink(id)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling PaymentLinksApi#retrievePaymentLink")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling PaymentLinksApi#retrievePaymentLink")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **kotlin.String**| The unique identifier of the payment link | |
+
+### Return type
+
+[**PaymentLinkResponseDto**](PaymentLinkResponseDto.md)
 
 ### Authorization
 

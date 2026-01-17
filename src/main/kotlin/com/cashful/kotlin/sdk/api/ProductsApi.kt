@@ -221,6 +221,79 @@ class ProductsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
     }
 
     /**
+     * GET /api/canary/products/{id}
+     * Retrieve Product
+     * Retrieves a single product by ID.
+     * @param id The unique identifier of the product
+     * @return ProductResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun retrieveProduct(id: kotlin.String) : ProductResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = retrieveProductWithHttpInfo(id = id)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ProductResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /api/canary/products/{id}
+     * Retrieve Product
+     * Retrieves a single product by ID.
+     * @param id The unique identifier of the product
+     * @return ApiResponse<ProductResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun retrieveProductWithHttpInfo(id: kotlin.String) : ApiResponse<ProductResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = retrieveProductRequestConfig(id = id)
+
+        return@withContext request<Unit, ProductResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation retrieveProduct
+     *
+     * @param id The unique identifier of the product
+     * @return RequestConfig
+     */
+    fun retrieveProductRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/api/canary/products/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
      * PATCH /api/canary/products/{id}
      * Update Product
      * Updates a product&#39;s name, description, or metadata.

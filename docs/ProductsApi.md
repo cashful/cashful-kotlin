@@ -6,6 +6,7 @@ All URIs are relative to *http://localhost:9000*
 | ------------- | ------------- | ------------- |
 | [**createProduct**](ProductsApi.md#createProduct) | **POST** /api/canary/products | Create Product |
 | [**listProducts**](ProductsApi.md#listProducts) | **GET** /api/canary/products | List Products |
+| [**retrieveProduct**](ProductsApi.md#retrieveProduct) | **GET** /api/canary/products/{id} | Retrieve Product |
 | [**updateProduct**](ProductsApi.md#updateProduct) | **PATCH** /api/canary/products/{id} | Update Product |
 
 
@@ -99,6 +100,54 @@ try {
 ### Return type
 
 [**ListProductsResponseDto**](ListProductsResponseDto.md)
+
+### Authorization
+
+
+Configure bearer:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a id="retrieveProduct"></a>
+# **retrieveProduct**
+> ProductResponseDto retrieveProduct(id)
+
+Retrieve Product
+
+Retrieves a single product by ID.
+
+### Example
+```kotlin
+// Import classes:
+//import com.cashful.kotlin.sdk.infrastructure.*
+//import com.cashful.kotlin.sdk.model.*
+
+val apiInstance = ProductsApi()
+val id : kotlin.String = id_example // kotlin.String | The unique identifier of the product
+try {
+    val result : ProductResponseDto = apiInstance.retrieveProduct(id)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling ProductsApi#retrieveProduct")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling ProductsApi#retrieveProduct")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **kotlin.String**| The unique identifier of the product | |
+
+### Return type
+
+[**ProductResponseDto**](ProductResponseDto.md)
 
 ### Authorization
 

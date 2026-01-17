@@ -51,9 +51,155 @@ class PaymentIntentsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * POST /api/canary/payment-intents/{id}/cancel
+     * Cancel Payment Intent
+     * Cancels a payment intent that has not yet succeeded or failed.
+     * @param id The unique identifier of the payment intent
+     * @return PaymentIntentResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun cancelPaymentIntent(id: kotlin.String) : PaymentIntentResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = cancelPaymentIntentWithHttpInfo(id = id)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as PaymentIntentResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /api/canary/payment-intents/{id}/cancel
+     * Cancel Payment Intent
+     * Cancels a payment intent that has not yet succeeded or failed.
+     * @param id The unique identifier of the payment intent
+     * @return ApiResponse<PaymentIntentResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun cancelPaymentIntentWithHttpInfo(id: kotlin.String) : ApiResponse<PaymentIntentResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = cancelPaymentIntentRequestConfig(id = id)
+
+        return@withContext request<Unit, PaymentIntentResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation cancelPaymentIntent
+     *
+     * @param id The unique identifier of the payment intent
+     * @return RequestConfig
+     */
+    fun cancelPaymentIntentRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/api/canary/payment-intents/{id}/cancel".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * POST /api/canary/payment-intents/{id}/confirm
+     * Confirm Payment Intent
+     * Confirms a payment intent that requires confirmation. This initiates the actual payment processing.
+     * @param id The unique identifier of the payment intent
+     * @return PaymentIntentResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun confirmPaymentIntent(id: kotlin.String) : PaymentIntentResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = confirmPaymentIntentWithHttpInfo(id = id)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as PaymentIntentResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /api/canary/payment-intents/{id}/confirm
+     * Confirm Payment Intent
+     * Confirms a payment intent that requires confirmation. This initiates the actual payment processing.
+     * @param id The unique identifier of the payment intent
+     * @return ApiResponse<PaymentIntentResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun confirmPaymentIntentWithHttpInfo(id: kotlin.String) : ApiResponse<PaymentIntentResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = confirmPaymentIntentRequestConfig(id = id)
+
+        return@withContext request<Unit, PaymentIntentResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation confirmPaymentIntent
+     *
+     * @param id The unique identifier of the payment intent
+     * @return RequestConfig
+     */
+    fun confirmPaymentIntentRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/api/canary/payment-intents/{id}/confirm".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
      * POST /api/canary/payment-intents
-     * Create Off-Session Charge
-     * Server-to-server API to charge a saved card. Used for subscriptions or recurring billing (a core gateway feature).
+     * Create Payment Intent
+     * Creates a payment intent for off-session charges. Used for subscriptions, recurring billing, or server-to-server payments with saved cards.
      * @param createPaymentIntentDto Payment intent details
      * @return PaymentIntentResponseDto
      * @throws IllegalStateException If the request is not correctly configured
@@ -84,8 +230,8 @@ class PaymentIntentsApi(basePath: kotlin.String = defaultBasePath, client: Call.
 
     /**
      * POST /api/canary/payment-intents
-     * Create Off-Session Charge
-     * Server-to-server API to charge a saved card. Used for subscriptions or recurring billing (a core gateway feature).
+     * Create Payment Intent
+     * Creates a payment intent for off-session charges. Used for subscriptions, recurring billing, or server-to-server payments with saved cards.
      * @param createPaymentIntentDto Payment intent details
      * @return ApiResponse<PaymentIntentResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -125,11 +271,127 @@ class PaymentIntentsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * enum for parameter status
+     */
+     enum class StatusListPaymentIntents(val value: kotlin.String) {
+         @SerialName(value = "initiation") initiation("initiation"),
+         @SerialName(value = "requires_payment_method") requires_payment_method("requires_payment_method"),
+         @SerialName(value = "requires_confirmation") requires_confirmation("requires_confirmation"),
+         @SerialName(value = "requires_action") requires_action("requires_action"),
+         @SerialName(value = "processing") processing("processing"),
+         @SerialName(value = "requires_capture") requires_capture("requires_capture"),
+         @SerialName(value = "succeeded") succeeded("succeeded"),
+         @SerialName(value = "failed") failed("failed"),
+         @SerialName(value = "canceled") canceled("canceled");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
+     }
+
+    /**
+     * GET /api/canary/payment-intents
+     * List Payment Intents
+     * Lists payment intents for a specific merchant with pagination and filtering.
+     * @param merchantId Filter by merchant ID
+     * @param limit Maximum number of records to return (optional, default to 50)
+     * @param offset Number of records to skip (optional, default to 0)
+     * @param status Filter by status (optional)
+     * @return void
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun listPaymentIntents(merchantId: kotlin.String, limit: java.math.BigDecimal? = java.math.BigDecimal("50"), offset: java.math.BigDecimal? = java.math.BigDecimal("0"), status: StatusListPaymentIntents? = null) : Unit = withContext(Dispatchers.IO) {
+        val localVarResponse = listPaymentIntentsWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, status = status)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> Unit
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /api/canary/payment-intents
+     * List Payment Intents
+     * Lists payment intents for a specific merchant with pagination and filtering.
+     * @param merchantId Filter by merchant ID
+     * @param limit Maximum number of records to return (optional, default to 50)
+     * @param offset Number of records to skip (optional, default to 0)
+     * @param status Filter by status (optional)
+     * @return ApiResponse<Unit?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun listPaymentIntentsWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, status: StatusListPaymentIntents?) : ApiResponse<Unit?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listPaymentIntentsRequestConfig(merchantId = merchantId, limit = limit, offset = offset, status = status)
+
+        return@withContext request<Unit, Unit>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation listPaymentIntents
+     *
+     * @param merchantId Filter by merchant ID
+     * @param limit Maximum number of records to return (optional, default to 50)
+     * @param offset Number of records to skip (optional, default to 0)
+     * @param status Filter by status (optional)
+     * @return RequestConfig
+     */
+    fun listPaymentIntentsRequestConfig(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, status: StatusListPaymentIntents?) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                put("merchantId", listOf(merchantId.toString()))
+                if (limit != null) {
+                    put("limit", listOf(limit.toString()))
+                }
+                if (offset != null) {
+                    put("offset", listOf(offset.toString()))
+                }
+                if (status != null) {
+                    put("status", listOf(status.value))
+                }
+            }
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/api/canary/payment-intents",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
      * GET /api/canary/payment-intents/{id}
      * Retrieve Payment Intent
-     * Checks the status of a specific server-to-server charge.
+     * Retrieves the current state of a specific payment intent.
      * @param id The unique identifier of the payment intent
-     * @return kotlin.Any
+     * @return PaymentIntentResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -138,11 +400,11 @@ class PaymentIntentsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun retrievePaymentIntent(id: kotlin.String) : kotlin.Any = withContext(Dispatchers.IO) {
+    suspend fun retrievePaymentIntent(id: kotlin.String) : PaymentIntentResponseDto = withContext(Dispatchers.IO) {
         val localVarResponse = retrievePaymentIntentWithHttpInfo(id = id)
 
         return@withContext when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
+            ResponseType.Success -> (localVarResponse as Success<*>).data as PaymentIntentResponseDto
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -159,18 +421,18 @@ class PaymentIntentsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * GET /api/canary/payment-intents/{id}
      * Retrieve Payment Intent
-     * Checks the status of a specific server-to-server charge.
+     * Retrieves the current state of a specific payment intent.
      * @param id The unique identifier of the payment intent
-     * @return ApiResponse<kotlin.Any?>
+     * @return ApiResponse<PaymentIntentResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun retrievePaymentIntentWithHttpInfo(id: kotlin.String) : ApiResponse<kotlin.Any?> = withContext(Dispatchers.IO) {
+    suspend fun retrievePaymentIntentWithHttpInfo(id: kotlin.String) : ApiResponse<PaymentIntentResponseDto?> = withContext(Dispatchers.IO) {
         val localVariableConfig = retrievePaymentIntentRequestConfig(id = id)
 
-        return@withContext request<Unit, kotlin.Any>(
+        return@withContext request<Unit, PaymentIntentResponseDto>(
             localVariableConfig
         )
     }

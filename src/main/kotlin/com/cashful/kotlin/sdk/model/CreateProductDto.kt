@@ -24,11 +24,11 @@ import kotlinx.serialization.Contextual
  * 
  *
  * @param name The name of the product
- * @param amount The price of the product in the smallest currency unit
  * @param currency The three-letter ISO 4217 currency code
  * @param metadata Optional custom metadata
  * @param merchantId The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant.
  * @param description A description of the product
+ * @param amount The price of the product in the smallest currency unit
  * @param active Whether the product is active
  */
 @Serializable
@@ -38,10 +38,6 @@ data class CreateProductDto (
     /* The name of the product */
     @SerialName(value = "name")
     val name: kotlin.String,
-
-    /* The price of the product in the smallest currency unit */
-    @Contextual @SerialName(value = "amount")
-    val amount: java.math.BigDecimal,
 
     /* The three-letter ISO 4217 currency code */
     @SerialName(value = "currency")
@@ -58,6 +54,10 @@ data class CreateProductDto (
     /* A description of the product */
     @SerialName(value = "description")
     val description: kotlin.String? = null,
+
+    /* The price of the product in the smallest currency unit */
+    @Contextual @SerialName(value = "amount")
+    val amount: java.math.BigDecimal? = null,
 
     /* Whether the product is active */
     @SerialName(value = "active")

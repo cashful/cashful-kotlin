@@ -23,18 +23,14 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
- * @param metadata Optional custom metadata
  * @param url The URL where webhook events will be sent
  * @param events Array of event types to listen for
  * @param active Whether the webhook endpoint is active
+ * @param metadata Optional custom metadata
  */
 @Serializable
 
 data class UpdateWebhookEndpointDto (
-
-    /* Optional custom metadata */
-    @Contextual @SerialName(value = "metadata")
-    val metadata: kotlin.collections.Map<kotlin.String, kotlin.Any>,
 
     /* The URL where webhook events will be sent */
     @SerialName(value = "url")
@@ -46,7 +42,11 @@ data class UpdateWebhookEndpointDto (
 
     /* Whether the webhook endpoint is active */
     @SerialName(value = "active")
-    val active: kotlin.Boolean? = null
+    val active: kotlin.Boolean? = null,
+
+    /* Optional custom metadata */
+    @Contextual @SerialName(value = "metadata")
+    val metadata: kotlin.collections.Map<kotlin.String, kotlin.Any>? = null
 
 ) {
 

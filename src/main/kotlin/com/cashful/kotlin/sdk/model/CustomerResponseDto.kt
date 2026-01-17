@@ -27,9 +27,10 @@ import kotlinx.serialization.Contextual
  * @param createdAt 
  * @param updatedAt 
  * @param merchantId 
- * @param email 
+ * @param phoneNumber The phone number of the customer
  * @param metadata 
  * @param deletedAt 
+ * @param email 
  * @param name 
  */
 @Serializable
@@ -49,14 +50,18 @@ data class CustomerResponseDto (
     @SerialName(value = "merchantId")
     val merchantId: kotlin.String,
 
-    @SerialName(value = "email")
-    val email: kotlin.String,
+    /* The phone number of the customer */
+    @SerialName(value = "phoneNumber")
+    val phoneNumber: kotlin.String,
 
     @Contextual @SerialName(value = "metadata")
     val metadata: kotlin.collections.Map<kotlin.String, kotlin.Any>,
 
     @Contextual @SerialName(value = "deletedAt")
     val deletedAt: java.time.OffsetDateTime? = null,
+
+    @SerialName(value = "email")
+    val email: kotlin.String? = null,
 
     @SerialName(value = "name")
     val name: kotlin.String? = null

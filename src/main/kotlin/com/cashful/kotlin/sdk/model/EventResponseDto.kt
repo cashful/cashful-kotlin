@@ -23,24 +23,38 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
- * @param id 
- * @param merchantId 
- * @param type 
+ * @param id Unique identifier for the event
+ * @param merchantId ID of the merchant this event belongs to
+ * @param webhookEndpointId ID of the webhook endpoint this event was sent to
+ * @param type Event type name
  * @param `data` Event data payload
- * @param createdAt 
- * @param relatedEntityId 
- * @param relatedEntityType 
+ * @param status Current delivery status of the event
+ * @param attempts Number of delivery attempts
+ * @param createdAt Timestamp when the event was created
+ * @param updatedAt Timestamp when the event was last updated
+ * @param relatedEntityId ID of the related entity
+ * @param relatedEntityType Type of the related entity
+ * @param lastAttemptAt Timestamp of the last delivery attempt
+ * @param nextRetryAt Timestamp for the next retry attempt
+ * @param deliveredAt Timestamp when the event was successfully delivered
  */
 @Serializable
 
 data class EventResponseDto (
 
+    /* Unique identifier for the event */
     @SerialName(value = "id")
     val id: kotlin.String,
 
+    /* ID of the merchant this event belongs to */
     @SerialName(value = "merchantId")
     val merchantId: kotlin.String,
 
+    /* ID of the webhook endpoint this event was sent to */
+    @SerialName(value = "webhookEndpointId")
+    val webhookEndpointId: kotlin.String,
+
+    /* Event type name */
     @SerialName(value = "type")
     val type: kotlin.String,
 
@@ -48,17 +62,55 @@ data class EventResponseDto (
     @Contextual @SerialName(value = "data")
     val `data`: kotlin.Any,
 
+    /* Current delivery status of the event */
+    @SerialName(value = "status")
+    val status: EventResponseDto.Status,
+
+    /* Number of delivery attempts */
+    @Contextual @SerialName(value = "attempts")
+    val attempts: java.math.BigDecimal,
+
+    /* Timestamp when the event was created */
     @Contextual @SerialName(value = "createdAt")
     val createdAt: java.time.OffsetDateTime,
 
+    /* Timestamp when the event was last updated */
+    @Contextual @SerialName(value = "updatedAt")
+    val updatedAt: java.time.OffsetDateTime,
+
+    /* ID of the related entity */
     @SerialName(value = "relatedEntityId")
     val relatedEntityId: kotlin.String? = null,
 
+    /* Type of the related entity */
     @SerialName(value = "relatedEntityType")
-    val relatedEntityType: kotlin.String? = null
+    val relatedEntityType: kotlin.String? = null,
+
+    /* Timestamp of the last delivery attempt */
+    @Contextual @SerialName(value = "lastAttemptAt")
+    val lastAttemptAt: java.time.OffsetDateTime? = null,
+
+    /* Timestamp for the next retry attempt */
+    @Contextual @SerialName(value = "nextRetryAt")
+    val nextRetryAt: java.time.OffsetDateTime? = null,
+
+    /* Timestamp when the event was successfully delivered */
+    @Contextual @SerialName(value = "deliveredAt")
+    val deliveredAt: java.time.OffsetDateTime? = null
 
 ) {
 
+    /**
+     * Current delivery status of the event
+     *
+     * Values: pending,delivered,failed
+     */
+    @Serializable
+    enum class Status(val value: kotlin.String) {
+        @SerialName(value = "pending") pending("pending"),
+        @SerialName(value = "delivered") delivered("delivered"),
+        @SerialName(value = "failed") failed("failed");
+    }
 
 }
 

@@ -50,6 +50,24 @@ class EventsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     }
 
     /**
+     * enum for parameter status
+     */
+     enum class StatusListEvents(val value: kotlin.String) {
+         @SerialName(value = "pending") pending("pending"),
+         @SerialName(value = "delivered") delivered("delivered"),
+         @SerialName(value = "failed") failed("failed");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
+     }
+
+    /**
      * GET /api/canary/events
      * List Events
      * Retrieves a log of all API events for debugging and logging.
@@ -57,6 +75,7 @@ class EventsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
      * @param type Filter by event type (optional)
+     * @param status Filter by event status (optional)
      * @param startDate Filter by start date (optional)
      * @param endDate Filter by end date (optional)
      * @return ListEventsResponseDto
@@ -68,8 +87,8 @@ class EventsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listEvents(merchantId: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, type: kotlin.String? = null, startDate: kotlin.String? = null, endDate: kotlin.String? = null) : ListEventsResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = listEventsWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, type = type, startDate = startDate, endDate = endDate)
+    suspend fun listEvents(merchantId: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, type: kotlin.String? = null, status: StatusListEvents? = null, startDate: kotlin.String? = null, endDate: kotlin.String? = null) : ListEventsResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = listEventsWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, type = type, status = status, startDate = startDate, endDate = endDate)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as ListEventsResponseDto
@@ -94,6 +113,7 @@ class EventsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
      * @param type Filter by event type (optional)
+     * @param status Filter by event status (optional)
      * @param startDate Filter by start date (optional)
      * @param endDate Filter by end date (optional)
      * @return ApiResponse<ListEventsResponseDto?>
@@ -102,8 +122,8 @@ class EventsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listEventsWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, type: kotlin.String?, startDate: kotlin.String?, endDate: kotlin.String?) : ApiResponse<ListEventsResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = listEventsRequestConfig(merchantId = merchantId, limit = limit, offset = offset, type = type, startDate = startDate, endDate = endDate)
+    suspend fun listEventsWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, type: kotlin.String?, status: StatusListEvents?, startDate: kotlin.String?, endDate: kotlin.String?) : ApiResponse<ListEventsResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listEventsRequestConfig(merchantId = merchantId, limit = limit, offset = offset, type = type, status = status, startDate = startDate, endDate = endDate)
 
         return@withContext request<Unit, ListEventsResponseDto>(
             localVariableConfig
@@ -117,11 +137,12 @@ class EventsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
      * @param type Filter by event type (optional)
+     * @param status Filter by event status (optional)
      * @param startDate Filter by start date (optional)
      * @param endDate Filter by end date (optional)
      * @return RequestConfig
      */
-    fun listEventsRequestConfig(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, type: kotlin.String?, startDate: kotlin.String?, endDate: kotlin.String?) : RequestConfig<Unit> {
+    fun listEventsRequestConfig(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, type: kotlin.String?, status: StatusListEvents?, startDate: kotlin.String?, endDate: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -134,6 +155,9 @@ class EventsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
                 }
                 if (type != null) {
                     put("type", listOf(type.toString()))
+                }
+                if (status != null) {
+                    put("status", listOf(status.value))
                 }
                 if (startDate != null) {
                     put("startDate", listOf(startDate.toString()))

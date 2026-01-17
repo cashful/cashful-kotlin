@@ -28,12 +28,12 @@ import kotlinx.serialization.Contextual
  * @param updatedAt 
  * @param merchantId 
  * @param name 
- * @param amount 
  * @param currency 
  * @param active 
  * @param metadata 
  * @param deletedAt 
  * @param description 
+ * @param amount 
  */
 @Serializable
 
@@ -55,9 +55,6 @@ data class ProductResponseDto (
     @SerialName(value = "name")
     val name: kotlin.String,
 
-    @Contextual @SerialName(value = "amount")
-    val amount: java.math.BigDecimal,
-
     @SerialName(value = "currency")
     val currency: kotlin.String,
 
@@ -71,7 +68,10 @@ data class ProductResponseDto (
     val deletedAt: java.time.OffsetDateTime? = null,
 
     @SerialName(value = "description")
-    val description: kotlin.String? = null
+    val description: kotlin.String? = null,
+
+    @Contextual @SerialName(value = "amount")
+    val amount: java.math.BigDecimal? = null
 
 ) {
 

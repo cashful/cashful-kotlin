@@ -9,7 +9,7 @@ All URIs are relative to *http://localhost:9000*
 
 <a id="listEvents"></a>
 # **listEvents**
-> ListEventsResponseDto listEvents(merchantId, limit, offset, type, startDate, endDate)
+> ListEventsResponseDto listEvents(merchantId, limit, offset, type, status, startDate, endDate)
 
 List Events
 
@@ -26,10 +26,11 @@ val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of
 val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
 val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
 val type : kotlin.String = type_example // kotlin.String | Filter by event type
+val status : kotlin.String = status_example // kotlin.String | Filter by event status
 val startDate : kotlin.String = startDate_example // kotlin.String | Filter by start date
 val endDate : kotlin.String = endDate_example // kotlin.String | Filter by end date
 try {
-    val result : ListEventsResponseDto = apiInstance.listEvents(merchantId, limit, offset, type, startDate, endDate)
+    val result : ListEventsResponseDto = apiInstance.listEvents(merchantId, limit, offset, type, status, startDate, endDate)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling EventsApi#listEvents")
@@ -45,6 +46,7 @@ try {
 | **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] |
 | **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
 | **type** | **kotlin.String**| Filter by event type | [optional] |
+| **status** | **kotlin.String**| Filter by event status | [optional] [enum: pending, delivered, failed] |
 | **startDate** | **kotlin.String**| Filter by start date | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |

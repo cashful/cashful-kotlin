@@ -23,27 +23,22 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
- * @param customerId The unique identifier of the customer
- * @param paymentMethodId The unique identifier of the payment method
- * @param amount The amount to charge in the smallest currency unit
+ * @param amount The amount to charge in the smallest currency unit (cents)
  * @param currency The three-letter ISO 4217 currency code
- * @param metadata Optional custom metadata
  * @param merchantId The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant.
+ * @param customerId The unique identifier of the customer. Optional for payment intents that don't require a customer.
+ * @param paymentMethodId The unique identifier of the payment method. Optional if payment method will be collected later.
+ * @param mode The mode of the payment intent
  * @param description Optional description for the payment
+ * @param metadata Optional custom metadata
+ * @param idempotencyKey A unique key to prevent duplicate charges. If not provided, one will be generated.
+ * @param expiresAt When the payment intent expires. Defaults to 24 hours from creation.
  */
 @Serializable
 
 data class CreatePaymentIntentDto (
 
-    /* The unique identifier of the customer */
-    @SerialName(value = "customerId")
-    val customerId: kotlin.String,
-
-    /* The unique identifier of the payment method */
-    @SerialName(value = "paymentMethodId")
-    val paymentMethodId: kotlin.String,
-
-    /* The amount to charge in the smallest currency unit */
+    /* The amount to charge in the smallest currency unit (cents) */
     @Contextual @SerialName(value = "amount")
     val amount: java.math.BigDecimal,
 
@@ -51,20 +46,51 @@ data class CreatePaymentIntentDto (
     @SerialName(value = "currency")
     val currency: kotlin.String,
 
-    /* Optional custom metadata */
-    @Contextual @SerialName(value = "metadata")
-    val metadata: kotlin.collections.Map<kotlin.String, kotlin.Any>,
-
     /* The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. */
     @SerialName(value = "merchantId")
     val merchantId: kotlin.String? = null,
 
+    /* The unique identifier of the customer. Optional for payment intents that don't require a customer. */
+    @SerialName(value = "customerId")
+    val customerId: kotlin.String? = null,
+
+    /* The unique identifier of the payment method. Optional if payment method will be collected later. */
+    @SerialName(value = "paymentMethodId")
+    val paymentMethodId: kotlin.String? = null,
+
+    /* The mode of the payment intent */
+    @SerialName(value = "mode")
+    val mode: CreatePaymentIntentDto.Mode? = Mode.payment,
+
     /* Optional description for the payment */
     @SerialName(value = "description")
-    val description: kotlin.String? = null
+    val description: kotlin.String? = null,
+
+    /* Optional custom metadata */
+    @Contextual @SerialName(value = "metadata")
+    val metadata: kotlin.collections.Map<kotlin.String, kotlin.Any>? = null,
+
+    /* A unique key to prevent duplicate charges. If not provided, one will be generated. */
+    @SerialName(value = "idempotencyKey")
+    val idempotencyKey: kotlin.String? = null,
+
+    /* When the payment intent expires. Defaults to 24 hours from creation. */
+    @Contextual @SerialName(value = "expiresAt")
+    val expiresAt: java.time.OffsetDateTime? = null
 
 ) {
 
+    /**
+     * The mode of the payment intent
+     *
+     * Values: payment,setup,subscription
+     */
+    @Serializable
+    enum class Mode(val value: kotlin.String) {
+        @SerialName(value = "payment") payment("payment"),
+        @SerialName(value = "setup") setup("setup"),
+        @SerialName(value = "subscription") subscription("subscription");
+    }
 
 }
 

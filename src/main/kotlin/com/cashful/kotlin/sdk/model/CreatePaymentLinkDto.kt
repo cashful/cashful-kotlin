@@ -43,7 +43,7 @@ data class CreatePaymentLinkDto (
 
     /* The payment mode (e.g., 'payment' or 'subscription') */
     @SerialName(value = "mode")
-    val mode: kotlin.String,
+    val mode: CreatePaymentLinkDto.Mode,
 
     /* The URL to redirect to on successful payment */
     @SerialName(value = "successUrl")
@@ -75,6 +75,17 @@ data class CreatePaymentLinkDto (
 
 ) {
 
+    /**
+     * The payment mode (e.g., 'payment' or 'subscription')
+     *
+     * Values: payment,setup,subscription
+     */
+    @Serializable
+    enum class Mode(val value: kotlin.String) {
+        @SerialName(value = "payment") payment("payment"),
+        @SerialName(value = "setup") setup("setup"),
+        @SerialName(value = "subscription") subscription("subscription");
+    }
 
 }
 

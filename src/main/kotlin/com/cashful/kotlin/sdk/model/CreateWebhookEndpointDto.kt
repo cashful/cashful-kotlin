@@ -25,8 +25,8 @@ import kotlinx.serialization.Contextual
  *
  * @param url The URL where webhook events will be sent
  * @param events Array of event types to listen for
- * @param metadata Optional custom metadata
  * @param merchantId The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant.
+ * @param metadata Optional custom metadata
  */
 @Serializable
 
@@ -40,13 +40,13 @@ data class CreateWebhookEndpointDto (
     @SerialName(value = "events")
     val events: kotlin.collections.List<kotlin.String>,
 
-    /* Optional custom metadata */
-    @Contextual @SerialName(value = "metadata")
-    val metadata: kotlin.collections.Map<kotlin.String, kotlin.Any>,
-
     /* The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. */
     @SerialName(value = "merchantId")
-    val merchantId: kotlin.String? = null
+    val merchantId: kotlin.String? = null,
+
+    /* Optional custom metadata */
+    @Contextual @SerialName(value = "metadata")
+    val metadata: kotlin.collections.Map<kotlin.String, kotlin.Any>? = null
 
 ) {
 

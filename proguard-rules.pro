@@ -6,6 +6,6 @@
 -keepclasseswithmembers class kotlinx.serialization.json.** { kotlinx.serialization.KSerializer serializer(...); }
 
 # project specific.
--keep,includedescriptorclasses class com.cashful.kotlin.sdk.model.**$$serializer { *; }
--keepclassmembers class com.cashful.kotlin.sdk.model.** { *** Companion; }
--keepclasseswithmembers class com.cashful.kotlin.sdk.model.** { kotlinx.serialization.KSerializer serializer(...); }
+-keep,includedescriptorclasses class com.cashful.model.**$$serializer { *; }
+-keepclassmembers class com.cashful.model.** { *** Companion; }
+-keepclasseswithmembers class com.cashful.model.** { kotlinx.serialization.KSerializer serializer(...); }

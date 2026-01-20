@@ -20,8 +20,8 @@ Creates a hosted payment page. Used for: (1) A standard e-commerce purchase, or 
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = CheckoutsApi()
 val createCheckoutSessionDto : CreateCheckoutSessionDto =  // CreateCheckoutSessionDto | Checkout session details
@@ -68,8 +68,8 @@ Lists checkout sessions
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = CheckoutsApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
@@ -122,8 +122,8 @@ Retrieves details of a specific checkout session
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = CheckoutsApi()
 val id : kotlin.String = id_example // kotlin.String | The unique identifier of the checkout session

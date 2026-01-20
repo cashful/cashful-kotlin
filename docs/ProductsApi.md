@@ -21,8 +21,8 @@ Defines a product in the merchant&#39;s catalog (e.g., \&quot;Airtime,\&quot; \&
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = ProductsApi()
 val createProductDto : CreateProductDto =  // CreateProductDto | Product details
@@ -69,8 +69,8 @@ Retrieves all products in the merchant&#39;s catalog.
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = ProductsApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
@@ -123,8 +123,8 @@ Retrieves a single product by ID.
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = ProductsApi()
 val id : kotlin.String = id_example // kotlin.String | The unique identifier of the product
@@ -171,8 +171,8 @@ Updates a product&#39;s name, description, or metadata.
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = ProductsApi()
 val id : kotlin.String = id_example // kotlin.String | The unique identifier of the product

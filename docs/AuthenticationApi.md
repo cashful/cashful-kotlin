@@ -75,8 +75,8 @@ Accept an invitation to an organization
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val acceptInvitationDto : AcceptInvitationDto =  // AcceptInvitationDto | 
@@ -123,8 +123,8 @@ Cancel an invitation to an organization
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val cancelInvitationDto : CancelInvitationDto =  // CancelInvitationDto | 
@@ -171,8 +171,8 @@ Change the email address of the current user
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val changeEmailDto : ChangeEmailDto =  // ChangeEmailDto | 
@@ -219,8 +219,8 @@ Change the password of the current user
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val changePasswordDto : ChangePasswordDto =  // ChangePasswordDto | 
@@ -267,8 +267,8 @@ Check if organization slug is available
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val checkSlugDto : CheckSlugDto =  // CheckSlugDto | 
@@ -315,8 +315,8 @@ Create a new API key
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val createApiKeyDto : CreateApiKeyDto =  // CreateApiKeyDto | 
@@ -363,8 +363,8 @@ Create a new organization
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val createOrganizationDto : CreateOrganizationDto =  // CreateOrganizationDto | 
@@ -411,8 +411,8 @@ Delete an API key
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val deleteApiKeyDto : DeleteApiKeyDto =  // DeleteApiKeyDto | 
@@ -459,8 +459,8 @@ Delete an organization
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val deleteOrganizationDto : DeleteOrganizationDto =  // DeleteOrganizationDto | 
@@ -507,8 +507,8 @@ Delete the current user&#39;s account
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val deleteUserDto : DeleteUserDto =  // DeleteUserDto | 
@@ -555,8 +555,8 @@ Send a password reset email to the user
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val forgotPasswordDto : ForgotPasswordDto =  // ForgotPasswordDto | 
@@ -601,8 +601,8 @@ Get current access token
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val getAccessTokenDto : GetAccessTokenDto =  // GetAccessTokenDto | 
@@ -649,8 +649,8 @@ Get the member details of the active organization
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val organizationId : kotlin.String = org_12345 // kotlin.String | Filter by organization ID
@@ -697,8 +697,8 @@ Get the role of the current user in the active organization
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val organizationId : kotlin.String = org_12345 // kotlin.String | Filter by organization ID
@@ -745,8 +745,8 @@ Retrieve a specific API key by ID
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val id : kotlin.String = key_12345 // kotlin.String | The ID of API key to retrieve
@@ -793,8 +793,8 @@ Get an invitation by ID
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val invitationId : kotlin.String = inv_12345 // kotlin.String | The ID of the invitation to get
@@ -841,8 +841,8 @@ Get the full organization details
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val organizationId : kotlin.String = org_12345 // kotlin.String | The organization ID to get
@@ -889,8 +889,8 @@ Retrieve the current user session
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 try {
@@ -934,8 +934,8 @@ Check if a user has permission
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val hasPermissionDto : HasPermissionDto =  // HasPermissionDto | 
@@ -982,8 +982,8 @@ Invite a user to an organization
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val inviteMemberDto : InviteMemberDto =  // InviteMemberDto | 
@@ -1030,8 +1030,8 @@ Check if username is available for signup
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val isUsernameAvailableDto : IsUsernameAvailableDto =  // IsUsernameAvailableDto | 
@@ -1076,8 +1076,8 @@ Leave an organization
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val leaveOrganizationDto : LeaveOrganizationDto =  // LeaveOrganizationDto | 
@@ -1124,8 +1124,8 @@ Link a social account to existing user
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val linkSocialDto : LinkSocialDto =  // LinkSocialDto | 
@@ -1172,8 +1172,8 @@ List all linked social accounts
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 try {
@@ -1217,8 +1217,8 @@ List all API keys for the current user
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 try {
@@ -1262,8 +1262,8 @@ List all members of an organization
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val organizationId : kotlin.String = org_12345 // kotlin.String | Filter by organization ID
@@ -1310,8 +1310,8 @@ List all invitations a user has received
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val organizationId : kotlin.String = org_12345 // kotlin.String | Filter by organization ID
@@ -1358,8 +1358,8 @@ List all organizations for the current user
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val include : kotlin.Boolean = true // kotlin.Boolean | Include additional organization data
@@ -1406,8 +1406,8 @@ List all invitations a user has received
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val status : kotlin.String = pending // kotlin.String | Filter by status
@@ -1454,8 +1454,8 @@ List all active sessions for the user
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 try {
@@ -1499,8 +1499,8 @@ Check if the authentication API is working
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 try {
@@ -1542,8 +1542,8 @@ Refresh authentication token
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val refreshTokenDto : RefreshTokenDto =  // RefreshTokenDto | 
@@ -1590,8 +1590,8 @@ Reject an invitation to an organization
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val rejectInvitationDto : RejectInvitationDto =  // RejectInvitationDto | 
@@ -1638,8 +1638,8 @@ Remove a member from an organization
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val removeMemberDto : RemoveMemberDto =  // RemoveMemberDto | 
@@ -1686,8 +1686,8 @@ Send a password reset email to the user
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val requestPasswordResetDto : RequestPasswordResetDto =  // RequestPasswordResetDto | 
@@ -1732,8 +1732,8 @@ Request password reset via phone number
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val requestPhonePasswordResetDto : RequestPhonePasswordResetDto =  // RequestPhonePasswordResetDto | 
@@ -1778,8 +1778,8 @@ Reset the user&#39;s password using a token
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val resetPasswordDto : ResetPasswordDto =  // ResetPasswordDto | 
@@ -1824,8 +1824,8 @@ Redirects user to callback URL with token
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val token : kotlin.String = token_example // kotlin.String | 
@@ -1872,8 +1872,8 @@ Reset password using phone verification
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val resetPhonePasswordDto : ResetPhonePasswordDto =  // ResetPhonePasswordDto | 
@@ -1918,8 +1918,8 @@ Revoke all sessions except the current one
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 try {
@@ -1963,8 +1963,8 @@ Revoke a specific session
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val revokeSessionDto : RevokeSessionDto =  // RevokeSessionDto | 
@@ -2011,8 +2011,8 @@ Revoke all sessions for the current user
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 try {
@@ -2056,8 +2056,8 @@ Send one-time password to phone number
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val sendPhoneOTPDto : SendPhoneOTPDto =  // SendPhoneOTPDto | 
@@ -2102,8 +2102,8 @@ Send a verification email to the user
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val sendVerificationEmailDto : SendVerificationEmailDto =  // SendVerificationEmailDto | 
@@ -2148,8 +2148,8 @@ Set the active organization for the current session
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val setActiveOrganizationDto : SetActiveOrganizationDto =  // SetActiveOrganizationDto | 
@@ -2196,8 +2196,8 @@ Authenticate a user using email and password
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val signInDto : SignInDto =  // SignInDto | 
@@ -2242,8 +2242,8 @@ Sign in using phone number and password
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val signInPhoneNumberDto : SignInPhoneNumberDto =  // SignInPhoneNumberDto | 
@@ -2288,8 +2288,8 @@ Sign out the current user and invalidate the session
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val body : kotlin.Any = Object // kotlin.Any | 
@@ -2336,8 +2336,8 @@ Create a new user account using email and password
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val signUpDto : SignUpDto =  // SignUpDto | 
@@ -2382,8 +2382,8 @@ Sign in with a social provider (OAuth, etc.)
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val socialSignInDto : SocialSignInDto =  // SocialSignInDto | 
@@ -2428,8 +2428,8 @@ Unlink a social account from user
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val unlinkAccountDto : UnlinkAccountDto =  // UnlinkAccountDto | 
@@ -2476,8 +2476,8 @@ Update an API key
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val updateApiKeyDto : UpdateApiKeyDto =  // UpdateApiKeyDto | 
@@ -2524,8 +2524,8 @@ Update a member&#39;s role in an organization
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val updateMemberRoleDto : UpdateMemberRoleDto =  // UpdateMemberRoleDto | 
@@ -2572,8 +2572,8 @@ Update an organization&#39;s details
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val updateOrganizationDto : UpdateOrganizationDto =  // UpdateOrganizationDto | 
@@ -2620,8 +2620,8 @@ Update the current user&#39;s information
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val updateUserDto : UpdateUserDto =  // UpdateUserDto | 
@@ -2668,8 +2668,8 @@ Verify an API key
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val verifyApiKeyDto : VerifyApiKeyDto =  // VerifyApiKeyDto | 
@@ -2714,8 +2714,8 @@ Verify the email of a user
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val token : kotlin.String = verify_token_12345 // kotlin.String | The token to verify email
@@ -2762,8 +2762,8 @@ Verify phone number with OTP code
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AuthenticationApi()
 val verifyPhoneNumberDto : VerifyPhoneNumberDto =  // VerifyPhoneNumberDto | 

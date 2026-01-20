@@ -19,8 +19,8 @@ Allows the merchant to move funds from their MerchantBalance (their earnings) to
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = PayoutsApi()
 val createPayoutDto : CreatePayoutDto =  // CreatePayoutDto | Payout details
@@ -67,8 +67,8 @@ Retrieves a list of all historical and pending payouts for the merchant.
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = PayoutsApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.

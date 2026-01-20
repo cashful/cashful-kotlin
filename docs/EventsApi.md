@@ -18,8 +18,8 @@ Retrieves a log of all API events for debugging and logging.
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = EventsApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.

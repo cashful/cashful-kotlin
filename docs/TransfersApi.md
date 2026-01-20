@@ -18,8 +18,8 @@ Create P2P Transfer
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = TransfersApi()
 val createTransferDto : CreateTransferDto =  // CreateTransferDto | Transfer details

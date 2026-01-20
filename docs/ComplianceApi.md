@@ -18,8 +18,8 @@ Create Compliance info
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = ComplianceApi()
 val createOrganizationComplianceDto : CreateOrganizationComplianceDto =  // CreateOrganizationComplianceDto | 
@@ -64,8 +64,8 @@ Get Compliance info for organization
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = ComplianceApi()
 val organizationId : kotlin.String = organizationId_example // kotlin.String | 
@@ -110,8 +110,8 @@ Update Compliance info
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = ComplianceApi()
 val id : kotlin.String = id_example // kotlin.String | 

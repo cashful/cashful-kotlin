@@ -19,8 +19,8 @@ Retrieves transaction volume and customer growth metrics for the merchant.
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AnalyticsApi()
 val merchantId : kotlin.String = merchant_123 // kotlin.String | The unique identifier of the merchant
@@ -67,8 +67,8 @@ Retrieves a quick summary of key metrics for the merchant.
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = AnalyticsApi()
 val merchantId : kotlin.String = merchant_123 // kotlin.String | The unique identifier of the merchant

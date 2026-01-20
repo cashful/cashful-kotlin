@@ -21,8 +21,8 @@ Creates a re-usable hosted link. Can be used for: (1) Selling a product, or (2) 
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = PaymentLinksApi()
 val createPaymentLinkDto : CreatePaymentLinkDto =  // CreatePaymentLinkDto | Payment link details
@@ -69,8 +69,8 @@ Retrieves all payment links created by the merchant.
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = PaymentLinksApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
@@ -123,8 +123,8 @@ Retrieves a single payment link by ID.
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = PaymentLinksApi()
 val id : kotlin.String = id_example // kotlin.String | The unique identifier of the payment link
@@ -171,8 +171,8 @@ Updates a link&#39;s details, most commonly to set active: false.
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = PaymentLinksApi()
 val id : kotlin.String = id_example // kotlin.String | The unique identifier of the payment link

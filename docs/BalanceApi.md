@@ -19,8 +19,8 @@ A full ledger of all transactions, fees, and payouts for the merchant&#39;s mast
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = BalanceApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
@@ -77,8 +77,8 @@ Retrieves the merchant&#39;s own master balance (their earnings) available for p
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = BalanceApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose balance is being requested.

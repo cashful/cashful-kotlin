@@ -24,8 +24,8 @@ Creates a new customer object. This also provisions their \&quot;cash balance\&q
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = CustomersApi()
 val createCustomerDto : CreateCustomerDto =  // CreateCustomerDto | Customer details
@@ -72,8 +72,8 @@ Retrieves the real-time balance for a single customer&#39;s \&quot;cash balance\
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = CustomersApi()
 val id : kotlin.String = id_example // kotlin.String | The unique identifier of the customer
@@ -120,8 +120,8 @@ Shows all saved payment methods (cards, etc.) for a single customer.
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = CustomersApi()
 val id : kotlin.String = id_example // kotlin.String | The unique identifier of the customer
@@ -172,8 +172,8 @@ Provides the full transaction history for a single customer&#39;s \&quot;cash ba
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = CustomersApi()
 val id : kotlin.String = id_example // kotlin.String | The unique identifier of the customer
@@ -224,8 +224,8 @@ Retrieves a paginated list of all customers for the merchant.
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = CustomersApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
@@ -280,8 +280,8 @@ Gets the details for a single customer.
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = CustomersApi()
 val id : kotlin.String = id_example // kotlin.String | The unique identifier of the customer
@@ -328,8 +328,8 @@ Updates a customer&#39;s details (e.g., email, metadata).
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = CustomersApi()
 val id : kotlin.String = id_example // kotlin.String | The unique identifier of the customer

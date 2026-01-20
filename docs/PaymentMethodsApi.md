@@ -20,8 +20,8 @@ Detaches and deletes a saved payment method from a customer.
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = PaymentMethodsApi()
 val id : kotlin.String = id_example // kotlin.String | The unique identifier of the payment method
@@ -68,8 +68,8 @@ Lists saved payment methods for a specific customer.
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = PaymentMethodsApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | The unique identifier of the merchant
@@ -122,8 +122,8 @@ Gets the non-sensitive details of a saved card (e.g., brand, last 4).
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = PaymentMethodsApi()
 val id : kotlin.String = id_example // kotlin.String | The unique identifier of the payment method

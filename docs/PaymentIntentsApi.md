@@ -22,8 +22,8 @@ Cancels a payment intent that has not yet succeeded or failed.
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = PaymentIntentsApi()
 val id : kotlin.String = id_example // kotlin.String | The unique identifier of the payment intent
@@ -70,8 +70,8 @@ Confirms a payment intent that requires confirmation. This initiates the actual 
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = PaymentIntentsApi()
 val id : kotlin.String = id_example // kotlin.String | The unique identifier of the payment intent
@@ -118,8 +118,8 @@ Creates a payment intent for off-session charges. Used for subscriptions, recurr
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = PaymentIntentsApi()
 val createPaymentIntentDto : CreatePaymentIntentDto =  // CreatePaymentIntentDto | Payment intent details
@@ -166,8 +166,8 @@ Lists payment intents for a specific merchant with pagination and filtering.
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = PaymentIntentsApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | Filter by merchant ID
@@ -219,8 +219,8 @@ Retrieves the current state of a specific payment intent.
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = PaymentIntentsApi()
 val id : kotlin.String = id_example // kotlin.String | The unique identifier of the payment intent

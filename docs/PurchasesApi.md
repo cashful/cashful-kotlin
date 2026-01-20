@@ -18,8 +18,8 @@ Buy with Cash Balance
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = PurchasesApi()
 val createPurchaseDto : CreatePurchaseDto =  // CreatePurchaseDto | Purchase details

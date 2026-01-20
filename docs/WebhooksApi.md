@@ -20,8 +20,8 @@ Registers a URL to receive real-time events (e.g., checkout.session.completed, p
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = WebhooksApi()
 val createWebhookEndpointDto : CreateWebhookEndpointDto =  // CreateWebhookEndpointDto | Webhook endpoint details
@@ -68,8 +68,8 @@ Stops sending events to a specific URL.
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = WebhooksApi()
 val id : kotlin.String = id_example // kotlin.String | The unique identifier of the webhook endpoint
@@ -116,8 +116,8 @@ Lists all configured webhook endpoints.
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = WebhooksApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.

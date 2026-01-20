@@ -19,8 +19,8 @@ Send an email notification
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = NotificationsApi()
 val sendEmailDto : SendEmailDto =  // SendEmailDto | 
@@ -63,8 +63,8 @@ Send notifications via multiple channels
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = NotificationsApi()
 try {
@@ -104,8 +104,8 @@ Send a notification via specified channel
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = NotificationsApi()
 val notificationDto : NotificationDto =  // NotificationDto | 
@@ -147,8 +147,8 @@ Send an SMS notification
 ### Example
 ```kotlin
 // Import classes:
-//import com.cashful.kotlin.sdk.infrastructure.*
-//import com.cashful.kotlin.sdk.model.*
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
 
 val apiInstance = NotificationsApi()
 val sendSmsDto : SendSmsDto =  // SendSmsDto | 

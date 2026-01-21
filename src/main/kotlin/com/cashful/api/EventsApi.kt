@@ -146,13 +146,13 @@ class EventsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                put("merchantId", listOf(merchantId.toString()))
                 if (limit != null) {
                     put("limit", listOf(limit.toString()))
                 }
                 if (offset != null) {
                     put("offset", listOf(offset.toString()))
                 }
+                put("merchantId", listOf(merchantId.toString()))
                 if (type != null) {
                     put("type", listOf(type.toString()))
                 }

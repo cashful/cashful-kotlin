@@ -21,6 +21,7 @@ import io.kotlintest.specs.ShouldSpec
 import com.cashful.api.TransfersApi
 import com.cashful.model.CreateTransferDto
 import com.cashful.model.ErrorResponseDto
+import com.cashful.model.ListTransfersResponseDto
 import com.cashful.model.TransferResponseDto
 
 class TransfersApiTest : ShouldSpec() {
@@ -33,6 +34,16 @@ class TransfersApiTest : ShouldSpec() {
             // uncomment below to test createTransfer
             //val createTransferDto : CreateTransferDto =  // CreateTransferDto | Transfer details
             //val result : TransferResponseDto = apiInstance.createTransfer(createTransferDto)
+            //result shouldBe ("TODO")
+        }
+
+        // to test listTransfers
+        should("test listTransfers") {
+            // uncomment below to test listTransfers
+            //val merchantId : kotlin.String = merchantId_example // kotlin.String | Filter by merchant ID
+            //val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of items to return
+            //val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of items to skip
+            //val result : ListTransfersResponseDto = apiInstance.listTransfers(merchantId, limit, offset)
             //result shouldBe ("TODO")
         }
 

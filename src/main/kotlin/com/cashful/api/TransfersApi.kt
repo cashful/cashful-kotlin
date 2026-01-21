@@ -21,6 +21,7 @@ import okhttp3.HttpUrl
 
 import com.cashful.model.CreateTransferDto
 import com.cashful.model.ErrorResponseDto
+import com.cashful.model.ListTransfersResponseDto
 import com.cashful.model.TransferResponseDto
 
 import kotlinx.serialization.SerialName
@@ -116,6 +117,94 @@ class TransfersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
 
         return RequestConfig(
             method = RequestMethod.POST,
+            path = "/api/canary/transfers",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * GET /api/canary/transfers
+     * List Transfers
+     * Lists transfers for a specific merchant with pagination.
+     * @param merchantId Filter by merchant ID
+     * @param limit Maximum number of items to return (optional)
+     * @param offset Number of items to skip (optional)
+     * @return ListTransfersResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun listTransfers(merchantId: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null) : ListTransfersResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = listTransfersWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ListTransfersResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /api/canary/transfers
+     * List Transfers
+     * Lists transfers for a specific merchant with pagination.
+     * @param merchantId Filter by merchant ID
+     * @param limit Maximum number of items to return (optional)
+     * @param offset Number of items to skip (optional)
+     * @return ApiResponse<ListTransfersResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun listTransfersWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : ApiResponse<ListTransfersResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listTransfersRequestConfig(merchantId = merchantId, limit = limit, offset = offset)
+
+        return@withContext request<Unit, ListTransfersResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation listTransfers
+     *
+     * @param merchantId Filter by merchant ID
+     * @param limit Maximum number of items to return (optional)
+     * @param offset Number of items to skip (optional)
+     * @return RequestConfig
+     */
+    fun listTransfersRequestConfig(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                if (limit != null) {
+                    put("limit", listOf(limit.toString()))
+                }
+                if (offset != null) {
+                    put("offset", listOf(offset.toString()))
+                }
+                put("merchantId", listOf(merchantId.toString()))
+            }
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
             path = "/api/canary/transfers",
             query = localVariableQuery,
             headers = localVariableHeaders,

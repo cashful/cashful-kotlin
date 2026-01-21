@@ -21,6 +21,7 @@ import okhttp3.HttpUrl
 
 import com.cashful.model.CreatePaymentIntentDto
 import com.cashful.model.ErrorResponseDto
+import com.cashful.model.ListPaymentIntentsResponseDto
 import com.cashful.model.PaymentIntentResponseDto
 
 import kotlinx.serialization.SerialName
@@ -302,19 +303,20 @@ class PaymentIntentsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * @param limit Maximum number of records to return (optional, default to 50)
      * @param offset Number of records to skip (optional, default to 0)
      * @param status Filter by status (optional)
-     * @return void
+     * @return ListPaymentIntentsResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listPaymentIntents(merchantId: kotlin.String, limit: java.math.BigDecimal? = java.math.BigDecimal("50"), offset: java.math.BigDecimal? = java.math.BigDecimal("0"), status: StatusListPaymentIntents? = null) : Unit = withContext(Dispatchers.IO) {
+    suspend fun listPaymentIntents(merchantId: kotlin.String, limit: java.math.BigDecimal? = java.math.BigDecimal("50"), offset: java.math.BigDecimal? = java.math.BigDecimal("0"), status: StatusListPaymentIntents? = null) : ListPaymentIntentsResponseDto = withContext(Dispatchers.IO) {
         val localVarResponse = listPaymentIntentsWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, status = status)
 
         return@withContext when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ListPaymentIntentsResponseDto
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -336,15 +338,16 @@ class PaymentIntentsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * @param limit Maximum number of records to return (optional, default to 50)
      * @param offset Number of records to skip (optional, default to 0)
      * @param status Filter by status (optional)
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<ListPaymentIntentsResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listPaymentIntentsWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, status: StatusListPaymentIntents?) : ApiResponse<Unit?> = withContext(Dispatchers.IO) {
+    suspend fun listPaymentIntentsWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, status: StatusListPaymentIntents?) : ApiResponse<ListPaymentIntentsResponseDto?> = withContext(Dispatchers.IO) {
         val localVariableConfig = listPaymentIntentsRequestConfig(merchantId = merchantId, limit = limit, offset = offset, status = status)
 
-        return@withContext request<Unit, Unit>(
+        return@withContext request<Unit, ListPaymentIntentsResponseDto>(
             localVariableConfig
         )
     }

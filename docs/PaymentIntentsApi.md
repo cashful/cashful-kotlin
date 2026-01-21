@@ -157,7 +157,7 @@ Configure bearer:
 
 <a id="listPaymentIntents"></a>
 # **listPaymentIntents**
-> listPaymentIntents(merchantId, limit, offset, status)
+> ListPaymentIntentsResponseDto listPaymentIntents(merchantId, limit, offset, status)
 
 List Payment Intents
 
@@ -175,7 +175,8 @@ val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number
 val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
 val status : kotlin.String = status_example // kotlin.String | Filter by status
 try {
-    apiInstance.listPaymentIntents(merchantId, limit, offset, status)
+    val result : ListPaymentIntentsResponseDto = apiInstance.listPaymentIntents(merchantId, limit, offset, status)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling PaymentIntentsApi#listPaymentIntents")
     e.printStackTrace()
@@ -195,7 +196,7 @@ try {
 
 ### Return type
 
-null (empty response body)
+[**ListPaymentIntentsResponseDto**](ListPaymentIntentsResponseDto.md)
 
 ### Authorization
 

@@ -23,8 +23,8 @@ Retrieves a log of all API events for debugging and logging.
 
 val apiInstance = EventsApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
-val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
-val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
+val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of records to return
+val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of records to skip
 val type : kotlin.String = type_example // kotlin.String | Filter by event type
 val status : kotlin.String = status_example // kotlin.String | Filter by event status
 val startDate : kotlin.String = startDate_example // kotlin.String | Filter by start date

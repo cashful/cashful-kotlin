@@ -21,6 +21,7 @@ import io.kotlintest.specs.ShouldSpec
 import com.cashful.api.PaymentIntentsApi
 import com.cashful.model.CreatePaymentIntentDto
 import com.cashful.model.ErrorResponseDto
+import com.cashful.model.ListPaymentIntentsResponseDto
 import com.cashful.model.PaymentIntentResponseDto
 
 class PaymentIntentsApiTest : ShouldSpec() {
@@ -59,7 +60,8 @@ class PaymentIntentsApiTest : ShouldSpec() {
             //val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
             //val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
             //val status : kotlin.String = status_example // kotlin.String | Filter by status
-            //apiInstance.listPaymentIntents(merchantId, limit, offset, status)
+            //val result : ListPaymentIntentsResponseDto = apiInstance.listPaymentIntents(merchantId, limit, offset, status)
+            //result shouldBe ("TODO")
         }
 
         // to test retrievePaymentIntent

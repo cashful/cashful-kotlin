@@ -9,6 +9,7 @@
 | **tags** | **kotlin.collections.List&lt;kotlin.String&gt;** | Tags for classification |  [optional] |
 | **relatedEntityId** | **kotlin.String** | Related entity ID (e.g., compliance info ID) |  [optional] |
 | **relatedEntityType** | **kotlin.String** | Related entity type |  [optional] |
+| **isPublic** | **kotlin.Boolean** | Whether the file should be publicly accessible |  [optional] |
 
 
 

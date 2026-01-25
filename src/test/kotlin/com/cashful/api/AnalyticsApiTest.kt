@@ -31,7 +31,7 @@ class AnalyticsApiTest : ShouldSpec() {
         // to test getAnalytics
         should("test getAnalytics") {
             // uncomment below to test getAnalytics
-            //val merchantId : kotlin.String = merchant_123 // kotlin.String | The unique identifier of the merchant
+            //val merchantId : kotlin.String = merchant_123 // kotlin.String | The unique identifier of the merchant. If not provided, defaults to the authenticated user's active organization.
             //val result : AnalyticsResponseDto = apiInstance.getAnalytics(merchantId)
             //result shouldBe ("TODO")
         }
@@ -39,7 +39,7 @@ class AnalyticsApiTest : ShouldSpec() {
         // to test getAnalyticsSummary
         should("test getAnalyticsSummary") {
             // uncomment below to test getAnalyticsSummary
-            //val merchantId : kotlin.String = merchant_123 // kotlin.String | The unique identifier of the merchant
+            //val merchantId : kotlin.String = merchant_123 // kotlin.String | The unique identifier of the merchant. If not provided, defaults to the authenticated user's active organization.
             //val result : AnalyticsSummaryDto = apiInstance.getAnalyticsSummary(merchantId)
             //result shouldBe ("TODO")
         }

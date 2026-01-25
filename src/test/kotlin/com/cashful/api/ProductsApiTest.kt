@@ -41,11 +41,11 @@ class ProductsApiTest : ShouldSpec() {
         // to test listProducts
         should("test listProducts") {
             // uncomment below to test listProducts
-            //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
             //val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of records to return
             //val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of records to skip
+            //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose products are being requested. If not provided, the products of the authenticated merchant will be returned.
             //val active : kotlin.Boolean = true // kotlin.Boolean | Filter by active status
-            //val result : ListProductsResponseDto = apiInstance.listProducts(merchantId, limit, offset, active)
+            //val result : ListProductsResponseDto = apiInstance.listProducts(limit, offset, merchantId, active)
             //result shouldBe ("TODO")
         }
 

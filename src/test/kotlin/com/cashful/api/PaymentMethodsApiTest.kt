@@ -39,11 +39,11 @@ class PaymentMethodsApiTest : ShouldSpec() {
         // to test listPaymentMethods
         should("test listPaymentMethods") {
             // uncomment below to test listPaymentMethods
-            //val merchantId : kotlin.String = merchantId_example // kotlin.String | The unique identifier of the merchant
             //val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of records to return
             //val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of records to skip
+            //val merchantId : kotlin.String = merchantId_example // kotlin.String | The unique identifier of the merchant. If not provided, defaults to the authenticated user's active organization.
             //val customerId : kotlin.String = customerId_example // kotlin.String | The unique identifier of the customer
-            //val result : ListPaymentMethodsResponseDto = apiInstance.listPaymentMethods(merchantId, limit, offset, customerId)
+            //val result : ListPaymentMethodsResponseDto = apiInstance.listPaymentMethods(limit, offset, merchantId, customerId)
             //result shouldBe ("TODO")
         }
 

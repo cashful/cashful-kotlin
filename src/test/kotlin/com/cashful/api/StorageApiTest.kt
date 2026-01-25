@@ -58,21 +58,20 @@ class StorageApiTest : ShouldSpec() {
         // to test storageControllerListCanary
         should("test storageControllerListCanary") {
             // uncomment below to test storageControllerListCanary
-            //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
             //val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of records to return
             //val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of records to skip
             //val tag : kotlin.String = tag_example // kotlin.String | Filter by tag
             //val status : kotlin.String = status_example // kotlin.String | 
             //val relatedEntityId : kotlin.String = relatedEntityId_example // kotlin.String | 
             //val relatedEntityType : kotlin.String = relatedEntityType_example // kotlin.String | 
-            //val result : ListFilesResponseDto = apiInstance.storageControllerListCanary(merchantId, limit, offset, tag, status, relatedEntityId, relatedEntityType)
+            //val result : ListFilesResponseDto = apiInstance.storageControllerListCanary(limit, offset, tag, status, relatedEntityId, relatedEntityType)
             //result shouldBe ("TODO")
         }
 
         // to test storageControllerRequestUploadUrlCanary
         should("test storageControllerRequestUploadUrlCanary") {
             // uncomment below to test storageControllerRequestUploadUrlCanary
-            //val requestUploadUrlDto : RequestUploadUrlDto = {"filename":"identity-document.pdf","mimeType":"application/pdf","tags":["compliance","identity-document"],"relatedEntityId":"compliance_info_123","relatedEntityType":"complianceInfo"} // RequestUploadUrlDto | 
+            //val requestUploadUrlDto : RequestUploadUrlDto = {"filename":"iphone-15.png","mimeType":"image/png","isPublic":true,"tags":["product","image"],"relatedEntityId":"product_123","relatedEntityType":"product"} // RequestUploadUrlDto | 
             //val result : PresignedUploadResponseDto = apiInstance.storageControllerRequestUploadUrlCanary(requestUploadUrlDto)
             //result shouldBe ("TODO")
         }

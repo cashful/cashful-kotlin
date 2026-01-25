@@ -71,7 +71,7 @@ class EventsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
      * GET /api/canary/events
      * List Events
      * Retrieves a log of all API events for debugging and logging.
-     * @param merchantId The ID of the merchant. This parameter is required.
+     * @param merchantId The ID of the merchant whose events are being requested. This parameter is required.
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
      * @param type Filter by event type (optional)
@@ -109,7 +109,7 @@ class EventsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
      * GET /api/canary/events
      * List Events
      * Retrieves a log of all API events for debugging and logging.
-     * @param merchantId The ID of the merchant. This parameter is required.
+     * @param merchantId The ID of the merchant whose events are being requested. This parameter is required.
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
      * @param type Filter by event type (optional)
@@ -133,7 +133,7 @@ class EventsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     /**
      * To obtain the request config of the operation listEvents
      *
-     * @param merchantId The ID of the merchant. This parameter is required.
+     * @param merchantId The ID of the merchant whose events are being requested. This parameter is required.
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
      * @param type Filter by event type (optional)

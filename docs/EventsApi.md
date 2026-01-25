@@ -22,7 +22,7 @@ Retrieves a log of all API events for debugging and logging.
 //import com.cashful.model.*
 
 val apiInstance = EventsApi()
-val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
+val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose events are being requested. This parameter is required.
 val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of records to return
 val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of records to skip
 val type : kotlin.String = type_example // kotlin.String | Filter by event type
@@ -42,7 +42,7 @@ try {
 ```
 
 ### Parameters
-| **merchantId** | **kotlin.String**| The ID of the merchant. This parameter is required. | |
+| **merchantId** | **kotlin.String**| The ID of the merchant whose events are being requested. This parameter is required. | |
 | **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] |
 | **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
 | **type** | **kotlin.String**| Filter by event type | [optional] |

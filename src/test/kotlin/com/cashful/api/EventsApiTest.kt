@@ -30,7 +30,7 @@ class EventsApiTest : ShouldSpec() {
         // to test listEvents
         should("test listEvents") {
             // uncomment below to test listEvents
-            //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
+            //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose events are being requested. This parameter is required.
             //val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of records to return
             //val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of records to skip
             //val type : kotlin.String = type_example // kotlin.String | Filter by event type

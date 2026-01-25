@@ -380,7 +380,7 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * GET /api/canary/customers
      * List Customers
      * Retrieves a paginated list of all customers for the merchant.
-     * @param merchantId The ID of the merchant. This parameter is required.
+     * @param merchantId The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
      * @param email Filter by email address (optional)
@@ -394,7 +394,7 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listCustomers(merchantId: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, email: kotlin.String? = null, search: kotlin.String? = null) : ListCustomersResponseDto = withContext(Dispatchers.IO) {
+    suspend fun listCustomers(merchantId: kotlin.String? = null, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, email: kotlin.String? = null, search: kotlin.String? = null) : ListCustomersResponseDto = withContext(Dispatchers.IO) {
         val localVarResponse = listCustomersWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, email = email, search = search)
 
         return@withContext when (localVarResponse.responseType) {
@@ -416,7 +416,7 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * GET /api/canary/customers
      * List Customers
      * Retrieves a paginated list of all customers for the merchant.
-     * @param merchantId The ID of the merchant. This parameter is required.
+     * @param merchantId The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
      * @param email Filter by email address (optional)
@@ -427,7 +427,7 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listCustomersWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, email: kotlin.String?, search: kotlin.String?) : ApiResponse<ListCustomersResponseDto?> = withContext(Dispatchers.IO) {
+    suspend fun listCustomersWithHttpInfo(merchantId: kotlin.String?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, email: kotlin.String?, search: kotlin.String?) : ApiResponse<ListCustomersResponseDto?> = withContext(Dispatchers.IO) {
         val localVariableConfig = listCustomersRequestConfig(merchantId = merchantId, limit = limit, offset = offset, email = email, search = search)
 
         return@withContext request<Unit, ListCustomersResponseDto>(
@@ -438,18 +438,20 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * To obtain the request config of the operation listCustomers
      *
-     * @param merchantId The ID of the merchant. This parameter is required.
+     * @param merchantId The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
      * @param email Filter by email address (optional)
      * @param search Search across customer fields (optional)
      * @return RequestConfig
      */
-    fun listCustomersRequestConfig(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, email: kotlin.String?, search: kotlin.String?) : RequestConfig<Unit> {
+    fun listCustomersRequestConfig(merchantId: kotlin.String?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, email: kotlin.String?, search: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                put("merchantId", listOf(merchantId.toString()))
+                if (merchantId != null) {
+                    put("merchantId", listOf(merchantId.toString()))
+                }
                 if (limit != null) {
                     put("limit", listOf(limit.toString()))
                 }

@@ -58,7 +58,7 @@ Configure bearer:
 
 <a id="listTransfers"></a>
 # **listTransfers**
-> ListTransfersResponseDto listTransfers(merchantId, limit, offset)
+> ListTransfersResponseDto listTransfers(limit, offset, merchantId)
 
 List Transfers
 
@@ -71,11 +71,11 @@ Lists transfers for a specific merchant with pagination.
 //import com.cashful.model.*
 
 val apiInstance = TransfersApi()
-val merchantId : kotlin.String = merchantId_example // kotlin.String | Filter by merchant ID
 val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of items to return
 val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of items to skip
+val merchantId : kotlin.String = merchantId_example // kotlin.String | Filter by merchant ID. If omitted, defaults to the authenticated merchant.
 try {
-    val result : ListTransfersResponseDto = apiInstance.listTransfers(merchantId, limit, offset)
+    val result : ListTransfersResponseDto = apiInstance.listTransfers(limit, offset, merchantId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling TransfersApi#listTransfers")
@@ -87,11 +87,11 @@ try {
 ```
 
 ### Parameters
-| **merchantId** | **kotlin.String**| Filter by merchant ID | |
 | **limit** | **java.math.BigDecimal**| Maximum number of items to return | [optional] |
+| **offset** | **java.math.BigDecimal**| Number of items to skip | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **offset** | **java.math.BigDecimal**| Number of items to skip | [optional] |
+| **merchantId** | **kotlin.String**| Filter by merchant ID. If omitted, defaults to the authenticated merchant. | [optional] |
 
 ### Return type
 

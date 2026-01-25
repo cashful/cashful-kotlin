@@ -59,7 +59,7 @@ Configure bearer:
 
 <a id="listPaymentMethods"></a>
 # **listPaymentMethods**
-> ListPaymentMethodsResponseDto listPaymentMethods(merchantId, limit, offset, customerId)
+> ListPaymentMethodsResponseDto listPaymentMethods(limit, offset, merchantId, customerId)
 
 List Payment Methods
 
@@ -72,12 +72,12 @@ Lists saved payment methods for a specific customer.
 //import com.cashful.model.*
 
 val apiInstance = PaymentMethodsApi()
-val merchantId : kotlin.String = merchantId_example // kotlin.String | The unique identifier of the merchant
 val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of records to return
 val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of records to skip
+val merchantId : kotlin.String = merchantId_example // kotlin.String | The unique identifier of the merchant. If not provided, defaults to the authenticated user's active organization.
 val customerId : kotlin.String = customerId_example // kotlin.String | The unique identifier of the customer
 try {
-    val result : ListPaymentMethodsResponseDto = apiInstance.listPaymentMethods(merchantId, limit, offset, customerId)
+    val result : ListPaymentMethodsResponseDto = apiInstance.listPaymentMethods(limit, offset, merchantId, customerId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PaymentMethodsApi#listPaymentMethods")
@@ -89,9 +89,9 @@ try {
 ```
 
 ### Parameters
-| **merchantId** | **kotlin.String**| The unique identifier of the merchant | |
 | **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] |
 | **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
+| **merchantId** | **kotlin.String**| The unique identifier of the merchant. If not provided, defaults to the authenticated user&#39;s active organization. | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **customerId** | **kotlin.String**| The unique identifier of the customer | [optional] |

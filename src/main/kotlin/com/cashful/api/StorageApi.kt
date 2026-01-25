@@ -295,7 +295,6 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * GET /api/canary/storage
      * List files
      * 
-     * @param merchantId The ID of the merchant. This parameter is required.
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
      * @param tag Filter by tag (optional)
@@ -311,8 +310,8 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun storageControllerListCanary(merchantId: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, tag: kotlin.String? = null, status: StatusStorageControllerListCanary? = null, relatedEntityId: kotlin.String? = null, relatedEntityType: kotlin.String? = null) : ListFilesResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = storageControllerListCanaryWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, tag = tag, status = status, relatedEntityId = relatedEntityId, relatedEntityType = relatedEntityType)
+    suspend fun storageControllerListCanary(limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, tag: kotlin.String? = null, status: StatusStorageControllerListCanary? = null, relatedEntityId: kotlin.String? = null, relatedEntityType: kotlin.String? = null) : ListFilesResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = storageControllerListCanaryWithHttpInfo(limit = limit, offset = offset, tag = tag, status = status, relatedEntityId = relatedEntityId, relatedEntityType = relatedEntityType)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as ListFilesResponseDto
@@ -333,7 +332,6 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * GET /api/canary/storage
      * List files
      * 
-     * @param merchantId The ID of the merchant. This parameter is required.
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
      * @param tag Filter by tag (optional)
@@ -346,8 +344,8 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun storageControllerListCanaryWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, tag: kotlin.String?, status: StatusStorageControllerListCanary?, relatedEntityId: kotlin.String?, relatedEntityType: kotlin.String?) : ApiResponse<ListFilesResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = storageControllerListCanaryRequestConfig(merchantId = merchantId, limit = limit, offset = offset, tag = tag, status = status, relatedEntityId = relatedEntityId, relatedEntityType = relatedEntityType)
+    suspend fun storageControllerListCanaryWithHttpInfo(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, tag: kotlin.String?, status: StatusStorageControllerListCanary?, relatedEntityId: kotlin.String?, relatedEntityType: kotlin.String?) : ApiResponse<ListFilesResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = storageControllerListCanaryRequestConfig(limit = limit, offset = offset, tag = tag, status = status, relatedEntityId = relatedEntityId, relatedEntityType = relatedEntityType)
 
         return@withContext request<Unit, ListFilesResponseDto>(
             localVariableConfig
@@ -357,7 +355,6 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * To obtain the request config of the operation storageControllerListCanary
      *
-     * @param merchantId The ID of the merchant. This parameter is required.
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
      * @param tag Filter by tag (optional)
@@ -366,7 +363,7 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * @param relatedEntityType  (optional)
      * @return RequestConfig
      */
-    fun storageControllerListCanaryRequestConfig(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, tag: kotlin.String?, status: StatusStorageControllerListCanary?, relatedEntityId: kotlin.String?, relatedEntityType: kotlin.String?) : RequestConfig<Unit> {
+    fun storageControllerListCanaryRequestConfig(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, tag: kotlin.String?, status: StatusStorageControllerListCanary?, relatedEntityId: kotlin.String?, relatedEntityType: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -388,7 +385,6 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
                 if (relatedEntityType != null) {
                     put("relatedEntityType", listOf(relatedEntityType.toString()))
                 }
-                put("merchantId", listOf(merchantId.toString()))
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Accept"] = "application/json"

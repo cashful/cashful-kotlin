@@ -15,6 +15,8 @@
 | **deletedAt** | [**java.time.OffsetDateTime**](java.time.OffsetDateTime.md) |  |  [optional] |
 | **description** | **kotlin.String** |  |  [optional] |
 | **amount** | [**java.math.BigDecimal**](java.math.BigDecimal.md) |  |  [optional] |
+| **imageId** | **kotlin.String** | The ID of the product image file |  [optional] |
+| **imageUrl** | **kotlin.String** | The public URL of the product image |  [optional] |
 
 
 

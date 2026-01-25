@@ -170,7 +170,7 @@ Lists payment intents for a specific merchant with pagination and filtering.
 //import com.cashful.model.*
 
 val apiInstance = PaymentIntentsApi()
-val merchantId : kotlin.String = merchantId_example // kotlin.String | Filter by merchant ID
+val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. If omitted, defaults to the authenticated merchant.
 val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
 val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
 val status : kotlin.String = status_example // kotlin.String | Filter by status
@@ -187,7 +187,7 @@ try {
 ```
 
 ### Parameters
-| **merchantId** | **kotlin.String**| Filter by merchant ID | |
+| **merchantId** | **kotlin.String**| The ID of the merchant. If omitted, defaults to the authenticated merchant. | [optional] |
 | **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] [default to 50] |
 | **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] [default to 0] |
 | Name | Type | Description  | Notes |

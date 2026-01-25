@@ -73,7 +73,7 @@ Retrieves all payment links created by the merchant.
 //import com.cashful.model.*
 
 val apiInstance = PaymentLinksApi()
-val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
+val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose payment links are being requested. If omitted, defaults to the authenticated merchant.
 val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
 val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
 val active : kotlin.Boolean = true // kotlin.Boolean | Filter by active status
@@ -90,7 +90,7 @@ try {
 ```
 
 ### Parameters
-| **merchantId** | **kotlin.String**| The ID of the merchant. This parameter is required. | |
+| **merchantId** | **kotlin.String**| The ID of the merchant whose payment links are being requested. If omitted, defaults to the authenticated merchant. | [optional] |
 | **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] |
 | **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
 | Name | Type | Description  | Notes |

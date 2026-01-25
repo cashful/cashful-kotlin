@@ -20,6 +20,8 @@ All URIs are relative to *https://api.cashful.africa*
 | [**getActiveMemberRole**](AuthenticationApi.md#getActiveMemberRole) | **GET** /api/canary/authentication/organization/get-active-member-role | Get Active Member Role |
 | [**getApiKey**](AuthenticationApi.md#getApiKey) | **GET** /api/canary/authentication/api-key/get | Get API Key |
 | [**getInvitation**](AuthenticationApi.md#getInvitation) | **GET** /api/canary/authentication/organization/get-invitation | Get Invitation |
+| [**getJSONWebKeySet**](AuthenticationApi.md#getJSONWebKeySet) | **GET** /api/canary/authentication/jwks | Get the JSON Web Key Set |
+| [**getJSONWebToken**](AuthenticationApi.md#getJSONWebToken) | **GET** /api/canary/authentication/token | Get a JWT token |
 | [**getOrganization**](AuthenticationApi.md#getOrganization) | **GET** /api/canary/authentication/organization/get-full-organization | Get Full Organization |
 | [**getSession**](AuthenticationApi.md#getSession) | **GET** /api/canary/authentication/get-session | Get Session |
 | [**hasPermission**](AuthenticationApi.md#hasPermission) | **POST** /api/canary/authentication/organization/has-permission | Has Permission |
@@ -818,6 +820,96 @@ try {
 ### Return type
 
 [**GetInvitationResponseDto**](GetInvitationResponseDto.md)
+
+### Authorization
+
+
+Configure bearer:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a id="getJSONWebKeySet"></a>
+# **getJSONWebKeySet**
+> GetJsonWebKeySetResponseDto getJSONWebKeySet()
+
+Get the JSON Web Key Set
+
+Get the JSON Web Key Set
+
+### Example
+```kotlin
+// Import classes:
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
+
+val apiInstance = AuthenticationApi()
+try {
+    val result : GetJsonWebKeySetResponseDto = apiInstance.getJSONWebKeySet()
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling AuthenticationApi#getJSONWebKeySet")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling AuthenticationApi#getJSONWebKeySet")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetJsonWebKeySetResponseDto**](GetJsonWebKeySetResponseDto.md)
+
+### Authorization
+
+
+Configure bearer:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a id="getJSONWebToken"></a>
+# **getJSONWebToken**
+> GetJsonWebTokenResponseDto getJSONWebToken()
+
+Get a JWT token
+
+Get a JWT token
+
+### Example
+```kotlin
+// Import classes:
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
+
+val apiInstance = AuthenticationApi()
+try {
+    val result : GetJsonWebTokenResponseDto = apiInstance.getJSONWebToken()
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling AuthenticationApi#getJSONWebToken")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling AuthenticationApi#getJSONWebToken")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetJsonWebTokenResponseDto**](GetJsonWebTokenResponseDto.md)
 
 ### Authorization
 

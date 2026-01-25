@@ -60,7 +60,7 @@ Configure bearer:
 
 <a id="listProducts"></a>
 # **listProducts**
-> ListProductsResponseDto listProducts(merchantId, limit, offset, active)
+> ListProductsResponseDto listProducts(limit, offset, merchantId, active)
 
 List Products
 
@@ -73,12 +73,12 @@ Retrieves all products in the merchant&#39;s catalog.
 //import com.cashful.model.*
 
 val apiInstance = ProductsApi()
-val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
 val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of records to return
 val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of records to skip
+val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose products are being requested. If not provided, the products of the authenticated merchant will be returned.
 val active : kotlin.Boolean = true // kotlin.Boolean | Filter by active status
 try {
-    val result : ListProductsResponseDto = apiInstance.listProducts(merchantId, limit, offset, active)
+    val result : ListProductsResponseDto = apiInstance.listProducts(limit, offset, merchantId, active)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling ProductsApi#listProducts")
@@ -90,9 +90,9 @@ try {
 ```
 
 ### Parameters
-| **merchantId** | **kotlin.String**| The ID of the merchant. This parameter is required. | |
 | **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] |
 | **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
+| **merchantId** | **kotlin.String**| The ID of the merchant whose products are being requested. If not provided, the products of the authenticated merchant will be returned. | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **active** | **kotlin.Boolean**| Filter by active status | [optional] |

@@ -151,7 +151,7 @@ Configure bearer:
 
 <a id="storageControllerListCanary"></a>
 # **storageControllerListCanary**
-> ListFilesResponseDto storageControllerListCanary(merchantId, limit, offset, tag, status, relatedEntityId, relatedEntityType)
+> ListFilesResponseDto storageControllerListCanary(limit, offset, tag, status, relatedEntityId, relatedEntityType)
 
 List files
 
@@ -162,7 +162,6 @@ List files
 //import com.cashful.model.*
 
 val apiInstance = StorageApi()
-val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
 val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of records to return
 val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of records to skip
 val tag : kotlin.String = tag_example // kotlin.String | Filter by tag
@@ -170,7 +169,7 @@ val status : kotlin.String = status_example // kotlin.String |
 val relatedEntityId : kotlin.String = relatedEntityId_example // kotlin.String | 
 val relatedEntityType : kotlin.String = relatedEntityType_example // kotlin.String | 
 try {
-    val result : ListFilesResponseDto = apiInstance.storageControllerListCanary(merchantId, limit, offset, tag, status, relatedEntityId, relatedEntityType)
+    val result : ListFilesResponseDto = apiInstance.storageControllerListCanary(limit, offset, tag, status, relatedEntityId, relatedEntityType)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling StorageApi#storageControllerListCanary")
@@ -182,7 +181,6 @@ try {
 ```
 
 ### Parameters
-| **merchantId** | **kotlin.String**| The ID of the merchant. This parameter is required. | |
 | **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] |
 | **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
 | **tag** | **kotlin.String**| Filter by tag | [optional] |
@@ -220,7 +218,7 @@ Request a presigned URL for file upload
 //import com.cashful.model.*
 
 val apiInstance = StorageApi()
-val requestUploadUrlDto : RequestUploadUrlDto = {"filename":"identity-document.pdf","mimeType":"application/pdf","tags":["compliance","identity-document"],"relatedEntityId":"compliance_info_123","relatedEntityType":"complianceInfo"} // RequestUploadUrlDto | 
+val requestUploadUrlDto : RequestUploadUrlDto = {"filename":"iphone-15.png","mimeType":"image/png","isPublic":true,"tags":["product","image"],"relatedEntityId":"product_123","relatedEntityType":"product"} // RequestUploadUrlDto | 
 try {
     val result : PresignedUploadResponseDto = apiInstance.storageControllerRequestUploadUrlCanary(requestUploadUrlDto)
     println(result)

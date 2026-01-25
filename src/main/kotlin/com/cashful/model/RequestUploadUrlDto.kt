@@ -28,6 +28,7 @@ import kotlinx.serialization.Contextual
  * @param tags Tags for classification
  * @param relatedEntityId Related entity ID (e.g., compliance info ID)
  * @param relatedEntityType Related entity type
+ * @param isPublic Whether the file should be publicly accessible
  */
 @Serializable
 
@@ -51,7 +52,11 @@ data class RequestUploadUrlDto (
 
     /* Related entity type */
     @SerialName(value = "relatedEntityType")
-    val relatedEntityType: kotlin.String? = null
+    val relatedEntityType: kotlin.String? = null,
+
+    /* Whether the file should be publicly accessible */
+    @SerialName(value = "isPublic")
+    val isPublic: kotlin.Boolean? = false
 
 ) {
 

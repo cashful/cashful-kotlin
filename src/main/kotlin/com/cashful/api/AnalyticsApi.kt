@@ -54,7 +54,7 @@ class AnalyticsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * GET /api/canary/analytics
      * Get Analytics
      * Retrieves transaction volume and customer growth metrics for the merchant.
-     * @param merchantId The unique identifier of the merchant
+     * @param merchantId The unique identifier of the merchant. If not provided, defaults to the authenticated user&#39;s active organization. (optional)
      * @return AnalyticsResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -64,7 +64,7 @@ class AnalyticsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun getAnalytics(merchantId: kotlin.String) : AnalyticsResponseDto = withContext(Dispatchers.IO) {
+    suspend fun getAnalytics(merchantId: kotlin.String? = null) : AnalyticsResponseDto = withContext(Dispatchers.IO) {
         val localVarResponse = getAnalyticsWithHttpInfo(merchantId = merchantId)
 
         return@withContext when (localVarResponse.responseType) {
@@ -86,14 +86,14 @@ class AnalyticsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * GET /api/canary/analytics
      * Get Analytics
      * Retrieves transaction volume and customer growth metrics for the merchant.
-     * @param merchantId The unique identifier of the merchant
+     * @param merchantId The unique identifier of the merchant. If not provided, defaults to the authenticated user&#39;s active organization. (optional)
      * @return ApiResponse<AnalyticsResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun getAnalyticsWithHttpInfo(merchantId: kotlin.String) : ApiResponse<AnalyticsResponseDto?> = withContext(Dispatchers.IO) {
+    suspend fun getAnalyticsWithHttpInfo(merchantId: kotlin.String?) : ApiResponse<AnalyticsResponseDto?> = withContext(Dispatchers.IO) {
         val localVariableConfig = getAnalyticsRequestConfig(merchantId = merchantId)
 
         return@withContext request<Unit, AnalyticsResponseDto>(
@@ -104,14 +104,16 @@ class AnalyticsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * To obtain the request config of the operation getAnalytics
      *
-     * @param merchantId The unique identifier of the merchant
+     * @param merchantId The unique identifier of the merchant. If not provided, defaults to the authenticated user&#39;s active organization. (optional)
      * @return RequestConfig
      */
-    fun getAnalyticsRequestConfig(merchantId: kotlin.String) : RequestConfig<Unit> {
+    fun getAnalyticsRequestConfig(merchantId: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                put("merchantId", listOf(merchantId.toString()))
+                if (merchantId != null) {
+                    put("merchantId", listOf(merchantId.toString()))
+                }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Accept"] = "application/json"
@@ -130,7 +132,7 @@ class AnalyticsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * GET /api/canary/analytics/summary
      * Get Analytics Summary
      * Retrieves a quick summary of key metrics for the merchant.
-     * @param merchantId The unique identifier of the merchant
+     * @param merchantId The unique identifier of the merchant. If not provided, defaults to the authenticated user&#39;s active organization. (optional)
      * @return AnalyticsSummaryDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -140,7 +142,7 @@ class AnalyticsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun getAnalyticsSummary(merchantId: kotlin.String) : AnalyticsSummaryDto = withContext(Dispatchers.IO) {
+    suspend fun getAnalyticsSummary(merchantId: kotlin.String? = null) : AnalyticsSummaryDto = withContext(Dispatchers.IO) {
         val localVarResponse = getAnalyticsSummaryWithHttpInfo(merchantId = merchantId)
 
         return@withContext when (localVarResponse.responseType) {
@@ -162,14 +164,14 @@ class AnalyticsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * GET /api/canary/analytics/summary
      * Get Analytics Summary
      * Retrieves a quick summary of key metrics for the merchant.
-     * @param merchantId The unique identifier of the merchant
+     * @param merchantId The unique identifier of the merchant. If not provided, defaults to the authenticated user&#39;s active organization. (optional)
      * @return ApiResponse<AnalyticsSummaryDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun getAnalyticsSummaryWithHttpInfo(merchantId: kotlin.String) : ApiResponse<AnalyticsSummaryDto?> = withContext(Dispatchers.IO) {
+    suspend fun getAnalyticsSummaryWithHttpInfo(merchantId: kotlin.String?) : ApiResponse<AnalyticsSummaryDto?> = withContext(Dispatchers.IO) {
         val localVariableConfig = getAnalyticsSummaryRequestConfig(merchantId = merchantId)
 
         return@withContext request<Unit, AnalyticsSummaryDto>(
@@ -180,14 +182,16 @@ class AnalyticsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * To obtain the request config of the operation getAnalyticsSummary
      *
-     * @param merchantId The unique identifier of the merchant
+     * @param merchantId The unique identifier of the merchant. If not provided, defaults to the authenticated user&#39;s active organization. (optional)
      * @return RequestConfig
      */
-    fun getAnalyticsSummaryRequestConfig(merchantId: kotlin.String) : RequestConfig<Unit> {
+    fun getAnalyticsSummaryRequestConfig(merchantId: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                put("merchantId", listOf(merchantId.toString()))
+                if (merchantId != null) {
+                    put("merchantId", listOf(merchantId.toString()))
+                }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Accept"] = "application/json"

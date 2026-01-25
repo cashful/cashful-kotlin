@@ -23,7 +23,7 @@ A full ledger of all transactions, fees, and payouts for the merchant&#39;s mast
 //import com.cashful.model.*
 
 val apiInstance = BalanceApi()
-val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
+val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant.
 val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
 val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
 val startDate : kotlin.String = startDate_example // kotlin.String | Filter transactions from this date (ISO 8601 format)
@@ -42,7 +42,7 @@ try {
 ```
 
 ### Parameters
-| **merchantId** | **kotlin.String**| The ID of the merchant. This parameter is required. | |
+| **merchantId** | **kotlin.String**| The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. | [optional] |
 | **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] |
 | **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
 | **startDate** | **kotlin.String**| Filter transactions from this date (ISO 8601 format) | [optional] |
@@ -81,7 +81,7 @@ Retrieves the merchant&#39;s own master balance (their earnings) available for p
 //import com.cashful.model.*
 
 val apiInstance = BalanceApi()
-val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose balance is being requested.
+val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant.
 try {
     val result : MerchantBalanceResponseDto = apiInstance.getMerchantBalance(merchantId)
     println(result)
@@ -97,7 +97,7 @@ try {
 ### Parameters
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **merchantId** | **kotlin.String**| The ID of the merchant whose balance is being requested. | |
+| **merchantId** | **kotlin.String**| The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. | [optional] |
 
 ### Return type
 

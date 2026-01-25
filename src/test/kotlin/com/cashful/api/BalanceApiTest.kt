@@ -31,7 +31,7 @@ class BalanceApiTest : ShouldSpec() {
         // to test getBalanceHistory
         should("test getBalanceHistory") {
             // uncomment below to test getBalanceHistory
-            //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
+            //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant.
             //val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
             //val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
             //val startDate : kotlin.String = startDate_example // kotlin.String | Filter transactions from this date (ISO 8601 format)
@@ -44,7 +44,7 @@ class BalanceApiTest : ShouldSpec() {
         // to test getMerchantBalance
         should("test getMerchantBalance") {
             // uncomment below to test getMerchantBalance
-            //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose balance is being requested.
+            //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant.
             //val result : MerchantBalanceResponseDto = apiInstance.getMerchantBalance(merchantId)
             //result shouldBe ("TODO")
         }

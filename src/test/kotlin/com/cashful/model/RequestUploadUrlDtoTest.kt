@@ -55,5 +55,11 @@ class RequestUploadUrlDtoTest : ShouldSpec() {
             //modelInstance.relatedEntityType shouldBe ("TODO")
         }
 
+        // to test the property `isPublic` - Whether the file should be publicly accessible
+        should("test isPublic") {
+            // uncomment below to test the property
+            //modelInstance.isPublic shouldBe ("TODO")
+        }
+
     }
 }

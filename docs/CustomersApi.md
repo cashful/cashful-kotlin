@@ -228,7 +228,7 @@ Retrieves a paginated list of all customers for the merchant.
 //import com.cashful.model.*
 
 val apiInstance = CustomersApi()
-val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
+val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant.
 val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
 val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
 val email : kotlin.String = email_example // kotlin.String | Filter by email address
@@ -246,7 +246,7 @@ try {
 ```
 
 ### Parameters
-| **merchantId** | **kotlin.String**| The ID of the merchant. This parameter is required. | |
+| **merchantId** | **kotlin.String**| The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. | [optional] |
 | **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] |
 | **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
 | **email** | **kotlin.String**| Filter by email address | [optional] |

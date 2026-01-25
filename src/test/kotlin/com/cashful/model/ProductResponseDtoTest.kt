@@ -91,5 +91,17 @@ class ProductResponseDtoTest : ShouldSpec() {
             //modelInstance.amount shouldBe ("TODO")
         }
 
+        // to test the property `imageId` - The ID of the product image file
+        should("test imageId") {
+            // uncomment below to test the property
+            //modelInstance.imageId shouldBe ("TODO")
+        }
+
+        // to test the property `imageUrl` - The public URL of the product image
+        should("test imageUrl") {
+            // uncomment below to test the property
+            //modelInstance.imageUrl shouldBe ("TODO")
+        }
+
     }
 }

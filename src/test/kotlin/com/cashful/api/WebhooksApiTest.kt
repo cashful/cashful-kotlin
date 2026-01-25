@@ -48,7 +48,7 @@ class WebhooksApiTest : ShouldSpec() {
         // to test listWebhookEndpoints
         should("test listWebhookEndpoints") {
             // uncomment below to test listWebhookEndpoints
-            //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
+            //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose webhooks are being requested. If omitted, defaults to the authenticated merchant.
             //val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
             //val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
             //val result : ListWebhookEndpointsResponseDto = apiInstance.listWebhookEndpoints(merchantId, limit, offset)

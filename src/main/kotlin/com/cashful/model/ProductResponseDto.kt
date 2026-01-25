@@ -34,6 +34,8 @@ import kotlinx.serialization.Contextual
  * @param deletedAt 
  * @param description 
  * @param amount 
+ * @param imageId The ID of the product image file
+ * @param imageUrl The public URL of the product image
  */
 @Serializable
 
@@ -71,7 +73,15 @@ data class ProductResponseDto (
     val description: kotlin.String? = null,
 
     @Contextual @SerialName(value = "amount")
-    val amount: java.math.BigDecimal? = null
+    val amount: java.math.BigDecimal? = null,
+
+    /* The ID of the product image file */
+    @SerialName(value = "imageId")
+    val imageId: kotlin.String? = null,
+
+    /* The public URL of the product image */
+    @SerialName(value = "imageUrl")
+    val imageUrl: kotlin.String? = null
 
 ) {
 

@@ -54,7 +54,7 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * GET /api/canary/balance/history
      * List Merchant Balance History
      * A full ledger of all transactions, fees, and payouts for the merchant&#39;s master account.
-     * @param merchantId The ID of the merchant. This parameter is required.
+     * @param merchantId The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
      * @param startDate Filter transactions from this date (ISO 8601 format) (optional)
@@ -69,7 +69,7 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun getBalanceHistory(merchantId: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, startDate: kotlin.String? = null, endDate: kotlin.String? = null, transactionType: kotlin.String? = null) : BalanceHistoryResponseDto = withContext(Dispatchers.IO) {
+    suspend fun getBalanceHistory(merchantId: kotlin.String? = null, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, startDate: kotlin.String? = null, endDate: kotlin.String? = null, transactionType: kotlin.String? = null) : BalanceHistoryResponseDto = withContext(Dispatchers.IO) {
         val localVarResponse = getBalanceHistoryWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, startDate = startDate, endDate = endDate, transactionType = transactionType)
 
         return@withContext when (localVarResponse.responseType) {
@@ -91,7 +91,7 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * GET /api/canary/balance/history
      * List Merchant Balance History
      * A full ledger of all transactions, fees, and payouts for the merchant&#39;s master account.
-     * @param merchantId The ID of the merchant. This parameter is required.
+     * @param merchantId The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
      * @param startDate Filter transactions from this date (ISO 8601 format) (optional)
@@ -103,7 +103,7 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun getBalanceHistoryWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, startDate: kotlin.String?, endDate: kotlin.String?, transactionType: kotlin.String?) : ApiResponse<BalanceHistoryResponseDto?> = withContext(Dispatchers.IO) {
+    suspend fun getBalanceHistoryWithHttpInfo(merchantId: kotlin.String?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, startDate: kotlin.String?, endDate: kotlin.String?, transactionType: kotlin.String?) : ApiResponse<BalanceHistoryResponseDto?> = withContext(Dispatchers.IO) {
         val localVariableConfig = getBalanceHistoryRequestConfig(merchantId = merchantId, limit = limit, offset = offset, startDate = startDate, endDate = endDate, transactionType = transactionType)
 
         return@withContext request<Unit, BalanceHistoryResponseDto>(
@@ -114,7 +114,7 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * To obtain the request config of the operation getBalanceHistory
      *
-     * @param merchantId The ID of the merchant. This parameter is required.
+     * @param merchantId The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
      * @param startDate Filter transactions from this date (ISO 8601 format) (optional)
@@ -122,11 +122,13 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * @param transactionType Filter by transaction type (e.g., \&quot;credit\&quot;, \&quot;debit\&quot;, \&quot;fee\&quot;, \&quot;payout\&quot;) (optional)
      * @return RequestConfig
      */
-    fun getBalanceHistoryRequestConfig(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, startDate: kotlin.String?, endDate: kotlin.String?, transactionType: kotlin.String?) : RequestConfig<Unit> {
+    fun getBalanceHistoryRequestConfig(merchantId: kotlin.String?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, startDate: kotlin.String?, endDate: kotlin.String?, transactionType: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                put("merchantId", listOf(merchantId.toString()))
+                if (merchantId != null) {
+                    put("merchantId", listOf(merchantId.toString()))
+                }
                 if (limit != null) {
                     put("limit", listOf(limit.toString()))
                 }
@@ -160,7 +162,7 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * GET /api/canary/balance
      * Get Merchant Balance
      * Retrieves the merchant&#39;s own master balance (their earnings) available for payouts.
-     * @param merchantId The ID of the merchant whose balance is being requested.
+     * @param merchantId The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. (optional)
      * @return MerchantBalanceResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -170,7 +172,7 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun getMerchantBalance(merchantId: kotlin.String) : MerchantBalanceResponseDto = withContext(Dispatchers.IO) {
+    suspend fun getMerchantBalance(merchantId: kotlin.String? = null) : MerchantBalanceResponseDto = withContext(Dispatchers.IO) {
         val localVarResponse = getMerchantBalanceWithHttpInfo(merchantId = merchantId)
 
         return@withContext when (localVarResponse.responseType) {
@@ -192,14 +194,14 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * GET /api/canary/balance
      * Get Merchant Balance
      * Retrieves the merchant&#39;s own master balance (their earnings) available for payouts.
-     * @param merchantId The ID of the merchant whose balance is being requested.
+     * @param merchantId The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. (optional)
      * @return ApiResponse<MerchantBalanceResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun getMerchantBalanceWithHttpInfo(merchantId: kotlin.String) : ApiResponse<MerchantBalanceResponseDto?> = withContext(Dispatchers.IO) {
+    suspend fun getMerchantBalanceWithHttpInfo(merchantId: kotlin.String?) : ApiResponse<MerchantBalanceResponseDto?> = withContext(Dispatchers.IO) {
         val localVariableConfig = getMerchantBalanceRequestConfig(merchantId = merchantId)
 
         return@withContext request<Unit, MerchantBalanceResponseDto>(
@@ -210,14 +212,16 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * To obtain the request config of the operation getMerchantBalance
      *
-     * @param merchantId The ID of the merchant whose balance is being requested.
+     * @param merchantId The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. (optional)
      * @return RequestConfig
      */
-    fun getMerchantBalanceRequestConfig(merchantId: kotlin.String) : RequestConfig<Unit> {
+    fun getMerchantBalanceRequestConfig(merchantId: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                put("merchantId", listOf(merchantId.toString()))
+                if (merchantId != null) {
+                    put("merchantId", listOf(merchantId.toString()))
+                }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Accept"] = "application/json"

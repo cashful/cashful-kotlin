@@ -72,7 +72,7 @@ Lists checkout sessions
 //import com.cashful.model.*
 
 val apiInstance = CheckoutsApi()
-val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. This parameter is required.
+val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant to filter checkout sessions
 val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of records to return
 val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of records to skip
 val status : kotlin.String = status_example // kotlin.String | The status to filter checkout sessions
@@ -89,7 +89,7 @@ try {
 ```
 
 ### Parameters
-| **merchantId** | **kotlin.String**| The ID of the merchant. This parameter is required. | |
+| **merchantId** | **kotlin.String**| The ID of the merchant to filter checkout sessions | |
 | **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] |
 | **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
 | Name | Type | Description  | Notes |

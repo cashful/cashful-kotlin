@@ -129,7 +129,7 @@ class PayoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * GET /api/canary/payouts
      * List Payouts
      * Retrieves a list of all historical and pending payouts for the merchant.
-     * @param merchantId The ID of the merchant. This parameter is required.
+     * @param merchantId The ID of the merchant whose payouts are being requested. If omitted, defaults to the authenticated merchant. (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
      * @param status Filter by status (optional)
@@ -142,7 +142,7 @@ class PayoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listPayouts(merchantId: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, status: kotlin.String? = null) : ListPayoutsResponseDto = withContext(Dispatchers.IO) {
+    suspend fun listPayouts(merchantId: kotlin.String? = null, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, status: kotlin.String? = null) : ListPayoutsResponseDto = withContext(Dispatchers.IO) {
         val localVarResponse = listPayoutsWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, status = status)
 
         return@withContext when (localVarResponse.responseType) {
@@ -164,7 +164,7 @@ class PayoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * GET /api/canary/payouts
      * List Payouts
      * Retrieves a list of all historical and pending payouts for the merchant.
-     * @param merchantId The ID of the merchant. This parameter is required.
+     * @param merchantId The ID of the merchant whose payouts are being requested. If omitted, defaults to the authenticated merchant. (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
      * @param status Filter by status (optional)
@@ -174,7 +174,7 @@ class PayoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listPayoutsWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, status: kotlin.String?) : ApiResponse<ListPayoutsResponseDto?> = withContext(Dispatchers.IO) {
+    suspend fun listPayoutsWithHttpInfo(merchantId: kotlin.String?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, status: kotlin.String?) : ApiResponse<ListPayoutsResponseDto?> = withContext(Dispatchers.IO) {
         val localVariableConfig = listPayoutsRequestConfig(merchantId = merchantId, limit = limit, offset = offset, status = status)
 
         return@withContext request<Unit, ListPayoutsResponseDto>(
@@ -185,17 +185,19 @@ class PayoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * To obtain the request config of the operation listPayouts
      *
-     * @param merchantId The ID of the merchant. This parameter is required.
+     * @param merchantId The ID of the merchant whose payouts are being requested. If omitted, defaults to the authenticated merchant. (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
      * @param status Filter by status (optional)
      * @return RequestConfig
      */
-    fun listPayoutsRequestConfig(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, status: kotlin.String?) : RequestConfig<Unit> {
+    fun listPayoutsRequestConfig(merchantId: kotlin.String?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, status: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                put("merchantId", listOf(merchantId.toString()))
+                if (merchantId != null) {
+                    put("merchantId", listOf(merchantId.toString()))
+                }
                 if (limit != null) {
                     put("limit", listOf(limit.toString()))
                 }

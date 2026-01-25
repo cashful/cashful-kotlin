@@ -40,10 +40,10 @@ class TransfersApiTest : ShouldSpec() {
         // to test listTransfers
         should("test listTransfers") {
             // uncomment below to test listTransfers
-            //val merchantId : kotlin.String = merchantId_example // kotlin.String | Filter by merchant ID
             //val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of items to return
             //val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of items to skip
-            //val result : ListTransfersResponseDto = apiInstance.listTransfers(merchantId, limit, offset)
+            //val merchantId : kotlin.String = merchantId_example // kotlin.String | Filter by merchant ID. If omitted, defaults to the authenticated merchant.
+            //val result : ListTransfersResponseDto = apiInstance.listTransfers(limit, offset, merchantId)
             //result shouldBe ("TODO")
         }
 

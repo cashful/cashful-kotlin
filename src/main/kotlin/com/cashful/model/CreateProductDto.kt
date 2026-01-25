@@ -30,6 +30,7 @@ import kotlinx.serialization.Contextual
  * @param description A description of the product
  * @param amount The price of the product in the smallest currency unit
  * @param active Whether the product is active
+ * @param imageId The ID of the product image file
  */
 @Serializable
 
@@ -61,7 +62,11 @@ data class CreateProductDto (
 
     /* Whether the product is active */
     @SerialName(value = "active")
-    val active: kotlin.Boolean? = null
+    val active: kotlin.Boolean? = null,
+
+    /* The ID of the product image file */
+    @SerialName(value = "imageId")
+    val imageId: kotlin.String? = null
 
 ) {
 

@@ -86,6 +86,8 @@ docs/GetActiveMemberRoleResponseDto.md
 docs/GetApiKeyResponseDto.md
 docs/GetFullOrganizationResponseDto.md
 docs/GetInvitationResponseDto.md
+docs/GetJsonWebKeySetResponseDto.md
+docs/GetJsonWebTokenResponseDto.md
 docs/GetSessionResponseDto.md
 docs/HasPermissionDto.md
 docs/HasPermissionResponseDto.md
@@ -101,6 +103,7 @@ docs/InviteMemberResponseDto.md
 docs/IsUsernameAvailableDto.md
 docs/IsUsernameAvailableResponseDto.md
 docs/IveriParamsDto.md
+docs/JwkDto.md
 docs/LeaveOrganizationDto.md
 docs/LeaveOrganizationResponseDto.md
 docs/LineItemDto.md
@@ -343,6 +346,8 @@ src/main/kotlin/com/cashful/model/GetActiveMemberRoleResponseDto.kt
 src/main/kotlin/com/cashful/model/GetApiKeyResponseDto.kt
 src/main/kotlin/com/cashful/model/GetFullOrganizationResponseDto.kt
 src/main/kotlin/com/cashful/model/GetInvitationResponseDto.kt
+src/main/kotlin/com/cashful/model/GetJsonWebKeySetResponseDto.kt
+src/main/kotlin/com/cashful/model/GetJsonWebTokenResponseDto.kt
 src/main/kotlin/com/cashful/model/GetSessionResponseDto.kt
 src/main/kotlin/com/cashful/model/HasPermissionDto.kt
 src/main/kotlin/com/cashful/model/HasPermissionResponseDto.kt
@@ -357,6 +362,7 @@ src/main/kotlin/com/cashful/model/InviteMemberResponseDto.kt
 src/main/kotlin/com/cashful/model/IsUsernameAvailableDto.kt
 src/main/kotlin/com/cashful/model/IsUsernameAvailableResponseDto.kt
 src/main/kotlin/com/cashful/model/IveriParamsDto.kt
+src/main/kotlin/com/cashful/model/JwkDto.kt
 src/main/kotlin/com/cashful/model/LeaveOrganizationDto.kt
 src/main/kotlin/com/cashful/model/LeaveOrganizationResponseDto.kt
 src/main/kotlin/com/cashful/model/LineItemDto.kt
@@ -562,6 +568,8 @@ src/test/kotlin/com/cashful/model/GetActiveMemberRoleResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/GetApiKeyResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/GetFullOrganizationResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/GetInvitationResponseDtoTest.kt
+src/test/kotlin/com/cashful/model/GetJsonWebKeySetResponseDtoTest.kt
+src/test/kotlin/com/cashful/model/GetJsonWebTokenResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/GetSessionResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/HasPermissionDtoTest.kt
 src/test/kotlin/com/cashful/model/HasPermissionResponseDtoTest.kt
@@ -576,6 +584,7 @@ src/test/kotlin/com/cashful/model/InviteMemberResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/IsUsernameAvailableDtoTest.kt
 src/test/kotlin/com/cashful/model/IsUsernameAvailableResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/IveriParamsDtoTest.kt
+src/test/kotlin/com/cashful/model/JwkDtoTest.kt
 src/test/kotlin/com/cashful/model/LeaveOrganizationDtoTest.kt
 src/test/kotlin/com/cashful/model/LeaveOrganizationResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/LineItemDtoTest.kt

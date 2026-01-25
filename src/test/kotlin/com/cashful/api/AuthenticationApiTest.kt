@@ -49,6 +49,8 @@ import com.cashful.model.GetActiveMemberRoleResponseDto
 import com.cashful.model.GetApiKeyResponseDto
 import com.cashful.model.GetFullOrganizationResponseDto
 import com.cashful.model.GetInvitationResponseDto
+import com.cashful.model.GetJsonWebKeySetResponseDto
+import com.cashful.model.GetJsonWebTokenResponseDto
 import com.cashful.model.GetSessionResponseDto
 import com.cashful.model.HasPermissionDto
 import com.cashful.model.HasPermissionResponseDto
@@ -243,6 +245,20 @@ class AuthenticationApiTest : ShouldSpec() {
             // uncomment below to test getInvitation
             //val invitationId : kotlin.String = inv_12345 // kotlin.String | The ID of the invitation to get
             //val result : GetInvitationResponseDto = apiInstance.getInvitation(invitationId)
+            //result shouldBe ("TODO")
+        }
+
+        // to test getJSONWebKeySet
+        should("test getJSONWebKeySet") {
+            // uncomment below to test getJSONWebKeySet
+            //val result : GetJsonWebKeySetResponseDto = apiInstance.getJSONWebKeySet()
+            //result shouldBe ("TODO")
+        }
+
+        // to test getJSONWebToken
+        should("test getJSONWebToken") {
+            // uncomment below to test getJSONWebToken
+            //val result : GetJsonWebTokenResponseDto = apiInstance.getJSONWebToken()
             //result shouldBe ("TODO")
         }
 

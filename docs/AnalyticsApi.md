@@ -23,7 +23,7 @@ Retrieves transaction volume and customer growth metrics for the merchant.
 //import com.cashful.model.*
 
 val apiInstance = AnalyticsApi()
-val merchantId : kotlin.String = merchant_123 // kotlin.String | The unique identifier of the merchant
+val merchantId : kotlin.String = merchant_123 // kotlin.String | The unique identifier of the merchant. If not provided, defaults to the authenticated user's active organization.
 try {
     val result : AnalyticsResponseDto = apiInstance.getAnalytics(merchantId)
     println(result)
@@ -39,7 +39,7 @@ try {
 ### Parameters
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **merchantId** | **kotlin.String**| The unique identifier of the merchant | |
+| **merchantId** | **kotlin.String**| The unique identifier of the merchant. If not provided, defaults to the authenticated user&#39;s active organization. | [optional] |
 
 ### Return type
 
@@ -71,7 +71,7 @@ Retrieves a quick summary of key metrics for the merchant.
 //import com.cashful.model.*
 
 val apiInstance = AnalyticsApi()
-val merchantId : kotlin.String = merchant_123 // kotlin.String | The unique identifier of the merchant
+val merchantId : kotlin.String = merchant_123 // kotlin.String | The unique identifier of the merchant. If not provided, defaults to the authenticated user's active organization.
 try {
     val result : AnalyticsSummaryDto = apiInstance.getAnalyticsSummary(merchantId)
     println(result)
@@ -87,7 +87,7 @@ try {
 ### Parameters
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **merchantId** | **kotlin.String**| The unique identifier of the merchant | |
+| **merchantId** | **kotlin.String**| The unique identifier of the merchant. If not provided, defaults to the authenticated user&#39;s active organization. | [optional] |
 
 ### Return type
 

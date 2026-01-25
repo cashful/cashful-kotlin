@@ -129,7 +129,7 @@ class CheckoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * GET /api/canary/checkout/sessions
      * List Checkout Sessions
      * Lists checkout sessions
-     * @param merchantId The ID of the merchant. This parameter is required.
+     * @param merchantId The ID of the merchant to filter checkout sessions
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
      * @param status The status to filter checkout sessions (optional)
@@ -164,7 +164,7 @@ class CheckoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * GET /api/canary/checkout/sessions
      * List Checkout Sessions
      * Lists checkout sessions
-     * @param merchantId The ID of the merchant. This parameter is required.
+     * @param merchantId The ID of the merchant to filter checkout sessions
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
      * @param status The status to filter checkout sessions (optional)
@@ -185,7 +185,7 @@ class CheckoutsApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * To obtain the request config of the operation listCheckoutSessions
      *
-     * @param merchantId The ID of the merchant. This parameter is required.
+     * @param merchantId The ID of the merchant to filter checkout sessions
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
      * @param status The status to filter checkout sessions (optional)

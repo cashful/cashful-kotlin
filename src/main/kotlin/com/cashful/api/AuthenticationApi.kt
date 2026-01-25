@@ -49,6 +49,8 @@ import com.cashful.model.GetActiveMemberRoleResponseDto
 import com.cashful.model.GetApiKeyResponseDto
 import com.cashful.model.GetFullOrganizationResponseDto
 import com.cashful.model.GetInvitationResponseDto
+import com.cashful.model.GetJsonWebKeySetResponseDto
+import com.cashful.model.GetJsonWebTokenResponseDto
 import com.cashful.model.GetSessionResponseDto
 import com.cashful.model.HasPermissionDto
 import com.cashful.model.HasPermissionResponseDto
@@ -1329,6 +1331,146 @@ class AuthenticationApi(basePath: kotlin.String = defaultBasePath, client: Call.
         return RequestConfig(
             method = RequestMethod.GET,
             path = "/api/canary/authentication/organization/get-invitation",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * GET /api/canary/authentication/jwks
+     * Get the JSON Web Key Set
+     * Get the JSON Web Key Set
+     * @return GetJsonWebKeySetResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun getJSONWebKeySet() : GetJsonWebKeySetResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = getJSONWebKeySetWithHttpInfo()
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as GetJsonWebKeySetResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /api/canary/authentication/jwks
+     * Get the JSON Web Key Set
+     * Get the JSON Web Key Set
+     * @return ApiResponse<GetJsonWebKeySetResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun getJSONWebKeySetWithHttpInfo() : ApiResponse<GetJsonWebKeySetResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = getJSONWebKeySetRequestConfig()
+
+        return@withContext request<Unit, GetJsonWebKeySetResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation getJSONWebKeySet
+     *
+     * @return RequestConfig
+     */
+    fun getJSONWebKeySetRequestConfig() : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/api/canary/authentication/jwks",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * GET /api/canary/authentication/token
+     * Get a JWT token
+     * Get a JWT token
+     * @return GetJsonWebTokenResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun getJSONWebToken() : GetJsonWebTokenResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = getJSONWebTokenWithHttpInfo()
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as GetJsonWebTokenResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /api/canary/authentication/token
+     * Get a JWT token
+     * Get a JWT token
+     * @return ApiResponse<GetJsonWebTokenResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun getJSONWebTokenWithHttpInfo() : ApiResponse<GetJsonWebTokenResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = getJSONWebTokenRequestConfig()
+
+        return@withContext request<Unit, GetJsonWebTokenResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation getJSONWebToken
+     *
+     * @return RequestConfig
+     */
+    fun getJSONWebTokenRequestConfig() : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/api/canary/authentication/token",
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,

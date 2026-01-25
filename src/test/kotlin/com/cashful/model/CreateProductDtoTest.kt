@@ -67,5 +67,11 @@ class CreateProductDtoTest : ShouldSpec() {
             //modelInstance.active shouldBe ("TODO")
         }
 
+        // to test the property `imageId` - The ID of the product image file
+        should("test imageId") {
+            // uncomment below to test the property
+            //modelInstance.imageId shouldBe ("TODO")
+        }
+
     }
 }

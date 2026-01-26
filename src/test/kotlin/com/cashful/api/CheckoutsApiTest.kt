@@ -19,10 +19,13 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import com.cashful.api.CheckoutsApi
+import com.cashful.model.BadRequestResponseDto
 import com.cashful.model.CheckoutSessionResponseDto
 import com.cashful.model.CreateCheckoutSessionDto
-import com.cashful.model.ErrorResponseDto
+import com.cashful.model.InternalServerErrorResponseDto
 import com.cashful.model.ListCheckoutSessionsResponseDto
+import com.cashful.model.NotFoundResponseDto
+import com.cashful.model.UnauthorizedResponseDto
 
 class CheckoutsApiTest : ShouldSpec() {
     init {

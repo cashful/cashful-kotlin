@@ -15,6 +15,7 @@
 
 package com.cashful.model
 
+import com.cashful.model.HostedCheckoutConfigDto
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerialName
@@ -24,10 +25,13 @@ import kotlinx.serialization.Contextual
  * 
  *
  * @param metadata Optional custom metadata
+ * @param name The name of the payment link
+ * @param description A description of the payment link
  * @param active Whether the payment link is active
- * @param amount 
+ * @param totalAmount 
  * @param successUrl The URL to redirect to on successful payment
  * @param cancelUrl The URL to redirect to if customer cancels
+ * @param hostedCheckoutConfig Configuration for the hosted checkout page
  */
 @Serializable
 
@@ -37,12 +41,20 @@ data class UpdatePaymentLinkDto (
     @Contextual @SerialName(value = "metadata")
     val metadata: kotlin.collections.Map<kotlin.String, kotlin.Any>,
 
+    /* The name of the payment link */
+    @SerialName(value = "name")
+    val name: kotlin.String? = null,
+
+    /* A description of the payment link */
+    @SerialName(value = "description")
+    val description: kotlin.String? = null,
+
     /* Whether the payment link is active */
     @SerialName(value = "active")
     val active: kotlin.Boolean? = null,
 
-    @Contextual @SerialName(value = "amount")
-    val amount: java.math.BigDecimal? = null,
+    @Contextual @SerialName(value = "totalAmount")
+    val totalAmount: java.math.BigDecimal? = null,
 
     /* The URL to redirect to on successful payment */
     @SerialName(value = "successUrl")
@@ -50,7 +62,11 @@ data class UpdatePaymentLinkDto (
 
     /* The URL to redirect to if customer cancels */
     @SerialName(value = "cancelUrl")
-    val cancelUrl: kotlin.String? = null
+    val cancelUrl: kotlin.String? = null,
+
+    /* Configuration for the hosted checkout page */
+    @SerialName(value = "hostedCheckoutConfig")
+    val hostedCheckoutConfig: HostedCheckoutConfigDto? = null
 
 ) {
 

@@ -21,7 +21,9 @@ import okhttp3.HttpUrl
 
 import com.cashful.model.AnalyticsResponseDto
 import com.cashful.model.AnalyticsSummaryDto
-import com.cashful.model.ErrorResponseDto
+import com.cashful.model.BadRequestResponseDto
+import com.cashful.model.InternalServerErrorResponseDto
+import com.cashful.model.UnauthorizedResponseDto
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

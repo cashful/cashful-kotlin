@@ -19,9 +19,12 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
+import com.cashful.model.BadRequestResponseDto
 import com.cashful.model.CreateWebhookEndpointDto
-import com.cashful.model.ErrorResponseDto
+import com.cashful.model.InternalServerErrorResponseDto
 import com.cashful.model.ListWebhookEndpointsResponseDto
+import com.cashful.model.NotFoundResponseDto
+import com.cashful.model.UnauthorizedResponseDto
 import com.cashful.model.WebhookEndpointResponseDto
 
 import kotlinx.serialization.SerialName

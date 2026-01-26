@@ -15,6 +15,7 @@
 
 package com.cashful.model
 
+import com.cashful.model.HostedCheckoutConfigDto
 import com.cashful.model.LineItemDto
 
 import kotlinx.serialization.Serializable
@@ -24,28 +25,22 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
- * @param successUrl The URL to redirect to on successful payment
- * @param cancelUrl The URL to redirect to if customer cancels
  * @param currency The three-letter ISO 4217 currency code
  * @param metadata Optional custom metadata
  * @param merchantId The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant.
  * @param customerId The unique identifier of the customer
  * @param productId The unique identifier of the product
+ * @param successUrl The URL to redirect to on successful payment
+ * @param failureUrl The URL to redirect to on failure
+ * @param cancelUrl The URL to redirect to on cancel
  * @param lineItems Array of line items for the checkout
  * @param totalAmount The total amount in the smallest currency unit
  * @param mode The checkout mode (e.g., 'payment')
+ * @param hostedCheckoutConfig Configuration for the hosted checkout page
  */
 @Serializable
 
 data class CreateCheckoutSessionDto (
-
-    /* The URL to redirect to on successful payment */
-    @SerialName(value = "successUrl")
-    val successUrl: kotlin.String,
-
-    /* The URL to redirect to if customer cancels */
-    @SerialName(value = "cancelUrl")
-    val cancelUrl: kotlin.String,
 
     /* The three-letter ISO 4217 currency code */
     @SerialName(value = "currency")
@@ -67,6 +62,18 @@ data class CreateCheckoutSessionDto (
     @SerialName(value = "productId")
     val productId: kotlin.String? = null,
 
+    /* The URL to redirect to on successful payment */
+    @SerialName(value = "successUrl")
+    val successUrl: kotlin.String? = null,
+
+    /* The URL to redirect to on failure */
+    @SerialName(value = "failureUrl")
+    val failureUrl: kotlin.String? = null,
+
+    /* The URL to redirect to on cancel */
+    @SerialName(value = "cancelUrl")
+    val cancelUrl: kotlin.String? = null,
+
     /* Array of line items for the checkout */
     @SerialName(value = "lineItems")
     val lineItems: kotlin.collections.List<LineItemDto>? = null,
@@ -77,7 +84,11 @@ data class CreateCheckoutSessionDto (
 
     /* The checkout mode (e.g., 'payment') */
     @SerialName(value = "mode")
-    val mode: kotlin.String? = null
+    val mode: kotlin.String? = null,
+
+    /* Configuration for the hosted checkout page */
+    @SerialName(value = "hostedCheckoutConfig")
+    val hostedCheckoutConfig: HostedCheckoutConfigDto? = null
 
 ) {
 

@@ -19,6 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import com.cashful.model.UpdatePaymentLinkDto
+import com.cashful.model.HostedCheckoutConfigDto
 
 class UpdatePaymentLinkDtoTest : ShouldSpec() {
     init {
@@ -31,16 +32,28 @@ class UpdatePaymentLinkDtoTest : ShouldSpec() {
             //modelInstance.metadata shouldBe ("TODO")
         }
 
+        // to test the property `name` - The name of the payment link
+        should("test name") {
+            // uncomment below to test the property
+            //modelInstance.name shouldBe ("TODO")
+        }
+
+        // to test the property `description` - A description of the payment link
+        should("test description") {
+            // uncomment below to test the property
+            //modelInstance.description shouldBe ("TODO")
+        }
+
         // to test the property `active` - Whether the payment link is active
         should("test active") {
             // uncomment below to test the property
             //modelInstance.active shouldBe ("TODO")
         }
 
-        // to test the property `amount`
-        should("test amount") {
+        // to test the property `totalAmount`
+        should("test totalAmount") {
             // uncomment below to test the property
-            //modelInstance.amount shouldBe ("TODO")
+            //modelInstance.totalAmount shouldBe ("TODO")
         }
 
         // to test the property `successUrl` - The URL to redirect to on successful payment
@@ -53,6 +66,12 @@ class UpdatePaymentLinkDtoTest : ShouldSpec() {
         should("test cancelUrl") {
             // uncomment below to test the property
             //modelInstance.cancelUrl shouldBe ("TODO")
+        }
+
+        // to test the property `hostedCheckoutConfig` - Configuration for the hosted checkout page
+        should("test hostedCheckoutConfig") {
+            // uncomment below to test the property
+            //modelInstance.hostedCheckoutConfig shouldBe ("TODO")
         }
 
     }

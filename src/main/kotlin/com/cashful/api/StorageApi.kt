@@ -19,13 +19,16 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
+import com.cashful.model.BadRequestResponseDto
 import com.cashful.model.ConfirmUploadDto
-import com.cashful.model.ErrorResponseDto
 import com.cashful.model.FileDto
+import com.cashful.model.InternalServerErrorResponseDto
 import com.cashful.model.ListFilesResponseDto
+import com.cashful.model.NotFoundResponseDto
 import com.cashful.model.PresignedDownloadResponseDto
 import com.cashful.model.PresignedUploadResponseDto
 import com.cashful.model.RequestUploadUrlDto
+import com.cashful.model.UnauthorizedResponseDto
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -68,8 +71,8 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun storageControllerConfirmUploadCanary(confirmUploadDto: ConfirmUploadDto) : FileDto = withContext(Dispatchers.IO) {
-        val localVarResponse = storageControllerConfirmUploadCanaryWithHttpInfo(confirmUploadDto = confirmUploadDto)
+    suspend fun confirmUpload(confirmUploadDto: ConfirmUploadDto) : FileDto = withContext(Dispatchers.IO) {
+        val localVarResponse = confirmUploadWithHttpInfo(confirmUploadDto = confirmUploadDto)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as FileDto
@@ -97,8 +100,8 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun storageControllerConfirmUploadCanaryWithHttpInfo(confirmUploadDto: ConfirmUploadDto) : ApiResponse<FileDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = storageControllerConfirmUploadCanaryRequestConfig(confirmUploadDto = confirmUploadDto)
+    suspend fun confirmUploadWithHttpInfo(confirmUploadDto: ConfirmUploadDto) : ApiResponse<FileDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = confirmUploadRequestConfig(confirmUploadDto = confirmUploadDto)
 
         return@withContext request<ConfirmUploadDto, FileDto>(
             localVariableConfig
@@ -106,12 +109,12 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
-     * To obtain the request config of the operation storageControllerConfirmUploadCanary
+     * To obtain the request config of the operation confirmUpload
      *
      * @param confirmUploadDto 
      * @return RequestConfig
      */
-    fun storageControllerConfirmUploadCanaryRequestConfig(confirmUploadDto: ConfirmUploadDto) : RequestConfig<ConfirmUploadDto> {
+    fun confirmUploadRequestConfig(confirmUploadDto: ConfirmUploadDto) : RequestConfig<ConfirmUploadDto> {
         val localVariableBody = confirmUploadDto
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -141,8 +144,8 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * @throws ServerException If the API returns a server error response
      */
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun storageControllerDeleteCanary(id: kotlin.String) : Unit = withContext(Dispatchers.IO) {
-        val localVarResponse = storageControllerDeleteCanaryWithHttpInfo(id = id)
+    suspend fun deleteFile(id: kotlin.String) : Unit = withContext(Dispatchers.IO) {
+        val localVarResponse = deleteFileWithHttpInfo(id = id)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> Unit
@@ -169,8 +172,8 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun storageControllerDeleteCanaryWithHttpInfo(id: kotlin.String) : ApiResponse<Unit?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = storageControllerDeleteCanaryRequestConfig(id = id)
+    suspend fun deleteFileWithHttpInfo(id: kotlin.String) : ApiResponse<Unit?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = deleteFileRequestConfig(id = id)
 
         return@withContext request<Unit, Unit>(
             localVariableConfig
@@ -178,12 +181,12 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
-     * To obtain the request config of the operation storageControllerDeleteCanary
+     * To obtain the request config of the operation deleteFile
      *
      * @param id File ID
      * @return RequestConfig
      */
-    fun storageControllerDeleteCanaryRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+    fun deleteFileRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -213,8 +216,8 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun storageControllerGetDownloadUrlCanary(id: kotlin.String) : PresignedDownloadResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = storageControllerGetDownloadUrlCanaryWithHttpInfo(id = id)
+    suspend fun getDownloadUrl(id: kotlin.String) : PresignedDownloadResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = getDownloadUrlWithHttpInfo(id = id)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as PresignedDownloadResponseDto
@@ -242,8 +245,8 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun storageControllerGetDownloadUrlCanaryWithHttpInfo(id: kotlin.String) : ApiResponse<PresignedDownloadResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = storageControllerGetDownloadUrlCanaryRequestConfig(id = id)
+    suspend fun getDownloadUrlWithHttpInfo(id: kotlin.String) : ApiResponse<PresignedDownloadResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = getDownloadUrlRequestConfig(id = id)
 
         return@withContext request<Unit, PresignedDownloadResponseDto>(
             localVariableConfig
@@ -251,12 +254,12 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
-     * To obtain the request config of the operation storageControllerGetDownloadUrlCanary
+     * To obtain the request config of the operation getDownloadUrl
      *
      * @param id File ID
      * @return RequestConfig
      */
-    fun storageControllerGetDownloadUrlCanaryRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+    fun getDownloadUrlRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -273,9 +276,82 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
+     * GET /api/canary/storage/{id}
+     * Get file details
+     * 
+     * @param id File ID
+     * @return FileDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun getFileDetails(id: kotlin.String) : FileDto = withContext(Dispatchers.IO) {
+        val localVarResponse = getFileDetailsWithHttpInfo(id = id)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as FileDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /api/canary/storage/{id}
+     * Get file details
+     * 
+     * @param id File ID
+     * @return ApiResponse<FileDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun getFileDetailsWithHttpInfo(id: kotlin.String) : ApiResponse<FileDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = getFileDetailsRequestConfig(id = id)
+
+        return@withContext request<Unit, FileDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation getFileDetails
+     *
+     * @param id File ID
+     * @return RequestConfig
+     */
+    fun getFileDetailsRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/api/canary/storage/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
      * enum for parameter status
      */
-     enum class StatusStorageControllerListCanary(val value: kotlin.String) {
+     enum class StatusListFiles(val value: kotlin.String) {
          @SerialName(value = "pending") pending("pending"),
          @SerialName(value = "uploaded") uploaded("uploaded"),
          @SerialName(value = "failed") failed("failed"),
@@ -310,8 +386,8 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun storageControllerListCanary(limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, tag: kotlin.String? = null, status: StatusStorageControllerListCanary? = null, relatedEntityId: kotlin.String? = null, relatedEntityType: kotlin.String? = null) : ListFilesResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = storageControllerListCanaryWithHttpInfo(limit = limit, offset = offset, tag = tag, status = status, relatedEntityId = relatedEntityId, relatedEntityType = relatedEntityType)
+    suspend fun listFiles(limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, tag: kotlin.String? = null, status: StatusListFiles? = null, relatedEntityId: kotlin.String? = null, relatedEntityType: kotlin.String? = null) : ListFilesResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = listFilesWithHttpInfo(limit = limit, offset = offset, tag = tag, status = status, relatedEntityId = relatedEntityId, relatedEntityType = relatedEntityType)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as ListFilesResponseDto
@@ -344,8 +420,8 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun storageControllerListCanaryWithHttpInfo(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, tag: kotlin.String?, status: StatusStorageControllerListCanary?, relatedEntityId: kotlin.String?, relatedEntityType: kotlin.String?) : ApiResponse<ListFilesResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = storageControllerListCanaryRequestConfig(limit = limit, offset = offset, tag = tag, status = status, relatedEntityId = relatedEntityId, relatedEntityType = relatedEntityType)
+    suspend fun listFilesWithHttpInfo(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, tag: kotlin.String?, status: StatusListFiles?, relatedEntityId: kotlin.String?, relatedEntityType: kotlin.String?) : ApiResponse<ListFilesResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listFilesRequestConfig(limit = limit, offset = offset, tag = tag, status = status, relatedEntityId = relatedEntityId, relatedEntityType = relatedEntityType)
 
         return@withContext request<Unit, ListFilesResponseDto>(
             localVariableConfig
@@ -353,7 +429,7 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
-     * To obtain the request config of the operation storageControllerListCanary
+     * To obtain the request config of the operation listFiles
      *
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
@@ -363,7 +439,7 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * @param relatedEntityType  (optional)
      * @return RequestConfig
      */
-    fun storageControllerListCanaryRequestConfig(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, tag: kotlin.String?, status: StatusStorageControllerListCanary?, relatedEntityId: kotlin.String?, relatedEntityType: kotlin.String?) : RequestConfig<Unit> {
+    fun listFilesRequestConfig(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, tag: kotlin.String?, status: StatusListFiles?, relatedEntityId: kotlin.String?, relatedEntityType: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -413,8 +489,8 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun storageControllerRequestUploadUrlCanary(requestUploadUrlDto: RequestUploadUrlDto) : PresignedUploadResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = storageControllerRequestUploadUrlCanaryWithHttpInfo(requestUploadUrlDto = requestUploadUrlDto)
+    suspend fun requestUploadUrl(requestUploadUrlDto: RequestUploadUrlDto) : PresignedUploadResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = requestUploadUrlWithHttpInfo(requestUploadUrlDto = requestUploadUrlDto)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as PresignedUploadResponseDto
@@ -442,8 +518,8 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun storageControllerRequestUploadUrlCanaryWithHttpInfo(requestUploadUrlDto: RequestUploadUrlDto) : ApiResponse<PresignedUploadResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = storageControllerRequestUploadUrlCanaryRequestConfig(requestUploadUrlDto = requestUploadUrlDto)
+    suspend fun requestUploadUrlWithHttpInfo(requestUploadUrlDto: RequestUploadUrlDto) : ApiResponse<PresignedUploadResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = requestUploadUrlRequestConfig(requestUploadUrlDto = requestUploadUrlDto)
 
         return@withContext request<RequestUploadUrlDto, PresignedUploadResponseDto>(
             localVariableConfig
@@ -451,12 +527,12 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     }
 
     /**
-     * To obtain the request config of the operation storageControllerRequestUploadUrlCanary
+     * To obtain the request config of the operation requestUploadUrl
      *
      * @param requestUploadUrlDto 
      * @return RequestConfig
      */
-    fun storageControllerRequestUploadUrlCanaryRequestConfig(requestUploadUrlDto: RequestUploadUrlDto) : RequestConfig<RequestUploadUrlDto> {
+    fun requestUploadUrlRequestConfig(requestUploadUrlDto: RequestUploadUrlDto) : RequestConfig<RequestUploadUrlDto> {
         val localVariableBody = requestUploadUrlDto
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -466,79 +542,6 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
         return RequestConfig(
             method = RequestMethod.POST,
             path = "/api/canary/storage/upload-url",
-            query = localVariableQuery,
-            headers = localVariableHeaders,
-            requiresAuthentication = true,
-            body = localVariableBody
-        )
-    }
-
-    /**
-     * GET /api/canary/storage/{id}
-     * Get file details
-     * 
-     * @param id File ID
-     * @return FileDto
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     * @throws UnsupportedOperationException If the API returns an informational or redirection response
-     * @throws ClientException If the API returns a client error response
-     * @throws ServerException If the API returns a server error response
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun storageControllerRetrieveCanary(id: kotlin.String) : FileDto = withContext(Dispatchers.IO) {
-        val localVarResponse = storageControllerRetrieveCanaryWithHttpInfo(id = id)
-
-        return@withContext when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as FileDto
-            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
-            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
-            ResponseType.ClientError -> {
-                val localVarError = localVarResponse as ClientError<*>
-                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
-            }
-            ResponseType.ServerError -> {
-                val localVarError = localVarResponse as ServerError<*>
-                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
-            }
-        }
-    }
-
-    /**
-     * GET /api/canary/storage/{id}
-     * Get file details
-     * 
-     * @param id File ID
-     * @return ApiResponse<FileDto?>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class)
-    suspend fun storageControllerRetrieveCanaryWithHttpInfo(id: kotlin.String) : ApiResponse<FileDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = storageControllerRetrieveCanaryRequestConfig(id = id)
-
-        return@withContext request<Unit, FileDto>(
-            localVariableConfig
-        )
-    }
-
-    /**
-     * To obtain the request config of the operation storageControllerRetrieveCanary
-     *
-     * @param id File ID
-     * @return RequestConfig
-     */
-    fun storageControllerRetrieveCanaryRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
-        val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders["Accept"] = "application/json"
-
-        return RequestConfig(
-            method = RequestMethod.GET,
-            path = "/api/canary/storage/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,

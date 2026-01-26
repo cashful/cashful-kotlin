@@ -19,9 +19,12 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
+import com.cashful.model.BadRequestResponseDto
 import com.cashful.model.CreateOrganizationComplianceDto
-import com.cashful.model.ErrorResponseDto
+import com.cashful.model.InternalServerErrorResponseDto
+import com.cashful.model.NotFoundResponseDto
 import com.cashful.model.OrganizationComplianceResponseDto
+import com.cashful.model.UnauthorizedResponseDto
 import com.cashful.model.UpdateOrganizationComplianceDto
 
 import kotlinx.serialization.SerialName

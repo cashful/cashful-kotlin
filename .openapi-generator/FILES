@@ -24,6 +24,7 @@ docs/AnalyticsResponseDto.md
 docs/AnalyticsSummaryDto.md
 docs/ApiKey.md
 docs/AuthenticationApi.md
+docs/BadRequestResponseDto.md
 docs/BalanceApi.md
 docs/BalanceHistoryResponseDto.md
 docs/BalanceTransactionDto.md
@@ -72,11 +73,11 @@ docs/DeleteOrganizationDto.md
 docs/DeleteOrganizationResponseDto.md
 docs/DeleteUserDto.md
 docs/DeleteUserResponseDto.md
-docs/ErrorResponseDto.md
 docs/EventResponseDto.md
 docs/EventsApi.md
 docs/EvervaultEncryptedCardDto.md
 docs/FileDto.md
+docs/ForbiddenResponseDto.md
 docs/ForgotPasswordDto.md
 docs/ForgotPasswordResponseDto.md
 docs/GetAccessTokenDto.md
@@ -92,11 +93,13 @@ docs/GetSessionResponseDto.md
 docs/HasPermissionDto.md
 docs/HasPermissionResponseDto.md
 docs/HealthApi.md
+docs/HostedCheckoutConfigDto.md
 docs/IVeriHealthCheckResponseDto.md
 docs/ImpersonateUserDto.md
 docs/ImpersonateUserResponseDto.md
 docs/InitiatePaymentDto.md
 docs/InitiatePaymentResponseDto.md
+docs/InternalServerErrorResponseDto.md
 docs/InvitationDto.md
 docs/InviteMemberDto.md
 docs/InviteMemberResponseDto.md
@@ -133,6 +136,7 @@ docs/ListWebhookEndpointsResponseDto.md
 docs/MemberDto.md
 docs/MerchantBalanceResponseDto.md
 docs/MetricStatsDto.md
+docs/NotFoundResponseDto.md
 docs/NotificationDto.md
 docs/NotificationsApi.md
 docs/OrganizationComplianceResponseDto.md
@@ -168,6 +172,7 @@ docs/ResetPasswordDto.md
 docs/ResetPasswordResponseDto.md
 docs/ResetPhonePasswordDto.md
 docs/ResetPhonePasswordResponseDto.md
+docs/RetrieveMultipleProductsDto.md
 docs/RevokeSessionDto.md
 docs/RevokeSessionResponseDto.md
 docs/SendEmail200Response.md
@@ -197,6 +202,7 @@ docs/StorageApi.md
 docs/TimeframeMetricsDto.md
 docs/TransferResponseDto.md
 docs/TransfersApi.md
+docs/UnauthorizedResponseDto.md
 docs/UnbanUserDto.md
 docs/UnbanUserResponseDto.md
 docs/UnlinkAccountDto.md
@@ -204,6 +210,8 @@ docs/UnlinkAccountResponseDto.md
 docs/UpdateApiKeyDto.md
 docs/UpdateApiKeyResponseDto.md
 docs/UpdateBalanceDto.md
+docs/UpdateCheckoutSessionDto.md
+docs/UpdateCheckoutSessionResponseDto.md
 docs/UpdateCustomerDto.md
 docs/UpdateMemberRoleDto.md
 docs/UpdateMemberRoleResponseDto.md
@@ -289,6 +297,7 @@ src/main/kotlin/com/cashful/model/AdminUpdateUserResponseDto.kt
 src/main/kotlin/com/cashful/model/AnalyticsResponseDto.kt
 src/main/kotlin/com/cashful/model/AnalyticsSummaryDto.kt
 src/main/kotlin/com/cashful/model/ApiKey.kt
+src/main/kotlin/com/cashful/model/BadRequestResponseDto.kt
 src/main/kotlin/com/cashful/model/BalanceHistoryResponseDto.kt
 src/main/kotlin/com/cashful/model/BalanceTransactionDto.kt
 src/main/kotlin/com/cashful/model/BanUserDto.kt
@@ -333,10 +342,10 @@ src/main/kotlin/com/cashful/model/DeleteOrganizationDto.kt
 src/main/kotlin/com/cashful/model/DeleteOrganizationResponseDto.kt
 src/main/kotlin/com/cashful/model/DeleteUserDto.kt
 src/main/kotlin/com/cashful/model/DeleteUserResponseDto.kt
-src/main/kotlin/com/cashful/model/ErrorResponseDto.kt
 src/main/kotlin/com/cashful/model/EventResponseDto.kt
 src/main/kotlin/com/cashful/model/EvervaultEncryptedCardDto.kt
 src/main/kotlin/com/cashful/model/FileDto.kt
+src/main/kotlin/com/cashful/model/ForbiddenResponseDto.kt
 src/main/kotlin/com/cashful/model/ForgotPasswordDto.kt
 src/main/kotlin/com/cashful/model/ForgotPasswordResponseDto.kt
 src/main/kotlin/com/cashful/model/GetAccessTokenDto.kt
@@ -351,11 +360,13 @@ src/main/kotlin/com/cashful/model/GetJsonWebTokenResponseDto.kt
 src/main/kotlin/com/cashful/model/GetSessionResponseDto.kt
 src/main/kotlin/com/cashful/model/HasPermissionDto.kt
 src/main/kotlin/com/cashful/model/HasPermissionResponseDto.kt
+src/main/kotlin/com/cashful/model/HostedCheckoutConfigDto.kt
 src/main/kotlin/com/cashful/model/IVeriHealthCheckResponseDto.kt
 src/main/kotlin/com/cashful/model/ImpersonateUserDto.kt
 src/main/kotlin/com/cashful/model/ImpersonateUserResponseDto.kt
 src/main/kotlin/com/cashful/model/InitiatePaymentDto.kt
 src/main/kotlin/com/cashful/model/InitiatePaymentResponseDto.kt
+src/main/kotlin/com/cashful/model/InternalServerErrorResponseDto.kt
 src/main/kotlin/com/cashful/model/InvitationDto.kt
 src/main/kotlin/com/cashful/model/InviteMemberDto.kt
 src/main/kotlin/com/cashful/model/InviteMemberResponseDto.kt
@@ -392,6 +403,7 @@ src/main/kotlin/com/cashful/model/ListWebhookEndpointsResponseDto.kt
 src/main/kotlin/com/cashful/model/MemberDto.kt
 src/main/kotlin/com/cashful/model/MerchantBalanceResponseDto.kt
 src/main/kotlin/com/cashful/model/MetricStatsDto.kt
+src/main/kotlin/com/cashful/model/NotFoundResponseDto.kt
 src/main/kotlin/com/cashful/model/NotificationDto.kt
 src/main/kotlin/com/cashful/model/OrganizationComplianceResponseDto.kt
 src/main/kotlin/com/cashful/model/OrganizationDto.kt
@@ -420,6 +432,7 @@ src/main/kotlin/com/cashful/model/ResetPasswordDto.kt
 src/main/kotlin/com/cashful/model/ResetPasswordResponseDto.kt
 src/main/kotlin/com/cashful/model/ResetPhonePasswordDto.kt
 src/main/kotlin/com/cashful/model/ResetPhonePasswordResponseDto.kt
+src/main/kotlin/com/cashful/model/RetrieveMultipleProductsDto.kt
 src/main/kotlin/com/cashful/model/RevokeSessionDto.kt
 src/main/kotlin/com/cashful/model/RevokeSessionResponseDto.kt
 src/main/kotlin/com/cashful/model/SendEmail200Response.kt
@@ -447,6 +460,7 @@ src/main/kotlin/com/cashful/model/SocialSignInDto.kt
 src/main/kotlin/com/cashful/model/StopImpersonatingResponseDto.kt
 src/main/kotlin/com/cashful/model/TimeframeMetricsDto.kt
 src/main/kotlin/com/cashful/model/TransferResponseDto.kt
+src/main/kotlin/com/cashful/model/UnauthorizedResponseDto.kt
 src/main/kotlin/com/cashful/model/UnbanUserDto.kt
 src/main/kotlin/com/cashful/model/UnbanUserResponseDto.kt
 src/main/kotlin/com/cashful/model/UnlinkAccountDto.kt
@@ -454,6 +468,8 @@ src/main/kotlin/com/cashful/model/UnlinkAccountResponseDto.kt
 src/main/kotlin/com/cashful/model/UpdateApiKeyDto.kt
 src/main/kotlin/com/cashful/model/UpdateApiKeyResponseDto.kt
 src/main/kotlin/com/cashful/model/UpdateBalanceDto.kt
+src/main/kotlin/com/cashful/model/UpdateCheckoutSessionDto.kt
+src/main/kotlin/com/cashful/model/UpdateCheckoutSessionResponseDto.kt
 src/main/kotlin/com/cashful/model/UpdateCustomerDto.kt
 src/main/kotlin/com/cashful/model/UpdateMemberRoleDto.kt
 src/main/kotlin/com/cashful/model/UpdateMemberRoleResponseDto.kt
@@ -511,6 +527,7 @@ src/test/kotlin/com/cashful/model/AdminUpdateUserResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/AnalyticsResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/AnalyticsSummaryDtoTest.kt
 src/test/kotlin/com/cashful/model/ApiKeyTest.kt
+src/test/kotlin/com/cashful/model/BadRequestResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/BalanceHistoryResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/BalanceTransactionDtoTest.kt
 src/test/kotlin/com/cashful/model/BanUserDtoTest.kt
@@ -555,10 +572,10 @@ src/test/kotlin/com/cashful/model/DeleteOrganizationDtoTest.kt
 src/test/kotlin/com/cashful/model/DeleteOrganizationResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/DeleteUserDtoTest.kt
 src/test/kotlin/com/cashful/model/DeleteUserResponseDtoTest.kt
-src/test/kotlin/com/cashful/model/ErrorResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/EventResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/EvervaultEncryptedCardDtoTest.kt
 src/test/kotlin/com/cashful/model/FileDtoTest.kt
+src/test/kotlin/com/cashful/model/ForbiddenResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/ForgotPasswordDtoTest.kt
 src/test/kotlin/com/cashful/model/ForgotPasswordResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/GetAccessTokenDtoTest.kt
@@ -573,11 +590,13 @@ src/test/kotlin/com/cashful/model/GetJsonWebTokenResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/GetSessionResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/HasPermissionDtoTest.kt
 src/test/kotlin/com/cashful/model/HasPermissionResponseDtoTest.kt
+src/test/kotlin/com/cashful/model/HostedCheckoutConfigDtoTest.kt
 src/test/kotlin/com/cashful/model/IVeriHealthCheckResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/ImpersonateUserDtoTest.kt
 src/test/kotlin/com/cashful/model/ImpersonateUserResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/InitiatePaymentDtoTest.kt
 src/test/kotlin/com/cashful/model/InitiatePaymentResponseDtoTest.kt
+src/test/kotlin/com/cashful/model/InternalServerErrorResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/InvitationDtoTest.kt
 src/test/kotlin/com/cashful/model/InviteMemberDtoTest.kt
 src/test/kotlin/com/cashful/model/InviteMemberResponseDtoTest.kt
@@ -614,6 +633,7 @@ src/test/kotlin/com/cashful/model/ListWebhookEndpointsResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/MemberDtoTest.kt
 src/test/kotlin/com/cashful/model/MerchantBalanceResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/MetricStatsDtoTest.kt
+src/test/kotlin/com/cashful/model/NotFoundResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/NotificationDtoTest.kt
 src/test/kotlin/com/cashful/model/OrganizationComplianceResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/OrganizationDtoTest.kt
@@ -642,6 +662,7 @@ src/test/kotlin/com/cashful/model/ResetPasswordDtoTest.kt
 src/test/kotlin/com/cashful/model/ResetPasswordResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/ResetPhonePasswordDtoTest.kt
 src/test/kotlin/com/cashful/model/ResetPhonePasswordResponseDtoTest.kt
+src/test/kotlin/com/cashful/model/RetrieveMultipleProductsDtoTest.kt
 src/test/kotlin/com/cashful/model/RevokeSessionDtoTest.kt
 src/test/kotlin/com/cashful/model/RevokeSessionResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/SendEmail200ResponseTest.kt
@@ -669,6 +690,7 @@ src/test/kotlin/com/cashful/model/SocialSignInDtoTest.kt
 src/test/kotlin/com/cashful/model/StopImpersonatingResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/TimeframeMetricsDtoTest.kt
 src/test/kotlin/com/cashful/model/TransferResponseDtoTest.kt
+src/test/kotlin/com/cashful/model/UnauthorizedResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/UnbanUserDtoTest.kt
 src/test/kotlin/com/cashful/model/UnbanUserResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/UnlinkAccountDtoTest.kt
@@ -676,6 +698,8 @@ src/test/kotlin/com/cashful/model/UnlinkAccountResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/UpdateApiKeyDtoTest.kt
 src/test/kotlin/com/cashful/model/UpdateApiKeyResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/UpdateBalanceDtoTest.kt
+src/test/kotlin/com/cashful/model/UpdateCheckoutSessionDtoTest.kt
+src/test/kotlin/com/cashful/model/UpdateCheckoutSessionResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/UpdateCustomerDtoTest.kt
 src/test/kotlin/com/cashful/model/UpdateMemberRoleDtoTest.kt
 src/test/kotlin/com/cashful/model/UpdateMemberRoleResponseDtoTest.kt

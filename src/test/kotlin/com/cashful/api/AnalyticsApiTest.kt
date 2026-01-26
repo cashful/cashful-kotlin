@@ -21,7 +21,9 @@ import io.kotlintest.specs.ShouldSpec
 import com.cashful.api.AnalyticsApi
 import com.cashful.model.AnalyticsResponseDto
 import com.cashful.model.AnalyticsSummaryDto
-import com.cashful.model.ErrorResponseDto
+import com.cashful.model.BadRequestResponseDto
+import com.cashful.model.InternalServerErrorResponseDto
+import com.cashful.model.UnauthorizedResponseDto
 
 class AnalyticsApiTest : ShouldSpec() {
     init {

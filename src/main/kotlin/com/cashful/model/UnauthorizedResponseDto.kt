@@ -29,7 +29,7 @@ import kotlinx.serialization.Contextual
  */
 @Serializable
 
-data class ErrorResponseDto (
+data class UnauthorizedResponseDto (
 
     /* HTTP status code */
     @Contextual @SerialName(value = "statusCode")

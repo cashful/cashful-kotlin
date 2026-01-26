@@ -19,11 +19,19 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import com.cashful.model.CreatePaymentLinkDto
+import com.cashful.model.HostedCheckoutConfigDto
+import com.cashful.model.LineItemDto
 
 class CreatePaymentLinkDtoTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of CreatePaymentLinkDto
         //val modelInstance = CreatePaymentLinkDto()
+
+        // to test the property `totalAmount` - The total amount in the smallest currency unit
+        should("test totalAmount") {
+            // uncomment below to test the property
+            //modelInstance.totalAmount shouldBe ("TODO")
+        }
 
         // to test the property `currency` - The three-letter ISO 4217 currency code
         should("test currency") {
@@ -55,16 +63,28 @@ class CreatePaymentLinkDtoTest : ShouldSpec() {
             //modelInstance.metadata shouldBe ("TODO")
         }
 
+        // to test the property `name` - The name of the payment link
+        should("test name") {
+            // uncomment below to test the property
+            //modelInstance.name shouldBe ("TODO")
+        }
+
+        // to test the property `description` - A description of the payment link
+        should("test description") {
+            // uncomment below to test the property
+            //modelInstance.description shouldBe ("TODO")
+        }
+
         // to test the property `merchantId` - The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant.
         should("test merchantId") {
             // uncomment below to test the property
             //modelInstance.merchantId shouldBe ("TODO")
         }
 
-        // to test the property `productId` - The unique identifier of the product
-        should("test productId") {
+        // to test the property `lineItems` - Array of line items for the checkout
+        should("test lineItems") {
             // uncomment below to test the property
-            //modelInstance.productId shouldBe ("TODO")
+            //modelInstance.lineItems shouldBe ("TODO")
         }
 
         // to test the property `customerId` - The unique identifier of the customer
@@ -73,10 +93,10 @@ class CreatePaymentLinkDtoTest : ShouldSpec() {
             //modelInstance.customerId shouldBe ("TODO")
         }
 
-        // to test the property `amount` - The amount in the smallest currency unit
-        should("test amount") {
+        // to test the property `hostedCheckoutConfig` - Configuration for the hosted checkout page
+        should("test hostedCheckoutConfig") {
             // uncomment below to test the property
-            //modelInstance.amount shouldBe ("TODO")
+            //modelInstance.hostedCheckoutConfig shouldBe ("TODO")
         }
 
     }

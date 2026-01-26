@@ -19,9 +19,12 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import com.cashful.api.BalanceApi
+import com.cashful.model.BadRequestResponseDto
 import com.cashful.model.BalanceHistoryResponseDto
-import com.cashful.model.ErrorResponseDto
+import com.cashful.model.InternalServerErrorResponseDto
 import com.cashful.model.MerchantBalanceResponseDto
+import com.cashful.model.NotFoundResponseDto
+import com.cashful.model.UnauthorizedResponseDto
 
 class BalanceApiTest : ShouldSpec() {
     init {

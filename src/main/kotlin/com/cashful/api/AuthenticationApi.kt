@@ -21,6 +21,7 @@ import okhttp3.HttpUrl
 
 import com.cashful.model.AcceptInvitationDto
 import com.cashful.model.AcceptInvitationResponseDto
+import com.cashful.model.BadRequestResponseDto
 import com.cashful.model.CancelInvitationDto
 import com.cashful.model.CancelInvitationResponseDto
 import com.cashful.model.ChangeEmailDto
@@ -39,7 +40,6 @@ import com.cashful.model.DeleteOrganizationDto
 import com.cashful.model.DeleteOrganizationResponseDto
 import com.cashful.model.DeleteUserDto
 import com.cashful.model.DeleteUserResponseDto
-import com.cashful.model.ErrorResponseDto
 import com.cashful.model.ForgotPasswordDto
 import com.cashful.model.ForgotPasswordResponseDto
 import com.cashful.model.GetAccessTokenDto
@@ -54,6 +54,7 @@ import com.cashful.model.GetJsonWebTokenResponseDto
 import com.cashful.model.GetSessionResponseDto
 import com.cashful.model.HasPermissionDto
 import com.cashful.model.HasPermissionResponseDto
+import com.cashful.model.InternalServerErrorResponseDto
 import com.cashful.model.InviteMemberDto
 import com.cashful.model.InviteMemberResponseDto
 import com.cashful.model.IsUsernameAvailableDto
@@ -68,6 +69,7 @@ import com.cashful.model.ListInvitationsResponseDto
 import com.cashful.model.ListMembersResponseDto
 import com.cashful.model.ListSessionsResponseDto
 import com.cashful.model.ListUserInvitationsResponseDto
+import com.cashful.model.NotFoundResponseDto
 import com.cashful.model.OrganizationDto
 import com.cashful.model.RefreshTokenDto
 import com.cashful.model.RefreshTokenResponseDto
@@ -99,6 +101,7 @@ import com.cashful.model.SignOutResponseDto
 import com.cashful.model.SignUpDto
 import com.cashful.model.SignUpResponseDto
 import com.cashful.model.SocialSignInDto
+import com.cashful.model.UnauthorizedResponseDto
 import com.cashful.model.UnlinkAccountDto
 import com.cashful.model.UnlinkAccountResponseDto
 import com.cashful.model.UpdateApiKeyDto

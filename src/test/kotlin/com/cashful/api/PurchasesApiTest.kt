@@ -19,9 +19,12 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import com.cashful.api.PurchasesApi
+import com.cashful.model.BadRequestResponseDto
 import com.cashful.model.CreatePurchaseDto
-import com.cashful.model.ErrorResponseDto
+import com.cashful.model.InternalServerErrorResponseDto
+import com.cashful.model.NotFoundResponseDto
 import com.cashful.model.PurchaseResponseDto
+import com.cashful.model.UnauthorizedResponseDto
 
 class PurchasesApiTest : ShouldSpec() {
     init {

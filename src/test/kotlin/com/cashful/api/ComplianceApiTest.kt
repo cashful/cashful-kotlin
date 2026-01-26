@@ -19,9 +19,12 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import com.cashful.api.ComplianceApi
+import com.cashful.model.BadRequestResponseDto
 import com.cashful.model.CreateOrganizationComplianceDto
-import com.cashful.model.ErrorResponseDto
+import com.cashful.model.InternalServerErrorResponseDto
+import com.cashful.model.NotFoundResponseDto
 import com.cashful.model.OrganizationComplianceResponseDto
+import com.cashful.model.UnauthorizedResponseDto
 import com.cashful.model.UpdateOrganizationComplianceDto
 
 class ComplianceApiTest : ShouldSpec() {

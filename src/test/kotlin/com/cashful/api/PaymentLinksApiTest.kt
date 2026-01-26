@@ -19,10 +19,13 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import com.cashful.api.PaymentLinksApi
+import com.cashful.model.BadRequestResponseDto
 import com.cashful.model.CreatePaymentLinkDto
-import com.cashful.model.ErrorResponseDto
+import com.cashful.model.InternalServerErrorResponseDto
 import com.cashful.model.ListPaymentLinksResponseDto
+import com.cashful.model.NotFoundResponseDto
 import com.cashful.model.PaymentLinkResponseDto
+import com.cashful.model.UnauthorizedResponseDto
 import com.cashful.model.UpdatePaymentLinkDto
 
 class PaymentLinksApiTest : ShouldSpec() {

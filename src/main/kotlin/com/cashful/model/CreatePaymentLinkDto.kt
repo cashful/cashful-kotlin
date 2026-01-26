@@ -15,6 +15,8 @@
 
 package com.cashful.model
 
+import com.cashful.model.HostedCheckoutConfigDto
+import com.cashful.model.LineItemDto
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerialName
@@ -23,19 +25,26 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
+ * @param totalAmount The total amount in the smallest currency unit
  * @param currency The three-letter ISO 4217 currency code
  * @param mode The payment mode (e.g., 'payment' or 'subscription')
  * @param successUrl The URL to redirect to on successful payment
  * @param cancelUrl The URL to redirect to if customer cancels
  * @param metadata Optional custom metadata
+ * @param name The name of the payment link
+ * @param description A description of the payment link
  * @param merchantId The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant.
- * @param productId The unique identifier of the product
+ * @param lineItems Array of line items for the checkout
  * @param customerId The unique identifier of the customer
- * @param amount The amount in the smallest currency unit
+ * @param hostedCheckoutConfig Configuration for the hosted checkout page
  */
 @Serializable
 
 data class CreatePaymentLinkDto (
+
+    /* The total amount in the smallest currency unit */
+    @Contextual @SerialName(value = "totalAmount")
+    val totalAmount: java.math.BigDecimal,
 
     /* The three-letter ISO 4217 currency code */
     @SerialName(value = "currency")
@@ -57,21 +66,29 @@ data class CreatePaymentLinkDto (
     @Contextual @SerialName(value = "metadata")
     val metadata: kotlin.collections.Map<kotlin.String, kotlin.Any>,
 
+    /* The name of the payment link */
+    @SerialName(value = "name")
+    val name: kotlin.String? = null,
+
+    /* A description of the payment link */
+    @SerialName(value = "description")
+    val description: kotlin.String? = null,
+
     /* The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. */
     @SerialName(value = "merchantId")
     val merchantId: kotlin.String? = null,
 
-    /* The unique identifier of the product */
-    @SerialName(value = "productId")
-    val productId: kotlin.String? = null,
+    /* Array of line items for the checkout */
+    @SerialName(value = "lineItems")
+    val lineItems: kotlin.collections.List<LineItemDto>? = null,
 
     /* The unique identifier of the customer */
     @SerialName(value = "customerId")
     val customerId: kotlin.String? = null,
 
-    /* The amount in the smallest currency unit */
-    @Contextual @SerialName(value = "amount")
-    val amount: java.math.BigDecimal? = null
+    /* Configuration for the hosted checkout page */
+    @SerialName(value = "hostedCheckoutConfig")
+    val hostedCheckoutConfig: HostedCheckoutConfigDto? = null
 
 ) {
 

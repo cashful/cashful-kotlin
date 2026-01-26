@@ -15,6 +15,8 @@
 
 package com.cashful.model
 
+import com.cashful.model.HostedCheckoutConfigDto
+import com.cashful.model.LineItemDto
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerialName
@@ -26,6 +28,7 @@ import kotlinx.serialization.Contextual
  * @param id 
  * @param merchantId 
  * @param url 
+ * @param totalAmount 
  * @param currency 
  * @param mode 
  * @param active 
@@ -34,9 +37,11 @@ import kotlinx.serialization.Contextual
  * @param metadata 
  * @param createdAt 
  * @param updatedAt 
- * @param productId 
+ * @param name 
+ * @param description 
+ * @param lineItems 
  * @param customerId 
- * @param amount 
+ * @param hostedCheckoutConfig Configuration for the hosted checkout page
  * @param deletedAt 
  */
 @Serializable
@@ -51,6 +56,9 @@ data class PaymentLinkResponseDto (
 
     @SerialName(value = "url")
     val url: kotlin.String,
+
+    @Contextual @SerialName(value = "totalAmount")
+    val totalAmount: java.math.BigDecimal,
 
     @SerialName(value = "currency")
     val currency: kotlin.String,
@@ -76,14 +84,21 @@ data class PaymentLinkResponseDto (
     @Contextual @SerialName(value = "updatedAt")
     val updatedAt: java.time.OffsetDateTime,
 
-    @SerialName(value = "productId")
-    val productId: kotlin.String? = null,
+    @SerialName(value = "name")
+    val name: kotlin.String? = null,
+
+    @SerialName(value = "description")
+    val description: kotlin.String? = null,
+
+    @SerialName(value = "lineItems")
+    val lineItems: kotlin.collections.List<LineItemDto>? = null,
 
     @SerialName(value = "customerId")
     val customerId: kotlin.String? = null,
 
-    @Contextual @SerialName(value = "amount")
-    val amount: java.math.BigDecimal? = null,
+    /* Configuration for the hosted checkout page */
+    @SerialName(value = "hostedCheckoutConfig")
+    val hostedCheckoutConfig: HostedCheckoutConfigDto? = null,
 
     @Contextual @SerialName(value = "deletedAt")
     val deletedAt: java.time.OffsetDateTime? = null

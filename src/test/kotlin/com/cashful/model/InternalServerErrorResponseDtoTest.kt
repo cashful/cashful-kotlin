@@ -18,12 +18,12 @@ package com.cashful.model
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
-import com.cashful.model.ErrorResponseDto
+import com.cashful.model.InternalServerErrorResponseDto
 
-class ErrorResponseDtoTest : ShouldSpec() {
+class InternalServerErrorResponseDtoTest : ShouldSpec() {
     init {
-        // uncomment below to create an instance of ErrorResponseDto
-        //val modelInstance = ErrorResponseDto()
+        // uncomment below to create an instance of InternalServerErrorResponseDto
+        //val modelInstance = InternalServerErrorResponseDto()
 
         // to test the property `statusCode` - HTTP status code
         should("test statusCode") {

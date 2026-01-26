@@ -4,17 +4,17 @@ All URIs are relative to *https://api.cashful.africa*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**storageControllerConfirmUploadCanary**](StorageApi.md#storageControllerConfirmUploadCanary) | **POST** /api/canary/storage/confirm-upload | Confirm that a file upload was completed |
-| [**storageControllerDeleteCanary**](StorageApi.md#storageControllerDeleteCanary) | **DELETE** /api/canary/storage/{id} | Delete a file |
-| [**storageControllerGetDownloadUrlCanary**](StorageApi.md#storageControllerGetDownloadUrlCanary) | **GET** /api/canary/storage/{id}/download-url | Get a presigned download URL for a file |
-| [**storageControllerListCanary**](StorageApi.md#storageControllerListCanary) | **GET** /api/canary/storage | List files |
-| [**storageControllerRequestUploadUrlCanary**](StorageApi.md#storageControllerRequestUploadUrlCanary) | **POST** /api/canary/storage/upload-url | Request a presigned URL for file upload |
-| [**storageControllerRetrieveCanary**](StorageApi.md#storageControllerRetrieveCanary) | **GET** /api/canary/storage/{id} | Get file details |
+| [**confirmUpload**](StorageApi.md#confirmUpload) | **POST** /api/canary/storage/confirm-upload | Confirm that a file upload was completed |
+| [**deleteFile**](StorageApi.md#deleteFile) | **DELETE** /api/canary/storage/{id} | Delete a file |
+| [**getDownloadUrl**](StorageApi.md#getDownloadUrl) | **GET** /api/canary/storage/{id}/download-url | Get a presigned download URL for a file |
+| [**getFileDetails**](StorageApi.md#getFileDetails) | **GET** /api/canary/storage/{id} | Get file details |
+| [**listFiles**](StorageApi.md#listFiles) | **GET** /api/canary/storage | List files |
+| [**requestUploadUrl**](StorageApi.md#requestUploadUrl) | **POST** /api/canary/storage/upload-url | Request a presigned URL for file upload |
 
 
-<a id="storageControllerConfirmUploadCanary"></a>
-# **storageControllerConfirmUploadCanary**
-> FileDto storageControllerConfirmUploadCanary(confirmUploadDto)
+<a id="confirmUpload"></a>
+# **confirmUpload**
+> FileDto confirmUpload(confirmUploadDto)
 
 Confirm that a file upload was completed
 
@@ -27,13 +27,13 @@ Confirm that a file upload was completed
 val apiInstance = StorageApi()
 val confirmUploadDto : ConfirmUploadDto = {"fileId":"file_abc123xyz","checksum":"sha256:a1b2c3d4e5f6...","size":245760} // ConfirmUploadDto | 
 try {
-    val result : FileDto = apiInstance.storageControllerConfirmUploadCanary(confirmUploadDto)
+    val result : FileDto = apiInstance.confirmUpload(confirmUploadDto)
     println(result)
 } catch (e: ClientException) {
-    println("4xx response calling StorageApi#storageControllerConfirmUploadCanary")
+    println("4xx response calling StorageApi#confirmUpload")
     e.printStackTrace()
 } catch (e: ServerException) {
-    println("5xx response calling StorageApi#storageControllerConfirmUploadCanary")
+    println("5xx response calling StorageApi#confirmUpload")
     e.printStackTrace()
 }
 ```
@@ -58,9 +58,9 @@ Configure bearer:
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a id="storageControllerDeleteCanary"></a>
-# **storageControllerDeleteCanary**
-> storageControllerDeleteCanary(id)
+<a id="deleteFile"></a>
+# **deleteFile**
+> deleteFile(id)
 
 Delete a file
 
@@ -73,12 +73,12 @@ Delete a file
 val apiInstance = StorageApi()
 val id : kotlin.String = id_example // kotlin.String | File ID
 try {
-    apiInstance.storageControllerDeleteCanary(id)
+    apiInstance.deleteFile(id)
 } catch (e: ClientException) {
-    println("4xx response calling StorageApi#storageControllerDeleteCanary")
+    println("4xx response calling StorageApi#deleteFile")
     e.printStackTrace()
 } catch (e: ServerException) {
-    println("5xx response calling StorageApi#storageControllerDeleteCanary")
+    println("5xx response calling StorageApi#deleteFile")
     e.printStackTrace()
 }
 ```
@@ -103,9 +103,9 @@ Configure bearer:
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a id="storageControllerGetDownloadUrlCanary"></a>
-# **storageControllerGetDownloadUrlCanary**
-> PresignedDownloadResponseDto storageControllerGetDownloadUrlCanary(id)
+<a id="getDownloadUrl"></a>
+# **getDownloadUrl**
+> PresignedDownloadResponseDto getDownloadUrl(id)
 
 Get a presigned download URL for a file
 
@@ -118,13 +118,13 @@ Get a presigned download URL for a file
 val apiInstance = StorageApi()
 val id : kotlin.String = id_example // kotlin.String | File ID
 try {
-    val result : PresignedDownloadResponseDto = apiInstance.storageControllerGetDownloadUrlCanary(id)
+    val result : PresignedDownloadResponseDto = apiInstance.getDownloadUrl(id)
     println(result)
 } catch (e: ClientException) {
-    println("4xx response calling StorageApi#storageControllerGetDownloadUrlCanary")
+    println("4xx response calling StorageApi#getDownloadUrl")
     e.printStackTrace()
 } catch (e: ServerException) {
-    println("5xx response calling StorageApi#storageControllerGetDownloadUrlCanary")
+    println("5xx response calling StorageApi#getDownloadUrl")
     e.printStackTrace()
 }
 ```
@@ -149,9 +149,55 @@ Configure bearer:
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a id="storageControllerListCanary"></a>
-# **storageControllerListCanary**
-> ListFilesResponseDto storageControllerListCanary(limit, offset, tag, status, relatedEntityId, relatedEntityType)
+<a id="getFileDetails"></a>
+# **getFileDetails**
+> FileDto getFileDetails(id)
+
+Get file details
+
+### Example
+```kotlin
+// Import classes:
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
+
+val apiInstance = StorageApi()
+val id : kotlin.String = id_example // kotlin.String | File ID
+try {
+    val result : FileDto = apiInstance.getFileDetails(id)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling StorageApi#getFileDetails")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling StorageApi#getFileDetails")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **kotlin.String**| File ID | |
+
+### Return type
+
+[**FileDto**](FileDto.md)
+
+### Authorization
+
+
+Configure bearer:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a id="listFiles"></a>
+# **listFiles**
+> ListFilesResponseDto listFiles(limit, offset, tag, status, relatedEntityId, relatedEntityType)
 
 List files
 
@@ -169,13 +215,13 @@ val status : kotlin.String = status_example // kotlin.String |
 val relatedEntityId : kotlin.String = relatedEntityId_example // kotlin.String | 
 val relatedEntityType : kotlin.String = relatedEntityType_example // kotlin.String | 
 try {
-    val result : ListFilesResponseDto = apiInstance.storageControllerListCanary(limit, offset, tag, status, relatedEntityId, relatedEntityType)
+    val result : ListFilesResponseDto = apiInstance.listFiles(limit, offset, tag, status, relatedEntityId, relatedEntityType)
     println(result)
 } catch (e: ClientException) {
-    println("4xx response calling StorageApi#storageControllerListCanary")
+    println("4xx response calling StorageApi#listFiles")
     e.printStackTrace()
 } catch (e: ServerException) {
-    println("5xx response calling StorageApi#storageControllerListCanary")
+    println("5xx response calling StorageApi#listFiles")
     e.printStackTrace()
 }
 ```
@@ -205,9 +251,9 @@ Configure bearer:
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a id="storageControllerRequestUploadUrlCanary"></a>
-# **storageControllerRequestUploadUrlCanary**
-> PresignedUploadResponseDto storageControllerRequestUploadUrlCanary(requestUploadUrlDto)
+<a id="requestUploadUrl"></a>
+# **requestUploadUrl**
+> PresignedUploadResponseDto requestUploadUrl(requestUploadUrlDto)
 
 Request a presigned URL for file upload
 
@@ -220,13 +266,13 @@ Request a presigned URL for file upload
 val apiInstance = StorageApi()
 val requestUploadUrlDto : RequestUploadUrlDto = {"filename":"iphone-15.png","mimeType":"image/png","isPublic":true,"tags":["product","image"],"relatedEntityId":"product_123","relatedEntityType":"product"} // RequestUploadUrlDto | 
 try {
-    val result : PresignedUploadResponseDto = apiInstance.storageControllerRequestUploadUrlCanary(requestUploadUrlDto)
+    val result : PresignedUploadResponseDto = apiInstance.requestUploadUrl(requestUploadUrlDto)
     println(result)
 } catch (e: ClientException) {
-    println("4xx response calling StorageApi#storageControllerRequestUploadUrlCanary")
+    println("4xx response calling StorageApi#requestUploadUrl")
     e.printStackTrace()
 } catch (e: ServerException) {
-    println("5xx response calling StorageApi#storageControllerRequestUploadUrlCanary")
+    println("5xx response calling StorageApi#requestUploadUrl")
     e.printStackTrace()
 }
 ```
@@ -249,51 +295,5 @@ Configure bearer:
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a id="storageControllerRetrieveCanary"></a>
-# **storageControllerRetrieveCanary**
-> FileDto storageControllerRetrieveCanary(id)
-
-Get file details
-
-### Example
-```kotlin
-// Import classes:
-//import com.cashful.infrastructure.*
-//import com.cashful.model.*
-
-val apiInstance = StorageApi()
-val id : kotlin.String = id_example // kotlin.String | File ID
-try {
-    val result : FileDto = apiInstance.storageControllerRetrieveCanary(id)
-    println(result)
-} catch (e: ClientException) {
-    println("4xx response calling StorageApi#storageControllerRetrieveCanary")
-    e.printStackTrace()
-} catch (e: ServerException) {
-    println("5xx response calling StorageApi#storageControllerRetrieveCanary")
-    e.printStackTrace()
-}
-```
-
-### Parameters
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **id** | **kotlin.String**| File ID | |
-
-### Return type
-
-[**FileDto**](FileDto.md)
-
-### Authorization
-
-
-Configure bearer:
-    ApiClient.accessToken = ""
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
  - **Accept**: application/json
 

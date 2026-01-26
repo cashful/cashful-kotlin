@@ -15,6 +15,7 @@
 
 package com.cashful.model
 
+import com.cashful.model.HostedCheckoutConfigDto
 import com.cashful.model.LineItemDto
 
 import kotlinx.serialization.Serializable
@@ -40,6 +41,7 @@ import kotlinx.serialization.Contextual
  * @param totalAmount 
  * @param mode 
  * @param expiresAt 
+ * @param hostedCheckoutConfig Configuration for the hosted checkout page
  */
 @Serializable
 
@@ -92,7 +94,11 @@ data class CheckoutSessionResponseDto (
     val mode: kotlin.String? = null,
 
     @Contextual @SerialName(value = "expiresAt")
-    val expiresAt: java.time.OffsetDateTime? = null
+    val expiresAt: java.time.OffsetDateTime? = null,
+
+    /* Configuration for the hosted checkout page */
+    @SerialName(value = "hostedCheckoutConfig")
+    val hostedCheckoutConfig: HostedCheckoutConfigDto? = null
 
 ) {
 

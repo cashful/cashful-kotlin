@@ -19,10 +19,13 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
+import com.cashful.model.BadRequestResponseDto
 import com.cashful.model.CheckoutSessionResponseDto
 import com.cashful.model.CreateCheckoutSessionDto
-import com.cashful.model.ErrorResponseDto
+import com.cashful.model.InternalServerErrorResponseDto
 import com.cashful.model.ListCheckoutSessionsResponseDto
+import com.cashful.model.NotFoundResponseDto
+import com.cashful.model.UnauthorizedResponseDto
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

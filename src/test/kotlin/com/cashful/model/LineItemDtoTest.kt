@@ -37,6 +37,12 @@ class LineItemDtoTest : ShouldSpec() {
             //modelInstance.currency shouldBe ("TODO")
         }
 
+        // to test the property `name` - The name of the line item
+        should("test name") {
+            // uncomment below to test the property
+            //modelInstance.name shouldBe ("TODO")
+        }
+
         // to test the property `productId` - The unique identifier of the product
         should("test productId") {
             // uncomment below to test the property

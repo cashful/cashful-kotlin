@@ -19,24 +19,13 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import com.cashful.model.CreateCheckoutSessionDto
+import com.cashful.model.HostedCheckoutConfigDto
 import com.cashful.model.LineItemDto
 
 class CreateCheckoutSessionDtoTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of CreateCheckoutSessionDto
         //val modelInstance = CreateCheckoutSessionDto()
-
-        // to test the property `successUrl` - The URL to redirect to on successful payment
-        should("test successUrl") {
-            // uncomment below to test the property
-            //modelInstance.successUrl shouldBe ("TODO")
-        }
-
-        // to test the property `cancelUrl` - The URL to redirect to if customer cancels
-        should("test cancelUrl") {
-            // uncomment below to test the property
-            //modelInstance.cancelUrl shouldBe ("TODO")
-        }
 
         // to test the property `currency` - The three-letter ISO 4217 currency code
         should("test currency") {
@@ -68,6 +57,24 @@ class CreateCheckoutSessionDtoTest : ShouldSpec() {
             //modelInstance.productId shouldBe ("TODO")
         }
 
+        // to test the property `successUrl` - The URL to redirect to on successful payment
+        should("test successUrl") {
+            // uncomment below to test the property
+            //modelInstance.successUrl shouldBe ("TODO")
+        }
+
+        // to test the property `failureUrl` - The URL to redirect to on failure
+        should("test failureUrl") {
+            // uncomment below to test the property
+            //modelInstance.failureUrl shouldBe ("TODO")
+        }
+
+        // to test the property `cancelUrl` - The URL to redirect to on cancel
+        should("test cancelUrl") {
+            // uncomment below to test the property
+            //modelInstance.cancelUrl shouldBe ("TODO")
+        }
+
         // to test the property `lineItems` - Array of line items for the checkout
         should("test lineItems") {
             // uncomment below to test the property
@@ -84,6 +91,12 @@ class CreateCheckoutSessionDtoTest : ShouldSpec() {
         should("test mode") {
             // uncomment below to test the property
             //modelInstance.mode shouldBe ("TODO")
+        }
+
+        // to test the property `hostedCheckoutConfig` - Configuration for the hosted checkout page
+        should("test hostedCheckoutConfig") {
+            // uncomment below to test the property
+            //modelInstance.hostedCheckoutConfig shouldBe ("TODO")
         }
 
     }

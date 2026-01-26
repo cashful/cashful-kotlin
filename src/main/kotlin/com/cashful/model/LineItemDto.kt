@@ -25,6 +25,7 @@ import kotlinx.serialization.Contextual
  *
  * @param amount The amount for this line item in the smallest currency unit
  * @param currency The three-letter ISO 4217 currency code
+ * @param name The name of the line item
  * @param productId The unique identifier of the product
  * @param quantity The quantity of the product
  */
@@ -39,6 +40,10 @@ data class LineItemDto (
     /* The three-letter ISO 4217 currency code */
     @SerialName(value = "currency")
     val currency: kotlin.String,
+
+    /* The name of the line item */
+    @SerialName(value = "name")
+    val name: kotlin.String? = null,
 
     /* The unique identifier of the product */
     @SerialName(value = "productId")

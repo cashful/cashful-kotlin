@@ -19,6 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import com.cashful.model.CheckoutSessionResponseDto
+import com.cashful.model.HostedCheckoutConfigDto
 import com.cashful.model.LineItemDto
 
 class CheckoutSessionResponseDtoTest : ShouldSpec() {
@@ -120,6 +121,12 @@ class CheckoutSessionResponseDtoTest : ShouldSpec() {
         should("test expiresAt") {
             // uncomment below to test the property
             //modelInstance.expiresAt shouldBe ("TODO")
+        }
+
+        // to test the property `hostedCheckoutConfig` - Configuration for the hosted checkout page
+        should("test hostedCheckoutConfig") {
+            // uncomment below to test the property
+            //modelInstance.hostedCheckoutConfig shouldBe ("TODO")
         }
 
     }

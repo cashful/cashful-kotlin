@@ -19,68 +19,71 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import com.cashful.api.StorageApi
+import com.cashful.model.BadRequestResponseDto
 import com.cashful.model.ConfirmUploadDto
-import com.cashful.model.ErrorResponseDto
 import com.cashful.model.FileDto
+import com.cashful.model.InternalServerErrorResponseDto
 import com.cashful.model.ListFilesResponseDto
+import com.cashful.model.NotFoundResponseDto
 import com.cashful.model.PresignedDownloadResponseDto
 import com.cashful.model.PresignedUploadResponseDto
 import com.cashful.model.RequestUploadUrlDto
+import com.cashful.model.UnauthorizedResponseDto
 
 class StorageApiTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of StorageApi
         //val apiInstance = StorageApi()
 
-        // to test storageControllerConfirmUploadCanary
-        should("test storageControllerConfirmUploadCanary") {
-            // uncomment below to test storageControllerConfirmUploadCanary
+        // to test confirmUpload
+        should("test confirmUpload") {
+            // uncomment below to test confirmUpload
             //val confirmUploadDto : ConfirmUploadDto = {"fileId":"file_abc123xyz","checksum":"sha256:a1b2c3d4e5f6...","size":245760} // ConfirmUploadDto | 
-            //val result : FileDto = apiInstance.storageControllerConfirmUploadCanary(confirmUploadDto)
+            //val result : FileDto = apiInstance.confirmUpload(confirmUploadDto)
             //result shouldBe ("TODO")
         }
 
-        // to test storageControllerDeleteCanary
-        should("test storageControllerDeleteCanary") {
-            // uncomment below to test storageControllerDeleteCanary
+        // to test deleteFile
+        should("test deleteFile") {
+            // uncomment below to test deleteFile
             //val id : kotlin.String = id_example // kotlin.String | File ID
-            //apiInstance.storageControllerDeleteCanary(id)
+            //apiInstance.deleteFile(id)
         }
 
-        // to test storageControllerGetDownloadUrlCanary
-        should("test storageControllerGetDownloadUrlCanary") {
-            // uncomment below to test storageControllerGetDownloadUrlCanary
+        // to test getDownloadUrl
+        should("test getDownloadUrl") {
+            // uncomment below to test getDownloadUrl
             //val id : kotlin.String = id_example // kotlin.String | File ID
-            //val result : PresignedDownloadResponseDto = apiInstance.storageControllerGetDownloadUrlCanary(id)
+            //val result : PresignedDownloadResponseDto = apiInstance.getDownloadUrl(id)
             //result shouldBe ("TODO")
         }
 
-        // to test storageControllerListCanary
-        should("test storageControllerListCanary") {
-            // uncomment below to test storageControllerListCanary
+        // to test getFileDetails
+        should("test getFileDetails") {
+            // uncomment below to test getFileDetails
+            //val id : kotlin.String = id_example // kotlin.String | File ID
+            //val result : FileDto = apiInstance.getFileDetails(id)
+            //result shouldBe ("TODO")
+        }
+
+        // to test listFiles
+        should("test listFiles") {
+            // uncomment below to test listFiles
             //val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of records to return
             //val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of records to skip
             //val tag : kotlin.String = tag_example // kotlin.String | Filter by tag
             //val status : kotlin.String = status_example // kotlin.String | 
             //val relatedEntityId : kotlin.String = relatedEntityId_example // kotlin.String | 
             //val relatedEntityType : kotlin.String = relatedEntityType_example // kotlin.String | 
-            //val result : ListFilesResponseDto = apiInstance.storageControllerListCanary(limit, offset, tag, status, relatedEntityId, relatedEntityType)
+            //val result : ListFilesResponseDto = apiInstance.listFiles(limit, offset, tag, status, relatedEntityId, relatedEntityType)
             //result shouldBe ("TODO")
         }
 
-        // to test storageControllerRequestUploadUrlCanary
-        should("test storageControllerRequestUploadUrlCanary") {
-            // uncomment below to test storageControllerRequestUploadUrlCanary
+        // to test requestUploadUrl
+        should("test requestUploadUrl") {
+            // uncomment below to test requestUploadUrl
             //val requestUploadUrlDto : RequestUploadUrlDto = {"filename":"iphone-15.png","mimeType":"image/png","isPublic":true,"tags":["product","image"],"relatedEntityId":"product_123","relatedEntityType":"product"} // RequestUploadUrlDto | 
-            //val result : PresignedUploadResponseDto = apiInstance.storageControllerRequestUploadUrlCanary(requestUploadUrlDto)
-            //result shouldBe ("TODO")
-        }
-
-        // to test storageControllerRetrieveCanary
-        should("test storageControllerRetrieveCanary") {
-            // uncomment below to test storageControllerRetrieveCanary
-            //val id : kotlin.String = id_example // kotlin.String | File ID
-            //val result : FileDto = apiInstance.storageControllerRetrieveCanary(id)
+            //val result : PresignedUploadResponseDto = apiInstance.requestUploadUrl(requestUploadUrlDto)
             //result shouldBe ("TODO")
         }
 

@@ -19,10 +19,14 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import com.cashful.api.ProductsApi
+import com.cashful.model.BadRequestResponseDto
 import com.cashful.model.CreateProductDto
-import com.cashful.model.ErrorResponseDto
+import com.cashful.model.InternalServerErrorResponseDto
 import com.cashful.model.ListProductsResponseDto
+import com.cashful.model.NotFoundResponseDto
 import com.cashful.model.ProductResponseDto
+import com.cashful.model.RetrieveMultipleProductsDto
+import com.cashful.model.UnauthorizedResponseDto
 import com.cashful.model.UpdateProductDto
 
 class ProductsApiTest : ShouldSpec() {
@@ -46,6 +50,14 @@ class ProductsApiTest : ShouldSpec() {
             //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose products are being requested. If not provided, the products of the authenticated merchant will be returned.
             //val active : kotlin.Boolean = true // kotlin.Boolean | Filter by active status
             //val result : ListProductsResponseDto = apiInstance.listProducts(limit, offset, merchantId, active)
+            //result shouldBe ("TODO")
+        }
+
+        // to test retrieveMultipleProducts
+        should("test retrieveMultipleProducts") {
+            // uncomment below to test retrieveMultipleProducts
+            //val retrieveMultipleProductsDto : RetrieveMultipleProductsDto =  // RetrieveMultipleProductsDto | List of product IDs
+            //val result : kotlin.collections.List<ProductResponseDto> = apiInstance.retrieveMultipleProducts(retrieveMultipleProductsDto)
             //result shouldBe ("TODO")
         }
 

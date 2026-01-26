@@ -19,6 +19,8 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import com.cashful.model.PaymentLinkResponseDto
+import com.cashful.model.HostedCheckoutConfigDto
+import com.cashful.model.LineItemDto
 
 class PaymentLinkResponseDtoTest : ShouldSpec() {
     init {
@@ -41,6 +43,12 @@ class PaymentLinkResponseDtoTest : ShouldSpec() {
         should("test url") {
             // uncomment below to test the property
             //modelInstance.url shouldBe ("TODO")
+        }
+
+        // to test the property `totalAmount`
+        should("test totalAmount") {
+            // uncomment below to test the property
+            //modelInstance.totalAmount shouldBe ("TODO")
         }
 
         // to test the property `currency`
@@ -91,10 +99,22 @@ class PaymentLinkResponseDtoTest : ShouldSpec() {
             //modelInstance.updatedAt shouldBe ("TODO")
         }
 
-        // to test the property `productId`
-        should("test productId") {
+        // to test the property `name`
+        should("test name") {
             // uncomment below to test the property
-            //modelInstance.productId shouldBe ("TODO")
+            //modelInstance.name shouldBe ("TODO")
+        }
+
+        // to test the property `description`
+        should("test description") {
+            // uncomment below to test the property
+            //modelInstance.description shouldBe ("TODO")
+        }
+
+        // to test the property `lineItems`
+        should("test lineItems") {
+            // uncomment below to test the property
+            //modelInstance.lineItems shouldBe ("TODO")
         }
 
         // to test the property `customerId`
@@ -103,10 +123,10 @@ class PaymentLinkResponseDtoTest : ShouldSpec() {
             //modelInstance.customerId shouldBe ("TODO")
         }
 
-        // to test the property `amount`
-        should("test amount") {
+        // to test the property `hostedCheckoutConfig` - Configuration for the hosted checkout page
+        should("test hostedCheckoutConfig") {
             // uncomment below to test the property
-            //modelInstance.amount shouldBe ("TODO")
+            //modelInstance.hostedCheckoutConfig shouldBe ("TODO")
         }
 
         // to test the property `deletedAt`

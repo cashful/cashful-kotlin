@@ -1,5 +1,5 @@
 
-# ErrorResponseDto
+# NotFoundResponseDto
 
 ## Properties
 | Name | Type | Description | Notes |

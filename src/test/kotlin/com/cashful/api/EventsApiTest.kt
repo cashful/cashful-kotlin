@@ -19,8 +19,11 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import com.cashful.api.EventsApi
-import com.cashful.model.ErrorResponseDto
+import com.cashful.model.BadRequestResponseDto
+import com.cashful.model.InternalServerErrorResponseDto
 import com.cashful.model.ListEventsResponseDto
+import com.cashful.model.NotFoundResponseDto
+import com.cashful.model.UnauthorizedResponseDto
 
 class EventsApiTest : ShouldSpec() {
     init {

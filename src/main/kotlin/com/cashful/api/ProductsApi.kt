@@ -19,10 +19,14 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
+import com.cashful.model.BadRequestResponseDto
 import com.cashful.model.CreateProductDto
-import com.cashful.model.ErrorResponseDto
+import com.cashful.model.InternalServerErrorResponseDto
 import com.cashful.model.ListProductsResponseDto
+import com.cashful.model.NotFoundResponseDto
 import com.cashful.model.ProductResponseDto
+import com.cashful.model.RetrieveMultipleProductsDto
+import com.cashful.model.UnauthorizedResponseDto
 import com.cashful.model.UpdateProductDto
 
 import kotlinx.serialization.SerialName
@@ -215,6 +219,80 @@ class ProductsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
         return RequestConfig(
             method = RequestMethod.GET,
             path = "/api/canary/products",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * POST /api/canary/products/multiple
+     * Retrieve Multiple Products by ID
+     * Retrieves multiple products using the provided ID&#39;s with a maximum of 50 IDs.
+     * @param retrieveMultipleProductsDto List of product IDs
+     * @return kotlin.collections.List<ProductResponseDto>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun retrieveMultipleProducts(retrieveMultipleProductsDto: RetrieveMultipleProductsDto) : kotlin.collections.List<ProductResponseDto> = withContext(Dispatchers.IO) {
+        val localVarResponse = retrieveMultipleProductsWithHttpInfo(retrieveMultipleProductsDto = retrieveMultipleProductsDto)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<ProductResponseDto>
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /api/canary/products/multiple
+     * Retrieve Multiple Products by ID
+     * Retrieves multiple products using the provided ID&#39;s with a maximum of 50 IDs.
+     * @param retrieveMultipleProductsDto List of product IDs
+     * @return ApiResponse<kotlin.collections.List<ProductResponseDto>?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun retrieveMultipleProductsWithHttpInfo(retrieveMultipleProductsDto: RetrieveMultipleProductsDto) : ApiResponse<kotlin.collections.List<ProductResponseDto>?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = retrieveMultipleProductsRequestConfig(retrieveMultipleProductsDto = retrieveMultipleProductsDto)
+
+        return@withContext request<RetrieveMultipleProductsDto, kotlin.collections.List<ProductResponseDto>>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation retrieveMultipleProducts
+     *
+     * @param retrieveMultipleProductsDto List of product IDs
+     * @return RequestConfig
+     */
+    fun retrieveMultipleProductsRequestConfig(retrieveMultipleProductsDto: RetrieveMultipleProductsDto) : RequestConfig<RetrieveMultipleProductsDto> {
+        val localVariableBody = retrieveMultipleProductsDto
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/api/canary/products/multiple",
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,

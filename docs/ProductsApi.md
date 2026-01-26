@@ -6,6 +6,7 @@ All URIs are relative to *https://api.cashful.africa*
 | ------------- | ------------- | ------------- |
 | [**createProduct**](ProductsApi.md#createProduct) | **POST** /api/canary/products | Create Product |
 | [**listProducts**](ProductsApi.md#listProducts) | **GET** /api/canary/products | List Products |
+| [**retrieveMultipleProducts**](ProductsApi.md#retrieveMultipleProducts) | **POST** /api/canary/products/multiple | Retrieve Multiple Products by ID |
 | [**retrieveProduct**](ProductsApi.md#retrieveProduct) | **GET** /api/canary/products/{id} | Retrieve Product |
 | [**updateProduct**](ProductsApi.md#updateProduct) | **PATCH** /api/canary/products/{id} | Update Product |
 
@@ -110,6 +111,54 @@ Configure bearer:
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a id="retrieveMultipleProducts"></a>
+# **retrieveMultipleProducts**
+> kotlin.collections.List&lt;ProductResponseDto&gt; retrieveMultipleProducts(retrieveMultipleProductsDto)
+
+Retrieve Multiple Products by ID
+
+Retrieves multiple products using the provided ID&#39;s with a maximum of 50 IDs.
+
+### Example
+```kotlin
+// Import classes:
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
+
+val apiInstance = ProductsApi()
+val retrieveMultipleProductsDto : RetrieveMultipleProductsDto =  // RetrieveMultipleProductsDto | List of product IDs
+try {
+    val result : kotlin.collections.List<ProductResponseDto> = apiInstance.retrieveMultipleProducts(retrieveMultipleProductsDto)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling ProductsApi#retrieveMultipleProducts")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling ProductsApi#retrieveMultipleProducts")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **retrieveMultipleProductsDto** | [**RetrieveMultipleProductsDto**](RetrieveMultipleProductsDto.md)| List of product IDs | |
+
+### Return type
+
+[**kotlin.collections.List&lt;ProductResponseDto&gt;**](ProductResponseDto.md)
+
+### Authorization
+
+
+Configure bearer:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 <a id="retrieveProduct"></a>

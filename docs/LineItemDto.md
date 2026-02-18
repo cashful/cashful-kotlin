@@ -9,6 +9,8 @@
 | **name** | **kotlin.String** | The name of the line item |  [optional] |
 | **productId** | **kotlin.String** | The unique identifier of the product |  [optional] |
 | **quantity** | [**java.math.BigDecimal**](java.math.BigDecimal.md) | The quantity of the product |  [optional] |
+| **imageId** | **kotlin.String** | The image identifier for the line item |  [optional] |
+| **imageUrl** | **kotlin.String** | The URL of the image for the line item |  [optional] |
 
 
 

@@ -24,11 +24,7 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
- * @param amount Payment amount in the smallest currency unit (e.g., cents)
- * @param currency Three-letter ISO 4217 currency code
- * @param merchantId The unique identifier of the merchant
  * @param evervaultEncryptedCard Evervault encrypted card details
- * @param paymentIntentId Payment intent ID linked to the checkout/payment flow
  * @param maskedPan Masked PAN for display purposes
  * @param tokenizeCard Whether to tokenize the card for future use
  * @param firstName Cardholder first name
@@ -40,27 +36,11 @@ import kotlinx.serialization.Contextual
  */
 @Serializable
 
-data class InitiatePaymentDto (
-
-    /* Payment amount in the smallest currency unit (e.g., cents) */
-    @Contextual @SerialName(value = "amount")
-    val amount: java.math.BigDecimal,
-
-    /* Three-letter ISO 4217 currency code */
-    @SerialName(value = "currency")
-    val currency: kotlin.String,
-
-    /* The unique identifier of the merchant */
-    @SerialName(value = "merchantId")
-    val merchantId: kotlin.String,
+data class ConfirmCheckoutSessionDto (
 
     /* Evervault encrypted card details */
     @SerialName(value = "evervaultEncryptedCard")
     val evervaultEncryptedCard: EvervaultEncryptedCardDto,
-
-    /* Payment intent ID linked to the checkout/payment flow */
-    @SerialName(value = "paymentIntentId")
-    val paymentIntentId: kotlin.String,
 
     /* Masked PAN for display purposes */
     @SerialName(value = "maskedPan")
@@ -92,7 +72,7 @@ data class InitiatePaymentDto (
 
     /* Additional metadata */
     @Contextual @SerialName(value = "metadata")
-    val metadata: kotlin.Any? = null
+    val metadata: kotlin.collections.Map<kotlin.String, kotlin.Any>? = null
 
 ) {
 

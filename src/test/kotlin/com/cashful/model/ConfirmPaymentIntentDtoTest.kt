@@ -18,42 +18,18 @@ package com.cashful.model
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
-import com.cashful.model.InitiatePaymentDto
+import com.cashful.model.ConfirmPaymentIntentDto
 import com.cashful.model.EvervaultEncryptedCardDto
 
-class InitiatePaymentDtoTest : ShouldSpec() {
+class ConfirmPaymentIntentDtoTest : ShouldSpec() {
     init {
-        // uncomment below to create an instance of InitiatePaymentDto
-        //val modelInstance = InitiatePaymentDto()
-
-        // to test the property `amount` - Payment amount in the smallest currency unit (e.g., cents)
-        should("test amount") {
-            // uncomment below to test the property
-            //modelInstance.amount shouldBe ("TODO")
-        }
-
-        // to test the property `currency` - Three-letter ISO 4217 currency code
-        should("test currency") {
-            // uncomment below to test the property
-            //modelInstance.currency shouldBe ("TODO")
-        }
-
-        // to test the property `merchantId` - The unique identifier of the merchant
-        should("test merchantId") {
-            // uncomment below to test the property
-            //modelInstance.merchantId shouldBe ("TODO")
-        }
+        // uncomment below to create an instance of ConfirmPaymentIntentDto
+        //val modelInstance = ConfirmPaymentIntentDto()
 
         // to test the property `evervaultEncryptedCard` - Evervault encrypted card details
         should("test evervaultEncryptedCard") {
             // uncomment below to test the property
             //modelInstance.evervaultEncryptedCard shouldBe ("TODO")
-        }
-
-        // to test the property `paymentIntentId` - Payment intent ID linked to the checkout/payment flow
-        should("test paymentIntentId") {
-            // uncomment below to test the property
-            //modelInstance.paymentIntentId shouldBe ("TODO")
         }
 
         // to test the property `maskedPan` - Masked PAN for display purposes

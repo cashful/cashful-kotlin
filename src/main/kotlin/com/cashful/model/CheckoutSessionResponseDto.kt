@@ -36,6 +36,7 @@ import kotlinx.serialization.Contextual
  * @param status 
  * @param metadata 
  * @param deletedAt 
+ * @param paymentIntentId 
  * @param customerId 
  * @param lineItems 
  * @param totalAmount 
@@ -80,6 +81,9 @@ data class CheckoutSessionResponseDto (
 
     @Contextual @SerialName(value = "deletedAt")
     val deletedAt: java.time.OffsetDateTime? = null,
+
+    @SerialName(value = "paymentIntentId")
+    val paymentIntentId: kotlin.String? = null,
 
     @SerialName(value = "customerId")
     val customerId: kotlin.String? = null,

@@ -55,5 +55,17 @@ class LineItemDtoTest : ShouldSpec() {
             //modelInstance.quantity shouldBe ("TODO")
         }
 
+        // to test the property `imageId` - The image identifier for the line item
+        should("test imageId") {
+            // uncomment below to test the property
+            //modelInstance.imageId shouldBe ("TODO")
+        }
+
+        // to test the property `imageUrl` - The URL of the image for the line item
+        should("test imageUrl") {
+            // uncomment below to test the property
+            //modelInstance.imageUrl shouldBe ("TODO")
+        }
+
     }
 }

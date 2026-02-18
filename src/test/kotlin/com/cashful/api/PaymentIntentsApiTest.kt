@@ -20,6 +20,8 @@ import io.kotlintest.specs.ShouldSpec
 
 import com.cashful.api.PaymentIntentsApi
 import com.cashful.model.BadRequestResponseDto
+import com.cashful.model.ConfirmPaymentIntentDto
+import com.cashful.model.ConfirmPaymentIntentResponseDto
 import com.cashful.model.CreatePaymentIntentDto
 import com.cashful.model.InternalServerErrorResponseDto
 import com.cashful.model.ListPaymentIntentsResponseDto
@@ -44,7 +46,8 @@ class PaymentIntentsApiTest : ShouldSpec() {
         should("test confirmPaymentIntent") {
             // uncomment below to test confirmPaymentIntent
             //val id : kotlin.String = id_example // kotlin.String | The unique identifier of the payment intent
-            //val result : PaymentIntentResponseDto = apiInstance.confirmPaymentIntent(id)
+            //val confirmPaymentIntentDto : ConfirmPaymentIntentDto =  // ConfirmPaymentIntentDto | 
+            //val result : ConfirmPaymentIntentResponseDto = apiInstance.confirmPaymentIntent(id, confirmPaymentIntentDto)
             //result shouldBe ("TODO")
         }
 
@@ -59,11 +62,11 @@ class PaymentIntentsApiTest : ShouldSpec() {
         // to test listPaymentIntents
         should("test listPaymentIntents") {
             // uncomment below to test listPaymentIntents
-            //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. If omitted, defaults to the authenticated merchant.
-            //val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
-            //val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
-            //val status : kotlin.String = status_example // kotlin.String | Filter by status
-            //val result : ListPaymentIntentsResponseDto = apiInstance.listPaymentIntents(merchantId, limit, offset, status)
+            //val status : kotlin.String = status_example // kotlin.String | 
+            //val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | 
+            //val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | 
+            //val merchantId : kotlin.String = merchantId_example // kotlin.String | 
+            //val result : ListPaymentIntentsResponseDto = apiInstance.listPaymentIntents(status, offset, limit, merchantId)
             //result shouldBe ("TODO")
         }
 

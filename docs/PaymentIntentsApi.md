@@ -61,11 +61,11 @@ Configure bearer:
 
 <a id="confirmPaymentIntent"></a>
 # **confirmPaymentIntent**
-> PaymentIntentResponseDto confirmPaymentIntent(id)
+> ConfirmPaymentIntentResponseDto confirmPaymentIntent(id, confirmPaymentIntentDto)
 
 Confirm Payment Intent
 
-Confirms a payment intent that requires confirmation. This initiates the actual payment processing.
+Confirms a payment intent that requires confirmation and returns 3DS parameters for card authentication.
 
 ### Example
 ```kotlin
@@ -75,8 +75,9 @@ Confirms a payment intent that requires confirmation. This initiates the actual 
 
 val apiInstance = PaymentIntentsApi()
 val id : kotlin.String = id_example // kotlin.String | The unique identifier of the payment intent
+val confirmPaymentIntentDto : ConfirmPaymentIntentDto =  // ConfirmPaymentIntentDto | 
 try {
-    val result : PaymentIntentResponseDto = apiInstance.confirmPaymentIntent(id)
+    val result : ConfirmPaymentIntentResponseDto = apiInstance.confirmPaymentIntent(id, confirmPaymentIntentDto)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PaymentIntentsApi#confirmPaymentIntent")
@@ -88,13 +89,14 @@ try {
 ```
 
 ### Parameters
+| **id** | **kotlin.String**| The unique identifier of the payment intent | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **kotlin.String**| The unique identifier of the payment intent | |
+| **confirmPaymentIntentDto** | [**ConfirmPaymentIntentDto**](ConfirmPaymentIntentDto.md)|  | |
 
 ### Return type
 
-[**PaymentIntentResponseDto**](PaymentIntentResponseDto.md)
+[**ConfirmPaymentIntentResponseDto**](ConfirmPaymentIntentResponseDto.md)
 
 ### Authorization
 
@@ -104,7 +106,7 @@ Configure bearer:
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 <a id="createPaymentIntent"></a>
@@ -113,7 +115,7 @@ Configure bearer:
 
 Create Payment Intent
 
-Creates a payment intent for off-session charges. Used for subscriptions, recurring billing, or server-to-server payments with saved cards.
+Creates a payment intent for a payment attempt. Used for hosted checkout or direct integrations.
 
 ### Example
 ```kotlin
@@ -157,7 +159,7 @@ Configure bearer:
 
 <a id="listPaymentIntents"></a>
 # **listPaymentIntents**
-> ListPaymentIntentsResponseDto listPaymentIntents(merchantId, limit, offset, status)
+> ListPaymentIntentsResponseDto listPaymentIntents(status, offset, limit, merchantId)
 
 List Payment Intents
 
@@ -170,12 +172,12 @@ Lists payment intents for a specific merchant with pagination and filtering.
 //import com.cashful.model.*
 
 val apiInstance = PaymentIntentsApi()
-val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. If omitted, defaults to the authenticated merchant.
-val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
-val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
-val status : kotlin.String = status_example // kotlin.String | Filter by status
+val status : kotlin.String = status_example // kotlin.String | 
+val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | 
+val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | 
+val merchantId : kotlin.String = merchantId_example // kotlin.String | 
 try {
-    val result : ListPaymentIntentsResponseDto = apiInstance.listPaymentIntents(merchantId, limit, offset, status)
+    val result : ListPaymentIntentsResponseDto = apiInstance.listPaymentIntents(status, offset, limit, merchantId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PaymentIntentsApi#listPaymentIntents")
@@ -187,12 +189,12 @@ try {
 ```
 
 ### Parameters
-| **merchantId** | **kotlin.String**| The ID of the merchant. If omitted, defaults to the authenticated merchant. | [optional] |
-| **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] [default to 50] |
-| **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] [default to 0] |
+| **status** | **kotlin.String**|  | [optional] [enum: initiation, requires_payment_method, requires_confirmation, requires_action, processing, requires_capture, succeeded, failed, canceled] |
+| **offset** | **java.math.BigDecimal**|  | [optional] |
+| **limit** | **java.math.BigDecimal**|  | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **status** | **kotlin.String**| Filter by status | [optional] [enum: initiation, requires_payment_method, requires_confirmation, requires_action, processing, requires_capture, succeeded, failed, canceled] |
+| **merchantId** | **kotlin.String**|  | [optional] |
 
 ### Return type
 

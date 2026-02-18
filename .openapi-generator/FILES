@@ -39,9 +39,13 @@ docs/ChangePasswordDto.md
 docs/ChangePasswordResponseDto.md
 docs/CheckSlugDto.md
 docs/CheckSlugResponseDto.md
+docs/CheckoutSessionConfirmResponseDto.md
 docs/CheckoutSessionResponseDto.md
 docs/CheckoutsApi.md
 docs/ComplianceApi.md
+docs/ConfirmCheckoutSessionDto.md
+docs/ConfirmPaymentIntentDto.md
+docs/ConfirmPaymentIntentResponseDto.md
 docs/ConfirmUploadDto.md
 docs/CreateApiKeyDto.md
 docs/CreateApiKeyResponseDto.md
@@ -66,7 +70,6 @@ docs/CustomerStatsDto.md
 docs/CustomerTransactionDto.md
 docs/CustomersApi.md
 docs/DailyBreakdownDto.md
-docs/DebitReturnResponseDto.md
 docs/DeleteApiKeyDto.md
 docs/DeleteApiKeyResponseDto.md
 docs/DeleteOrganizationDto.md
@@ -311,7 +314,11 @@ src/main/kotlin/com/cashful/model/ChangePasswordDto.kt
 src/main/kotlin/com/cashful/model/ChangePasswordResponseDto.kt
 src/main/kotlin/com/cashful/model/CheckSlugDto.kt
 src/main/kotlin/com/cashful/model/CheckSlugResponseDto.kt
+src/main/kotlin/com/cashful/model/CheckoutSessionConfirmResponseDto.kt
 src/main/kotlin/com/cashful/model/CheckoutSessionResponseDto.kt
+src/main/kotlin/com/cashful/model/ConfirmCheckoutSessionDto.kt
+src/main/kotlin/com/cashful/model/ConfirmPaymentIntentDto.kt
+src/main/kotlin/com/cashful/model/ConfirmPaymentIntentResponseDto.kt
 src/main/kotlin/com/cashful/model/ConfirmUploadDto.kt
 src/main/kotlin/com/cashful/model/CreateApiKeyDto.kt
 src/main/kotlin/com/cashful/model/CreateApiKeyResponseDto.kt
@@ -335,7 +342,6 @@ src/main/kotlin/com/cashful/model/CustomerResponseDto.kt
 src/main/kotlin/com/cashful/model/CustomerStatsDto.kt
 src/main/kotlin/com/cashful/model/CustomerTransactionDto.kt
 src/main/kotlin/com/cashful/model/DailyBreakdownDto.kt
-src/main/kotlin/com/cashful/model/DebitReturnResponseDto.kt
 src/main/kotlin/com/cashful/model/DeleteApiKeyDto.kt
 src/main/kotlin/com/cashful/model/DeleteApiKeyResponseDto.kt
 src/main/kotlin/com/cashful/model/DeleteOrganizationDto.kt
@@ -541,7 +547,11 @@ src/test/kotlin/com/cashful/model/ChangePasswordDtoTest.kt
 src/test/kotlin/com/cashful/model/ChangePasswordResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/CheckSlugDtoTest.kt
 src/test/kotlin/com/cashful/model/CheckSlugResponseDtoTest.kt
+src/test/kotlin/com/cashful/model/CheckoutSessionConfirmResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/CheckoutSessionResponseDtoTest.kt
+src/test/kotlin/com/cashful/model/ConfirmCheckoutSessionDtoTest.kt
+src/test/kotlin/com/cashful/model/ConfirmPaymentIntentDtoTest.kt
+src/test/kotlin/com/cashful/model/ConfirmPaymentIntentResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/ConfirmUploadDtoTest.kt
 src/test/kotlin/com/cashful/model/CreateApiKeyDtoTest.kt
 src/test/kotlin/com/cashful/model/CreateApiKeyResponseDtoTest.kt
@@ -565,7 +575,6 @@ src/test/kotlin/com/cashful/model/CustomerResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/CustomerStatsDtoTest.kt
 src/test/kotlin/com/cashful/model/CustomerTransactionDtoTest.kt
 src/test/kotlin/com/cashful/model/DailyBreakdownDtoTest.kt
-src/test/kotlin/com/cashful/model/DebitReturnResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/DeleteApiKeyDtoTest.kt
 src/test/kotlin/com/cashful/model/DeleteApiKeyResponseDtoTest.kt
 src/test/kotlin/com/cashful/model/DeleteOrganizationDtoTest.kt

@@ -33,6 +33,7 @@ import kotlinx.serialization.Contextual
  * @param taxRate Tax rate
  * @param embedMode Embed mode
  * @param embedOrigin Embed origin
+ * @param methods Enabled payment methods
  */
 @Serializable
 
@@ -76,10 +77,25 @@ data class HostedCheckoutConfigDto (
 
     /* Embed origin */
     @SerialName(value = "embedOrigin")
-    val embedOrigin: kotlin.String? = null
+    val embedOrigin: kotlin.String? = null,
+
+    /* Enabled payment methods */
+    @SerialName(value = "methods")
+    val methods: kotlin.collections.List<HostedCheckoutConfigDto.Methods>? = null
 
 ) {
 
+    /**
+     * Enabled payment methods
+     *
+     * Values: card,wallet,bank
+     */
+    @Serializable
+    enum class Methods(val value: kotlin.String) {
+        @SerialName(value = "card") card("card"),
+        @SerialName(value = "wallet") wallet("wallet"),
+        @SerialName(value = "bank") bank("bank");
+    }
 
 }
 

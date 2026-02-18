@@ -85,5 +85,11 @@ class HostedCheckoutConfigDtoTest : ShouldSpec() {
             //modelInstance.embedOrigin shouldBe ("TODO")
         }
 
+        // to test the property `methods` - Enabled payment methods
+        should("test methods") {
+            // uncomment below to test the property
+            //modelInstance.methods shouldBe ("TODO")
+        }
+
     }
 }

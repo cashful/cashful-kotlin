@@ -20,6 +20,8 @@ import okhttp3.Call
 import okhttp3.HttpUrl
 
 import com.cashful.model.BadRequestResponseDto
+import com.cashful.model.ConfirmPaymentIntentDto
+import com.cashful.model.ConfirmPaymentIntentResponseDto
 import com.cashful.model.CreatePaymentIntentDto
 import com.cashful.model.InternalServerErrorResponseDto
 import com.cashful.model.ListPaymentIntentsResponseDto
@@ -130,9 +132,10 @@ class PaymentIntentsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * POST /api/canary/payment-intents/{id}/confirm
      * Confirm Payment Intent
-     * Confirms a payment intent that requires confirmation. This initiates the actual payment processing.
+     * Confirms a payment intent that requires confirmation and returns 3DS parameters for card authentication.
      * @param id The unique identifier of the payment intent
-     * @return PaymentIntentResponseDto
+     * @param confirmPaymentIntentDto 
+     * @return ConfirmPaymentIntentResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -141,11 +144,11 @@ class PaymentIntentsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun confirmPaymentIntent(id: kotlin.String) : PaymentIntentResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = confirmPaymentIntentWithHttpInfo(id = id)
+    suspend fun confirmPaymentIntent(id: kotlin.String, confirmPaymentIntentDto: ConfirmPaymentIntentDto) : ConfirmPaymentIntentResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = confirmPaymentIntentWithHttpInfo(id = id, confirmPaymentIntentDto = confirmPaymentIntentDto)
 
         return@withContext when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as PaymentIntentResponseDto
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ConfirmPaymentIntentResponseDto
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -162,18 +165,19 @@ class PaymentIntentsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * POST /api/canary/payment-intents/{id}/confirm
      * Confirm Payment Intent
-     * Confirms a payment intent that requires confirmation. This initiates the actual payment processing.
+     * Confirms a payment intent that requires confirmation and returns 3DS parameters for card authentication.
      * @param id The unique identifier of the payment intent
-     * @return ApiResponse<PaymentIntentResponseDto?>
+     * @param confirmPaymentIntentDto 
+     * @return ApiResponse<ConfirmPaymentIntentResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun confirmPaymentIntentWithHttpInfo(id: kotlin.String) : ApiResponse<PaymentIntentResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = confirmPaymentIntentRequestConfig(id = id)
+    suspend fun confirmPaymentIntentWithHttpInfo(id: kotlin.String, confirmPaymentIntentDto: ConfirmPaymentIntentDto) : ApiResponse<ConfirmPaymentIntentResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = confirmPaymentIntentRequestConfig(id = id, confirmPaymentIntentDto = confirmPaymentIntentDto)
 
-        return@withContext request<Unit, PaymentIntentResponseDto>(
+        return@withContext request<ConfirmPaymentIntentDto, ConfirmPaymentIntentResponseDto>(
             localVariableConfig
         )
     }
@@ -182,12 +186,14 @@ class PaymentIntentsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * To obtain the request config of the operation confirmPaymentIntent
      *
      * @param id The unique identifier of the payment intent
+     * @param confirmPaymentIntentDto 
      * @return RequestConfig
      */
-    fun confirmPaymentIntentRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
-        val localVariableBody = null
+    fun confirmPaymentIntentRequestConfig(id: kotlin.String, confirmPaymentIntentDto: ConfirmPaymentIntentDto) : RequestConfig<ConfirmPaymentIntentDto> {
+        val localVariableBody = confirmPaymentIntentDto
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
         localVariableHeaders["Accept"] = "application/json"
 
         return RequestConfig(
@@ -203,7 +209,7 @@ class PaymentIntentsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * POST /api/canary/payment-intents
      * Create Payment Intent
-     * Creates a payment intent for off-session charges. Used for subscriptions, recurring billing, or server-to-server payments with saved cards.
+     * Creates a payment intent for a payment attempt. Used for hosted checkout or direct integrations.
      * @param createPaymentIntentDto Payment intent details
      * @return PaymentIntentResponseDto
      * @throws IllegalStateException If the request is not correctly configured
@@ -235,7 +241,7 @@ class PaymentIntentsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * POST /api/canary/payment-intents
      * Create Payment Intent
-     * Creates a payment intent for off-session charges. Used for subscriptions, recurring billing, or server-to-server payments with saved cards.
+     * Creates a payment intent for a payment attempt. Used for hosted checkout or direct integrations.
      * @param createPaymentIntentDto Payment intent details
      * @return ApiResponse<PaymentIntentResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -302,10 +308,10 @@ class PaymentIntentsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * GET /api/canary/payment-intents
      * List Payment Intents
      * Lists payment intents for a specific merchant with pagination and filtering.
-     * @param merchantId The ID of the merchant. If omitted, defaults to the authenticated merchant. (optional)
-     * @param limit Maximum number of records to return (optional, default to 50)
-     * @param offset Number of records to skip (optional, default to 0)
-     * @param status Filter by status (optional)
+     * @param status  (optional)
+     * @param offset  (optional)
+     * @param limit  (optional)
+     * @param merchantId  (optional)
      * @return ListPaymentIntentsResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -315,8 +321,8 @@ class PaymentIntentsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listPaymentIntents(merchantId: kotlin.String? = null, limit: java.math.BigDecimal? = java.math.BigDecimal("50"), offset: java.math.BigDecimal? = java.math.BigDecimal("0"), status: StatusListPaymentIntents? = null) : ListPaymentIntentsResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = listPaymentIntentsWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, status = status)
+    suspend fun listPaymentIntents(status: StatusListPaymentIntents? = null, offset: java.math.BigDecimal? = null, limit: java.math.BigDecimal? = null, merchantId: kotlin.String? = null) : ListPaymentIntentsResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = listPaymentIntentsWithHttpInfo(status = status, offset = offset, limit = limit, merchantId = merchantId)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as ListPaymentIntentsResponseDto
@@ -337,18 +343,18 @@ class PaymentIntentsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * GET /api/canary/payment-intents
      * List Payment Intents
      * Lists payment intents for a specific merchant with pagination and filtering.
-     * @param merchantId The ID of the merchant. If omitted, defaults to the authenticated merchant. (optional)
-     * @param limit Maximum number of records to return (optional, default to 50)
-     * @param offset Number of records to skip (optional, default to 0)
-     * @param status Filter by status (optional)
+     * @param status  (optional)
+     * @param offset  (optional)
+     * @param limit  (optional)
+     * @param merchantId  (optional)
      * @return ApiResponse<ListPaymentIntentsResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listPaymentIntentsWithHttpInfo(merchantId: kotlin.String?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, status: StatusListPaymentIntents?) : ApiResponse<ListPaymentIntentsResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = listPaymentIntentsRequestConfig(merchantId = merchantId, limit = limit, offset = offset, status = status)
+    suspend fun listPaymentIntentsWithHttpInfo(status: StatusListPaymentIntents?, offset: java.math.BigDecimal?, limit: java.math.BigDecimal?, merchantId: kotlin.String?) : ApiResponse<ListPaymentIntentsResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listPaymentIntentsRequestConfig(status = status, offset = offset, limit = limit, merchantId = merchantId)
 
         return@withContext request<Unit, ListPaymentIntentsResponseDto>(
             localVariableConfig
@@ -358,27 +364,27 @@ class PaymentIntentsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * To obtain the request config of the operation listPaymentIntents
      *
-     * @param merchantId The ID of the merchant. If omitted, defaults to the authenticated merchant. (optional)
-     * @param limit Maximum number of records to return (optional, default to 50)
-     * @param offset Number of records to skip (optional, default to 0)
-     * @param status Filter by status (optional)
+     * @param status  (optional)
+     * @param offset  (optional)
+     * @param limit  (optional)
+     * @param merchantId  (optional)
      * @return RequestConfig
      */
-    fun listPaymentIntentsRequestConfig(merchantId: kotlin.String?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, status: StatusListPaymentIntents?) : RequestConfig<Unit> {
+    fun listPaymentIntentsRequestConfig(status: StatusListPaymentIntents?, offset: java.math.BigDecimal?, limit: java.math.BigDecimal?, merchantId: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                if (merchantId != null) {
-                    put("merchantId", listOf(merchantId.toString()))
-                }
-                if (limit != null) {
-                    put("limit", listOf(limit.toString()))
+                if (status != null) {
+                    put("status", listOf(status.value))
                 }
                 if (offset != null) {
                     put("offset", listOf(offset.toString()))
                 }
-                if (status != null) {
-                    put("status", listOf(status.value))
+                if (limit != null) {
+                    put("limit", listOf(limit.toString()))
+                }
+                if (merchantId != null) {
+                    put("merchantId", listOf(merchantId.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()

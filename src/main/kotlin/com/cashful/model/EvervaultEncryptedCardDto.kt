@@ -23,7 +23,7 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
- * @param PAN Encrypted Primary Account Number (PAN)
+ * @param pAN Encrypted Primary Account Number (PAN)
  * @param expiryDate Encrypted card expiry date
  * @param cardSecurityCode Encrypted card security code (CVV)
  * @param cardholderName Encrypted cardholder name
@@ -33,19 +33,19 @@ import kotlinx.serialization.Contextual
 data class EvervaultEncryptedCardDto (
 
     /* Encrypted Primary Account Number (PAN) */
-    @SerialName(value = "PAN")
-    val PAN: kotlin.String,
+    @SerialName(value = "pAN")
+    val pAN: kotlin.String,
 
     /* Encrypted card expiry date */
-    @SerialName(value = "ExpiryDate")
+    @SerialName(value = "expiryDate")
     val expiryDate: kotlin.String,
 
     /* Encrypted card security code (CVV) */
-    @SerialName(value = "CardSecurityCode")
+    @SerialName(value = "cardSecurityCode")
     val cardSecurityCode: kotlin.String,
 
     /* Encrypted cardholder name */
-    @SerialName(value = "CardholderName")
+    @SerialName(value = "cardholderName")
     val cardholderName: kotlin.String? = null
 
 ) {

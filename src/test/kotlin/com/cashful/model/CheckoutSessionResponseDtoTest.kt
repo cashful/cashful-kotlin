@@ -93,6 +93,12 @@ class CheckoutSessionResponseDtoTest : ShouldSpec() {
             //modelInstance.deletedAt shouldBe ("TODO")
         }
 
+        // to test the property `paymentIntentId`
+        should("test paymentIntentId") {
+            // uncomment below to test the property
+            //modelInstance.paymentIntentId shouldBe ("TODO")
+        }
+
         // to test the property `customerId`
         should("test customerId") {
             // uncomment below to test the property

@@ -28,6 +28,8 @@ import kotlinx.serialization.Contextual
  * @param name The name of the line item
  * @param productId The unique identifier of the product
  * @param quantity The quantity of the product
+ * @param imageId The image identifier for the line item
+ * @param imageUrl The URL of the image for the line item
  */
 @Serializable
 
@@ -51,7 +53,15 @@ data class LineItemDto (
 
     /* The quantity of the product */
     @Contextual @SerialName(value = "quantity")
-    val quantity: java.math.BigDecimal? = null
+    val quantity: java.math.BigDecimal? = null,
+
+    /* The image identifier for the line item */
+    @SerialName(value = "imageId")
+    val imageId: kotlin.String? = null,
+
+    /* The URL of the image for the line item */
+    @SerialName(value = "imageUrl")
+    val imageUrl: kotlin.String? = null
 
 ) {
 

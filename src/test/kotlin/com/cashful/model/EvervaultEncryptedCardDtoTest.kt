@@ -25,10 +25,10 @@ class EvervaultEncryptedCardDtoTest : ShouldSpec() {
         // uncomment below to create an instance of EvervaultEncryptedCardDto
         //val modelInstance = EvervaultEncryptedCardDto()
 
-        // to test the property `PAN` - Encrypted Primary Account Number (PAN)
-        should("test PAN") {
+        // to test the property `pAN` - Encrypted Primary Account Number (PAN)
+        should("test pAN") {
             // uncomment below to test the property
-            //modelInstance.PAN shouldBe ("TODO")
+            //modelInstance.pAN shouldBe ("TODO")
         }
 
         // to test the property `expiryDate` - Encrypted card expiry date

@@ -27,6 +27,12 @@ class CreateCheckoutSessionDtoTest : ShouldSpec() {
         // uncomment below to create an instance of CreateCheckoutSessionDto
         //val modelInstance = CreateCheckoutSessionDto()
 
+        // to test the property `merchantId` - The ID of the merchant for the checkout session.
+        should("test merchantId") {
+            // uncomment below to test the property
+            //modelInstance.merchantId shouldBe ("TODO")
+        }
+
         // to test the property `currency` - The three-letter ISO 4217 currency code
         should("test currency") {
             // uncomment below to test the property
@@ -37,12 +43,6 @@ class CreateCheckoutSessionDtoTest : ShouldSpec() {
         should("test metadata") {
             // uncomment below to test the property
             //modelInstance.metadata shouldBe ("TODO")
-        }
-
-        // to test the property `merchantId` - The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant.
-        should("test merchantId") {
-            // uncomment below to test the property
-            //modelInstance.merchantId shouldBe ("TODO")
         }
 
         // to test the property `customerId` - The unique identifier of the customer
@@ -61,12 +61,6 @@ class CreateCheckoutSessionDtoTest : ShouldSpec() {
         should("test successUrl") {
             // uncomment below to test the property
             //modelInstance.successUrl shouldBe ("TODO")
-        }
-
-        // to test the property `failureUrl` - The URL to redirect to on failure
-        should("test failureUrl") {
-            // uncomment below to test the property
-            //modelInstance.failureUrl shouldBe ("TODO")
         }
 
         // to test the property `cancelUrl` - The URL to redirect to on cancel

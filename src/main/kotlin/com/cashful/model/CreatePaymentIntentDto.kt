@@ -25,7 +25,7 @@ import kotlinx.serialization.Contextual
  *
  * @param amount The amount to charge in the smallest currency unit (cents)
  * @param currency The three-letter ISO 4217 currency code
- * @param merchantId The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant.
+ * @param merchantId The ID of the merchant. If omitted, defaults to the authenticated merchant.
  * @param customerId The unique identifier of the customer. Optional for payment intents that don't require a customer.
  * @param paymentMethodId The unique identifier of the payment method. Optional if payment method will be collected later.
  * @param mode The mode of the payment intent
@@ -46,7 +46,7 @@ data class CreatePaymentIntentDto (
     @SerialName(value = "currency")
     val currency: kotlin.String,
 
-    /* The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. */
+    /* The ID of the merchant. If omitted, defaults to the authenticated merchant. */
     @SerialName(value = "merchantId")
     val merchantId: kotlin.String? = null,
 

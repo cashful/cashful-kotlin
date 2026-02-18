@@ -14,6 +14,14 @@
 | **taxRate** | [**java.math.BigDecimal**](java.math.BigDecimal.md) | Tax rate |  [optional] |
 | **embedMode** | **kotlin.Boolean** | Embed mode |  [optional] |
 | **embedOrigin** | **kotlin.String** | Embed origin |  [optional] |
+| **methods** | [**inline**](#kotlin.collections.List&lt;Methods&gt;) | Enabled payment methods |  [optional] |
+
+
+<a id="kotlin.collections.List<Methods>"></a>
+## Enum: methods
+| Name | Value |
+| ---- | ----- |
+| methods | card, wallet, bank |
 
 
 

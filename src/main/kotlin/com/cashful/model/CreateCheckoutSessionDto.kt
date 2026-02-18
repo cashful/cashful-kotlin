@@ -25,13 +25,12 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
+ * @param merchantId The ID of the merchant for the checkout session.
  * @param currency The three-letter ISO 4217 currency code
  * @param metadata Optional custom metadata
- * @param merchantId The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant.
  * @param customerId The unique identifier of the customer
  * @param productId The unique identifier of the product
  * @param successUrl The URL to redirect to on successful payment
- * @param failureUrl The URL to redirect to on failure
  * @param cancelUrl The URL to redirect to on cancel
  * @param lineItems Array of line items for the checkout
  * @param totalAmount The total amount in the smallest currency unit
@@ -42,6 +41,10 @@ import kotlinx.serialization.Contextual
 
 data class CreateCheckoutSessionDto (
 
+    /* The ID of the merchant for the checkout session. */
+    @SerialName(value = "merchantId")
+    val merchantId: kotlin.String,
+
     /* The three-letter ISO 4217 currency code */
     @SerialName(value = "currency")
     val currency: kotlin.String,
@@ -49,10 +52,6 @@ data class CreateCheckoutSessionDto (
     /* Optional custom metadata */
     @Contextual @SerialName(value = "metadata")
     val metadata: kotlin.collections.Map<kotlin.String, kotlin.Any>,
-
-    /* The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. */
-    @SerialName(value = "merchantId")
-    val merchantId: kotlin.String? = null,
 
     /* The unique identifier of the customer */
     @SerialName(value = "customerId")
@@ -65,10 +64,6 @@ data class CreateCheckoutSessionDto (
     /* The URL to redirect to on successful payment */
     @SerialName(value = "successUrl")
     val successUrl: kotlin.String? = null,
-
-    /* The URL to redirect to on failure */
-    @SerialName(value = "failureUrl")
-    val failureUrl: kotlin.String? = null,
 
     /* The URL to redirect to on cancel */
     @SerialName(value = "cancelUrl")

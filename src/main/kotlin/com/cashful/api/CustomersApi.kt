@@ -20,6 +20,8 @@ import okhttp3.Call
 import okhttp3.HttpUrl
 
 import com.cashful.model.BadRequestResponseDto
+import com.cashful.model.BulkIdsDto
+import com.cashful.model.BulkUpdateCustomersInputDto
 import com.cashful.model.CreateCustomerDto
 import com.cashful.model.CustomerBalanceDto
 import com.cashful.model.CustomerResponseDto
@@ -125,6 +127,80 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
         return RequestConfig(
             method = RequestMethod.POST,
             path = "/api/canary/customers",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * DELETE /api/canary/customers/bulk
+     * Bulk Delete Customers
+     * Deletes multiple customers by ID.
+     * @param bulkIdsDto 
+     * @return kotlin.Any
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun deleteCustomersBulk(bulkIdsDto: BulkIdsDto) : kotlin.Any = withContext(Dispatchers.IO) {
+        val localVarResponse = deleteCustomersBulkWithHttpInfo(bulkIdsDto = bulkIdsDto)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * DELETE /api/canary/customers/bulk
+     * Bulk Delete Customers
+     * Deletes multiple customers by ID.
+     * @param bulkIdsDto 
+     * @return ApiResponse<kotlin.Any?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun deleteCustomersBulkWithHttpInfo(bulkIdsDto: BulkIdsDto) : ApiResponse<kotlin.Any?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = deleteCustomersBulkRequestConfig(bulkIdsDto = bulkIdsDto)
+
+        return@withContext request<BulkIdsDto, kotlin.Any>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation deleteCustomersBulk
+     *
+     * @param bulkIdsDto 
+     * @return RequestConfig
+     */
+    fun deleteCustomersBulkRequestConfig(bulkIdsDto: BulkIdsDto) : RequestConfig<BulkIdsDto> {
+        val localVariableBody = bulkIdsDto
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.DELETE,
+            path = "/api/canary/customers/bulk",
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -380,14 +456,38 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * enum for parameter sort
+     */
+     enum class SortListCustomers(val value: kotlin.String) {
+         @SerialName(value = "id") id("id"),
+         @SerialName(value = "name") name("name"),
+         @SerialName(value = "email") email("email"),
+         @SerialName(value = "phoneNumber") phoneNumber("phoneNumber"),
+         @SerialName(value = "merchantId") merchantId("merchantId"),
+         @SerialName(value = "createdAt") createdAt("createdAt"),
+         @SerialName(value = "updatedAt") updatedAt("updatedAt");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
+     }
+
+    /**
      * GET /api/canary/customers
      * List Customers
      * Retrieves a paginated list of all customers for the merchant.
      * @param merchantId The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort  (optional)
+     * @param order  (optional)
      * @param email Filter by email address (optional)
-     * @param search Search across customer fields (optional)
      * @return ListCustomersResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -397,8 +497,8 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listCustomers(merchantId: kotlin.String? = null, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, email: kotlin.String? = null, search: kotlin.String? = null) : ListCustomersResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = listCustomersWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, email = email, search = search)
+    suspend fun listCustomers(merchantId: kotlin.String? = null, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, filter: kotlin.String? = null, sort: SortListCustomers? = null, order: kotlin.String? = null, email: kotlin.String? = null) : ListCustomersResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = listCustomersWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, filter = filter, sort = sort, order = order, email = email)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as ListCustomersResponseDto
@@ -422,16 +522,18 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * @param merchantId The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort  (optional)
+     * @param order  (optional)
      * @param email Filter by email address (optional)
-     * @param search Search across customer fields (optional)
      * @return ApiResponse<ListCustomersResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listCustomersWithHttpInfo(merchantId: kotlin.String?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, email: kotlin.String?, search: kotlin.String?) : ApiResponse<ListCustomersResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = listCustomersRequestConfig(merchantId = merchantId, limit = limit, offset = offset, email = email, search = search)
+    suspend fun listCustomersWithHttpInfo(merchantId: kotlin.String?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, filter: kotlin.String?, sort: SortListCustomers?, order: kotlin.String?, email: kotlin.String?) : ApiResponse<ListCustomersResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listCustomersRequestConfig(merchantId = merchantId, limit = limit, offset = offset, filter = filter, sort = sort, order = order, email = email)
 
         return@withContext request<Unit, ListCustomersResponseDto>(
             localVariableConfig
@@ -444,11 +546,13 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * @param merchantId The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort  (optional)
+     * @param order  (optional)
      * @param email Filter by email address (optional)
-     * @param search Search across customer fields (optional)
      * @return RequestConfig
      */
-    fun listCustomersRequestConfig(merchantId: kotlin.String?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, email: kotlin.String?, search: kotlin.String?) : RequestConfig<Unit> {
+    fun listCustomersRequestConfig(merchantId: kotlin.String?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, filter: kotlin.String?, sort: SortListCustomers?, order: kotlin.String?, email: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -461,11 +565,17 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
                 if (offset != null) {
                     put("offset", listOf(offset.toString()))
                 }
+                if (filter != null) {
+                    put("filter", listOf(filter.toString()))
+                }
+                if (sort != null) {
+                    put("sort", listOf(sort.value))
+                }
+                if (order != null) {
+                    put("order", listOf(order.toString()))
+                }
                 if (email != null) {
                     put("email", listOf(email.toString()))
-                }
-                if (search != null) {
-                    put("search", listOf(search.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -624,6 +734,80 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
         return RequestConfig(
             method = RequestMethod.PATCH,
             path = "/api/canary/customers/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * PATCH /api/canary/customers/bulk
+     * Bulk Update Customers
+     * Updates multiple customers using a shared patch.
+     * @param bulkUpdateCustomersInputDto 
+     * @return kotlin.Any
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun updateCustomersBulk(bulkUpdateCustomersInputDto: BulkUpdateCustomersInputDto) : kotlin.Any = withContext(Dispatchers.IO) {
+        val localVarResponse = updateCustomersBulkWithHttpInfo(bulkUpdateCustomersInputDto = bulkUpdateCustomersInputDto)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * PATCH /api/canary/customers/bulk
+     * Bulk Update Customers
+     * Updates multiple customers using a shared patch.
+     * @param bulkUpdateCustomersInputDto 
+     * @return ApiResponse<kotlin.Any?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun updateCustomersBulkWithHttpInfo(bulkUpdateCustomersInputDto: BulkUpdateCustomersInputDto) : ApiResponse<kotlin.Any?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = updateCustomersBulkRequestConfig(bulkUpdateCustomersInputDto = bulkUpdateCustomersInputDto)
+
+        return@withContext request<BulkUpdateCustomersInputDto, kotlin.Any>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation updateCustomersBulk
+     *
+     * @param bulkUpdateCustomersInputDto 
+     * @return RequestConfig
+     */
+    fun updateCustomersBulkRequestConfig(bulkUpdateCustomersInputDto: BulkUpdateCustomersInputDto) : RequestConfig<BulkUpdateCustomersInputDto> {
+        val localVariableBody = bulkUpdateCustomersInputDto
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.PATCH,
+            path = "/api/canary/customers/bulk",
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,

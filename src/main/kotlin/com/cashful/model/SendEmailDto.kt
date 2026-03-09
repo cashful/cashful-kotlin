@@ -32,6 +32,7 @@ import kotlinx.serialization.Contextual
  * @param from Sender email address
  * @param cc CC email address(es)
  * @param bcc BCC email address(es)
+ * @param merchantId Merchant ID for context and auditing
  */
 @Serializable
 
@@ -71,7 +72,11 @@ data class SendEmailDto (
 
     /* BCC email address(es) */
     @Contextual @SerialName(value = "bcc")
-    val bcc: kotlin.Any? = null
+    val bcc: kotlin.Any? = null,
+
+    /* Merchant ID for context and auditing */
+    @SerialName(value = "merchantId")
+    val merchantId: kotlin.String? = null
 
 ) {
 

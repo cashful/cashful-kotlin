@@ -129,10 +129,13 @@ class PaymentMethodsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * GET /api/canary/payment-methods
      * List Payment Methods
      * Lists saved payment methods for a specific customer.
-     * @param limit Maximum number of records to return (optional)
-     * @param offset Number of records to skip (optional)
-     * @param merchantId The unique identifier of the merchant. If not provided, defaults to the authenticated user&#39;s active organization. (optional)
-     * @param customerId The unique identifier of the customer (optional)
+     * @param limit Maximum number of items to return (optional)
+     * @param offset Number of items to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (optional)
+     * @param merchantId The ID of the merchant. If omitted, defaults to the authenticated merchant. (optional)
+     * @param customerId Customer ID to filter by (optional)
      * @return ListPaymentMethodsResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -142,8 +145,8 @@ class PaymentMethodsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listPaymentMethods(limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, merchantId: kotlin.String? = null, customerId: kotlin.String? = null) : ListPaymentMethodsResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = listPaymentMethodsWithHttpInfo(limit = limit, offset = offset, merchantId = merchantId, customerId = customerId)
+    suspend fun listPaymentMethods(limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, filter: kotlin.String? = null, sort: kotlin.String? = null, order: kotlin.String? = null, merchantId: kotlin.String? = null, customerId: kotlin.String? = null) : ListPaymentMethodsResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = listPaymentMethodsWithHttpInfo(limit = limit, offset = offset, filter = filter, sort = sort, order = order, merchantId = merchantId, customerId = customerId)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as ListPaymentMethodsResponseDto
@@ -164,18 +167,21 @@ class PaymentMethodsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * GET /api/canary/payment-methods
      * List Payment Methods
      * Lists saved payment methods for a specific customer.
-     * @param limit Maximum number of records to return (optional)
-     * @param offset Number of records to skip (optional)
-     * @param merchantId The unique identifier of the merchant. If not provided, defaults to the authenticated user&#39;s active organization. (optional)
-     * @param customerId The unique identifier of the customer (optional)
+     * @param limit Maximum number of items to return (optional)
+     * @param offset Number of items to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (optional)
+     * @param merchantId The ID of the merchant. If omitted, defaults to the authenticated merchant. (optional)
+     * @param customerId Customer ID to filter by (optional)
      * @return ApiResponse<ListPaymentMethodsResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listPaymentMethodsWithHttpInfo(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, merchantId: kotlin.String?, customerId: kotlin.String?) : ApiResponse<ListPaymentMethodsResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = listPaymentMethodsRequestConfig(limit = limit, offset = offset, merchantId = merchantId, customerId = customerId)
+    suspend fun listPaymentMethodsWithHttpInfo(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, filter: kotlin.String?, sort: kotlin.String?, order: kotlin.String?, merchantId: kotlin.String?, customerId: kotlin.String?) : ApiResponse<ListPaymentMethodsResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listPaymentMethodsRequestConfig(limit = limit, offset = offset, filter = filter, sort = sort, order = order, merchantId = merchantId, customerId = customerId)
 
         return@withContext request<Unit, ListPaymentMethodsResponseDto>(
             localVariableConfig
@@ -185,13 +191,16 @@ class PaymentMethodsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * To obtain the request config of the operation listPaymentMethods
      *
-     * @param limit Maximum number of records to return (optional)
-     * @param offset Number of records to skip (optional)
-     * @param merchantId The unique identifier of the merchant. If not provided, defaults to the authenticated user&#39;s active organization. (optional)
-     * @param customerId The unique identifier of the customer (optional)
+     * @param limit Maximum number of items to return (optional)
+     * @param offset Number of items to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (optional)
+     * @param merchantId The ID of the merchant. If omitted, defaults to the authenticated merchant. (optional)
+     * @param customerId Customer ID to filter by (optional)
      * @return RequestConfig
      */
-    fun listPaymentMethodsRequestConfig(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, merchantId: kotlin.String?, customerId: kotlin.String?) : RequestConfig<Unit> {
+    fun listPaymentMethodsRequestConfig(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, filter: kotlin.String?, sort: kotlin.String?, order: kotlin.String?, merchantId: kotlin.String?, customerId: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -200,6 +209,15 @@ class PaymentMethodsApi(basePath: kotlin.String = defaultBasePath, client: Call.
                 }
                 if (offset != null) {
                     put("offset", listOf(offset.toString()))
+                }
+                if (filter != null) {
+                    put("filter", listOf(filter.toString()))
+                }
+                if (sort != null) {
+                    put("sort", listOf(sort.toString()))
+                }
+                if (order != null) {
+                    put("order", listOf(order.toString()))
                 }
                 if (merchantId != null) {
                     put("merchantId", listOf(merchantId.toString()))

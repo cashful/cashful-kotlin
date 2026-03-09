@@ -79,5 +79,11 @@ class SendEmailDtoTest : ShouldSpec() {
             //modelInstance.bcc shouldBe ("TODO")
         }
 
+        // to test the property `merchantId` - Merchant ID for context and auditing
+        should("test merchantId") {
+            // uncomment below to test the property
+            //modelInstance.merchantId shouldBe ("TODO")
+        }
+
     }
 }

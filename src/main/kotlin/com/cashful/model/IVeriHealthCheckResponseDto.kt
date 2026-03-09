@@ -24,6 +24,7 @@ import kotlinx.serialization.Contextual
  * 
  *
  * @param status Service health status
+ * @param environment Current environment mode
  * @param timestamp Current server timestamp in ISO format
  */
 @Serializable
@@ -34,12 +35,27 @@ data class IVeriHealthCheckResponseDto (
     @SerialName(value = "status")
     val status: kotlin.String,
 
+    /* Current environment mode */
+    @SerialName(value = "environment")
+    val environment: IVeriHealthCheckResponseDto.Environment,
+
     /* Current server timestamp in ISO format */
     @SerialName(value = "timestamp")
     val timestamp: kotlin.String
 
 ) {
 
+    /**
+     * Current environment mode
+     *
+     * Values: sandbox,live,local
+     */
+    @Serializable
+    enum class Environment(val value: kotlin.String) {
+        @SerialName(value = "sandbox") sandbox("sandbox"),
+        @SerialName(value = "live") live("live"),
+        @SerialName(value = "local") local("local");
+    }
 
 }
 

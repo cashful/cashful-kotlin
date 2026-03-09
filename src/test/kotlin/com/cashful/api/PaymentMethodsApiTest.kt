@@ -41,11 +41,14 @@ class PaymentMethodsApiTest : ShouldSpec() {
         // to test listPaymentMethods
         should("test listPaymentMethods") {
             // uncomment below to test listPaymentMethods
-            //val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of records to return
-            //val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of records to skip
-            //val merchantId : kotlin.String = merchantId_example // kotlin.String | The unique identifier of the merchant. If not provided, defaults to the authenticated user's active organization.
-            //val customerId : kotlin.String = customerId_example // kotlin.String | The unique identifier of the customer
-            //val result : ListPaymentMethodsResponseDto = apiInstance.listPaymentMethods(limit, offset, merchantId, customerId)
+            //val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of items to return
+            //val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of items to skip
+            //val filter : kotlin.String = {"ids":["prod_123","prod_456"]} // kotlin.String | JSON string used for dynamic filtering
+            //val sort : kotlin.String = createdAt // kotlin.String | Field name to sort by
+            //val order : kotlin.String = DESC // kotlin.String | Sort direction
+            //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. If omitted, defaults to the authenticated merchant.
+            //val customerId : kotlin.String = customerId_example // kotlin.String | Customer ID to filter by
+            //val result : ListPaymentMethodsResponseDto = apiInstance.listPaymentMethods(limit, offset, filter, sort, order, merchantId, customerId)
             //result shouldBe ("TODO")
         }
 

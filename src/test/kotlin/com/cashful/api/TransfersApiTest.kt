@@ -45,8 +45,11 @@ class TransfersApiTest : ShouldSpec() {
             // uncomment below to test listTransfers
             //val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of items to return
             //val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of items to skip
+            //val filter : kotlin.String = {"ids":["prod_123","prod_456"]} // kotlin.String | JSON string used for dynamic filtering
+            //val sort : kotlin.String = createdAt // kotlin.String | Field name to sort by
+            //val order : kotlin.String = DESC // kotlin.String | Sort direction
             //val merchantId : kotlin.String = merchantId_example // kotlin.String | Filter by merchant ID. If omitted, defaults to the authenticated merchant.
-            //val result : ListTransfersResponseDto = apiInstance.listTransfers(limit, offset, merchantId)
+            //val result : ListTransfersResponseDto = apiInstance.listTransfers(limit, offset, filter, sort, order, merchantId)
             //result shouldBe ("TODO")
         }
 

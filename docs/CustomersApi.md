@@ -5,12 +5,14 @@ All URIs are relative to *https://api.cashful.africa*
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**createCustomer**](CustomersApi.md#createCustomer) | **POST** /api/canary/customers | Create Customer |
+| [**deleteCustomersBulk**](CustomersApi.md#deleteCustomersBulk) | **DELETE** /api/canary/customers/bulk | Bulk Delete Customers |
 | [**getCustomerBalance**](CustomersApi.md#getCustomerBalance) | **GET** /api/canary/customers/{id}/balance | Get Customer&#39;s Cash Balance |
 | [**listCustomerPaymentMethods**](CustomersApi.md#listCustomerPaymentMethods) | **GET** /api/canary/customers/{id}/payment-methods | List Customer&#39;s Payment Methods |
 | [**listCustomerTransactions**](CustomersApi.md#listCustomerTransactions) | **GET** /api/canary/customers/{id}/transactions | List Customer&#39;s Cash Transactions |
 | [**listCustomers**](CustomersApi.md#listCustomers) | **GET** /api/canary/customers | List Customers |
 | [**retrieveCustomer**](CustomersApi.md#retrieveCustomer) | **GET** /api/canary/customers/{id} | Retrieve Customer |
 | [**updateCustomer**](CustomersApi.md#updateCustomer) | **PATCH** /api/canary/customers/{id} | Update Customer |
+| [**updateCustomersBulk**](CustomersApi.md#updateCustomersBulk) | **PATCH** /api/canary/customers/bulk | Bulk Update Customers |
 
 
 <a id="createCustomer"></a>
@@ -49,6 +51,54 @@ try {
 ### Return type
 
 [**CustomerResponseDto**](CustomerResponseDto.md)
+
+### Authorization
+
+
+Configure bearer:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a id="deleteCustomersBulk"></a>
+# **deleteCustomersBulk**
+> kotlin.Any deleteCustomersBulk(bulkIdsDto)
+
+Bulk Delete Customers
+
+Deletes multiple customers by ID.
+
+### Example
+```kotlin
+// Import classes:
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
+
+val apiInstance = CustomersApi()
+val bulkIdsDto : BulkIdsDto =  // BulkIdsDto | 
+try {
+    val result : kotlin.Any = apiInstance.deleteCustomersBulk(bulkIdsDto)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling CustomersApi#deleteCustomersBulk")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling CustomersApi#deleteCustomersBulk")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **bulkIdsDto** | [**BulkIdsDto**](BulkIdsDto.md)|  | |
+
+### Return type
+
+[**kotlin.Any**](kotlin.Any.md)
 
 ### Authorization
 
@@ -215,7 +265,7 @@ Configure bearer:
 
 <a id="listCustomers"></a>
 # **listCustomers**
-> ListCustomersResponseDto listCustomers(merchantId, limit, offset, email, search)
+> ListCustomersResponseDto listCustomers(merchantId, limit, offset, filter, sort, order, email)
 
 List Customers
 
@@ -231,10 +281,12 @@ val apiInstance = CustomersApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant.
 val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
 val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
+val filter : kotlin.String = filter_example // kotlin.String | JSON string used for dynamic filtering
+val sort : kotlin.String = sort_example // kotlin.String | 
+val order : kotlin.String = DESC // kotlin.String | 
 val email : kotlin.String = email_example // kotlin.String | Filter by email address
-val search : kotlin.String = search_example // kotlin.String | Search across customer fields
 try {
-    val result : ListCustomersResponseDto = apiInstance.listCustomers(merchantId, limit, offset, email, search)
+    val result : ListCustomersResponseDto = apiInstance.listCustomers(merchantId, limit, offset, filter, sort, order, email)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling CustomersApi#listCustomers")
@@ -249,10 +301,12 @@ try {
 | **merchantId** | **kotlin.String**| The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. | [optional] |
 | **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] |
 | **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
-| **email** | **kotlin.String**| Filter by email address | [optional] |
+| **filter** | **kotlin.String**| JSON string used for dynamic filtering | [optional] |
+| **sort** | **kotlin.String**|  | [optional] [enum: id, name, email, phoneNumber, merchantId, createdAt, updatedAt] |
+| **order** | **kotlin.String**|  | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **search** | **kotlin.String**| Search across customer fields | [optional] |
+| **email** | **kotlin.String**| Filter by email address | [optional] |
 
 ### Return type
 
@@ -355,6 +409,54 @@ try {
 ### Return type
 
 [**CustomerResponseDto**](CustomerResponseDto.md)
+
+### Authorization
+
+
+Configure bearer:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a id="updateCustomersBulk"></a>
+# **updateCustomersBulk**
+> kotlin.Any updateCustomersBulk(bulkUpdateCustomersInputDto)
+
+Bulk Update Customers
+
+Updates multiple customers using a shared patch.
+
+### Example
+```kotlin
+// Import classes:
+//import com.cashful.infrastructure.*
+//import com.cashful.model.*
+
+val apiInstance = CustomersApi()
+val bulkUpdateCustomersInputDto : BulkUpdateCustomersInputDto =  // BulkUpdateCustomersInputDto | 
+try {
+    val result : kotlin.Any = apiInstance.updateCustomersBulk(bulkUpdateCustomersInputDto)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling CustomersApi#updateCustomersBulk")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling CustomersApi#updateCustomersBulk")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **bulkUpdateCustomersInputDto** | [**BulkUpdateCustomersInputDto**](BulkUpdateCustomersInputDto.md)|  | |
+
+### Return type
+
+[**kotlin.Any**](kotlin.Any.md)
 
 ### Authorization
 

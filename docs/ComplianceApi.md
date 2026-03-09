@@ -5,7 +5,7 @@ All URIs are relative to *https://api.cashful.africa*
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**createCompliance**](ComplianceApi.md#createCompliance) | **POST** /api/canary/compliance | Create Compliance info |
-| [**getCompliance**](ComplianceApi.md#getCompliance) | **GET** /api/canary/compliance | Get Compliance info for organization |
+| [**listCompliance**](ComplianceApi.md#listCompliance) | **GET** /api/canary/compliance | List Compliance info for organization |
 | [**updateCompliance**](ComplianceApi.md#updateCompliance) | **PATCH** /api/canary/compliance/{id} | Update Compliance info |
 
 
@@ -55,11 +55,11 @@ Configure bearer:
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a id="getCompliance"></a>
-# **getCompliance**
-> OrganizationComplianceResponseDto getCompliance(organizationId)
+<a id="listCompliance"></a>
+# **listCompliance**
+> ListOrganizationComplianceResponseDto listCompliance(limit, offset, filter, sort, order)
 
-Get Compliance info for organization
+List Compliance info for organization
 
 ### Example
 ```kotlin
@@ -68,27 +68,35 @@ Get Compliance info for organization
 //import com.cashful.model.*
 
 val apiInstance = ComplianceApi()
-val organizationId : kotlin.String = organizationId_example // kotlin.String | 
+val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of items to return
+val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of items to skip
+val filter : kotlin.String = {"ids":["prod_123","prod_456"]} // kotlin.String | JSON string used for dynamic filtering
+val sort : kotlin.String = createdAt // kotlin.String | Field name to sort by
+val order : kotlin.String = DESC // kotlin.String | Sort direction
 try {
-    val result : OrganizationComplianceResponseDto = apiInstance.getCompliance(organizationId)
+    val result : ListOrganizationComplianceResponseDto = apiInstance.listCompliance(limit, offset, filter, sort, order)
     println(result)
 } catch (e: ClientException) {
-    println("4xx response calling ComplianceApi#getCompliance")
+    println("4xx response calling ComplianceApi#listCompliance")
     e.printStackTrace()
 } catch (e: ServerException) {
-    println("5xx response calling ComplianceApi#getCompliance")
+    println("5xx response calling ComplianceApi#listCompliance")
     e.printStackTrace()
 }
 ```
 
 ### Parameters
+| **limit** | **java.math.BigDecimal**| Maximum number of items to return | [optional] |
+| **offset** | **java.math.BigDecimal**| Number of items to skip | [optional] |
+| **filter** | **kotlin.String**| JSON string used for dynamic filtering | [optional] |
+| **sort** | **kotlin.String**| Field name to sort by | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **organizationId** | **kotlin.String**|  | |
+| **order** | **kotlin.String**| Sort direction | [optional] |
 
 ### Return type
 
-[**OrganizationComplianceResponseDto**](OrganizationComplianceResponseDto.md)
+[**ListOrganizationComplianceResponseDto**](ListOrganizationComplianceResponseDto.md)
 
 ### Authorization
 

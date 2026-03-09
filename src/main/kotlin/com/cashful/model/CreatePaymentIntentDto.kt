@@ -60,7 +60,7 @@ data class CreatePaymentIntentDto (
 
     /* The mode of the payment intent */
     @SerialName(value = "mode")
-    val mode: CreatePaymentIntentDto.Mode? = Mode.payment,
+    val mode: CreatePaymentIntentDto.Mode? = null,
 
     /* Optional description for the payment */
     @SerialName(value = "description")

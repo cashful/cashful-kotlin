@@ -34,13 +34,16 @@ class BalanceApiTest : ShouldSpec() {
         // to test getBalanceHistory
         should("test getBalanceHistory") {
             // uncomment below to test getBalanceHistory
+            //val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of items to return
+            //val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of items to skip
+            //val filter : kotlin.String = {"ids":["prod_123","prod_456"]} // kotlin.String | JSON string used for dynamic filtering
+            //val sort : kotlin.String = createdAt // kotlin.String | Field name to sort by
+            //val order : kotlin.String = DESC // kotlin.String | Sort direction
             //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant.
-            //val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
-            //val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
             //val startDate : kotlin.String = startDate_example // kotlin.String | Filter transactions from this date (ISO 8601 format)
             //val endDate : kotlin.String = endDate_example // kotlin.String | Filter transactions until this date (ISO 8601 format)
             //val transactionType : kotlin.String = transactionType_example // kotlin.String | Filter by transaction type (e.g., \"credit\", \"debit\", \"fee\", \"payout\")
-            //val result : BalanceHistoryResponseDto = apiInstance.getBalanceHistory(merchantId, limit, offset, startDate, endDate, transactionType)
+            //val result : BalanceHistoryResponseDto = apiInstance.getBalanceHistory(limit, offset, filter, sort, order, merchantId, startDate, endDate, transactionType)
             //result shouldBe ("TODO")
         }
 

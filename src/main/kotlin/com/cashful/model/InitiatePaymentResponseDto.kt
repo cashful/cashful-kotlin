@@ -24,23 +24,73 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
- * @param iveriParams Parameters to POST to iVeri 3DS endpoint
- * @param iVeri3dsEndpoint iVeri 3DS endpoint URL to POST the parameters to
+ * @param iveriParams Parameters to POST to iVeri 3DS endpoint (only in live mode)
+ * @param iVeri3dsEndpoint iVeri 3DS endpoint URL to POST the parameters to (only in live mode)
+ * @param sandboxMode Whether sandbox mode is active
+ * @param status Payment status (only in sandbox mode)
+ * @param paymentIntentId Payment intent ID
+ * @param transactionId Transaction ID (only in sandbox mode on success)
+ * @param authCode Authorization code (only in sandbox mode on success)
+ * @param amount Payment amount in smallest currency unit
+ * @param currency Currency code
+ * @param reason Reason for failure (only in sandbox mode on failure)
  */
 @Serializable
 
 data class InitiatePaymentResponseDto (
 
-    /* Parameters to POST to iVeri 3DS endpoint */
+    /* Parameters to POST to iVeri 3DS endpoint (only in live mode) */
     @SerialName(value = "iveriParams")
-    val iveriParams: IveriParamsDto,
+    val iveriParams: IveriParamsDto? = null,
 
-    /* iVeri 3DS endpoint URL to POST the parameters to */
+    /* iVeri 3DS endpoint URL to POST the parameters to (only in live mode) */
     @SerialName(value = "iVeri3dsEndpoint")
-    val iVeri3dsEndpoint: kotlin.String
+    val iVeri3dsEndpoint: kotlin.String? = null,
+
+    /* Whether sandbox mode is active */
+    @SerialName(value = "sandboxMode")
+    val sandboxMode: kotlin.Boolean? = null,
+
+    /* Payment status (only in sandbox mode) */
+    @SerialName(value = "status")
+    val status: InitiatePaymentResponseDto.Status? = null,
+
+    /* Payment intent ID */
+    @SerialName(value = "paymentIntentId")
+    val paymentIntentId: kotlin.String? = null,
+
+    /* Transaction ID (only in sandbox mode on success) */
+    @SerialName(value = "transactionId")
+    val transactionId: kotlin.String? = null,
+
+    /* Authorization code (only in sandbox mode on success) */
+    @SerialName(value = "authCode")
+    val authCode: kotlin.String? = null,
+
+    /* Payment amount in smallest currency unit */
+    @Contextual @SerialName(value = "amount")
+    val amount: java.math.BigDecimal? = null,
+
+    /* Currency code */
+    @SerialName(value = "currency")
+    val currency: kotlin.String? = null,
+
+    /* Reason for failure (only in sandbox mode on failure) */
+    @SerialName(value = "reason")
+    val reason: kotlin.String? = null
 
 ) {
 
+    /**
+     * Payment status (only in sandbox mode)
+     *
+     * Values: succeeded,failed
+     */
+    @Serializable
+    enum class Status(val value: kotlin.String) {
+        @SerialName(value = "succeeded") succeeded("succeeded"),
+        @SerialName(value = "failed") failed("failed");
+    }
 
 }
 

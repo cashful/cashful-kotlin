@@ -22,6 +22,7 @@ import okhttp3.HttpUrl
 import com.cashful.model.BadRequestResponseDto
 import com.cashful.model.CreateOrganizationComplianceDto
 import com.cashful.model.InternalServerErrorResponseDto
+import com.cashful.model.ListOrganizationComplianceResponseDto
 import com.cashful.model.NotFoundResponseDto
 import com.cashful.model.OrganizationComplianceResponseDto
 import com.cashful.model.UnauthorizedResponseDto
@@ -130,10 +131,14 @@ class ComplianceApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
 
     /**
      * GET /api/canary/compliance
-     * Get Compliance info for organization
+     * List Compliance info for organization
      * 
-     * @param organizationId 
-     * @return OrganizationComplianceResponseDto
+     * @param limit Maximum number of items to return (optional)
+     * @param offset Number of items to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (optional)
+     * @return ListOrganizationComplianceResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -142,11 +147,11 @@ class ComplianceApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun getCompliance(organizationId: kotlin.String) : OrganizationComplianceResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = getComplianceWithHttpInfo(organizationId = organizationId)
+    suspend fun listCompliance(limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, filter: kotlin.String? = null, sort: kotlin.String? = null, order: kotlin.String? = null) : ListOrganizationComplianceResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = listComplianceWithHttpInfo(limit = limit, offset = offset, filter = filter, sort = sort, order = order)
 
         return@withContext when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as OrganizationComplianceResponseDto
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ListOrganizationComplianceResponseDto
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -162,34 +167,56 @@ class ComplianceApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
 
     /**
      * GET /api/canary/compliance
-     * Get Compliance info for organization
+     * List Compliance info for organization
      * 
-     * @param organizationId 
-     * @return ApiResponse<OrganizationComplianceResponseDto?>
+     * @param limit Maximum number of items to return (optional)
+     * @param offset Number of items to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (optional)
+     * @return ApiResponse<ListOrganizationComplianceResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun getComplianceWithHttpInfo(organizationId: kotlin.String) : ApiResponse<OrganizationComplianceResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = getComplianceRequestConfig(organizationId = organizationId)
+    suspend fun listComplianceWithHttpInfo(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, filter: kotlin.String?, sort: kotlin.String?, order: kotlin.String?) : ApiResponse<ListOrganizationComplianceResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listComplianceRequestConfig(limit = limit, offset = offset, filter = filter, sort = sort, order = order)
 
-        return@withContext request<Unit, OrganizationComplianceResponseDto>(
+        return@withContext request<Unit, ListOrganizationComplianceResponseDto>(
             localVariableConfig
         )
     }
 
     /**
-     * To obtain the request config of the operation getCompliance
+     * To obtain the request config of the operation listCompliance
      *
-     * @param organizationId 
+     * @param limit Maximum number of items to return (optional)
+     * @param offset Number of items to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (optional)
      * @return RequestConfig
      */
-    fun getComplianceRequestConfig(organizationId: kotlin.String) : RequestConfig<Unit> {
+    fun listComplianceRequestConfig(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, filter: kotlin.String?, sort: kotlin.String?, order: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                put("organizationId", listOf(organizationId.toString()))
+                if (limit != null) {
+                    put("limit", listOf(limit.toString()))
+                }
+                if (offset != null) {
+                    put("offset", listOf(offset.toString()))
+                }
+                if (filter != null) {
+                    put("filter", listOf(filter.toString()))
+                }
+                if (sort != null) {
+                    put("sort", listOf(sort.toString()))
+                }
+                if (order != null) {
+                    put("order", listOf(order.toString()))
+                }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Accept"] = "application/json"

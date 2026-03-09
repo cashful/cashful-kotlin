@@ -59,7 +59,7 @@ Configure bearer:
 
 <a id="listCheckoutSessions"></a>
 # **listCheckoutSessions**
-> ListCheckoutSessionsResponseDto listCheckoutSessions(limit, offset)
+> ListCheckoutSessionsResponseDto listCheckoutSessions(merchantId, limit, offset, filter, sort, order, status)
 
 List Checkout Sessions
 
@@ -72,10 +72,15 @@ Lists checkout sessions
 //import com.cashful.model.*
 
 val apiInstance = CheckoutsApi()
-val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
-val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
+val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant to filter checkout sessions
+val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of items to return
+val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of items to skip
+val filter : kotlin.String = {"ids":["prod_123","prod_456"]} // kotlin.String | JSON string used for dynamic filtering
+val sort : kotlin.String = createdAt // kotlin.String | Field name to sort by
+val order : kotlin.String = DESC // kotlin.String | Sort direction
+val status : kotlin.String = status_example // kotlin.String | The status to filter checkout sessions
 try {
-    val result : ListCheckoutSessionsResponseDto = apiInstance.listCheckoutSessions(limit, offset)
+    val result : ListCheckoutSessionsResponseDto = apiInstance.listCheckoutSessions(merchantId, limit, offset, filter, sort, order, status)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling CheckoutsApi#listCheckoutSessions")
@@ -87,10 +92,15 @@ try {
 ```
 
 ### Parameters
-| **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] |
+| **merchantId** | **kotlin.String**| The ID of the merchant to filter checkout sessions | |
+| **limit** | **java.math.BigDecimal**| Maximum number of items to return | [optional] |
+| **offset** | **java.math.BigDecimal**| Number of items to skip | [optional] |
+| **filter** | **kotlin.String**| JSON string used for dynamic filtering | [optional] |
+| **sort** | **kotlin.String**| Field name to sort by | [optional] |
+| **order** | **kotlin.String**| Sort direction | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
+| **status** | **kotlin.String**| The status to filter checkout sessions | [optional] |
 
 ### Return type
 

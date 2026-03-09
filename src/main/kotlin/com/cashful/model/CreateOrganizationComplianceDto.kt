@@ -23,7 +23,6 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
- * @param organizationId 
  * @param companyRegistrationName 
  * @param companyRegistrationNumber 
  * @param companyTradingName 
@@ -60,16 +59,10 @@ import kotlinx.serialization.Contextual
  * @param termsAccepted 
  * @param acceptedAt 
  * @param currentStep 
- * @param status 
- * @param isCompleted 
- * @param completionScore 
  */
 @Serializable
 
 data class CreateOrganizationComplianceDto (
-
-    @SerialName(value = "organizationId")
-    val organizationId: kotlin.String,
 
     @SerialName(value = "companyRegistrationName")
     val companyRegistrationName: kotlin.String? = null,
@@ -179,16 +172,7 @@ data class CreateOrganizationComplianceDto (
     val acceptedAt: java.time.OffsetDateTime? = null,
 
     @SerialName(value = "currentStep")
-    val currentStep: CreateOrganizationComplianceDto.CurrentStep? = null,
-
-    @SerialName(value = "status")
-    val status: CreateOrganizationComplianceDto.Status? = null,
-
-    @SerialName(value = "isCompleted")
-    val isCompleted: kotlin.Boolean? = null,
-
-    @Contextual @SerialName(value = "completionScore")
-    val completionScore: java.math.BigDecimal? = null
+    val currentStep: CreateOrganizationComplianceDto.CurrentStep? = null
 
 ) {
 
@@ -205,17 +189,6 @@ data class CreateOrganizationComplianceDto (
         @SerialName(value = "banking_details") banking_details("banking_details"),
         @SerialName(value = "upload_documents") upload_documents("upload_documents"),
         @SerialName(value = "sign_agreement") sign_agreement("sign_agreement");
-    }
-    /**
-     * 
-     *
-     * Values: pending,verified,rejected
-     */
-    @Serializable
-    enum class Status(val value: kotlin.String) {
-        @SerialName(value = "pending") pending("pending"),
-        @SerialName(value = "verified") verified("verified"),
-        @SerialName(value = "rejected") rejected("rejected");
     }
 
 }

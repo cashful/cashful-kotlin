@@ -44,5 +44,47 @@ class ConfirmPaymentIntentResponseDtoTest : ShouldSpec() {
             //modelInstance.iVeri3dsEndpoint shouldBe ("TODO")
         }
 
+        // to test the property `sandboxMode`
+        should("test sandboxMode") {
+            // uncomment below to test the property
+            //modelInstance.sandboxMode shouldBe ("TODO")
+        }
+
+        // to test the property `status`
+        should("test status") {
+            // uncomment below to test the property
+            //modelInstance.status shouldBe ("TODO")
+        }
+
+        // to test the property `transactionId`
+        should("test transactionId") {
+            // uncomment below to test the property
+            //modelInstance.transactionId shouldBe ("TODO")
+        }
+
+        // to test the property `authCode`
+        should("test authCode") {
+            // uncomment below to test the property
+            //modelInstance.authCode shouldBe ("TODO")
+        }
+
+        // to test the property `amount`
+        should("test amount") {
+            // uncomment below to test the property
+            //modelInstance.amount shouldBe ("TODO")
+        }
+
+        // to test the property `currency`
+        should("test currency") {
+            // uncomment below to test the property
+            //modelInstance.currency shouldBe ("TODO")
+        }
+
+        // to test the property `reason`
+        should("test reason") {
+            // uncomment below to test the property
+            //modelInstance.reason shouldBe ("TODO")
+        }
+
     }
 }

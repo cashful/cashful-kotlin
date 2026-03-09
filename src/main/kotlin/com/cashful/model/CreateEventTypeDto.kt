@@ -23,15 +23,20 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
- * @param ids Max 50 IDs of the products to retrieve
+ * @param name Name of the event type
+ * @param description Description of the event type
  */
 @Serializable
 
-data class RetrieveMultipleProductsDto (
+data class CreateEventTypeDto (
 
-    /* Max 50 IDs of the products to retrieve */
-    @SerialName(value = "ids")
-    val ids: kotlin.collections.List<kotlin.String>
+    /* Name of the event type */
+    @SerialName(value = "name")
+    val name: kotlin.String,
+
+    /* Description of the event type */
+    @SerialName(value = "description")
+    val description: kotlin.String? = null
 
 ) {
 

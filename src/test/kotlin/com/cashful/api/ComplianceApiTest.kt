@@ -22,6 +22,7 @@ import com.cashful.api.ComplianceApi
 import com.cashful.model.BadRequestResponseDto
 import com.cashful.model.CreateOrganizationComplianceDto
 import com.cashful.model.InternalServerErrorResponseDto
+import com.cashful.model.ListOrganizationComplianceResponseDto
 import com.cashful.model.NotFoundResponseDto
 import com.cashful.model.OrganizationComplianceResponseDto
 import com.cashful.model.UnauthorizedResponseDto
@@ -40,11 +41,15 @@ class ComplianceApiTest : ShouldSpec() {
             //result shouldBe ("TODO")
         }
 
-        // to test getCompliance
-        should("test getCompliance") {
-            // uncomment below to test getCompliance
-            //val organizationId : kotlin.String = organizationId_example // kotlin.String | 
-            //val result : OrganizationComplianceResponseDto = apiInstance.getCompliance(organizationId)
+        // to test listCompliance
+        should("test listCompliance") {
+            // uncomment below to test listCompliance
+            //val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of items to return
+            //val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of items to skip
+            //val filter : kotlin.String = {"ids":["prod_123","prod_456"]} // kotlin.String | JSON string used for dynamic filtering
+            //val sort : kotlin.String = createdAt // kotlin.String | Field name to sort by
+            //val order : kotlin.String = DESC // kotlin.String | Sort direction
+            //val result : ListOrganizationComplianceResponseDto = apiInstance.listCompliance(limit, offset, filter, sort, order)
             //result shouldBe ("TODO")
         }
 

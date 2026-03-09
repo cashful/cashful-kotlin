@@ -4,7 +4,6 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **organizationId** | **kotlin.String** |  |  |
 | **companyRegistrationName** | **kotlin.String** |  |  [optional] |
 | **companyRegistrationNumber** | **kotlin.String** |  |  [optional] |
 | **companyTradingName** | **kotlin.String** |  |  [optional] |
@@ -41,9 +40,6 @@
 | **termsAccepted** | **kotlin.Boolean** |  |  [optional] |
 | **acceptedAt** | [**java.time.OffsetDateTime**](java.time.OffsetDateTime.md) |  |  [optional] |
 | **currentStep** | [**inline**](#CurrentStep) |  |  [optional] |
-| **status** | [**inline**](#Status) |  |  [optional] |
-| **isCompleted** | **kotlin.Boolean** |  |  [optional] |
-| **completionScore** | [**java.math.BigDecimal**](java.math.BigDecimal.md) |  |  [optional] |
 
 
 <a id="CurrentStep"></a>
@@ -51,13 +47,6 @@
 | Name | Value |
 | ---- | ----- |
 | currentStep | initiation, verification, business_details, banking_details, upload_documents, sign_agreement |
-
-
-<a id="Status"></a>
-## Enum: status
-| Name | Value |
-| ---- | ----- |
-| status | pending, verified, rejected |
 
 
 

@@ -54,7 +54,10 @@ class WebhooksApiTest : ShouldSpec() {
             //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose webhooks are being requested. If omitted, defaults to the authenticated merchant.
             //val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
             //val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
-            //val result : ListWebhookEndpointsResponseDto = apiInstance.listWebhookEndpoints(merchantId, limit, offset)
+            //val filter : kotlin.String = filter_example // kotlin.String | JSON string used for dynamic filtering
+            //val sort : kotlin.String = sort_example // kotlin.String | Field name to sort by
+            //val order : kotlin.String = order_example // kotlin.String | Sort direction (ASC or DESC)
+            //val result : ListWebhookEndpointsResponseDto = apiInstance.listWebhookEndpoints(merchantId, limit, offset, filter, sort, order)
             //result shouldBe ("TODO")
         }
 

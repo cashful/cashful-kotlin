@@ -134,6 +134,9 @@ class TransfersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * Lists transfers for a specific merchant with pagination.
      * @param limit Maximum number of items to return (optional)
      * @param offset Number of items to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (optional)
      * @param merchantId Filter by merchant ID. If omitted, defaults to the authenticated merchant. (optional)
      * @return ListTransfersResponseDto
      * @throws IllegalStateException If the request is not correctly configured
@@ -144,8 +147,8 @@ class TransfersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listTransfers(limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, merchantId: kotlin.String? = null) : ListTransfersResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = listTransfersWithHttpInfo(limit = limit, offset = offset, merchantId = merchantId)
+    suspend fun listTransfers(limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, filter: kotlin.String? = null, sort: kotlin.String? = null, order: kotlin.String? = null, merchantId: kotlin.String? = null) : ListTransfersResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = listTransfersWithHttpInfo(limit = limit, offset = offset, filter = filter, sort = sort, order = order, merchantId = merchantId)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as ListTransfersResponseDto
@@ -168,6 +171,9 @@ class TransfersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * Lists transfers for a specific merchant with pagination.
      * @param limit Maximum number of items to return (optional)
      * @param offset Number of items to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (optional)
      * @param merchantId Filter by merchant ID. If omitted, defaults to the authenticated merchant. (optional)
      * @return ApiResponse<ListTransfersResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -175,8 +181,8 @@ class TransfersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listTransfersWithHttpInfo(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, merchantId: kotlin.String?) : ApiResponse<ListTransfersResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = listTransfersRequestConfig(limit = limit, offset = offset, merchantId = merchantId)
+    suspend fun listTransfersWithHttpInfo(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, filter: kotlin.String?, sort: kotlin.String?, order: kotlin.String?, merchantId: kotlin.String?) : ApiResponse<ListTransfersResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listTransfersRequestConfig(limit = limit, offset = offset, filter = filter, sort = sort, order = order, merchantId = merchantId)
 
         return@withContext request<Unit, ListTransfersResponseDto>(
             localVariableConfig
@@ -188,10 +194,13 @@ class TransfersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      *
      * @param limit Maximum number of items to return (optional)
      * @param offset Number of items to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (optional)
      * @param merchantId Filter by merchant ID. If omitted, defaults to the authenticated merchant. (optional)
      * @return RequestConfig
      */
-    fun listTransfersRequestConfig(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, merchantId: kotlin.String?) : RequestConfig<Unit> {
+    fun listTransfersRequestConfig(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, filter: kotlin.String?, sort: kotlin.String?, order: kotlin.String?, merchantId: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -200,6 +209,15 @@ class TransfersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
                 }
                 if (offset != null) {
                     put("offset", listOf(offset.toString()))
+                }
+                if (filter != null) {
+                    put("filter", listOf(filter.toString()))
+                }
+                if (sort != null) {
+                    put("sort", listOf(sort.toString()))
+                }
+                if (order != null) {
+                    put("order", listOf(order.toString()))
                 }
                 if (merchantId != null) {
                     put("merchantId", listOf(merchantId.toString()))

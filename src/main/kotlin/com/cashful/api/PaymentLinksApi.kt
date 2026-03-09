@@ -133,9 +133,12 @@ class PaymentLinksApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * GET /api/canary/payment-links
      * List Payment Links
      * Retrieves all payment links created by the merchant.
+     * @param limit Maximum number of items to return (optional)
+     * @param offset Number of items to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (optional)
      * @param merchantId The ID of the merchant whose payment links are being requested. If omitted, defaults to the authenticated merchant. (optional)
-     * @param limit Maximum number of records to return (optional)
-     * @param offset Number of records to skip (optional)
      * @param active Filter by active status (optional)
      * @return ListPaymentLinksResponseDto
      * @throws IllegalStateException If the request is not correctly configured
@@ -146,8 +149,8 @@ class PaymentLinksApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listPaymentLinks(merchantId: kotlin.String? = null, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, active: kotlin.Boolean? = null) : ListPaymentLinksResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = listPaymentLinksWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, active = active)
+    suspend fun listPaymentLinks(limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, filter: kotlin.String? = null, sort: kotlin.String? = null, order: kotlin.String? = null, merchantId: kotlin.String? = null, active: kotlin.Boolean? = null) : ListPaymentLinksResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = listPaymentLinksWithHttpInfo(limit = limit, offset = offset, filter = filter, sort = sort, order = order, merchantId = merchantId, active = active)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as ListPaymentLinksResponseDto
@@ -168,9 +171,12 @@ class PaymentLinksApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * GET /api/canary/payment-links
      * List Payment Links
      * Retrieves all payment links created by the merchant.
+     * @param limit Maximum number of items to return (optional)
+     * @param offset Number of items to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (optional)
      * @param merchantId The ID of the merchant whose payment links are being requested. If omitted, defaults to the authenticated merchant. (optional)
-     * @param limit Maximum number of records to return (optional)
-     * @param offset Number of records to skip (optional)
      * @param active Filter by active status (optional)
      * @return ApiResponse<ListPaymentLinksResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -178,8 +184,8 @@ class PaymentLinksApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listPaymentLinksWithHttpInfo(merchantId: kotlin.String?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, active: kotlin.Boolean?) : ApiResponse<ListPaymentLinksResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = listPaymentLinksRequestConfig(merchantId = merchantId, limit = limit, offset = offset, active = active)
+    suspend fun listPaymentLinksWithHttpInfo(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, filter: kotlin.String?, sort: kotlin.String?, order: kotlin.String?, merchantId: kotlin.String?, active: kotlin.Boolean?) : ApiResponse<ListPaymentLinksResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listPaymentLinksRequestConfig(limit = limit, offset = offset, filter = filter, sort = sort, order = order, merchantId = merchantId, active = active)
 
         return@withContext request<Unit, ListPaymentLinksResponseDto>(
             localVariableConfig
@@ -189,24 +195,36 @@ class PaymentLinksApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * To obtain the request config of the operation listPaymentLinks
      *
+     * @param limit Maximum number of items to return (optional)
+     * @param offset Number of items to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (optional)
      * @param merchantId The ID of the merchant whose payment links are being requested. If omitted, defaults to the authenticated merchant. (optional)
-     * @param limit Maximum number of records to return (optional)
-     * @param offset Number of records to skip (optional)
      * @param active Filter by active status (optional)
      * @return RequestConfig
      */
-    fun listPaymentLinksRequestConfig(merchantId: kotlin.String?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, active: kotlin.Boolean?) : RequestConfig<Unit> {
+    fun listPaymentLinksRequestConfig(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, filter: kotlin.String?, sort: kotlin.String?, order: kotlin.String?, merchantId: kotlin.String?, active: kotlin.Boolean?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                if (merchantId != null) {
-                    put("merchantId", listOf(merchantId.toString()))
-                }
                 if (limit != null) {
                     put("limit", listOf(limit.toString()))
                 }
                 if (offset != null) {
                     put("offset", listOf(offset.toString()))
+                }
+                if (filter != null) {
+                    put("filter", listOf(filter.toString()))
+                }
+                if (sort != null) {
+                    put("sort", listOf(sort.toString()))
+                }
+                if (order != null) {
+                    put("order", listOf(order.toString()))
+                }
+                if (merchantId != null) {
+                    put("merchantId", listOf(merchantId.toString()))
                 }
                 if (active != null) {
                     put("active", listOf(active.toString()))

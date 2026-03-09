@@ -29,6 +29,16 @@ import kotlinx.serialization.Contextual
  * @param name 
  * @param createdAt 
  * @param updatedAt 
+ * @param image 
+ * @param role 
+ * @param banned 
+ * @param banReason 
+ * @param banExpires 
+ * @param isAnonymous 
+ * @param username 
+ * @param displayUsername 
+ * @param phoneNumber 
+ * @param phoneNumberVerified 
  */
 @Serializable
 
@@ -50,7 +60,37 @@ data class SessionUserDto (
     val createdAt: java.time.OffsetDateTime,
 
     @Contextual @SerialName(value = "updatedAt")
-    val updatedAt: java.time.OffsetDateTime
+    val updatedAt: java.time.OffsetDateTime,
+
+    @SerialName(value = "image")
+    val image: kotlin.String? = null,
+
+    @SerialName(value = "role")
+    val role: kotlin.String? = null,
+
+    @SerialName(value = "banned")
+    val banned: kotlin.Boolean? = null,
+
+    @SerialName(value = "banReason")
+    val banReason: kotlin.String? = null,
+
+    @Contextual @SerialName(value = "banExpires")
+    val banExpires: java.time.OffsetDateTime? = null,
+
+    @SerialName(value = "isAnonymous")
+    val isAnonymous: kotlin.Boolean? = null,
+
+    @SerialName(value = "username")
+    val username: kotlin.String? = null,
+
+    @SerialName(value = "displayUsername")
+    val displayUsername: kotlin.String? = null,
+
+    @SerialName(value = "phoneNumber")
+    val phoneNumber: kotlin.String? = null,
+
+    @SerialName(value = "phoneNumberVerified")
+    val phoneNumberVerified: kotlin.Boolean? = null
 
 ) {
 

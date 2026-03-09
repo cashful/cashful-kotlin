@@ -18,17 +18,18 @@ package com.cashful.model
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
-import com.cashful.model.RetrieveMultipleProductsDto
+import com.cashful.model.ListEventTypesResponseDto
+import com.cashful.model.EventTypeResponseDto
 
-class RetrieveMultipleProductsDtoTest : ShouldSpec() {
+class ListEventTypesResponseDtoTest : ShouldSpec() {
     init {
-        // uncomment below to create an instance of RetrieveMultipleProductsDto
-        //val modelInstance = RetrieveMultipleProductsDto()
+        // uncomment below to create an instance of ListEventTypesResponseDto
+        //val modelInstance = ListEventTypesResponseDto()
 
-        // to test the property `ids` - Max 50 IDs of the products to retrieve
-        should("test ids") {
+        // to test the property ``data``
+        should("test `data`") {
             // uncomment below to test the property
-            //modelInstance.ids shouldBe ("TODO")
+            //modelInstance.`data` shouldBe ("TODO")
         }
 
     }

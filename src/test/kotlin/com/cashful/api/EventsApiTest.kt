@@ -20,7 +20,9 @@ import io.kotlintest.specs.ShouldSpec
 
 import com.cashful.api.EventsApi
 import com.cashful.model.BadRequestResponseDto
+import com.cashful.model.CreateEventDto
 import com.cashful.model.InternalServerErrorResponseDto
+import com.cashful.model.ListEventTypesResponseDto
 import com.cashful.model.ListEventsResponseDto
 import com.cashful.model.NotFoundResponseDto
 import com.cashful.model.UnauthorizedResponseDto
@@ -30,17 +32,34 @@ class EventsApiTest : ShouldSpec() {
         // uncomment below to create an instance of EventsApi
         //val apiInstance = EventsApi()
 
+        // to test createEvent
+        should("test createEvent") {
+            // uncomment below to test createEvent
+            //val createEventDto : CreateEventDto =  // CreateEventDto | 
+            //apiInstance.createEvent(createEventDto)
+        }
+
+        // to test listEventTypes
+        should("test listEventTypes") {
+            // uncomment below to test listEventTypes
+            //val result : ListEventTypesResponseDto = apiInstance.listEventTypes()
+            //result shouldBe ("TODO")
+        }
+
         // to test listEvents
         should("test listEvents") {
             // uncomment below to test listEvents
             //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose events are being requested. This parameter is required.
             //val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of records to return
             //val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of records to skip
+            //val filter : kotlin.String = {"ids":["prod_123","prod_456"]} // kotlin.String | JSON string used for dynamic filtering
+            //val sort : kotlin.String = createdAt // kotlin.String | Field name to sort by
+            //val order : kotlin.String = DESC // kotlin.String | Sort direction (ASC or DESC)
             //val type : kotlin.String = type_example // kotlin.String | Filter by event type
             //val status : kotlin.String = status_example // kotlin.String | Filter by event status
             //val startDate : kotlin.String = startDate_example // kotlin.String | Filter by start date
             //val endDate : kotlin.String = endDate_example // kotlin.String | Filter by end date
-            //val result : ListEventsResponseDto = apiInstance.listEvents(merchantId, limit, offset, type, status, startDate, endDate)
+            //val result : ListEventsResponseDto = apiInstance.listEvents(merchantId, limit, offset, filter, sort, order, type, status, startDate, endDate)
             //result shouldBe ("TODO")
         }
 

@@ -43,7 +43,7 @@ data class SignInResponseDto (
 
     /* Whether to redirect */
     @SerialName(value = "redirect")
-    val redirect: SignInResponseDto.Redirect?,
+    val redirect: kotlin.Boolean,
 
     /* Redirect URL */
     @SerialName(value = "url")
@@ -51,14 +51,6 @@ data class SignInResponseDto (
 
 ) {
 
-    /**
-     * Whether to redirect
-     *
-     * Values: 
-     */
-    @Serializable
-    enum class Redirect(val value: java.math.BigDecimal) {
-    }
 
 }
 

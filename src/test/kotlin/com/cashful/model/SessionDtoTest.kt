@@ -37,10 +37,40 @@ class SessionDtoTest : ShouldSpec() {
             //modelInstance.userId shouldBe ("TODO")
         }
 
+        // to test the property `token`
+        should("test token") {
+            // uncomment below to test the property
+            //modelInstance.token shouldBe ("TODO")
+        }
+
+        // to test the property `createdAt`
+        should("test createdAt") {
+            // uncomment below to test the property
+            //modelInstance.createdAt shouldBe ("TODO")
+        }
+
+        // to test the property `updatedAt`
+        should("test updatedAt") {
+            // uncomment below to test the property
+            //modelInstance.updatedAt shouldBe ("TODO")
+        }
+
         // to test the property `expiresAt`
         should("test expiresAt") {
             // uncomment below to test the property
             //modelInstance.expiresAt shouldBe ("TODO")
+        }
+
+        // to test the property `impersonatedBy`
+        should("test impersonatedBy") {
+            // uncomment below to test the property
+            //modelInstance.impersonatedBy shouldBe ("TODO")
+        }
+
+        // to test the property `activeOrganizationId`
+        should("test activeOrganizationId") {
+            // uncomment below to test the property
+            //modelInstance.activeOrganizationId shouldBe ("TODO")
         }
 
         // to test the property `ipAddress`

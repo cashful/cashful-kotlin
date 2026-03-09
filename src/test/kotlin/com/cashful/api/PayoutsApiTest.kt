@@ -43,11 +43,14 @@ class PayoutsApiTest : ShouldSpec() {
         // to test listPayouts
         should("test listPayouts") {
             // uncomment below to test listPayouts
+            //val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of items to return
+            //val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of items to skip
+            //val filter : kotlin.String = {"ids":["prod_123","prod_456"]} // kotlin.String | JSON string used for dynamic filtering
+            //val sort : kotlin.String = createdAt // kotlin.String | Field name to sort by
+            //val order : kotlin.String = DESC // kotlin.String | Sort direction
             //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose payouts are being requested. If omitted, defaults to the authenticated merchant.
-            //val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
-            //val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
             //val status : kotlin.String = status_example // kotlin.String | Filter by status
-            //val result : ListPayoutsResponseDto = apiInstance.listPayouts(merchantId, limit, offset, status)
+            //val result : ListPayoutsResponseDto = apiInstance.listPayouts(limit, offset, filter, sort, order, merchantId, status)
             //result shouldBe ("TODO")
         }
 

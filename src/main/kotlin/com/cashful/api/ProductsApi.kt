@@ -20,12 +20,13 @@ import okhttp3.Call
 import okhttp3.HttpUrl
 
 import com.cashful.model.BadRequestResponseDto
+import com.cashful.model.BulkIdsDto
+import com.cashful.model.BulkUpdateProductsInputDto
 import com.cashful.model.CreateProductDto
 import com.cashful.model.InternalServerErrorResponseDto
 import com.cashful.model.ListProductsResponseDto
 import com.cashful.model.NotFoundResponseDto
 import com.cashful.model.ProductResponseDto
-import com.cashful.model.RetrieveMultipleProductsDto
 import com.cashful.model.UnauthorizedResponseDto
 import com.cashful.model.UpdateProductDto
 
@@ -131,11 +132,184 @@ class ProductsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
     }
 
     /**
+     * DELETE /api/canary/products/{id}
+     * Delete Product
+     * Deletes a product by ID.
+     * @param id The unique identifier of the product
+     * @return ProductResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun deleteProduct(id: kotlin.String) : ProductResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = deleteProductWithHttpInfo(id = id)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ProductResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * DELETE /api/canary/products/{id}
+     * Delete Product
+     * Deletes a product by ID.
+     * @param id The unique identifier of the product
+     * @return ApiResponse<ProductResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun deleteProductWithHttpInfo(id: kotlin.String) : ApiResponse<ProductResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = deleteProductRequestConfig(id = id)
+
+        return@withContext request<Unit, ProductResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation deleteProduct
+     *
+     * @param id The unique identifier of the product
+     * @return RequestConfig
+     */
+    fun deleteProductRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.DELETE,
+            path = "/api/canary/products/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * DELETE /api/canary/products/bulk
+     * Bulk Delete Products
+     * Deletes multiple products by ID.
+     * @param bulkIdsDto 
+     * @return kotlin.Any
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun deleteProductsBulk(bulkIdsDto: BulkIdsDto) : kotlin.Any = withContext(Dispatchers.IO) {
+        val localVarResponse = deleteProductsBulkWithHttpInfo(bulkIdsDto = bulkIdsDto)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * DELETE /api/canary/products/bulk
+     * Bulk Delete Products
+     * Deletes multiple products by ID.
+     * @param bulkIdsDto 
+     * @return ApiResponse<kotlin.Any?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun deleteProductsBulkWithHttpInfo(bulkIdsDto: BulkIdsDto) : ApiResponse<kotlin.Any?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = deleteProductsBulkRequestConfig(bulkIdsDto = bulkIdsDto)
+
+        return@withContext request<BulkIdsDto, kotlin.Any>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation deleteProductsBulk
+     *
+     * @param bulkIdsDto 
+     * @return RequestConfig
+     */
+    fun deleteProductsBulkRequestConfig(bulkIdsDto: BulkIdsDto) : RequestConfig<BulkIdsDto> {
+        val localVariableBody = bulkIdsDto
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.DELETE,
+            path = "/api/canary/products/bulk",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * enum for parameter sort
+     */
+     enum class SortListProducts(val value: kotlin.String) {
+         @SerialName(value = "id") id("id"),
+         @SerialName(value = "name") name("name"),
+         @SerialName(value = "amount") amount("amount"),
+         @SerialName(value = "currency") currency("currency"),
+         @SerialName(value = "active") active("active"),
+         @SerialName(value = "merchantId") merchantId("merchantId"),
+         @SerialName(value = "createdAt") createdAt("createdAt"),
+         @SerialName(value = "updatedAt") updatedAt("updatedAt");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
+     }
+
+    /**
      * GET /api/canary/products
      * List Products
      * Retrieves all products in the merchant&#39;s catalog.
-     * @param limit Maximum number of records to return (optional)
-     * @param offset Number of records to skip (optional)
+     * @param limit Maximum number of items to return (optional)
+     * @param offset Number of items to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (optional)
      * @param merchantId The ID of the merchant whose products are being requested. If not provided, the products of the authenticated merchant will be returned. (optional)
      * @param active Filter by active status (optional)
      * @return ListProductsResponseDto
@@ -147,8 +321,8 @@ class ProductsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listProducts(limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, merchantId: kotlin.String? = null, active: kotlin.Boolean? = null) : ListProductsResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = listProductsWithHttpInfo(limit = limit, offset = offset, merchantId = merchantId, active = active)
+    suspend fun listProducts(limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, filter: kotlin.String? = null, sort: SortListProducts? = null, order: kotlin.String? = null, merchantId: kotlin.String? = null, active: kotlin.Boolean? = null) : ListProductsResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = listProductsWithHttpInfo(limit = limit, offset = offset, filter = filter, sort = sort, order = order, merchantId = merchantId, active = active)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as ListProductsResponseDto
@@ -169,8 +343,11 @@ class ProductsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      * GET /api/canary/products
      * List Products
      * Retrieves all products in the merchant&#39;s catalog.
-     * @param limit Maximum number of records to return (optional)
-     * @param offset Number of records to skip (optional)
+     * @param limit Maximum number of items to return (optional)
+     * @param offset Number of items to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (optional)
      * @param merchantId The ID of the merchant whose products are being requested. If not provided, the products of the authenticated merchant will be returned. (optional)
      * @param active Filter by active status (optional)
      * @return ApiResponse<ListProductsResponseDto?>
@@ -179,8 +356,8 @@ class ProductsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listProductsWithHttpInfo(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, merchantId: kotlin.String?, active: kotlin.Boolean?) : ApiResponse<ListProductsResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = listProductsRequestConfig(limit = limit, offset = offset, merchantId = merchantId, active = active)
+    suspend fun listProductsWithHttpInfo(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, filter: kotlin.String?, sort: SortListProducts?, order: kotlin.String?, merchantId: kotlin.String?, active: kotlin.Boolean?) : ApiResponse<ListProductsResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listProductsRequestConfig(limit = limit, offset = offset, filter = filter, sort = sort, order = order, merchantId = merchantId, active = active)
 
         return@withContext request<Unit, ListProductsResponseDto>(
             localVariableConfig
@@ -190,13 +367,16 @@ class ProductsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
     /**
      * To obtain the request config of the operation listProducts
      *
-     * @param limit Maximum number of records to return (optional)
-     * @param offset Number of records to skip (optional)
+     * @param limit Maximum number of items to return (optional)
+     * @param offset Number of items to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (optional)
      * @param merchantId The ID of the merchant whose products are being requested. If not provided, the products of the authenticated merchant will be returned. (optional)
      * @param active Filter by active status (optional)
      * @return RequestConfig
      */
-    fun listProductsRequestConfig(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, merchantId: kotlin.String?, active: kotlin.Boolean?) : RequestConfig<Unit> {
+    fun listProductsRequestConfig(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, filter: kotlin.String?, sort: SortListProducts?, order: kotlin.String?, merchantId: kotlin.String?, active: kotlin.Boolean?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -205,6 +385,15 @@ class ProductsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
                 }
                 if (offset != null) {
                     put("offset", listOf(offset.toString()))
+                }
+                if (filter != null) {
+                    put("filter", listOf(filter.toString()))
+                }
+                if (sort != null) {
+                    put("sort", listOf(sort.value))
+                }
+                if (order != null) {
+                    put("order", listOf(order.toString()))
                 }
                 if (merchantId != null) {
                     put("merchantId", listOf(merchantId.toString()))
@@ -219,80 +408,6 @@ class ProductsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
         return RequestConfig(
             method = RequestMethod.GET,
             path = "/api/canary/products",
-            query = localVariableQuery,
-            headers = localVariableHeaders,
-            requiresAuthentication = true,
-            body = localVariableBody
-        )
-    }
-
-    /**
-     * POST /api/canary/products/multiple
-     * Retrieve Multiple Products by ID
-     * Retrieves multiple products using the provided ID&#39;s with a maximum of 50 IDs.
-     * @param retrieveMultipleProductsDto List of product IDs
-     * @return kotlin.collections.List<ProductResponseDto>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     * @throws UnsupportedOperationException If the API returns an informational or redirection response
-     * @throws ClientException If the API returns a client error response
-     * @throws ServerException If the API returns a server error response
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun retrieveMultipleProducts(retrieveMultipleProductsDto: RetrieveMultipleProductsDto) : kotlin.collections.List<ProductResponseDto> = withContext(Dispatchers.IO) {
-        val localVarResponse = retrieveMultipleProductsWithHttpInfo(retrieveMultipleProductsDto = retrieveMultipleProductsDto)
-
-        return@withContext when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<ProductResponseDto>
-            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
-            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
-            ResponseType.ClientError -> {
-                val localVarError = localVarResponse as ClientError<*>
-                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
-            }
-            ResponseType.ServerError -> {
-                val localVarError = localVarResponse as ServerError<*>
-                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
-            }
-        }
-    }
-
-    /**
-     * POST /api/canary/products/multiple
-     * Retrieve Multiple Products by ID
-     * Retrieves multiple products using the provided ID&#39;s with a maximum of 50 IDs.
-     * @param retrieveMultipleProductsDto List of product IDs
-     * @return ApiResponse<kotlin.collections.List<ProductResponseDto>?>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class)
-    suspend fun retrieveMultipleProductsWithHttpInfo(retrieveMultipleProductsDto: RetrieveMultipleProductsDto) : ApiResponse<kotlin.collections.List<ProductResponseDto>?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = retrieveMultipleProductsRequestConfig(retrieveMultipleProductsDto = retrieveMultipleProductsDto)
-
-        return@withContext request<RetrieveMultipleProductsDto, kotlin.collections.List<ProductResponseDto>>(
-            localVariableConfig
-        )
-    }
-
-    /**
-     * To obtain the request config of the operation retrieveMultipleProducts
-     *
-     * @param retrieveMultipleProductsDto List of product IDs
-     * @return RequestConfig
-     */
-    fun retrieveMultipleProductsRequestConfig(retrieveMultipleProductsDto: RetrieveMultipleProductsDto) : RequestConfig<RetrieveMultipleProductsDto> {
-        val localVariableBody = retrieveMultipleProductsDto
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders["Content-Type"] = "application/json"
-        localVariableHeaders["Accept"] = "application/json"
-
-        return RequestConfig(
-            method = RequestMethod.POST,
-            path = "/api/canary/products/multiple",
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -443,6 +558,80 @@ class ProductsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
         return RequestConfig(
             method = RequestMethod.PATCH,
             path = "/api/canary/products/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * PATCH /api/canary/products/bulk
+     * Bulk Update Products
+     * Updates multiple products using a shared patch.
+     * @param bulkUpdateProductsInputDto 
+     * @return kotlin.Any
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun updateProductsBulk(bulkUpdateProductsInputDto: BulkUpdateProductsInputDto) : kotlin.Any = withContext(Dispatchers.IO) {
+        val localVarResponse = updateProductsBulkWithHttpInfo(bulkUpdateProductsInputDto = bulkUpdateProductsInputDto)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * PATCH /api/canary/products/bulk
+     * Bulk Update Products
+     * Updates multiple products using a shared patch.
+     * @param bulkUpdateProductsInputDto 
+     * @return ApiResponse<kotlin.Any?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun updateProductsBulkWithHttpInfo(bulkUpdateProductsInputDto: BulkUpdateProductsInputDto) : ApiResponse<kotlin.Any?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = updateProductsBulkRequestConfig(bulkUpdateProductsInputDto = bulkUpdateProductsInputDto)
+
+        return@withContext request<BulkUpdateProductsInputDto, kotlin.Any>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation updateProductsBulk
+     *
+     * @param bulkUpdateProductsInputDto 
+     * @return RequestConfig
+     */
+    fun updateProductsBulkRequestConfig(bulkUpdateProductsInputDto: BulkUpdateProductsInputDto) : RequestConfig<BulkUpdateProductsInputDto> {
+        val localVariableBody = bulkUpdateProductsInputDto
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.PATCH,
+            path = "/api/canary/products/bulk",
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,

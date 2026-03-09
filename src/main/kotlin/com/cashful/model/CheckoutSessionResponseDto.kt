@@ -30,14 +30,14 @@ import kotlinx.serialization.Contextual
  * @param updatedAt 
  * @param merchantId 
  * @param sessionUrl 
- * @param successUrl 
- * @param cancelUrl 
  * @param currency 
  * @param status 
  * @param metadata 
  * @param deletedAt 
  * @param paymentIntentId 
  * @param customerId 
+ * @param successUrl 
+ * @param cancelUrl 
  * @param lineItems 
  * @param totalAmount 
  * @param mode 
@@ -64,12 +64,6 @@ data class CheckoutSessionResponseDto (
     @SerialName(value = "sessionUrl")
     val sessionUrl: kotlin.String,
 
-    @SerialName(value = "successUrl")
-    val successUrl: kotlin.String,
-
-    @SerialName(value = "cancelUrl")
-    val cancelUrl: kotlin.String,
-
     @SerialName(value = "currency")
     val currency: kotlin.String,
 
@@ -87,6 +81,12 @@ data class CheckoutSessionResponseDto (
 
     @SerialName(value = "customerId")
     val customerId: kotlin.String? = null,
+
+    @SerialName(value = "successUrl")
+    val successUrl: kotlin.String? = null,
+
+    @SerialName(value = "cancelUrl")
+    val cancelUrl: kotlin.String? = null,
 
     @SerialName(value = "lineItems")
     val lineItems: kotlin.collections.List<LineItemDto>? = null,

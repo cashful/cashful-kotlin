@@ -308,10 +308,10 @@ class PaymentIntentsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * GET /api/canary/payment-intents
      * List Payment Intents
      * Lists payment intents for a specific merchant with pagination and filtering.
-     * @param status  (optional)
-     * @param offset  (optional)
-     * @param limit  (optional)
-     * @param merchantId  (optional)
+     * @param merchantId The ID of the merchant. If omitted, defaults to the authenticated merchant. (optional)
+     * @param limit Maximum number of records to return (optional, default to 50)
+     * @param offset Number of records to skip (optional, default to 0)
+     * @param status Filter by status (optional)
      * @return ListPaymentIntentsResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -321,8 +321,8 @@ class PaymentIntentsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listPaymentIntents(status: StatusListPaymentIntents? = null, offset: java.math.BigDecimal? = null, limit: java.math.BigDecimal? = null, merchantId: kotlin.String? = null) : ListPaymentIntentsResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = listPaymentIntentsWithHttpInfo(status = status, offset = offset, limit = limit, merchantId = merchantId)
+    suspend fun listPaymentIntents(merchantId: kotlin.String? = null, limit: java.math.BigDecimal? = java.math.BigDecimal("50"), offset: java.math.BigDecimal? = java.math.BigDecimal("0"), status: StatusListPaymentIntents? = null) : ListPaymentIntentsResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = listPaymentIntentsWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, status = status)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as ListPaymentIntentsResponseDto
@@ -343,18 +343,18 @@ class PaymentIntentsApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * GET /api/canary/payment-intents
      * List Payment Intents
      * Lists payment intents for a specific merchant with pagination and filtering.
-     * @param status  (optional)
-     * @param offset  (optional)
-     * @param limit  (optional)
-     * @param merchantId  (optional)
+     * @param merchantId The ID of the merchant. If omitted, defaults to the authenticated merchant. (optional)
+     * @param limit Maximum number of records to return (optional, default to 50)
+     * @param offset Number of records to skip (optional, default to 0)
+     * @param status Filter by status (optional)
      * @return ApiResponse<ListPaymentIntentsResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listPaymentIntentsWithHttpInfo(status: StatusListPaymentIntents?, offset: java.math.BigDecimal?, limit: java.math.BigDecimal?, merchantId: kotlin.String?) : ApiResponse<ListPaymentIntentsResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = listPaymentIntentsRequestConfig(status = status, offset = offset, limit = limit, merchantId = merchantId)
+    suspend fun listPaymentIntentsWithHttpInfo(merchantId: kotlin.String?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, status: StatusListPaymentIntents?) : ApiResponse<ListPaymentIntentsResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listPaymentIntentsRequestConfig(merchantId = merchantId, limit = limit, offset = offset, status = status)
 
         return@withContext request<Unit, ListPaymentIntentsResponseDto>(
             localVariableConfig
@@ -364,27 +364,27 @@ class PaymentIntentsApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * To obtain the request config of the operation listPaymentIntents
      *
-     * @param status  (optional)
-     * @param offset  (optional)
-     * @param limit  (optional)
-     * @param merchantId  (optional)
+     * @param merchantId The ID of the merchant. If omitted, defaults to the authenticated merchant. (optional)
+     * @param limit Maximum number of records to return (optional, default to 50)
+     * @param offset Number of records to skip (optional, default to 0)
+     * @param status Filter by status (optional)
      * @return RequestConfig
      */
-    fun listPaymentIntentsRequestConfig(status: StatusListPaymentIntents?, offset: java.math.BigDecimal?, limit: java.math.BigDecimal?, merchantId: kotlin.String?) : RequestConfig<Unit> {
+    fun listPaymentIntentsRequestConfig(merchantId: kotlin.String?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, status: StatusListPaymentIntents?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                if (status != null) {
-                    put("status", listOf(status.value))
-                }
-                if (offset != null) {
-                    put("offset", listOf(offset.toString()))
+                if (merchantId != null) {
+                    put("merchantId", listOf(merchantId.toString()))
                 }
                 if (limit != null) {
                     put("limit", listOf(limit.toString()))
                 }
-                if (merchantId != null) {
-                    put("merchantId", listOf(merchantId.toString()))
+                if (offset != null) {
+                    put("offset", listOf(offset.toString()))
+                }
+                if (status != null) {
+                    put("status", listOf(status.value))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()

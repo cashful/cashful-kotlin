@@ -57,18 +57,6 @@ class CheckoutSessionResponseDtoTest : ShouldSpec() {
             //modelInstance.sessionUrl shouldBe ("TODO")
         }
 
-        // to test the property `successUrl`
-        should("test successUrl") {
-            // uncomment below to test the property
-            //modelInstance.successUrl shouldBe ("TODO")
-        }
-
-        // to test the property `cancelUrl`
-        should("test cancelUrl") {
-            // uncomment below to test the property
-            //modelInstance.cancelUrl shouldBe ("TODO")
-        }
-
         // to test the property `currency`
         should("test currency") {
             // uncomment below to test the property
@@ -103,6 +91,18 @@ class CheckoutSessionResponseDtoTest : ShouldSpec() {
         should("test customerId") {
             // uncomment below to test the property
             //modelInstance.customerId shouldBe ("TODO")
+        }
+
+        // to test the property `successUrl`
+        should("test successUrl") {
+            // uncomment below to test the property
+            //modelInstance.successUrl shouldBe ("TODO")
+        }
+
+        // to test the property `cancelUrl`
+        should("test cancelUrl") {
+            // uncomment below to test the property
+            //modelInstance.cancelUrl shouldBe ("TODO")
         }
 
         // to test the property `lineItems`

@@ -371,8 +371,11 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * GET /api/canary/storage
      * List files
      * 
-     * @param limit Maximum number of records to return (optional)
-     * @param offset Number of records to skip (optional)
+     * @param limit Maximum number of items to return (optional)
+     * @param offset Number of items to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (optional)
      * @param tag Filter by tag (optional)
      * @param status  (optional)
      * @param relatedEntityId  (optional)
@@ -386,8 +389,8 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listFiles(limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, tag: kotlin.String? = null, status: StatusListFiles? = null, relatedEntityId: kotlin.String? = null, relatedEntityType: kotlin.String? = null) : ListFilesResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = listFilesWithHttpInfo(limit = limit, offset = offset, tag = tag, status = status, relatedEntityId = relatedEntityId, relatedEntityType = relatedEntityType)
+    suspend fun listFiles(limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, filter: kotlin.String? = null, sort: kotlin.String? = null, order: kotlin.String? = null, tag: kotlin.String? = null, status: StatusListFiles? = null, relatedEntityId: kotlin.String? = null, relatedEntityType: kotlin.String? = null) : ListFilesResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = listFilesWithHttpInfo(limit = limit, offset = offset, filter = filter, sort = sort, order = order, tag = tag, status = status, relatedEntityId = relatedEntityId, relatedEntityType = relatedEntityType)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as ListFilesResponseDto
@@ -408,8 +411,11 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * GET /api/canary/storage
      * List files
      * 
-     * @param limit Maximum number of records to return (optional)
-     * @param offset Number of records to skip (optional)
+     * @param limit Maximum number of items to return (optional)
+     * @param offset Number of items to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (optional)
      * @param tag Filter by tag (optional)
      * @param status  (optional)
      * @param relatedEntityId  (optional)
@@ -420,8 +426,8 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listFilesWithHttpInfo(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, tag: kotlin.String?, status: StatusListFiles?, relatedEntityId: kotlin.String?, relatedEntityType: kotlin.String?) : ApiResponse<ListFilesResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = listFilesRequestConfig(limit = limit, offset = offset, tag = tag, status = status, relatedEntityId = relatedEntityId, relatedEntityType = relatedEntityType)
+    suspend fun listFilesWithHttpInfo(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, filter: kotlin.String?, sort: kotlin.String?, order: kotlin.String?, tag: kotlin.String?, status: StatusListFiles?, relatedEntityId: kotlin.String?, relatedEntityType: kotlin.String?) : ApiResponse<ListFilesResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listFilesRequestConfig(limit = limit, offset = offset, filter = filter, sort = sort, order = order, tag = tag, status = status, relatedEntityId = relatedEntityId, relatedEntityType = relatedEntityType)
 
         return@withContext request<Unit, ListFilesResponseDto>(
             localVariableConfig
@@ -431,15 +437,18 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * To obtain the request config of the operation listFiles
      *
-     * @param limit Maximum number of records to return (optional)
-     * @param offset Number of records to skip (optional)
+     * @param limit Maximum number of items to return (optional)
+     * @param offset Number of items to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (optional)
      * @param tag Filter by tag (optional)
      * @param status  (optional)
      * @param relatedEntityId  (optional)
      * @param relatedEntityType  (optional)
      * @return RequestConfig
      */
-    fun listFilesRequestConfig(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, tag: kotlin.String?, status: StatusListFiles?, relatedEntityId: kotlin.String?, relatedEntityType: kotlin.String?) : RequestConfig<Unit> {
+    fun listFilesRequestConfig(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, filter: kotlin.String?, sort: kotlin.String?, order: kotlin.String?, tag: kotlin.String?, status: StatusListFiles?, relatedEntityId: kotlin.String?, relatedEntityType: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -448,6 +457,15 @@ class StorageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
                 }
                 if (offset != null) {
                     put("offset", listOf(offset.toString()))
+                }
+                if (filter != null) {
+                    put("filter", listOf(filter.toString()))
+                }
+                if (sort != null) {
+                    put("sort", listOf(sort.toString()))
+                }
+                if (order != null) {
+                    put("order", listOf(order.toString()))
                 }
                 if (tag != null) {
                     put("tag", listOf(tag.toString()))

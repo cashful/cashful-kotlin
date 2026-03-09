@@ -432,7 +432,7 @@ class AuthenticationApiTest : ShouldSpec() {
         should("test resetPasswordCallback") {
             // uncomment below to test resetPasswordCallback
             //val token : kotlin.String = token_example // kotlin.String | 
-            //val callbackURL : kotlin.String = https://example.com/reset-password // kotlin.String | The URL to redirect user to reset their password
+            //val callbackURL : kotlin.String = https://www.cashful.africa/reset-password // kotlin.String | The URL to redirect user to reset their password
             //val result : ResetPasswordCallbackResponseDto = apiInstance.resetPasswordCallback(token, callbackURL)
             //result shouldBe ("TODO")
         }
@@ -583,7 +583,7 @@ class AuthenticationApiTest : ShouldSpec() {
         should("test verifyEmail") {
             // uncomment below to test verifyEmail
             //val token : kotlin.String = verify_token_12345 // kotlin.String | The token to verify email
-            //val callbackURL : kotlin.String = https://example.com/callback // kotlin.String | The URL to redirect to after email verification
+            //val callbackURL : kotlin.String = https://www.cashful.africa/callback // kotlin.String | The URL to redirect to after email verification
             //val result : VerifyEmailResponseDto = apiInstance.verifyEmail(token, callbackURL)
             //result shouldBe ("TODO")
         }

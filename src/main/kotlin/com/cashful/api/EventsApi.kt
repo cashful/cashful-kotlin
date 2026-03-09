@@ -20,7 +20,9 @@ import okhttp3.Call
 import okhttp3.HttpUrl
 
 import com.cashful.model.BadRequestResponseDto
+import com.cashful.model.CreateEventDto
 import com.cashful.model.InternalServerErrorResponseDto
+import com.cashful.model.ListEventTypesResponseDto
 import com.cashful.model.ListEventsResponseDto
 import com.cashful.model.NotFoundResponseDto
 import com.cashful.model.UnauthorizedResponseDto
@@ -53,6 +55,147 @@ class EventsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     }
 
     /**
+     * POST /api/canary/events
+     * Create Event
+     * Records a new event and triggers associated webhooks.
+     * @param createEventDto 
+     * @return void
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun createEvent(createEventDto: CreateEventDto) : Unit = withContext(Dispatchers.IO) {
+        val localVarResponse = createEventWithHttpInfo(createEventDto = createEventDto)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> Unit
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /api/canary/events
+     * Create Event
+     * Records a new event and triggers associated webhooks.
+     * @param createEventDto 
+     * @return ApiResponse<Unit?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun createEventWithHttpInfo(createEventDto: CreateEventDto) : ApiResponse<Unit?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = createEventRequestConfig(createEventDto = createEventDto)
+
+        return@withContext request<CreateEventDto, Unit>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation createEvent
+     *
+     * @param createEventDto 
+     * @return RequestConfig
+     */
+    fun createEventRequestConfig(createEventDto: CreateEventDto) : RequestConfig<CreateEventDto> {
+        val localVariableBody = createEventDto
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/api/canary/events",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * GET /api/canary/events/types
+     * List Event Types
+     * Retrieves all available event types that can be sent or subscribed to.
+     * @return ListEventTypesResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun listEventTypes() : ListEventTypesResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = listEventTypesWithHttpInfo()
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ListEventTypesResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /api/canary/events/types
+     * List Event Types
+     * Retrieves all available event types that can be sent or subscribed to.
+     * @return ApiResponse<ListEventTypesResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun listEventTypesWithHttpInfo() : ApiResponse<ListEventTypesResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listEventTypesRequestConfig()
+
+        return@withContext request<Unit, ListEventTypesResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation listEventTypes
+     *
+     * @return RequestConfig
+     */
+    fun listEventTypesRequestConfig() : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/api/canary/events/types",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
      * enum for parameter status
      */
      enum class StatusListEvents(val value: kotlin.String) {
@@ -77,6 +220,9 @@ class EventsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
      * @param merchantId The ID of the merchant whose events are being requested. This parameter is required.
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (ASC or DESC) (optional)
      * @param type Filter by event type (optional)
      * @param status Filter by event status (optional)
      * @param startDate Filter by start date (optional)
@@ -90,8 +236,8 @@ class EventsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listEvents(merchantId: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, type: kotlin.String? = null, status: StatusListEvents? = null, startDate: kotlin.String? = null, endDate: kotlin.String? = null) : ListEventsResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = listEventsWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, type = type, status = status, startDate = startDate, endDate = endDate)
+    suspend fun listEvents(merchantId: kotlin.String, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, filter: kotlin.String? = null, sort: kotlin.String? = null, order: kotlin.String? = null, type: kotlin.String? = null, status: StatusListEvents? = null, startDate: kotlin.String? = null, endDate: kotlin.String? = null) : ListEventsResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = listEventsWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, filter = filter, sort = sort, order = order, type = type, status = status, startDate = startDate, endDate = endDate)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as ListEventsResponseDto
@@ -115,6 +261,9 @@ class EventsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
      * @param merchantId The ID of the merchant whose events are being requested. This parameter is required.
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (ASC or DESC) (optional)
      * @param type Filter by event type (optional)
      * @param status Filter by event status (optional)
      * @param startDate Filter by start date (optional)
@@ -125,8 +274,8 @@ class EventsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listEventsWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, type: kotlin.String?, status: StatusListEvents?, startDate: kotlin.String?, endDate: kotlin.String?) : ApiResponse<ListEventsResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = listEventsRequestConfig(merchantId = merchantId, limit = limit, offset = offset, type = type, status = status, startDate = startDate, endDate = endDate)
+    suspend fun listEventsWithHttpInfo(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, filter: kotlin.String?, sort: kotlin.String?, order: kotlin.String?, type: kotlin.String?, status: StatusListEvents?, startDate: kotlin.String?, endDate: kotlin.String?) : ApiResponse<ListEventsResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listEventsRequestConfig(merchantId = merchantId, limit = limit, offset = offset, filter = filter, sort = sort, order = order, type = type, status = status, startDate = startDate, endDate = endDate)
 
         return@withContext request<Unit, ListEventsResponseDto>(
             localVariableConfig
@@ -139,13 +288,16 @@ class EventsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
      * @param merchantId The ID of the merchant whose events are being requested. This parameter is required.
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (ASC or DESC) (optional)
      * @param type Filter by event type (optional)
      * @param status Filter by event status (optional)
      * @param startDate Filter by start date (optional)
      * @param endDate Filter by end date (optional)
      * @return RequestConfig
      */
-    fun listEventsRequestConfig(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, type: kotlin.String?, status: StatusListEvents?, startDate: kotlin.String?, endDate: kotlin.String?) : RequestConfig<Unit> {
+    fun listEventsRequestConfig(merchantId: kotlin.String, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, filter: kotlin.String?, sort: kotlin.String?, order: kotlin.String?, type: kotlin.String?, status: StatusListEvents?, startDate: kotlin.String?, endDate: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -154,6 +306,15 @@ class EventsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
                 }
                 if (offset != null) {
                     put("offset", listOf(offset.toString()))
+                }
+                if (filter != null) {
+                    put("filter", listOf(filter.toString()))
+                }
+                if (sort != null) {
+                    put("sort", listOf(sort.toString()))
+                }
+                if (order != null) {
+                    put("order", listOf(order.toString()))
                 }
                 put("merchantId", listOf(merchantId.toString()))
                 if (type != null) {

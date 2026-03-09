@@ -15,6 +15,7 @@
 
 package com.cashful.model
 
+import com.cashful.model.SessionUserDto
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerialName
@@ -31,7 +32,7 @@ data class ListUsersResponseDto (
 
     /* List of users */
     @SerialName(value = "users")
-    val users: kotlin.collections.List<@Contextual kotlin.Any>
+    val users: kotlin.collections.List<SessionUserDto>
 
 ) {
 

@@ -58,7 +58,7 @@ Configure bearer:
 
 <a id="listTransfers"></a>
 # **listTransfers**
-> ListTransfersResponseDto listTransfers(limit, offset, merchantId)
+> ListTransfersResponseDto listTransfers(limit, offset, filter, sort, order, merchantId)
 
 List Transfers
 
@@ -73,9 +73,12 @@ Lists transfers for a specific merchant with pagination.
 val apiInstance = TransfersApi()
 val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of items to return
 val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of items to skip
+val filter : kotlin.String = {"ids":["prod_123","prod_456"]} // kotlin.String | JSON string used for dynamic filtering
+val sort : kotlin.String = createdAt // kotlin.String | Field name to sort by
+val order : kotlin.String = DESC // kotlin.String | Sort direction
 val merchantId : kotlin.String = merchantId_example // kotlin.String | Filter by merchant ID. If omitted, defaults to the authenticated merchant.
 try {
-    val result : ListTransfersResponseDto = apiInstance.listTransfers(limit, offset, merchantId)
+    val result : ListTransfersResponseDto = apiInstance.listTransfers(limit, offset, filter, sort, order, merchantId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling TransfersApi#listTransfers")
@@ -89,6 +92,9 @@ try {
 ### Parameters
 | **limit** | **java.math.BigDecimal**| Maximum number of items to return | [optional] |
 | **offset** | **java.math.BigDecimal**| Number of items to skip | [optional] |
+| **filter** | **kotlin.String**| JSON string used for dynamic filtering | [optional] |
+| **sort** | **kotlin.String**| Field name to sort by | [optional] |
+| **order** | **kotlin.String**| Sort direction | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **merchantId** | **kotlin.String**| Filter by merchant ID. If omitted, defaults to the authenticated merchant. | [optional] |

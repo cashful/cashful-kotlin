@@ -25,12 +25,6 @@ class CreateOrganizationComplianceDtoTest : ShouldSpec() {
         // uncomment below to create an instance of CreateOrganizationComplianceDto
         //val modelInstance = CreateOrganizationComplianceDto()
 
-        // to test the property `organizationId`
-        should("test organizationId") {
-            // uncomment below to test the property
-            //modelInstance.organizationId shouldBe ("TODO")
-        }
-
         // to test the property `companyRegistrationName`
         should("test companyRegistrationName") {
             // uncomment below to test the property
@@ -245,24 +239,6 @@ class CreateOrganizationComplianceDtoTest : ShouldSpec() {
         should("test currentStep") {
             // uncomment below to test the property
             //modelInstance.currentStep shouldBe ("TODO")
-        }
-
-        // to test the property `status`
-        should("test status") {
-            // uncomment below to test the property
-            //modelInstance.status shouldBe ("TODO")
-        }
-
-        // to test the property `isCompleted`
-        should("test isCompleted") {
-            // uncomment below to test the property
-            //modelInstance.isCompleted shouldBe ("TODO")
-        }
-
-        // to test the property `completionScore`
-        should("test completionScore") {
-            // uncomment below to test the property
-            //modelInstance.completionScore shouldBe ("TODO")
         }
 
     }

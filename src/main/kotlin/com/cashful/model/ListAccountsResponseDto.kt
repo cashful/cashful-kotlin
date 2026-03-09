@@ -15,6 +15,7 @@
 
 package com.cashful.model
 
+import com.cashful.model.LinkedAccountDto
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerialName
@@ -31,7 +32,7 @@ data class ListAccountsResponseDto (
 
     /* List of linked social accounts */
     @SerialName(value = "accounts")
-    val accounts: kotlin.collections.List<@Contextual kotlin.Any>
+    val accounts: kotlin.collections.List<LinkedAccountDto>
 
 ) {
 

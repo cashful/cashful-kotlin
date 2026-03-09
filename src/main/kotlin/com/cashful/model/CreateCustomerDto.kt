@@ -23,19 +23,15 @@ import kotlinx.serialization.Contextual
 /**
  * 
  *
- * @param phoneNumber The phone number of the customer
  * @param metadata Optional custom metadata
  * @param merchantId The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant.
+ * @param phoneNumber The phone number of the customer
  * @param email The email address of the customer
  * @param name The full name of the customer
  */
 @Serializable
 
 data class CreateCustomerDto (
-
-    /* The phone number of the customer */
-    @SerialName(value = "phoneNumber")
-    val phoneNumber: kotlin.String,
 
     /* Optional custom metadata */
     @Contextual @SerialName(value = "metadata")
@@ -44,6 +40,10 @@ data class CreateCustomerDto (
     /* The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. */
     @SerialName(value = "merchantId")
     val merchantId: kotlin.String? = null,
+
+    /* The phone number of the customer */
+    @SerialName(value = "phoneNumber")
+    val phoneNumber: kotlin.String? = null,
 
     /* The email address of the customer */
     @SerialName(value = "email")

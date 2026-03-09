@@ -26,6 +26,7 @@ import kotlinx.serialization.Contextual
  * @param to Recipient phone number(s) in international format
  * @param message SMS message content
  * @param from Sender name or number
+ * @param merchantId Merchant ID for context and auditing
  */
 @Serializable
 
@@ -41,7 +42,11 @@ data class SendSmsDto (
 
     /* Sender name or number */
     @SerialName(value = "from")
-    val from: kotlin.String? = null
+    val from: kotlin.String? = null,
+
+    /* Merchant ID for context and auditing */
+    @SerialName(value = "merchantId")
+    val merchantId: kotlin.String? = null
 
 ) {
 

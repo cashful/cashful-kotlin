@@ -43,9 +43,14 @@ class CheckoutsApiTest : ShouldSpec() {
         // to test listCheckoutSessions
         should("test listCheckoutSessions") {
             // uncomment below to test listCheckoutSessions
-            //val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
-            //val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
-            //val result : ListCheckoutSessionsResponseDto = apiInstance.listCheckoutSessions(limit, offset)
+            //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant to filter checkout sessions
+            //val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of items to return
+            //val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of items to skip
+            //val filter : kotlin.String = {"ids":["prod_123","prod_456"]} // kotlin.String | JSON string used for dynamic filtering
+            //val sort : kotlin.String = createdAt // kotlin.String | Field name to sort by
+            //val order : kotlin.String = DESC // kotlin.String | Sort direction
+            //val status : kotlin.String = status_example // kotlin.String | The status to filter checkout sessions
+            //val result : ListCheckoutSessionsResponseDto = apiInstance.listCheckoutSessions(merchantId, limit, offset, filter, sort, order, status)
             //result shouldBe ("TODO")
         }
 

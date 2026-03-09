@@ -59,7 +59,7 @@ Configure bearer:
 
 <a id="listPaymentMethods"></a>
 # **listPaymentMethods**
-> ListPaymentMethodsResponseDto listPaymentMethods(limit, offset, merchantId, customerId)
+> ListPaymentMethodsResponseDto listPaymentMethods(limit, offset, filter, sort, order, merchantId, customerId)
 
 List Payment Methods
 
@@ -72,12 +72,15 @@ Lists saved payment methods for a specific customer.
 //import com.cashful.model.*
 
 val apiInstance = PaymentMethodsApi()
-val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of records to return
-val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of records to skip
-val merchantId : kotlin.String = merchantId_example // kotlin.String | The unique identifier of the merchant. If not provided, defaults to the authenticated user's active organization.
-val customerId : kotlin.String = customerId_example // kotlin.String | The unique identifier of the customer
+val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of items to return
+val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of items to skip
+val filter : kotlin.String = {"ids":["prod_123","prod_456"]} // kotlin.String | JSON string used for dynamic filtering
+val sort : kotlin.String = createdAt // kotlin.String | Field name to sort by
+val order : kotlin.String = DESC // kotlin.String | Sort direction
+val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. If omitted, defaults to the authenticated merchant.
+val customerId : kotlin.String = customerId_example // kotlin.String | Customer ID to filter by
 try {
-    val result : ListPaymentMethodsResponseDto = apiInstance.listPaymentMethods(limit, offset, merchantId, customerId)
+    val result : ListPaymentMethodsResponseDto = apiInstance.listPaymentMethods(limit, offset, filter, sort, order, merchantId, customerId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PaymentMethodsApi#listPaymentMethods")
@@ -89,12 +92,15 @@ try {
 ```
 
 ### Parameters
-| **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] |
-| **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
-| **merchantId** | **kotlin.String**| The unique identifier of the merchant. If not provided, defaults to the authenticated user&#39;s active organization. | [optional] |
+| **limit** | **java.math.BigDecimal**| Maximum number of items to return | [optional] |
+| **offset** | **java.math.BigDecimal**| Number of items to skip | [optional] |
+| **filter** | **kotlin.String**| JSON string used for dynamic filtering | [optional] |
+| **sort** | **kotlin.String**| Field name to sort by | [optional] |
+| **order** | **kotlin.String**| Sort direction | [optional] |
+| **merchantId** | **kotlin.String**| The ID of the merchant. If omitted, defaults to the authenticated merchant. | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **customerId** | **kotlin.String**| The unique identifier of the customer | [optional] |
+| **customerId** | **kotlin.String**| Customer ID to filter by | [optional] |
 
 ### Return type
 

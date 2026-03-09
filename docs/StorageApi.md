@@ -197,7 +197,7 @@ Configure bearer:
 
 <a id="listFiles"></a>
 # **listFiles**
-> ListFilesResponseDto listFiles(limit, offset, tag, status, relatedEntityId, relatedEntityType)
+> ListFilesResponseDto listFiles(limit, offset, filter, sort, order, tag, status, relatedEntityId, relatedEntityType)
 
 List files
 
@@ -208,14 +208,17 @@ List files
 //import com.cashful.model.*
 
 val apiInstance = StorageApi()
-val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of records to return
-val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of records to skip
+val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of items to return
+val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of items to skip
+val filter : kotlin.String = {"ids":["prod_123","prod_456"]} // kotlin.String | JSON string used for dynamic filtering
+val sort : kotlin.String = createdAt // kotlin.String | Field name to sort by
+val order : kotlin.String = DESC // kotlin.String | Sort direction
 val tag : kotlin.String = tag_example // kotlin.String | Filter by tag
 val status : kotlin.String = status_example // kotlin.String | 
 val relatedEntityId : kotlin.String = relatedEntityId_example // kotlin.String | 
 val relatedEntityType : kotlin.String = relatedEntityType_example // kotlin.String | 
 try {
-    val result : ListFilesResponseDto = apiInstance.listFiles(limit, offset, tag, status, relatedEntityId, relatedEntityType)
+    val result : ListFilesResponseDto = apiInstance.listFiles(limit, offset, filter, sort, order, tag, status, relatedEntityId, relatedEntityType)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling StorageApi#listFiles")
@@ -227,8 +230,11 @@ try {
 ```
 
 ### Parameters
-| **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] |
-| **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
+| **limit** | **java.math.BigDecimal**| Maximum number of items to return | [optional] |
+| **offset** | **java.math.BigDecimal**| Number of items to skip | [optional] |
+| **filter** | **kotlin.String**| JSON string used for dynamic filtering | [optional] |
+| **sort** | **kotlin.String**| Field name to sort by | [optional] |
+| **order** | **kotlin.String**| Sort direction | [optional] |
 | **tag** | **kotlin.String**| Filter by tag | [optional] |
 | **status** | **kotlin.String**|  | [optional] [enum: pending, uploaded, failed, deleted] |
 | **relatedEntityId** | **kotlin.String**|  | [optional] |

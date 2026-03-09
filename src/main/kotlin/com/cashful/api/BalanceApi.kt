@@ -57,9 +57,12 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * GET /api/canary/balance/history
      * List Merchant Balance History
      * A full ledger of all transactions, fees, and payouts for the merchant&#39;s master account.
+     * @param limit Maximum number of items to return (optional)
+     * @param offset Number of items to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (optional)
      * @param merchantId The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. (optional)
-     * @param limit Maximum number of records to return (optional)
-     * @param offset Number of records to skip (optional)
      * @param startDate Filter transactions from this date (ISO 8601 format) (optional)
      * @param endDate Filter transactions until this date (ISO 8601 format) (optional)
      * @param transactionType Filter by transaction type (e.g., \&quot;credit\&quot;, \&quot;debit\&quot;, \&quot;fee\&quot;, \&quot;payout\&quot;) (optional)
@@ -72,8 +75,8 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun getBalanceHistory(merchantId: kotlin.String? = null, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, startDate: kotlin.String? = null, endDate: kotlin.String? = null, transactionType: kotlin.String? = null) : BalanceHistoryResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = getBalanceHistoryWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, startDate = startDate, endDate = endDate, transactionType = transactionType)
+    suspend fun getBalanceHistory(limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, filter: kotlin.String? = null, sort: kotlin.String? = null, order: kotlin.String? = null, merchantId: kotlin.String? = null, startDate: kotlin.String? = null, endDate: kotlin.String? = null, transactionType: kotlin.String? = null) : BalanceHistoryResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = getBalanceHistoryWithHttpInfo(limit = limit, offset = offset, filter = filter, sort = sort, order = order, merchantId = merchantId, startDate = startDate, endDate = endDate, transactionType = transactionType)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as BalanceHistoryResponseDto
@@ -94,9 +97,12 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * GET /api/canary/balance/history
      * List Merchant Balance History
      * A full ledger of all transactions, fees, and payouts for the merchant&#39;s master account.
+     * @param limit Maximum number of items to return (optional)
+     * @param offset Number of items to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (optional)
      * @param merchantId The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. (optional)
-     * @param limit Maximum number of records to return (optional)
-     * @param offset Number of records to skip (optional)
      * @param startDate Filter transactions from this date (ISO 8601 format) (optional)
      * @param endDate Filter transactions until this date (ISO 8601 format) (optional)
      * @param transactionType Filter by transaction type (e.g., \&quot;credit\&quot;, \&quot;debit\&quot;, \&quot;fee\&quot;, \&quot;payout\&quot;) (optional)
@@ -106,8 +112,8 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun getBalanceHistoryWithHttpInfo(merchantId: kotlin.String?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, startDate: kotlin.String?, endDate: kotlin.String?, transactionType: kotlin.String?) : ApiResponse<BalanceHistoryResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = getBalanceHistoryRequestConfig(merchantId = merchantId, limit = limit, offset = offset, startDate = startDate, endDate = endDate, transactionType = transactionType)
+    suspend fun getBalanceHistoryWithHttpInfo(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, filter: kotlin.String?, sort: kotlin.String?, order: kotlin.String?, merchantId: kotlin.String?, startDate: kotlin.String?, endDate: kotlin.String?, transactionType: kotlin.String?) : ApiResponse<BalanceHistoryResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = getBalanceHistoryRequestConfig(limit = limit, offset = offset, filter = filter, sort = sort, order = order, merchantId = merchantId, startDate = startDate, endDate = endDate, transactionType = transactionType)
 
         return@withContext request<Unit, BalanceHistoryResponseDto>(
             localVariableConfig
@@ -117,26 +123,38 @@ class BalanceApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * To obtain the request config of the operation getBalanceHistory
      *
+     * @param limit Maximum number of items to return (optional)
+     * @param offset Number of items to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (optional)
      * @param merchantId The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant. (optional)
-     * @param limit Maximum number of records to return (optional)
-     * @param offset Number of records to skip (optional)
      * @param startDate Filter transactions from this date (ISO 8601 format) (optional)
      * @param endDate Filter transactions until this date (ISO 8601 format) (optional)
      * @param transactionType Filter by transaction type (e.g., \&quot;credit\&quot;, \&quot;debit\&quot;, \&quot;fee\&quot;, \&quot;payout\&quot;) (optional)
      * @return RequestConfig
      */
-    fun getBalanceHistoryRequestConfig(merchantId: kotlin.String?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, startDate: kotlin.String?, endDate: kotlin.String?, transactionType: kotlin.String?) : RequestConfig<Unit> {
+    fun getBalanceHistoryRequestConfig(limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, filter: kotlin.String?, sort: kotlin.String?, order: kotlin.String?, merchantId: kotlin.String?, startDate: kotlin.String?, endDate: kotlin.String?, transactionType: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                if (merchantId != null) {
-                    put("merchantId", listOf(merchantId.toString()))
-                }
                 if (limit != null) {
                     put("limit", listOf(limit.toString()))
                 }
                 if (offset != null) {
                     put("offset", listOf(offset.toString()))
+                }
+                if (filter != null) {
+                    put("filter", listOf(filter.toString()))
+                }
+                if (sort != null) {
+                    put("sort", listOf(sort.toString()))
+                }
+                if (order != null) {
+                    put("order", listOf(order.toString()))
+                }
+                if (merchantId != null) {
+                    put("merchantId", listOf(merchantId.toString()))
                 }
                 if (startDate != null) {
                     put("startDate", listOf(startDate.toString()))

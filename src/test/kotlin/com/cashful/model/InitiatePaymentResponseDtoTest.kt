@@ -26,16 +26,64 @@ class InitiatePaymentResponseDtoTest : ShouldSpec() {
         // uncomment below to create an instance of InitiatePaymentResponseDto
         //val modelInstance = InitiatePaymentResponseDto()
 
-        // to test the property `iveriParams` - Parameters to POST to iVeri 3DS endpoint
+        // to test the property `iveriParams` - Parameters to POST to iVeri 3DS endpoint (only in live mode)
         should("test iveriParams") {
             // uncomment below to test the property
             //modelInstance.iveriParams shouldBe ("TODO")
         }
 
-        // to test the property `iVeri3dsEndpoint` - iVeri 3DS endpoint URL to POST the parameters to
+        // to test the property `iVeri3dsEndpoint` - iVeri 3DS endpoint URL to POST the parameters to (only in live mode)
         should("test iVeri3dsEndpoint") {
             // uncomment below to test the property
             //modelInstance.iVeri3dsEndpoint shouldBe ("TODO")
+        }
+
+        // to test the property `sandboxMode` - Whether sandbox mode is active
+        should("test sandboxMode") {
+            // uncomment below to test the property
+            //modelInstance.sandboxMode shouldBe ("TODO")
+        }
+
+        // to test the property `status` - Payment status (only in sandbox mode)
+        should("test status") {
+            // uncomment below to test the property
+            //modelInstance.status shouldBe ("TODO")
+        }
+
+        // to test the property `paymentIntentId` - Payment intent ID
+        should("test paymentIntentId") {
+            // uncomment below to test the property
+            //modelInstance.paymentIntentId shouldBe ("TODO")
+        }
+
+        // to test the property `transactionId` - Transaction ID (only in sandbox mode on success)
+        should("test transactionId") {
+            // uncomment below to test the property
+            //modelInstance.transactionId shouldBe ("TODO")
+        }
+
+        // to test the property `authCode` - Authorization code (only in sandbox mode on success)
+        should("test authCode") {
+            // uncomment below to test the property
+            //modelInstance.authCode shouldBe ("TODO")
+        }
+
+        // to test the property `amount` - Payment amount in smallest currency unit
+        should("test amount") {
+            // uncomment below to test the property
+            //modelInstance.amount shouldBe ("TODO")
+        }
+
+        // to test the property `currency` - Currency code
+        should("test currency") {
+            // uncomment below to test the property
+            //modelInstance.currency shouldBe ("TODO")
+        }
+
+        // to test the property `reason` - Reason for failure (only in sandbox mode on failure)
+        should("test reason") {
+            // uncomment below to test the property
+            //modelInstance.reason shouldBe ("TODO")
         }
 
     }

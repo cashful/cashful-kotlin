@@ -27,6 +27,13 @@ import kotlinx.serialization.Contextual
  * @param paymentIntent 
  * @param iveriParams 
  * @param iVeri3dsEndpoint 
+ * @param sandboxMode 
+ * @param status 
+ * @param transactionId 
+ * @param authCode 
+ * @param amount 
+ * @param currency 
+ * @param reason 
  */
 @Serializable
 
@@ -36,13 +43,44 @@ data class ConfirmPaymentIntentResponseDto (
     val paymentIntent: PaymentIntentResponseDto,
 
     @Contextual @SerialName(value = "iveriParams")
-    val iveriParams: kotlin.Any,
+    val iveriParams: kotlin.Any? = null,
 
     @SerialName(value = "iVeri3dsEndpoint")
-    val iVeri3dsEndpoint: kotlin.String
+    val iVeri3dsEndpoint: kotlin.String? = null,
+
+    @SerialName(value = "sandboxMode")
+    val sandboxMode: kotlin.Boolean? = null,
+
+    @SerialName(value = "status")
+    val status: ConfirmPaymentIntentResponseDto.Status? = null,
+
+    @SerialName(value = "transactionId")
+    val transactionId: kotlin.String? = null,
+
+    @SerialName(value = "authCode")
+    val authCode: kotlin.String? = null,
+
+    @Contextual @SerialName(value = "amount")
+    val amount: java.math.BigDecimal? = null,
+
+    @SerialName(value = "currency")
+    val currency: kotlin.String? = null,
+
+    @SerialName(value = "reason")
+    val reason: kotlin.String? = null
 
 ) {
 
+    /**
+     * 
+     *
+     * Values: succeeded,failed
+     */
+    @Serializable
+    enum class Status(val value: kotlin.String) {
+        @SerialName(value = "succeeded") succeeded("succeeded"),
+        @SerialName(value = "failed") failed("failed");
+    }
 
 }
 

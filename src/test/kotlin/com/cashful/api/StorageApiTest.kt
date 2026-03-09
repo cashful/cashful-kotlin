@@ -69,13 +69,16 @@ class StorageApiTest : ShouldSpec() {
         // to test listFiles
         should("test listFiles") {
             // uncomment below to test listFiles
-            //val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of records to return
-            //val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of records to skip
+            //val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of items to return
+            //val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of items to skip
+            //val filter : kotlin.String = {"ids":["prod_123","prod_456"]} // kotlin.String | JSON string used for dynamic filtering
+            //val sort : kotlin.String = createdAt // kotlin.String | Field name to sort by
+            //val order : kotlin.String = DESC // kotlin.String | Sort direction
             //val tag : kotlin.String = tag_example // kotlin.String | Filter by tag
             //val status : kotlin.String = status_example // kotlin.String | 
             //val relatedEntityId : kotlin.String = relatedEntityId_example // kotlin.String | 
             //val relatedEntityType : kotlin.String = relatedEntityType_example // kotlin.String | 
-            //val result : ListFilesResponseDto = apiInstance.listFiles(limit, offset, tag, status, relatedEntityId, relatedEntityType)
+            //val result : ListFilesResponseDto = apiInstance.listFiles(limit, offset, filter, sort, order, tag, status, relatedEntityId, relatedEntityType)
             //result shouldBe ("TODO")
         }
 

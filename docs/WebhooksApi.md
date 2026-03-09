@@ -107,7 +107,7 @@ Configure bearer:
 
 <a id="listWebhookEndpoints"></a>
 # **listWebhookEndpoints**
-> ListWebhookEndpointsResponseDto listWebhookEndpoints(merchantId, limit, offset)
+> ListWebhookEndpointsResponseDto listWebhookEndpoints(merchantId, limit, offset, filter, sort, order)
 
 List Webhook Endpoints
 
@@ -123,8 +123,11 @@ val apiInstance = WebhooksApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose webhooks are being requested. If omitted, defaults to the authenticated merchant.
 val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
 val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
+val filter : kotlin.String = filter_example // kotlin.String | JSON string used for dynamic filtering
+val sort : kotlin.String = sort_example // kotlin.String | Field name to sort by
+val order : kotlin.String = order_example // kotlin.String | Sort direction (ASC or DESC)
 try {
-    val result : ListWebhookEndpointsResponseDto = apiInstance.listWebhookEndpoints(merchantId, limit, offset)
+    val result : ListWebhookEndpointsResponseDto = apiInstance.listWebhookEndpoints(merchantId, limit, offset, filter, sort, order)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling WebhooksApi#listWebhookEndpoints")
@@ -138,9 +141,12 @@ try {
 ### Parameters
 | **merchantId** | **kotlin.String**| The ID of the merchant whose webhooks are being requested. If omitted, defaults to the authenticated merchant. | [optional] |
 | **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] |
+| **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
+| **filter** | **kotlin.String**| JSON string used for dynamic filtering | [optional] |
+| **sort** | **kotlin.String**| Field name to sort by | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
+| **order** | **kotlin.String**| Sort direction (ASC or DESC) | [optional] |
 
 ### Return type
 

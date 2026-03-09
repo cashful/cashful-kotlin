@@ -61,5 +61,65 @@ class SessionUserDtoTest : ShouldSpec() {
             //modelInstance.updatedAt shouldBe ("TODO")
         }
 
+        // to test the property `image`
+        should("test image") {
+            // uncomment below to test the property
+            //modelInstance.image shouldBe ("TODO")
+        }
+
+        // to test the property `role`
+        should("test role") {
+            // uncomment below to test the property
+            //modelInstance.role shouldBe ("TODO")
+        }
+
+        // to test the property `banned`
+        should("test banned") {
+            // uncomment below to test the property
+            //modelInstance.banned shouldBe ("TODO")
+        }
+
+        // to test the property `banReason`
+        should("test banReason") {
+            // uncomment below to test the property
+            //modelInstance.banReason shouldBe ("TODO")
+        }
+
+        // to test the property `banExpires`
+        should("test banExpires") {
+            // uncomment below to test the property
+            //modelInstance.banExpires shouldBe ("TODO")
+        }
+
+        // to test the property `isAnonymous`
+        should("test isAnonymous") {
+            // uncomment below to test the property
+            //modelInstance.isAnonymous shouldBe ("TODO")
+        }
+
+        // to test the property `username`
+        should("test username") {
+            // uncomment below to test the property
+            //modelInstance.username shouldBe ("TODO")
+        }
+
+        // to test the property `displayUsername`
+        should("test displayUsername") {
+            // uncomment below to test the property
+            //modelInstance.displayUsername shouldBe ("TODO")
+        }
+
+        // to test the property `phoneNumber`
+        should("test phoneNumber") {
+            // uncomment below to test the property
+            //modelInstance.phoneNumber shouldBe ("TODO")
+        }
+
+        // to test the property `phoneNumberVerified`
+        should("test phoneNumberVerified") {
+            // uncomment below to test the property
+            //modelInstance.phoneNumberVerified shouldBe ("TODO")
+        }
+
     }
 }

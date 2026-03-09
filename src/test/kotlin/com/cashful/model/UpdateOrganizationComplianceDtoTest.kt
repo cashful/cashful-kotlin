@@ -241,23 +241,5 @@ class UpdateOrganizationComplianceDtoTest : ShouldSpec() {
             //modelInstance.currentStep shouldBe ("TODO")
         }
 
-        // to test the property `status`
-        should("test status") {
-            // uncomment below to test the property
-            //modelInstance.status shouldBe ("TODO")
-        }
-
-        // to test the property `isCompleted`
-        should("test isCompleted") {
-            // uncomment below to test the property
-            //modelInstance.isCompleted shouldBe ("TODO")
-        }
-
-        // to test the property `completionScore`
-        should("test completionScore") {
-            // uncomment below to test the property
-            //modelInstance.completionScore shouldBe ("TODO")
-        }
-
     }
 }

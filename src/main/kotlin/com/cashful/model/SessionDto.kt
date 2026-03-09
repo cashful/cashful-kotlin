@@ -25,7 +25,12 @@ import kotlinx.serialization.Contextual
  *
  * @param id 
  * @param userId 
+ * @param token 
+ * @param createdAt 
+ * @param updatedAt 
  * @param expiresAt 
+ * @param impersonatedBy 
+ * @param activeOrganizationId 
  * @param ipAddress 
  * @param userAgent 
  */
@@ -39,8 +44,23 @@ data class SessionDto (
     @SerialName(value = "userId")
     val userId: kotlin.String,
 
+    @SerialName(value = "token")
+    val token: kotlin.String,
+
+    @Contextual @SerialName(value = "createdAt")
+    val createdAt: java.time.OffsetDateTime,
+
+    @Contextual @SerialName(value = "updatedAt")
+    val updatedAt: java.time.OffsetDateTime,
+
     @Contextual @SerialName(value = "expiresAt")
     val expiresAt: java.time.OffsetDateTime,
+
+    @SerialName(value = "impersonatedBy")
+    val impersonatedBy: kotlin.String? = null,
+
+    @SerialName(value = "activeOrganizationId")
+    val activeOrganizationId: kotlin.String? = null,
 
     @SerialName(value = "ipAddress")
     val ipAddress: kotlin.String? = null,

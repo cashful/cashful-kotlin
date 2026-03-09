@@ -31,6 +31,12 @@ class IVeriHealthCheckResponseDtoTest : ShouldSpec() {
             //modelInstance.status shouldBe ("TODO")
         }
 
+        // to test the property `environment` - Current environment mode
+        should("test environment") {
+            // uncomment below to test the property
+            //modelInstance.environment shouldBe ("TODO")
+        }
+
         // to test the property `timestamp` - Current server timestamp in ISO format
         should("test timestamp") {
             // uncomment below to test the property

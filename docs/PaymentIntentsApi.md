@@ -159,7 +159,7 @@ Configure bearer:
 
 <a id="listPaymentIntents"></a>
 # **listPaymentIntents**
-> ListPaymentIntentsResponseDto listPaymentIntents(status, offset, limit, merchantId)
+> ListPaymentIntentsResponseDto listPaymentIntents(merchantId, limit, offset, status)
 
 List Payment Intents
 
@@ -172,12 +172,12 @@ Lists payment intents for a specific merchant with pagination and filtering.
 //import com.cashful.model.*
 
 val apiInstance = PaymentIntentsApi()
-val status : kotlin.String = status_example // kotlin.String | 
-val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | 
-val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | 
-val merchantId : kotlin.String = merchantId_example // kotlin.String | 
+val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant. If omitted, defaults to the authenticated merchant.
+val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
+val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
+val status : kotlin.String = status_example // kotlin.String | Filter by status
 try {
-    val result : ListPaymentIntentsResponseDto = apiInstance.listPaymentIntents(status, offset, limit, merchantId)
+    val result : ListPaymentIntentsResponseDto = apiInstance.listPaymentIntents(merchantId, limit, offset, status)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PaymentIntentsApi#listPaymentIntents")
@@ -189,12 +189,12 @@ try {
 ```
 
 ### Parameters
-| **status** | **kotlin.String**|  | [optional] [enum: initiation, requires_payment_method, requires_confirmation, requires_action, processing, requires_capture, succeeded, failed, canceled] |
-| **offset** | **java.math.BigDecimal**|  | [optional] |
-| **limit** | **java.math.BigDecimal**|  | [optional] |
+| **merchantId** | **kotlin.String**| The ID of the merchant. If omitted, defaults to the authenticated merchant. | [optional] |
+| **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] [default to 50] |
+| **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] [default to 0] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **merchantId** | **kotlin.String**|  | [optional] |
+| **status** | **kotlin.String**| Filter by status | [optional] [enum: initiation, requires_payment_method, requires_confirmation, requires_action, processing, requires_capture, succeeded, failed, canceled] |
 
 ### Return type
 

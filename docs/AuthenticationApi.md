@@ -1921,7 +1921,7 @@ Redirects user to callback URL with token
 
 val apiInstance = AuthenticationApi()
 val token : kotlin.String = token_example // kotlin.String | 
-val callbackURL : kotlin.String = https://example.com/reset-password // kotlin.String | The URL to redirect user to reset their password
+val callbackURL : kotlin.String = https://www.cashful.africa/reset-password // kotlin.String | The URL to redirect user to reset their password
 try {
     val result : ResetPasswordCallbackResponseDto = apiInstance.resetPasswordCallback(token, callbackURL)
     println(result)
@@ -2811,7 +2811,7 @@ Verify the email of a user
 
 val apiInstance = AuthenticationApi()
 val token : kotlin.String = verify_token_12345 // kotlin.String | The token to verify email
-val callbackURL : kotlin.String = https://example.com/callback // kotlin.String | The URL to redirect to after email verification
+val callbackURL : kotlin.String = https://www.cashful.africa/callback // kotlin.String | The URL to redirect to after email verification
 try {
     val result : VerifyEmailResponseDto = apiInstance.verifyEmail(token, callbackURL)
     println(result)

@@ -20,6 +20,8 @@ import io.kotlintest.specs.ShouldSpec
 
 import com.cashful.api.CustomersApi
 import com.cashful.model.BadRequestResponseDto
+import com.cashful.model.BulkIdsDto
+import com.cashful.model.BulkUpdateCustomersInputDto
 import com.cashful.model.CreateCustomerDto
 import com.cashful.model.CustomerBalanceDto
 import com.cashful.model.CustomerResponseDto
@@ -41,6 +43,14 @@ class CustomersApiTest : ShouldSpec() {
             // uncomment below to test createCustomer
             //val createCustomerDto : CreateCustomerDto =  // CreateCustomerDto | Customer details
             //val result : CustomerResponseDto = apiInstance.createCustomer(createCustomerDto)
+            //result shouldBe ("TODO")
+        }
+
+        // to test deleteCustomersBulk
+        should("test deleteCustomersBulk") {
+            // uncomment below to test deleteCustomersBulk
+            //val bulkIdsDto : BulkIdsDto =  // BulkIdsDto | 
+            //val result : kotlin.Any = apiInstance.deleteCustomersBulk(bulkIdsDto)
             //result shouldBe ("TODO")
         }
 
@@ -78,9 +88,11 @@ class CustomersApiTest : ShouldSpec() {
             //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose balance is being requested. If omitted, defaults to the authenticated merchant.
             //val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
             //val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
+            //val filter : kotlin.String = filter_example // kotlin.String | JSON string used for dynamic filtering
+            //val sort : kotlin.String = sort_example // kotlin.String | 
+            //val order : kotlin.String = DESC // kotlin.String | 
             //val email : kotlin.String = email_example // kotlin.String | Filter by email address
-            //val search : kotlin.String = search_example // kotlin.String | Search across customer fields
-            //val result : ListCustomersResponseDto = apiInstance.listCustomers(merchantId, limit, offset, email, search)
+            //val result : ListCustomersResponseDto = apiInstance.listCustomers(merchantId, limit, offset, filter, sort, order, email)
             //result shouldBe ("TODO")
         }
 
@@ -98,6 +110,14 @@ class CustomersApiTest : ShouldSpec() {
             //val id : kotlin.String = id_example // kotlin.String | The unique identifier of the customer
             //val updateCustomerDto : UpdateCustomerDto =  // UpdateCustomerDto | Customer update details
             //val result : CustomerResponseDto = apiInstance.updateCustomer(id, updateCustomerDto)
+            //result shouldBe ("TODO")
+        }
+
+        // to test updateCustomersBulk
+        should("test updateCustomersBulk") {
+            // uncomment below to test updateCustomersBulk
+            //val bulkUpdateCustomersInputDto : BulkUpdateCustomersInputDto =  // BulkUpdateCustomersInputDto | 
+            //val result : kotlin.Any = apiInstance.updateCustomersBulk(bulkUpdateCustomersInputDto)
             //result shouldBe ("TODO")
         }
 

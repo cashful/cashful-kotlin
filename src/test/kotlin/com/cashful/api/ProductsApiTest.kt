@@ -20,12 +20,13 @@ import io.kotlintest.specs.ShouldSpec
 
 import com.cashful.api.ProductsApi
 import com.cashful.model.BadRequestResponseDto
+import com.cashful.model.BulkIdsDto
+import com.cashful.model.BulkUpdateProductsInputDto
 import com.cashful.model.CreateProductDto
 import com.cashful.model.InternalServerErrorResponseDto
 import com.cashful.model.ListProductsResponseDto
 import com.cashful.model.NotFoundResponseDto
 import com.cashful.model.ProductResponseDto
-import com.cashful.model.RetrieveMultipleProductsDto
 import com.cashful.model.UnauthorizedResponseDto
 import com.cashful.model.UpdateProductDto
 
@@ -42,22 +43,33 @@ class ProductsApiTest : ShouldSpec() {
             //result shouldBe ("TODO")
         }
 
-        // to test listProducts
-        should("test listProducts") {
-            // uncomment below to test listProducts
-            //val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of records to return
-            //val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of records to skip
-            //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose products are being requested. If not provided, the products of the authenticated merchant will be returned.
-            //val active : kotlin.Boolean = true // kotlin.Boolean | Filter by active status
-            //val result : ListProductsResponseDto = apiInstance.listProducts(limit, offset, merchantId, active)
+        // to test deleteProduct
+        should("test deleteProduct") {
+            // uncomment below to test deleteProduct
+            //val id : kotlin.String = id_example // kotlin.String | The unique identifier of the product
+            //val result : ProductResponseDto = apiInstance.deleteProduct(id)
             //result shouldBe ("TODO")
         }
 
-        // to test retrieveMultipleProducts
-        should("test retrieveMultipleProducts") {
-            // uncomment below to test retrieveMultipleProducts
-            //val retrieveMultipleProductsDto : RetrieveMultipleProductsDto =  // RetrieveMultipleProductsDto | List of product IDs
-            //val result : kotlin.collections.List<ProductResponseDto> = apiInstance.retrieveMultipleProducts(retrieveMultipleProductsDto)
+        // to test deleteProductsBulk
+        should("test deleteProductsBulk") {
+            // uncomment below to test deleteProductsBulk
+            //val bulkIdsDto : BulkIdsDto =  // BulkIdsDto | 
+            //val result : kotlin.Any = apiInstance.deleteProductsBulk(bulkIdsDto)
+            //result shouldBe ("TODO")
+        }
+
+        // to test listProducts
+        should("test listProducts") {
+            // uncomment below to test listProducts
+            //val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of items to return
+            //val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of items to skip
+            //val filter : kotlin.String = {"ids":["prod_123","prod_456"]} // kotlin.String | JSON string used for dynamic filtering
+            //val sort : kotlin.String = createdAt // kotlin.String | Field name to sort by
+            //val order : kotlin.String = DESC // kotlin.String | Sort direction
+            //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose products are being requested. If not provided, the products of the authenticated merchant will be returned.
+            //val active : kotlin.Boolean = true // kotlin.Boolean | Filter by active status
+            //val result : ListProductsResponseDto = apiInstance.listProducts(limit, offset, filter, sort, order, merchantId, active)
             //result shouldBe ("TODO")
         }
 
@@ -75,6 +87,14 @@ class ProductsApiTest : ShouldSpec() {
             //val id : kotlin.String = id_example // kotlin.String | The unique identifier of the product
             //val updateProductDto : UpdateProductDto =  // UpdateProductDto | Product update details
             //val result : ProductResponseDto = apiInstance.updateProduct(id, updateProductDto)
+            //result shouldBe ("TODO")
+        }
+
+        // to test updateProductsBulk
+        should("test updateProductsBulk") {
+            // uncomment below to test updateProductsBulk
+            //val bulkUpdateProductsInputDto : BulkUpdateProductsInputDto =  // BulkUpdateProductsInputDto | 
+            //val result : kotlin.Any = apiInstance.updateProductsBulk(bulkUpdateProductsInputDto)
             //result shouldBe ("TODO")
         }
 

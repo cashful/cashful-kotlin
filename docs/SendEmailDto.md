@@ -13,6 +13,7 @@
 | **from** | **kotlin.String** | Sender email address |  [optional] |
 | **cc** | [**kotlin.Any**](.md) | CC email address(es) |  [optional] |
 | **bcc** | [**kotlin.Any**](.md) | BCC email address(es) |  [optional] |
+| **merchantId** | **kotlin.String** | Merchant ID for context and auditing |  [optional] |
 
 
 

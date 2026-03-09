@@ -19,6 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import com.cashful.model.ListAccountsResponseDto
+import com.cashful.model.LinkedAccountDto
 
 class ListAccountsResponseDtoTest : ShouldSpec() {
     init {

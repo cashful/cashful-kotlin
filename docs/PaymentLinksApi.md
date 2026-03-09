@@ -60,7 +60,7 @@ Configure bearer:
 
 <a id="listPaymentLinks"></a>
 # **listPaymentLinks**
-> ListPaymentLinksResponseDto listPaymentLinks(merchantId, limit, offset, active)
+> ListPaymentLinksResponseDto listPaymentLinks(limit, offset, filter, sort, order, merchantId, active)
 
 List Payment Links
 
@@ -73,12 +73,15 @@ Retrieves all payment links created by the merchant.
 //import com.cashful.model.*
 
 val apiInstance = PaymentLinksApi()
+val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of items to return
+val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of items to skip
+val filter : kotlin.String = {"ids":["prod_123","prod_456"]} // kotlin.String | JSON string used for dynamic filtering
+val sort : kotlin.String = createdAt // kotlin.String | Field name to sort by
+val order : kotlin.String = DESC // kotlin.String | Sort direction
 val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose payment links are being requested. If omitted, defaults to the authenticated merchant.
-val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
-val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
 val active : kotlin.Boolean = true // kotlin.Boolean | Filter by active status
 try {
-    val result : ListPaymentLinksResponseDto = apiInstance.listPaymentLinks(merchantId, limit, offset, active)
+    val result : ListPaymentLinksResponseDto = apiInstance.listPaymentLinks(limit, offset, filter, sort, order, merchantId, active)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PaymentLinksApi#listPaymentLinks")
@@ -90,9 +93,12 @@ try {
 ```
 
 ### Parameters
+| **limit** | **java.math.BigDecimal**| Maximum number of items to return | [optional] |
+| **offset** | **java.math.BigDecimal**| Number of items to skip | [optional] |
+| **filter** | **kotlin.String**| JSON string used for dynamic filtering | [optional] |
+| **sort** | **kotlin.String**| Field name to sort by | [optional] |
+| **order** | **kotlin.String**| Sort direction | [optional] |
 | **merchantId** | **kotlin.String**| The ID of the merchant whose payment links are being requested. If omitted, defaults to the authenticated merchant. | [optional] |
-| **limit** | **java.math.BigDecimal**| Maximum number of records to return | [optional] |
-| **offset** | **java.math.BigDecimal**| Number of records to skip | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **active** | **kotlin.Boolean**| Filter by active status | [optional] |

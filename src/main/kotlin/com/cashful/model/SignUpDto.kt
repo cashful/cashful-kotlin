@@ -52,7 +52,7 @@ data class SignUpDto (
 
     /* Optional callback URL after successful sign-up */
     @SerialName(value = "callbackURL")
-    val callbackURL: kotlin.String? = null,
+    val callbackURL: kotlin.String? = "https://api.cashful.africa/auth/callback",
 
     /* Optional flag to indicate if the user should be remembered */
     @SerialName(value = "rememberMe")

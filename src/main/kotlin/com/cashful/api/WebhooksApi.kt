@@ -208,6 +208,9 @@ class WebhooksApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      * @param merchantId The ID of the merchant whose webhooks are being requested. If omitted, defaults to the authenticated merchant. (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (ASC or DESC) (optional)
      * @return ListWebhookEndpointsResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -217,8 +220,8 @@ class WebhooksApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun listWebhookEndpoints(merchantId: kotlin.String? = null, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null) : ListWebhookEndpointsResponseDto = withContext(Dispatchers.IO) {
-        val localVarResponse = listWebhookEndpointsWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset)
+    suspend fun listWebhookEndpoints(merchantId: kotlin.String? = null, limit: java.math.BigDecimal? = null, offset: java.math.BigDecimal? = null, filter: kotlin.String? = null, sort: kotlin.String? = null, order: kotlin.String? = null) : ListWebhookEndpointsResponseDto = withContext(Dispatchers.IO) {
+        val localVarResponse = listWebhookEndpointsWithHttpInfo(merchantId = merchantId, limit = limit, offset = offset, filter = filter, sort = sort, order = order)
 
         return@withContext when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as ListWebhookEndpointsResponseDto
@@ -242,14 +245,17 @@ class WebhooksApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      * @param merchantId The ID of the merchant whose webhooks are being requested. If omitted, defaults to the authenticated merchant. (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (ASC or DESC) (optional)
      * @return ApiResponse<ListWebhookEndpointsResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun listWebhookEndpointsWithHttpInfo(merchantId: kotlin.String?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : ApiResponse<ListWebhookEndpointsResponseDto?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = listWebhookEndpointsRequestConfig(merchantId = merchantId, limit = limit, offset = offset)
+    suspend fun listWebhookEndpointsWithHttpInfo(merchantId: kotlin.String?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, filter: kotlin.String?, sort: kotlin.String?, order: kotlin.String?) : ApiResponse<ListWebhookEndpointsResponseDto?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = listWebhookEndpointsRequestConfig(merchantId = merchantId, limit = limit, offset = offset, filter = filter, sort = sort, order = order)
 
         return@withContext request<Unit, ListWebhookEndpointsResponseDto>(
             localVariableConfig
@@ -262,9 +268,12 @@ class WebhooksApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      * @param merchantId The ID of the merchant whose webhooks are being requested. If omitted, defaults to the authenticated merchant. (optional)
      * @param limit Maximum number of records to return (optional)
      * @param offset Number of records to skip (optional)
+     * @param filter JSON string used for dynamic filtering (optional)
+     * @param sort Field name to sort by (optional)
+     * @param order Sort direction (ASC or DESC) (optional)
      * @return RequestConfig
      */
-    fun listWebhookEndpointsRequestConfig(merchantId: kotlin.String?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?) : RequestConfig<Unit> {
+    fun listWebhookEndpointsRequestConfig(merchantId: kotlin.String?, limit: java.math.BigDecimal?, offset: java.math.BigDecimal?, filter: kotlin.String?, sort: kotlin.String?, order: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -276,6 +285,15 @@ class WebhooksApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
                 }
                 if (offset != null) {
                     put("offset", listOf(offset.toString()))
+                }
+                if (filter != null) {
+                    put("filter", listOf(filter.toString()))
+                }
+                if (sort != null) {
+                    put("sort", listOf(sort.toString()))
+                }
+                if (order != null) {
+                    put("order", listOf(order.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()

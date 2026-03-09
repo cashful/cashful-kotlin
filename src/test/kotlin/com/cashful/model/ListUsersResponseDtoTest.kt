@@ -19,6 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import com.cashful.model.ListUsersResponseDto
+import com.cashful.model.SessionUserDto
 
 class ListUsersResponseDtoTest : ShouldSpec() {
     init {

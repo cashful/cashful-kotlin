@@ -44,11 +44,14 @@ class PaymentLinksApiTest : ShouldSpec() {
         // to test listPaymentLinks
         should("test listPaymentLinks") {
             // uncomment below to test listPaymentLinks
+            //val limit : java.math.BigDecimal = 50 // java.math.BigDecimal | Maximum number of items to return
+            //val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | Number of items to skip
+            //val filter : kotlin.String = {"ids":["prod_123","prod_456"]} // kotlin.String | JSON string used for dynamic filtering
+            //val sort : kotlin.String = createdAt // kotlin.String | Field name to sort by
+            //val order : kotlin.String = DESC // kotlin.String | Sort direction
             //val merchantId : kotlin.String = merchantId_example // kotlin.String | The ID of the merchant whose payment links are being requested. If omitted, defaults to the authenticated merchant.
-            //val limit : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Maximum number of records to return
-            //val offset : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of records to skip
             //val active : kotlin.Boolean = true // kotlin.Boolean | Filter by active status
-            //val result : ListPaymentLinksResponseDto = apiInstance.listPaymentLinks(merchantId, limit, offset, active)
+            //val result : ListPaymentLinksResponseDto = apiInstance.listPaymentLinks(limit, offset, filter, sort, order, merchantId, active)
             //result shouldBe ("TODO")
         }
 
